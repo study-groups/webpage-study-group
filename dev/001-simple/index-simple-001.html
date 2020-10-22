@@ -17,29 +17,25 @@
   text-align: center;
   margin: 0;
  }
- .quote {
-  margin: 2em;
- }
- h1 {
+ .header-1 {
   margin-top: 2em;
   font-size: 2.8em;
   letter-spacing: 2px;
  }
- h2 {
+ .header-2 {
   padding-top: 1em;
  }
- li {
+ .list-item {
   text-align: left;
   margin-left: 4em;
   line-height: 150%;
  }
- p {
+ .paragraph {
   margin: auto;
   max-width: 40em;
   font-size: 1.25em;
-  
  }
- .event-group {
+ .list-group {
   border: 1px #00bcd4 solid;
   border-radius: 10px;
   background: #161616;
@@ -47,7 +43,7 @@
   max-width: 20em;
   margin-top: 1em; 
  }
- .asterisk-separator {
+ .asterisk-divider {
   font-size: 1.5em;
   margin-bottom: 1em;
   margin-top: 5em;
@@ -70,62 +66,62 @@
 
  /* ----------------- Media 600px or Less ---------------------------- */
  @media only screen and (max-width: 600px) {
-	h1 {
+  body {
+    background: #1b1b1b;
+	}
+  .header-1 {
     margin-top: 1.5em;
 	}
-	h2 {
+	.header-2 {
 	 font-size: 2em;
 	}
-	p {
+	.paragraph {
 	 margin: 0 20px 0 20px;
 	 line-height: 130%;
    font-size: 1.5em;
 	}
-	.event-group {
+	.list-group {
    max-width: 20em;
 	 margin: auto;
 	}
-	h3 {
+	.header-3 {
 	 font-size: 150%;
 	}
-	li {
+	.list-item {
 	 font-size: 130%;
  	 line-height: 120%;
 	 margin-left: 2em;
 	}
-	body {
-    background: #1b1b1b;
-	}
-}
 
+}
 </style>
 </head>
 
 <header>
-<h1> Study-Groups</h1>
+<h1 class="header-1"> Study-Groups</h1>
 </header>
 
 <body>
  
-<h2>About...</h2>
+<h2 class="header-2">About...</h2>
 <h3></h3>
-<p>
+<p class="paragraph">
  Study Groups is an online meet-up to study technology of all sorts. 
  The current focus is on JavaScript and data science. While there, you may see other things of interest.
 </p>
 <br>
 <br>
 <!--  -->
-<div class="event-group">  
-<h3>Javascript (& React)</h3>
+<div class="list-group">  
+<h3 class="header-3">Javascript (& React)</h3>
  <ul>
- <li>Thursdays</li>
- <li>4 PM (EST)</li>
- <li>Location: <a href="https://discord.gg/bPvheDd">Discord</a></li>
+ <li class="list-item">Thursdays</li>
+ <li class="list-item">4 PM (EST)</li>
+ <li class="list-item">Location: <a href="https://discord.gg/bPvheDd">Discord</a></li>
  </ul>
 
 </div>
-<div class="asterisk-separator">
+<div class="asterisk-divider">
 	* * * * *
 </div>
 <div class="quote">"TELL ME AND I FORGET, TEACH ME AND I MAY REMEMBER, INVOLVE ME AND I LEARN"</div>
