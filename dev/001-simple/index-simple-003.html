@@ -5,138 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study-Groups Main Page</title>
 <style>
- @media only screen and (max-width: 1260px) {
-   .event-group {
-    max-width: 20em;
-    margin: auto;
-   }
- }
- body {
+@media only screen and (max-width: 1260px) {
+
+body {
   background: #172a3a;
   color: #f3ffff;
   text-align: center;
   margin: 0;
- }
- .quote {
-  margin: 2em;
- }
- h1 {
+}
+.quote {
+   margin: 2em;
+}
+.header-1 {
   margin-top: 2em;
   font-size: 2.8em;
   letter-spacing: 2px;
- }
- h2 {
+}
+.header-2 {
   padding-top: 1em;
- }
- li {
-  text-align: left;
-  margin-left: 4em;
-  line-height: 150%;
- }
- p {
+}
+.header-3 {
+  font-size: 130%;
+}
+.paragraph {
   margin: auto;
   max-width: 40em;
   font-size: 1.25em;
+}
+.container {
   
- }
- .event-group {
+}
+.list-group {
+  color: #172a3a;
+  background: #74b3ce;
+  list-style-position: inside;
   border: 1px #f3ffff solid;
   border-radius: 10px;
-  background: #74b3ce;
+  max-width: 18em;
   margin: auto;
-  max-width: 20em;
-  margin-top: 1em; 
-  color: #172a3a
- }
- .asterisk-separator {
+  margin-top: 1em;
+}
+.list-item {
+  margin: auto;
+  line-height: 150%;
+  text-align: left;
+}
+.asterisk-divider {
   font-size: 1.5em;
   margin-bottom: 1em;
   margin-top: 5em;
-  color: #f3ffff;
- }
- .quote {
+  color: #09bc8a;
+}
+.quote {
   font-size: 1em;
   margin-top: .5em;
   margin-bottom: 1.5em;
- }
- a:active {
+}
+a:active {
   color: #00bcd4;
- }
- a:visited {
-   color: purple;
- }
- a:hover {
-   color:#a62704;
- }
-
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color:#a62704;
+}
  /* ----------------- Media 600px or Less ---------------------------- */
- @media only screen and (max-width: 600px) {
-	h1 {
+
+@media only screen and (max-width: 600px) {
+	.header-1 {
     margin-top: 1.5em;
 	}
-	h2 {
-	 font-size: 2em;
+	.header-2 {
+	  font-size: 2em;
+    padding-top: .5em;
 	}
-	p {
-	 margin: 0 20px 0 20px;
-	 line-height: 130%;
-   font-size: 1.5em;
+	.paragraph {
+	  margin: 0 20px 0 20px;
+	  line-height: 130%;
+    font-size: 1.6em;
 	}
-	.event-group {
-   max-width: 20em;
-	 margin: auto;
+	.list-group {
+    max-width: 20em;
+	  margin: auto;
+    margin-top: 1em;
 	}
-	h3 {
-	 font-size: 150%;
-	}
-	li {
-	 font-size: 130%;
- 	 line-height: 120%;
-	 margin-left: 2em;
-	}
-	body {
-    background: #1b1b1b;
-	}
+  .list-item {
+    margin-left: auto;
+    line-height: 150%;
+    text-align: left;
+    font-size: 1.25em;
 }
-
+	.header-3 {
+	  font-size: 150%;
+  }
+}
 </style>
 </head>
 
 <header>
-<h1> Study-Groups</h1>
+  <h1 class="header-1"> Study-Groups</h1>
 </header>
+
 
 <body>
  
-<h2>About...</h2>
-<h3></h3>
-<p>
+<h2 class="header-2">About...</h2>
+
+<p class="paragraph">
  Study Groups is an online meet-up to study technology of all sorts. 
- The current focus is on JavaScript and data science. While there, you may see other things of interest.
+ The current focus is on JavaScript and data science. While there,
+ you may see other things of interest.
 </p>
 <br>
 <br>
-<!--  -->
-<div class="event-group">  
-<h3>Javascript (& React)</h3>
- <ul>
- <li>Thursdays</li>
- <li>4 PM (EST)</li>
- <li>Location: <a href="https://discord.gg/bPvheDd">Discord</a></li>
- </ul>
+<div class="container">
+  <div class="list-group">  
+    <h3 class="header-3">Javascript (& React)</h3>
+      <ul>
+        <li class="list-item">Thursdays, 4 PM (EST)</li>
+        <li class="list-item">
+          Location: <a href="https://discord.gg/bPvheDd">Discord</a>
+        </li>
+      </ul>
+  </div>
+  <div class="list-group">  
+    <h3 class="header-3">Category Theory</h3>
+      <ul>
+        <li class="list-item">Wednesdays, 2 PM (EST)</li>
+        <li class="list-item">
+          Location: <a href="https://discord.gg/bPvheDd">Discord</a>
+        </li>
+      </ul>
+  </div>
+</div>
 
+<div class="asterisk-divider">* * * * *</div>
+
+
+<div class="quote">
+  "Tell me and I forget, teach me and I may remember,
+  involve me and I learn"
 </div>
-<div class="asterisk-separator">
-	* * * * *
-</div>
-<div class="quote">"TELL ME AND I FORGET, TEACH ME AND I MAY REMEMBER, INVOLVE ME AND I LEARN"</div>
 <div>--Benjamin Franklin</div>
 <br>
 <br>
-<img src="images/cp-index-simple-003.png" width=25%>
+
+<img src="images/cp-index-simple-003.png" width=45%>
 <br>
 <br>
-<div>font color: #f3ffff</div>
+<div>font color: #f3ffff </div>
 <br>
 <br>
 
