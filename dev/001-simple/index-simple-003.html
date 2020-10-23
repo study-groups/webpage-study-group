@@ -32,9 +32,6 @@ body {
   max-width: 40em;
   font-size: 1.25em;
 }
-.container {
-  
-}
 .list-group {
   display: inline-block;
   color: #172a3a;
@@ -42,16 +39,16 @@ body {
   list-style-position: inside;
   border: 1px #f3ffff solid;
   border-radius: 10px;
-  max-width: 18em;
-  min-width: 18em;
+  max-width: 16em;
+  min-width: 16em;
   margin: auto;
-  margin: 1em;
+  margin:1em;
 }
 .list-item {
   /* margin: auto; */
-  line-height: 150%;
+  line-height: 130%;
   text-align: left;
-  margin-left: 15px;
+  margin-left: 30px;
   margin-right: 15px;
 }
 .asterisk-divider {
@@ -66,13 +63,17 @@ body {
   margin-bottom: 1.5em;
 }
 a:active {
-  color: #00bcd4;
+  color: #172a3a;
 }
 a:visited {
-  color: purple;
+  color: #b147b8;
+  font-weight: bold;
 }
 a:hover {
-  color:#a62704;
+  color:#86058b;
+}
+.footer-section {
+  background: #004346;
 }
  /* ----------------- Media 600px or Less ---------------------------- */
 
@@ -114,7 +115,7 @@ a:hover {
 
 <body>
  
-<h2 class="header-2">About...</h2>
+<h2 class="header-2">About... </h2>
 
 <p class="paragraph">
  Study Groups is an online meet-up to study technology of all sorts. 
@@ -122,52 +123,54 @@ a:hover {
  you may see other things of interest.
 </p>
 <br>
-<br>
+<p class="paragraph">
+  You can connect with by following this link:
+  <br>
+  <br>
+  <a href="https://discord.gg/bPvheDd">
+    <img src="/001-simple/images/Discord-Wordmark-Color.png" width="15%">
+  </a>
+</p>
+<li class="list-item">
+          
+</li>
 <div class="container">
   <div class="list-group">  
     <h3 class="header-3">Javascript (& React)</h3>
       <ul>
-        <li class="list-item">Thursdays, 4 PM (EST)</li>
-        <li class="list-item">
-          Location: <a href="https://discord.gg/bPvheDd">Discord</a>
-        </li>
+        <li class="list-item">Thursdays</li>
+        <li class="list-item">4 PM (EST)</li>
       </ul>
   </div>
   <div class="list-group">  
     <h3 class="header-3">Category Theory</h3>
       <ul>
-        <li class="list-item">Wednesdays, 2 PM (EST)</li>
-        <li class="list-item">
-          Location: <a href="https://discord.gg/bPvheDd">Discord</a>
-        </li>
+        <li class="list-item">Wednesdays</li>
+        <li class="list-item">2 PM (EST)</li>
       </ul>
   </div>
 </div>
 
 <div class="asterisk-divider">* * * * *</div>
 
-
 <div class="quote">
   "Tell me and I forget, teach me and I may remember,
-  involve me and I learn"
+  involve me and I learn."
 </div>
 <div>--Benjamin Franklin</div>
-<br>
-<br>
-
-<img src="images/cp-index-simple-003.png" width=45%>
-<br>
-<br>
-<div>font color: #f3ffff </div>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
 
 </body>
 
 <footer>
-  <!-- Footer, if needed. -->
+  <div class="footer-section">
+    <div>
+      <br>
+      <br>
+      <img src="images/cp-index-simple-003.png" width=45%>
+    <div>font color: #f3ffff </div>
+  </div>
 </footer>
-  
-
-</body>
 </html>
