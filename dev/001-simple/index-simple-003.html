@@ -11,7 +11,7 @@ body {
   background: #172a3a;
   color: #f3ffff;
   text-align: center;
-  margiin: 0;
+  margin: 0;
 }
 .header-1 {
   margin-top: 2em;
@@ -23,6 +23,7 @@ body {
 }
 .header-3 {
   font-size: 130%;
+  margin-top: 15px 0 15px 0;
 }
 .paragraph {
   margin: auto;
@@ -38,14 +39,14 @@ body {
   border-radius: 10px;
   max-width: 16em;
   min-width: 16em;
-  margin: auto;
-  margin:1em;
+  margin: 2em 1em 2em 1em;
 }
 .list-item {
-  line-height: 130%;
+  line-height: 140%;
   text-align: left;
   margin-left: 30px;
   margin-right: 15px;
+  font-size: 1.2em;
 }
 .asterisk-divider {
   font-size: 1.5em;
@@ -53,13 +54,25 @@ body {
   margin-top: 5em;
   color: #508991;
 }
-.quote {
+.quote-group {
+  margin: 0 25% 0 25%;
+  max-width: 500px;
+  position: relative;
+
+}
+.quote, .author {
   font-size: 1em;
+}
+.quote {
   margin-top: .5em;
-  margin-bottom: .5em;
+  margin-bottom: .4em;
+  position: relative;
+
 }
 .author {
-  text-align: right;
+  position: absolute;
+  right: 0;
+
 }
 a:active {
   color: #172a3a;
@@ -73,6 +86,8 @@ a:hover {
 }
 .footer-section {
   background: #004346;
+  margin-bottom:  0;
+  height: 150px;
 }
  /* ----------------- Media 600px or Less ---------------------------- */
 
@@ -127,7 +142,7 @@ a:hover {
   <br>
   <br>
   <a href="https://discord.gg/bPvheDd">
-    <img src="/001-simple/images/Discord-Wordmark-Color.png">
+    <img src="/001-simple/images/Discord-Wordmark-Color.png" width="15%">
   </a>
 </p>
 <div class="container">
@@ -149,11 +164,13 @@ a:hover {
 
 <div class="asterisk-divider">* * * * *</div>
 
-<div class="quote">
-  "Tell me and I forget, teach me and I may remember,
-  involve me and I learn."
-</div>
+<div class="quote-group">
+  <div class="quote">
+    "Tell me and I forget, teach me and I may remember,
+    involve me and I learn."
+  </div>
 <div class="author">&mdash; Benjamin Franklin</div>
+</div>
   <br>
   <br>
   <br>
@@ -162,11 +179,8 @@ a:hover {
 
 <footer>
   <div class="footer-section">
-    <div>
-      <br>
-      <br>
-      <img src="images/cp-index-simple-003.png" width=45%>
-    <div>font color: #f3ffff </div>
+    <br>
+    <br>
   </div>
 </footer>
 </html>
