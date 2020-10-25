@@ -23,30 +23,33 @@ body {
 }
 .header-3 {
   font-size: 130%;
-  margin-top: 15px 0 15px 0;
+  color: #f3ffff;
+}
+h3 {
+  margin-bottom: 14px;
 }
 .paragraph {
   margin: auto;
   max-width: 40em;
   font-size: 1.25em;
 }
-.list-group {
+img {
+  margin-top: 1em;
+}
+.card {
   display: inline-block;
   color: #172a3a;
-  background: #74b3ce;
-  list-style-position: inside;
+  background: #487082;
   border: 1px #f3ffff solid;
-  border-radius: 10px;
-  max-width: 16em;
-  min-width: 16em;
-  margin: 2em 1em 2em 1em;
+  border-radius: 16px;
+  height: 7em;
+  width: 17em;
+  margin: 3em 1em 2em 1em;
 }
-.list-item {
-  line-height: 140%;
-  text-align: left;
-  margin-left: 30px;
-  margin-right: 15px;
+.card-item {
+  text-align: center;
   font-size: 1.2em;
+  color: #f3ffff;
 }
 .asterisk-divider {
   font-size: 1.5em;
@@ -54,11 +57,9 @@ body {
   margin-top: 5em;
   color: #508991;
 }
-.quote-group {
+.quote-container {
   margin: 0 25% 0 25%;
-  max-width: 500px;
   position: relative;
-
 }
 .quote, .author {
   font-size: 1em;
@@ -67,12 +68,10 @@ body {
   margin-top: .5em;
   margin-bottom: .4em;
   position: relative;
-
 }
 .author {
   position: absolute;
   right: 0;
-
 }
 a:active {
   color: #172a3a;
@@ -99,21 +98,26 @@ a:hover {
 	  font-size: 2em;
     padding-top: .5em;
 	}
+  .header-3 {
+    margin-top: .6em;
+
+  }
 	.paragraph {
 	  margin: 0 20px 0 20px;
 	  line-height: 130%;
     font-size: 1.6em;
 	}
-	.list-group {
-    max-width: 20em;
+	.card {
+    width: 17em;
+    height: 7em;
 	  margin: auto;
     margin-top: 1em;
 	}
-  .list-item {
+  .card-item {
     margin-left: auto;
-    line-height: 150%;
-    text-align: left;
+    text-align: center;
     font-size: 1.25em;
+    margin-bottom: 14px;
 }
 	.header-3 {
 	  font-size: 150%;
@@ -146,25 +150,23 @@ a:hover {
   </a>
 </p>
 <div class="container">
-  <div class="list-group">  
+  <div class="card">  
     <h3 class="header-3">Javascript & React</h3>
-      <ul>
-        <li class="list-item">Thursdays</li>
-        <li class="list-item">4 PM (EST)</li>
-      </ul>
+      <div>
+        <div class="card-item">Thursdays, 4 PM (EST)</div>
+      </div>
   </div>
-  <div class="list-group">  
+  <div class="card">  
     <h3 class="header-3">Category Theory</h3>
-      <ul>
-        <li class="list-item">Wednesdays</li>
-        <li class="list-item">2 PM (EST)</li>
-      </ul>
+      <div>
+        <div class="card-item">Wednesdays, 2:30 PM (EST)</div>
+      </div>
   </div>
 </div>
 
 <div class="asterisk-divider">* * * * *</div>
 
-<div class="quote-group">
+<div class="quote-container">
   <div class="quote">
     "Tell me and I forget, teach me and I may remember,
     involve me and I learn."
@@ -180,6 +182,9 @@ a:hover {
 <footer>
   <div class="footer-section">
     <br>
+    <div>
+      <a>https://discord.com</a>Install Discord</div>
+    <div>Style Guide for this page</div>
     <br>
   </div>
 </footer>
