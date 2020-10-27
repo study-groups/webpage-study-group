@@ -14,7 +14,7 @@ body {
   color: #f3ffff;
   margin: 4em;
 }
-.background-primary, .background-secondary, .background-list-group, .complimentary-color-1, .complimentary-color-2 {
+.background-primary, .background-secondary, .background-card, .complimentary-color-1, .complimentary-color-2 {
   height: 50px;
   width: 300px;
   margin: 1em 0 2em 0;
@@ -26,8 +26,8 @@ body {
 .background-secondary {
 	background: #004346;
 }
-.background-list-group {
-	background: #74b3ce;
+.background-card, .card-background, .card-background-hover {
+	background: #487082;
 }
 .complimentary-color-1 {
 	background: #508991;
@@ -35,13 +35,14 @@ body {
 .complimentary-color-2 {
   background: #09bc8a;
 }
-.font-color, .links-color, .links-hover, .links-clicked {
+.font-color, .links-color, .links-hover, .links-clicked, .card-border-color, .card-text-color, .card-background,
+.card-background-hover, .card-background-active {
   height: 25px;
 	width: 150px;
 	margin-top: 1em;
 	margin-bottom: 2em;
 }
-.font-color {
+.font-color, .card-border-color, .card-text-color {
 	background: #f3ffff;
 }
 .links-color {
@@ -52,6 +53,15 @@ body {
 }
 .links-clicked {
 	background: #a62704;
+}
+.card-background-sample, .card-background-hover {
+  background: #487082;
+}
+.card-background-hover {
+  background: #508991;
+}
+.card-background-active {
+  background: #508991;
 }
 .paragraph {
   line-height: 140%;
@@ -78,9 +88,9 @@ body {
   	  <div class="background-secondary"></div>
 <!-- ---------- -->
     <div>
-      Background-list-group: #74b3ce
+      Background-card: #487082
     </div>
-  	  <div class="background-list-group"></div>
+  	  <div class="background-card"></div>
 <!-- ---------- -->
   <div>Complimentary Color 1: #508991</div>
     <div class="complimentary-color-1"></div>
@@ -94,7 +104,7 @@ body {
     <div>Primary Font Color: #ffffff</div>
       <div class="font-color"></div>
 <!-- ---------- -->
-  <div style="color: #00bcd4">Links color: #00bcd4</div>
+  <div style="color: #00bcd4">Inline Links color: #00bcd4</div>
     <div class="links-color"></div>
 <!-- ---------- -->
     <div style="color: #e36441">Links-hover: #e36441</div>
@@ -115,14 +125,25 @@ body {
     <h4>Body-Text...</h4>
     <div>Paragraph: Line-height - 140%</div>
     <p class="paragraph">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+      Lorem ipsum dolor sit amet, <span style = color:#00bcd4;>consectetur adipiscing elit, </span>consectetur adipiscing elit, 
+      sed do eiusmod <span style = color:#e36441;>tempor incididunt </span>ut labore et dolore magna aliqua. 
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
       nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+      <span style = color:#a62704;>reprehenderit in voluptate, </span> velit esse cillum dolore eu fugiat nulla 
       pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
       culpa qui officia deserunt mollit anim id est laborum.
     </p>
-<h3>CSS Text Element Modifiers by Class Name</h3>
+<br>
+<h3>Card Button/Link Styling</h3>
+  <div>Text and Border Color: #f3ffff</div>
+    <div class="card-border-color card-text-color"></div>
+
+  <div>Card Background Color/Background Color-hover: #487082</div>
+    <div class="card-background card-background-hover"></div>
+
+  <div>Card Background Color Active: #508991</div>
+    <div class="card-background-active"></div>
+
+    <h3>CSS Text Element Modifiers by Class Name</h3>
 </body>
 </html>
