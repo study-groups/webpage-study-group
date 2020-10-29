@@ -14,6 +14,12 @@ body {
   color: #f3ffff;
   margin: 4em;
 }
+.asterisk-divider {
+    font-size: 1.5em;
+    /* margin-bottom: 1em;
+    margin-top: 5em; */
+    color: #508991;
+}
 /* Large Color Samples */
 .background-primary, .background-secondary, .background-card, .background-hover, .background-active, .complimentary-color-2 {
   height: 50px;
@@ -38,13 +44,13 @@ body {
 }
 /* Small Color Samples */
 .font-color, .links-color, .links-hover, .links-clicked, .card-border-color, .card-text-color, .card-background,
-.card-background-hover, .card-background-active {
+.card-background-hover, .card-background-active, .footer-background-color, .footer-text-color {
   height: 25px;
 	width: 150px;
 	margin-top: 1em;
 	margin-bottom: 2em;
 }
-.font-color, .card-border-color, .card-text-color {
+.font-color, .card-border-color, .card-text-color, .footer-text-color {
 	background: #f3ffff;
 }
 .links-color {
@@ -65,9 +71,15 @@ body {
 .background-active {
   background: #508991;
 }
+.footer-background-color {
+  background: #004346;
+}
 .paragraph {
   line-height: 140%;
   max-width: 800px;
+}
+.paragraph-container {
+  margin-left: 40px
 }
 .box-with-radius {
   height: 50px;
@@ -75,7 +87,6 @@ body {
   border: 1px solid #f3ffff;
   border-radius: 16px;
   background: #487082;
-  
 }
 .box-with-radius-hover {
   height: 50px;
@@ -126,6 +137,8 @@ body {
 <!-- ---------- -->
     <div>Complimentary Color 2: #09bc8a</div>
       <div class="complimentary-color-2"></div>
+      <div class="asterisk-divider">*****</div>
+
 
 <!-- --------------- Typography ----------------------------- -->
   
@@ -141,17 +154,24 @@ body {
 <!-- ---------- -->
     <div style="color: #a62704"> Links-visited: #a62704</div>
     <div class="links-clicked"></div>
+    <div class="asterisk-divider">*****</div>
+
 
 <!-- ----------------- FONT ----------------------------------- -->
 
 <h3>FONT</h3>
     <h4>Font-Family: Times New Roman</h4>
-    <h4>Headers...</h4>
+  <h3>Headers...</h3>
+  
     <h1>H-1: Study-Groups</h1>
     <h2>H-2: Study-Groups</h2>
     <h3>H-3: Study-Groups</h3>
     <h4>H-4: Study-Groups</h4>
-    <h4>Body-Text...</h4>
+  
+  
+    <h3>Body Properties...</h3>
+
+      <h4>Paragraph</h4>
     <div>Paragraph: Line-height - 140%</div>
     <br>
     <div>Sample Paragraph with inline-line faux link examples in three states:</div>
@@ -164,7 +184,13 @@ body {
       pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
       culpa qui officia deserunt mollit anim id est laborum.
     </p>
+
+  </div>
+    
 <br>
+
+<div class="asterisk-divider">*****</div>
+
 <h3>Card Button/Link Styling</h3>
   <div>Text and Border Color: #f3ffff</div>
     <div class="card-border-color card-text-color"></div>
@@ -176,14 +202,14 @@ body {
     <div class="card-background-active"></div>
 
    <div><strong>Box-shadow applied to card border on hover.</strong></div> 
-   <br>
-   <div style="text-decoration: underline;">Box-shadow Properties:</div>
-   <br>
-   <div>X-offset: 1px</div>
-   <div>Y-offset: 1px</div>
-   <div>Spread: 5px</div>
-   <div>Color: #f3ffff</div>
-   <br>
+   <h4>Box-shadow Properties:</h4>
+   <ul> 
+   <li>X-offset: 1px</li>
+    <li>Y-offset: 1px</div>
+    <li>Spread: 5px</li>
+    <li>Color: #f3ffff</li>
+  </ul>
+
    <div>
     Border-radius: 16px
     </div>
@@ -196,12 +222,30 @@ body {
   <br>
 <div class="card-sample-margin">Card Sample Active</div>
 <div class="box-with-radius-active"></div>
+<br>
+<div class="asterisk-divider">*****</div>
+
+  <h3>CSS Element Modifiers</h3>
+  <h4>Main Header (H-1)</h4>
+  <ul>
+  <li>Margin-top: 2em</li>
+  <li>Font-size: 2.8em</li>
+  <li>Letter-spacing: 2px</li>
+</ul>
+  <h4>Paragraph Modifiers</h4>
+  <ul>
+    <li>Intro Paragraph max-width: 40em</li>
+    <li>Font-size: 1.25em</li>
 
 
-
-
-
-  <h3>CSS Text Element Modifiers by Class Name</h3>
+  </ul>
+  
+  <h4>Card Positioning</h4>
+  <ul>
+    <li>Padding: 0</li>
+    <li>Margin: 1em 1em 1em 1em</li>
+    <li>Display: Inline-Block</li>
+  </ul>
     <h3>Footer</h3>
     <div >Footer Background Color: #004346</div>
     <div class="footer-background-color"></div>
