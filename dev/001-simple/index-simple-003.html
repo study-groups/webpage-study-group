@@ -86,8 +86,7 @@
     color: #f3ffff;
   }
   a:visited {
-    color: #b147b8;
-    font-weight: bold;
+    color: #09bc8a;
   }
   a:hover {
     color:#86058b;
@@ -103,8 +102,15 @@
     border-radius: 10px;
     height: 2.5em;
     border: 1px solid #f3ffff;
-    
+    font-size: 2em;    
   }
+  .footer-link {
+    margin: 1.5em;
+  }
+  a.footer-link-1 {
+    font-size: 1.2em;
+  }
+  
  /* ----------------- Media 600px or Less ---------------------------- */
 
 @media only screen and (max-width: 600px) {
@@ -120,8 +126,13 @@
   }
   .paragraph {
     margin: 0 20px 0 20px;
-    line-height: 130%;
+    line-height: 130%;i
     font-size: 1.6em;
+  }
+  .discord-image {
+    width: 35%;
+    margin: 0;
+    margin-bottom: 1em;
   }
   .card {
     width: 17em;
@@ -162,7 +173,7 @@
 <br>
 <br>
   <a href="https://discord.gg/bPvheDd">
-    <img src="/dev/001-simple/images/Discord-Wordmark-Color.png" width="15%">
+    <img class="discord-image" src="/dev/001-simple/images/Discord-Wordmark-Color.png" width="15%">
   </a>
 </p>
 
@@ -210,12 +221,16 @@
   <div class="footer-section">
     <br>
     <div>
-      <a target="self" class="footer-link-1" 
+      <a target="self" class="footer-link footer-link-1" 
         href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
         Study-Groups Style Guide</a>
-    
     <br>
-   
+    <div class="footer-link footer-link-2">
+      Link 2
+    </div>
+    <div class="footer-link footer-link-3">
+      Link 3
+    </div>
   </div>
 </footer>
 </html>
