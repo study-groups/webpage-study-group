@@ -6,8 +6,49 @@
 <title>Study-Groups Main Page</title>
 <style>
 
+  
+ /* ----------------- Media 600px or Less ---------------------------- */
+
+@media only screen and (max-width: 600px) {
+  .header-1 {
+    margin-top: 1.5em;
+  }
+  .header-2 {
+    font-size: 2em;
+    padding-top: .5em;
+  }
+  .header-3 {
+    margin-top: .6em;
+  }
+  .paragraph {
+    margin: 0 20px 0 20px;
+    line-height: 130%;
+    font-size: 1.6em;
+  }
+  .discord-image {
+    width: 35%;
+    margin: 0;
+    margin-bottom: 1em;
+  }
+  .card {
+    width: 17em;
+    height: 7em;
+    margin: auto;
+    margin-top: 1em;
+  }
+  .card-item {
+    margin-left: auto;
+    text-align: center;
+    font-size: 1.25em;
+    margin-bottom: 14px;
+  }
+  .header-3 {
+  	font-size: 150%;
+  }
+}
+
 @media only screen and (max-width: 1260px) {
-  body {
+body {
     background: #172a3a;
     color: #f3ffff;
     text-align: center;
@@ -48,7 +89,23 @@
     font-family: inherit;
     font-size: 1.1em;
     cursor: pointer;
-  }
+   }
+.btn {
+    padding: 0;
+    margin: 1em 1em 1em 1em;
+    display: inline-block;
+    color: #f3ffff;
+    background: #487082;
+    border: 1px #f3ffff solid;
+    border-radius: 16px;
+    height: 6em;
+    width: 16em;
+    font-family: inherit;
+    font-size: 1.1em;
+    cursor: pointer;
+   }
+
+
   button.card-1:hover {
     box-shadow: 1px 1px 5px 1px #f3ffff;
   }
@@ -102,54 +159,14 @@
     border-radius: 10px;
     height: 2.5em;
     border: 1px solid #f3ffff;
-    font-size: 2em;    
+    font-size: 2em;
+
   }
   .footer-link {
     margin: 1.5em;
   }
   a.footer-link-1 {
     font-size: 1.2em;
-  }
-  
- /* ----------------- Media 600px or Less ---------------------------- */
-
-@media only screen and (max-width: 600px) {
-  .header-1 {
-    margin-top: 1.5em;
-  }
-  .header-2 {
-    font-size: 2em;
-    padding-top: .5em;
-  }
-  .header-3 {
-    margin-top: .6em;
-  }
-  .paragraph {
-    margin: 0 20px 0 20px;
-    line-height: 130%;
-    font-size: 1.6em;
-  }
-  .discord-image {
-    width: 35%;
-    margin: 0;
-    margin-bottom: 1em;
-  }
-  .card {
-    width: 17em;
-    height: 7em;
-    margin: auto;
-    margin-top: 1em;
-  }
-  .card-item {
-    margin-left: auto;
-    text-align: center;
-    font-size: 1.25em;
-    margin-bottom: 14px;
-  }
-  .header-3 {
-  	font-size: 150%;
-  }
-
   }
 }
 </style>
@@ -178,20 +195,25 @@
 </p>
 
 <a href="https://github.com/study-groups/webpage-study-group">
-  <button class="card-1">
-    <h3 class="header-3">Javascript & React</h3>
-    <div>
-      <div class="card-item">Thursdays, 4 PM (EST)</div>
-    </div>
-  </button>
-</a>
+<button class="card-1">
+<h3 class="header-3">Javascript & React</h3>
+<div>
+<div class="card-item">Thursdays, 4 PM (EST)</div>
+</div>
+</button></a>
 
+<a href="">
 <button class="card-1">
   <h3 class="header-3">Data Science</h3>
     <div>
       <div class="card-item">Mondays, 10 AM (EST)</div>
     </div>
-</button>
+</button></a>
+
+<a class="btn">
+  <h3 class="header-3">Data Science II</h3>
+  <div class="card-item">Mondays, 10 AM (EST)</div>
+</a>
 
 <a href="https://github.com/study-groups/math-study-group/tree/master/category-theory">
   <button class="card-1">
@@ -199,8 +221,7 @@
       <div>
         <div class="card-item">Thursdays, 4 PM (EST)</div>
       </div>
-  </button>
-</a>
+  </button></a>
 
 <div class="asterisk-divider">* * * * *</div>
 
@@ -209,16 +230,14 @@
     "Tell me and I forget, teach me and I may remember,
     involve me and I learn."
   </div>
-<div class="author">&mdash; Benjamin Franklin</div>
+  <div class="author">&mdash; Benjamin Franklin</div>
 </div>
 <br>
 <br>
 <br>
-
 </body>
-
 <footer>
-  <div class="footer-section">
+  <div class="footer-section"> <!-- pull into footer -->
     <br>
     <div>
       <a target="self" class="footer-link footer-link-1" 
