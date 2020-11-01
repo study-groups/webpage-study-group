@@ -21,14 +21,14 @@ h3 {
   margin-top: .6em;
 }
 p {
-  margin: 0 20px 0 20px;
+  margin: 1em 7.5% 1em 7.5%;
   line-height: 130%;
   font-size: 1.6em;
 }
 .discord-image {
   width: 35%;
-  margin: 0;
-  margin-bottom: 1em;
+  display: block;
+  margin: auto;
 }
 .card {
     width: 17em;
@@ -49,10 +49,11 @@ p {
 
 @media only screen and (max-width: 1260px) {
 body {
-    background: #172a3a;
-    color: #f3ffff;
-    text-align: center;
-    margin: 0;
+  background: #172a3a;
+  color: #f3ffff;
+  text-align: center;
+  margin: 0;
+  font-size: 1.6em;
 }
 h1 {
   margin-top: 2em;
@@ -65,16 +66,11 @@ h2 {
 h3 {
   font-size: 115%;
   color: #f3ffff;
-  margin: 0 0 12px 0;
+  margin: 1em 0 .6em 0;
 }
 p {
-  margin: auto;
-  max-width: 40em;
+  margin: 1em 7.5% 1em 7.5%;
   font-size: 1.25em;
-}
-img {
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 a.btn {
   padding: 0;
@@ -89,17 +85,19 @@ a.btn {
   font-family: inherit;
   font-size: 1.1em;
   cursor: pointer;
+  text-decoration: none;
 }
-a.card:hover {
+a.btn:hover {
   box-shadow: 1px 1px 5px 1px #f3ffff;
 }
-a.card:active {
+a.btn:active {
   box-shadow: 1px 1px 5px 1px #f3ffff;
   background: #508991;
 }
 .card-item {
   text-align: center;
   font-size: 1em;
+  margin: .3em 0 0 0;
 }
 .asterisk-divider {
   font-size: 1.5em;
@@ -123,40 +121,30 @@ a.card:active {
   position: absolute;
   right: 0;
 }
-a:active {
-  color: #f3ffff;
-}
-a:visited {
-  color: #09bc8a;
-}
-a:hover {
-  color:#86058b;
-}
 .footer-section {
   background: #004346;
   margin-bottom:  0;
   height: 250px;
 }
-button.footer-link-1 {
-  background: #487082;
-  color: #f3ffff;
-  border-radius: 10px;
-  height: 2.5em;
-  border: 1px solid #f3ffff;
-  font-size: 2em;
-}
 .footer-link {
   margin: 1.5em;
+  color: #23d6a4;
+}
+.footer-link:hover {
+  color: #09bc8a;
+}
+.footer-link:active {
+  color: #e36441;
 }
 a.footer-link-1 {
-  font-size: 1.2em;
+  font-size: 1em;
 }
 }
 </style>
 </head>
 
 <header>
-  <h1> Study-Groups</h1>
+<h1> Study-Groups</h1>
 </header>
 <body>
  
@@ -166,40 +154,25 @@ a.footer-link-1 {
  The current focus is on JavaScript and data science. While there,
  you may see other things of interest.
 </p>
-<br>
 <p>
   You can connect with us by following this link:
-<br>
-<br>
-  <a href="https://discord.gg/bPvheDd">
-    <img class="discord-image" src="/dev/001-simple/images/Discord-Wordmark-Color.png" width="15%">
-  </a>
+  
 </p>
+<a href="https://discord.gg/bPvheDd">
+  <img class="discord-image" src="/dev/001-simple/images/Discord-Wordmark-Color.png"></a>
 
-<div class="btn">
-<a href="https://github.com/study-groups/webpage-study-group">
-    <h3>Javascript & React</h3>
-  <div class="card-item">Thursdays, 4 PM (EST)</div>
-</div></a>
-</div>
+<a class="btn card-item" href="https://github.com/study-groups"> 
+  <h3>Javascript & React</h3>
+  <div>Thursdays, 4 PM (EST)</div></a>
 
-<a class="btn" href="https://google.com">
+
+ <a class="btn" href="https://google.com">
   <h3>Data Science</h3>
-    <div class="card-item">Mondays, 10 AM (EST)</div>
-</a>
+    <div class="card-item">Mondays, 10 AM (EST)</div></a>
 
-<a class="btn">
-  <h3>Data Science II</h3>
-  <div class="card-item">Mondays, 10 AM (EST)</div>
-</a>
-
-<a href="https://github.com/study-groups/math-study-group/tree/master/category-theory">
-  <button class="card">
-    <h3>Category Theory</h3>
-      <div>
-        <div class="card-item">Thursdays, 4 PM (EST)</div>
-      </div>
-  </button></a>
+<a class="btn" href="https://github.com/study-groups/math-study-group/tree/master/category-theory">
+  <h3>Category Theory</h3>
+    <div class="card-item">Thursdays, 4 PM (EST)</div></a>
 
 <div class="asterisk-divider">* * * * *</div>
 
