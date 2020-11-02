@@ -6,8 +6,30 @@
 <title>Study-Groups Main Page</title>
 <style>
 
-  
- /* ----- Media 600px or Less ----- */
+body {
+  background: #172a3a;
+  color: #f3ffff;
+  text-align: center;
+  margin: 0;
+}
+.footer-section {
+  background: #004346;
+  margin-bottom:  0;
+  height: 250px;
+}
+.card {
+    width: 17em;
+    height: 7em;
+    margin: auto;
+    margin-top: 1em;
+}
+.card-item {
+  margin-left: auto;
+  text-align: center;
+  font-size: 1.25em;
+  margin-bottom: 14px;
+}
+/* ----- Media 600px or Less ----- */
 
 @media only screen and (max-width: 600px) {
 h1 {
@@ -26,33 +48,17 @@ p {
   font-size: 1.6em;
 }
 .discord-image {
+  width: 150px;
   display: block;
   padding-bottom: 2em;
-}
-.card {
-    width: 17em;
-    height: 7em;
-    margin: auto;
-    margin-top: 1em;
-}
-.card-item {
-  margin-left: auto;
-  text-align: center;
-  font-size: 1.25em;
-  margin-bottom: 14px;
+  margin: auto;
 }
 .header-3 {
 	font-size: 150%;
 }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 1260px) {
-body {
-  background: #172a3a;
-  color: #f3ffff;
-  text-align: center;
-  margin: 0;
-}
+@media only screen and (min-width: 601px) {
 h1 {
   margin-top: 2em;
   font-size: 2.8em;
@@ -71,7 +77,7 @@ p {
   font-size: 1.25em;
 }
 .discord-image {
-  width: 15%;
+  width: 100px;
   display: block;
   margin: auto;
   padding-bottom: 2em;  
@@ -124,11 +130,6 @@ a.btn:active {
 .author {
   position: absolute;
   right: 0;
-}
-.footer-section {
-  background: #004346;
-  margin-bottom:  0;
-  height: 250px;
 }
 .footer-link {
   margin: 1.5em;
