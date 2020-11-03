@@ -25,7 +25,7 @@ h2 {
   margin: .5em 0 0 0;
 }
 h3 {
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: #f3ffff;
   margin: 1em 0 .6em 0;
 }
@@ -40,22 +40,16 @@ p {
   margin: auto;
 }
 
-.footer-section {
-  background: #004346;
-  margin-bottom:  0;
-  height: 200px;
-}
 .card {
   width: 17em;
   height: 7em;
   margin: auto;
-  margin-top: 1em;
+  margin-top: 1em 0 0 0;
 }
 .card-item {
-  margin-left: auto;
   text-align: center;
-  font-size: 1.25em;
-  margin-bottom: 14px;
+  font-size: 1em;
+  margin: .3em 0 0 0;
 }
 a.btn {
   padding: 0;
@@ -79,11 +73,7 @@ a.btn:active {
   box-shadow: 1px 1px 5px 1px #f3ffff;
   background: #508991;
 }
-.card-item {
-  text-align: center;
-  font-size: 1em;
-  margin: .3em 0 0 0;
-}
+
 .asterisk-divider {
   font-size: 1.5em;
   margin-bottom: 1em;
@@ -91,18 +81,6 @@ a.btn:active {
   color: #508991;
   letter-spacing: .2em;
 }
-/* ----- Media 600px or Less ----- */
-
-@media only screen and (max-width: 600px) {
-
-}
-
-
-
-@media only screen and (max-width: 1640px) {
-
-
-
 .quote-container {
   margin: 0 12% 0 12%;
   position: relative;
@@ -114,14 +92,22 @@ a.btn:active {
   margin-top: .5em;
   margin-bottom: .4em;
   position: relative;
+  opacity: 75%;
 }
 .author {
   position: absolute;
   right: 0;
+  opacity: 75%;
+}
+.footer-section {
+  background: #004346;
+  margin-bottom:  0;
+  height: 200px;
 }
 .footer-link {
   margin: 1.5em;
   color: #23d6a4;
+  font-size: 1.2em;
 }
 .footer-link:hover {
   color: #09bc8a;
@@ -129,9 +115,26 @@ a.btn:active {
 .footer-link:active {
   color: #e36441;
 }
-a.footer-link-1 {
-  font-size: 1em;
+
+/* ----- Media 600px or Less ----- */
+
+@media only screen and (max-width: 600px) {
+p {
+  font-size: 1.2em;
+
 }
+h3 {
+  font-size: 1.4em;
+  margin: .7em 0 .6em 0;
+}
+
+
+
+@media only screen and (max-width: 1640px) {
+
+
+
+
 }
 </style>
 </head>
@@ -154,9 +157,9 @@ a.footer-link-1 {
 <a href="https://discord.gg/bPvheDd">
   <img class="discord-image" src="/dev/001-simple/images/Discord-Wordmark-Color.png"></a>
 
-<a class="btn card-item" href="https://github.com/study-groups/js-study-group"> 
+<a class="btn" href="https://github.com/study-groups/js-study-group"> 
   <h3>Javascript & React</h3>
-  <div>Thursdays, 4 PM (EST)</div></a>
+  <div class="card-item">Thursdays, 4 PM (EST)</div></a>
 
 
  <a class="btn" href="https://google.com">
