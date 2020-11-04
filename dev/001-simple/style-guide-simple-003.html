@@ -16,13 +16,15 @@ body {
   margin: 2em;
   color: #f3ffff;
 }
-h1 {
-  text-align: center;
-}
 .asterisk-divider {
     font-size: 1.5em;
     letter-spacing: .5em;
     color: #508991;
+}
+@media only screen and (max-width: 600px) {
+  .asterisk-divider {
+    text-align: center;
+  }
 }
 /* Large Color Samples */
 .background-primary, .background-secondary, .background-card, .background-hover, .background-active, .complimentary-color-2 {
@@ -110,12 +112,6 @@ h1 {
 }
 .card-sample-margin {
   margin-bottom: 5px;
-}
-@media only sreen and (max-width: 600px) {
-h1 {
-  margin-top: 2em;
-}
-
 }
 
 </style>
