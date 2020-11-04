@@ -7,17 +7,21 @@
 <!-- NOTE: This webpage and style guide were created with the default font.  -->
 <style>
 /* CSS BEGIN */
+html {
+  font-size: 12pt;
+}
 body {
   background: #172a3a;
-  margin: 0;
   padding: 0;
+  margin: 2em;
   color: #f3ffff;
-  margin: 4em;
+}
+h1 {
+  text-align: center;
 }
 .asterisk-divider {
     font-size: 1.5em;
-    /* margin-bottom: 1em;
-    margin-top: 5em; */
+    letter-spacing: .5em;
     color: #508991;
 }
 /* Large Color Samples */
@@ -40,7 +44,7 @@ body {
 	background: #508991;
 }
 .complimentary-color-2 {
-  background: #09bc8a;
+  background: #23d6a4;
 }
 /* Small Color Samples */
 .font-color, .links-color, .links-hover, .links-clicked, .card-border-color, .card-text-color, .card-background,
@@ -54,7 +58,7 @@ body {
 	background: #f3ffff;
 }
 .links-color {
-	background: #00bcd4;
+	background: #487082;
 }
 .links-hover {
 	background: #e36441;
@@ -107,6 +111,13 @@ body {
 .card-sample-margin {
   margin-bottom: 5px;
 }
+@media only sreen and (max-width: 600px) {
+h1 {
+  margin-top: 2em;
+}
+
+}
+
 </style>
 <!-- CSS END -->
 </head>
@@ -135,7 +146,7 @@ body {
   <div>Background-active: #508991</div>
     <div class="background-active"></div>
 <!-- ---------- -->
-    <div>Complimentary Color 2: #09bc8a</div>
+    <div>Complimentary Color 2: #23d6a4</div>
       <div class="complimentary-color-2"></div>
       <div class="asterisk-divider">*****</div>
 
@@ -146,7 +157,7 @@ body {
     <div>Primary Font Color: #ffffff</div>
       <div class="font-color"></div>
 <!-- ---------- -->
-  <div style="color: #00bcd4">Inline Links color: #00bcd4</div>
+  <div style="color: #487082">Inline Links color: #487082</div>
     <div class="links-color"></div>
 <!-- ---------- -->
     <div style="color: #e36441">Links-hover: #e36441</div>
