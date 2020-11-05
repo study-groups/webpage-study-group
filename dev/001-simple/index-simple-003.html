@@ -95,6 +95,7 @@ a.btn:active {
 .author {
   position: absolute;
   right: 0;
+
   opacity: 75%;
 }
 .footer-section {
@@ -103,16 +104,25 @@ a.btn:active {
   height: 200px;
 }
 .footer-link {
-  margin: 1.5em;
+  display: block;
+  max-width: 11em;
+  margin: 1em auto;
   color: #23d6a4;
   font-size: 1.2em;
   text-decoration: none;
+  border: 1px solid rgba(35, 214, 164, .6);
+  padding: 2px 4px 2px 4px;
+  border-radius: .5em;
+  cursor: pointer;
+  background: #004043
 }
 .footer-link:hover {
   color: #09bc8a;
+  box-shadow: 1px 1px 1px 1px #23d6a4;
+
 }
 .footer-link:active {
-  color: #a62704;
+  color: #e36441;
 }
 
 /* ----- Media 600px or Less ----- */
@@ -184,12 +194,12 @@ h3 {
       <a target="self" class="footer-link footer-link-1" 
         href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
         Study-Groups Style Guide</a>
-    <br>
-    <div class="footer-link footer-link-2">
-      Link 2
-    </div>
-    <div class="footer-link footer-link-3">
-      Link 3
+      <a class="footer-link footer-link-2" href:"">
+        Link 2
+      </a>
+      <a class="footer-link footer-link-3" href:"">
+        Link 3
+      </a>
     </div>
   </div>
 </footer>
