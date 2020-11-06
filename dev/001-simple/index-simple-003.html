@@ -100,18 +100,22 @@ a.btn:active {
 }
 .footer-section {
   background: #004346;
-  margin-bottom:  0;
+  margin-bottom: 2em 0;
   height: 200px;
 }
+.footer-group {
+  margin: 1em 0 0 0;
+}
+.footer-link-1, .footer-link-2, .footer-link-3 {
+  margin: 50px;
+  padding: .3em;
+}
 .footer-link {
-  display: block;
-  max-width: 11em;
-  margin: 1em auto;
   color: #23d6a4;
-  font-size: 1.2em;
+  font-size: 1em;
   text-decoration: none;
   border: 1px solid rgba(35, 214, 164, .6);
-  padding: 2px 4px 2px 4px;
+  padding: 2px .5em 2px .5em;
   border-radius: .5em;
   cursor: pointer;
   background: #004043
@@ -188,18 +192,16 @@ h3 {
 <br>
 </body>
 <footer>
-  <div class="footer-section"> <!-- pull into footer -->
-    <br>
-    <div>
-      <a target="self" class="footer-link footer-link-1" 
-        href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
-        Study-Groups Style Guide</a>
-      <a class="footer-link footer-link-2" href:"">
-        Link 2
+    <div class="footer-section">
+      <div class="footer-group">
+        <a target="self" class="footer-link footer-link-1" 
+          href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">Style Guide </a>
+        <a class="footer-link footer-link-2" href:"">Link 2
       </a>
       <a class="footer-link footer-link-3" href:"">
         Link 3
       </a>
+</div>
     </div>
   </div>
 </footer>
