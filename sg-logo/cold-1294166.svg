@@ -2,9 +2,9 @@
 <svg version="1.1" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
  <defs>
   <radialGradient id="a" cx="624.29" cy="510.93" r="350" gradientTransform="matrix(1.5871 0 0 1.5871 -182.26 -427.13)" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#4b73cb" offset="0"/>
-   <stop stop-color="#314572" offset=".5"/>
-   <stop stop-color="#0b1218" offset="1"/>
+   <stop stop-color="#508991" offset="0"/>
+   <stop stop-color="#172a3a" offset=".58"/>
+   <stop stop-color="#172a3a" offset="1"/>
   </radialGradient>
  </defs>
  <g transform="translate(0 -352.36)">
