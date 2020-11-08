@@ -10,14 +10,10 @@ html {
   font-size: 12pt;
 }
 body {
-  position: absolute;
   background: #172a3a;
   color: #f3ffff;
   text-align: center;
-   margin: 0;
-}
-.logo-container {
-  z-index: -1;
+  margin: 0;
 }
 .logo {
   margin: auto;
@@ -26,7 +22,7 @@ body {
   opacity: 15%;
 }
 h1 {
-  margin-top: 1.8em;
+  margin-top: 3em;
   font-size: 2.8em;
   letter-spacing: 2px;
 }
@@ -100,45 +96,58 @@ a.btn:active {
 .quote {
   margin-top: .5em;
   margin-bottom: .4em;
-  position: relative;
+  positioni: relative;
   opacity: 75%;
 }
 .author {
   position: absolute;
   right: 0;
-
   opacity: 75%;
 }
-.footer-section {
+.footer-container {
   background: #004346;
+  height: auto;
+  margin: auto;
+  border-top: 1px solid rgb(255,255,255, .5);
 }
 .footer-group {
-}
-.footer-link-1, .footer-link-2, .footer-link-3 {
+  display: inline-block;  
 }
 .footer-link {
   color: #004346;
   font-size: 1em;
   text-decoration: none;
-  border: 1px solid rgba(35, 214, 164, .6);
+  border: 1px solid #f3ffff;
   border-radius: .5em;
   cursor: pointer;
   background: #23d6a4;
+  margin: 2em 2em 2em 2em;
+  appearance: button;
+  width: 8em;
+  padding: .15em 0 .15em 0;  
 }
 .footer-link:hover {
-  color: #09bc8a;
-  box-shadow: 1px 1px 1px 1px #23d6a4;
+  background: #172a3a;
+  color: #f3ffff;
 
 }
 .footer-link:active {
-  color: #e36441;
+  color: #a62704;
 }
-
+.web-address {
+  display: block;
+  margin-top: 2em;  
+  position: relative;
+  bottom: 0px;
+i}
 /* ----- Media 600px or Less ----- */
 
 @media only screen and (max-width: 600px) {
 p {
   font-size: 1.2em;
+}
+h1 {
+  margin-top: 2em;
 }
 h2 {
   margin: 1.5em 0 1em 0;
@@ -150,20 +159,29 @@ h3 {
 .card-item {
   font-size: 1.2em;
 }
+.footer-container {
+  padding-top: 1em;
+}
+.footer-link {
+  padding: .8em;
+  margin: .5em 1em .5em 1em;
+  font-size: 1.2em;
+}
+.web-address {
+  margin: 0;
+}
 @media only screen and (max-width: 1640px) {
-  .footer-section {
-    height: 10em;
-  }
+ 
 
 }
 
 </style>
 </head>
 
+<body>
 <header>
 <h1> Study-Groups</h1>
 </header>
-<body>
 
 <div class="logo-container">
   <img class="logo" src="/sg-logo/cold-1294166.svg" width="50%">
@@ -207,19 +225,22 @@ h3 {
 <br>
 <br>
 <br>
-</body>
+</div>
 <footer>
-  <div class="footer-section">
+  <div class="footer-container">
     <div class="footer-group">
-      <a target="self" class="footer-link footer-link-1" 
+       <a target="self" class="footer-link" 
          href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
             Style Guide </a>
-      <a class="footer-link footer-link-2" href:"">Link 2
+      
+      <a class="footer-link" href:"">Link 2
       </a>
-      <a class="footer-link footer-link-3" href:"">
-        Link 3
+      <a class="footer-link" href:"">Link 3
       </a>
     </div>
-  </div>
+ <div class="web-address">www.study-groups.org</div>
 </footer>
+
+</body>
+
 </html>
