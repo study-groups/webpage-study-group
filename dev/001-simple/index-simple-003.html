@@ -114,15 +114,17 @@ a.btn:active {
   display: inline-block;  
 }
 .footer-link {
-  color: #004346;
+  color: #f3ffff;
   font-size: 1em;
   text-decoration: none;
   border: 1px solid #f3ffff;
   border-radius: .5em;
   cursor: pointer;
-  background: #23d6a4;
+  background: linear-gradient(#004346, #172a3a);
   margin: 2em 2em 2em 2em;
   appearance: button;
+  -moz-appearance: button;
+  -webkit-appearance: button;
   width: 8em;
   padding: .15em 0 .15em 0;  
 }
@@ -136,10 +138,10 @@ a.btn:active {
 }
 .web-address {
   display: block;
-  margin-top: 2em;  
   position: relative;
   bottom: 0px;
-i}
+  padding: 1em 2em;
+}
 /* ----- Media 600px or Less ----- */
 
 @media only screen and (max-width: 600px) {
@@ -166,7 +168,14 @@ h3 {
   padding: .8em;
   margin: .5em 1em .5em 1em;
   font-size: 1.2em;
+  border-radius: .5em;
 }
+.footer-link:hover {
+  background: #172a3a;
+  color: #f3ffff;
+
+}
+
 .web-address {
   margin: 0;
 }
