@@ -15,11 +15,18 @@ body {
   text-align: center;
   margin: 0;
 }
+.logo-container {
+  position: relative;
+  margin: 0 auto;
+}
 .logo {
-  margin: auto;
   position: absolute;
-  z-index: -1;
-  opacity: 15%;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  opacity: 30%;
+  z-index: 20;
+  margin-left: -100px;
 }
 h1 {
   margin-top: 3em;
@@ -82,7 +89,6 @@ a.btn:active {
   font-size: 1.5em;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
-
   color: #508991;
   letter-spacing: .2em;
 }
@@ -96,7 +102,7 @@ a.btn:active {
 .quote {
   margin-top: .5em;
   margin-bottom: .4em;
-  positioni: relative;
+  position: relative;
   opacity: 75%;
 }
 .author {
@@ -106,34 +112,33 @@ a.btn:active {
 }
 .footer-container {
   background: #004346;
-  height: auto;
-  margin: auto;
   border-top: 1px solid rgb(255,255,255, .5);
+  
 }
 .footer-group {
-  display: inline-block;  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 2em 0 2em;
 }
-.footer-link {
+a.button {
   color: #f3ffff;
   font-size: 1em;
   text-decoration: none;
   border: 1px solid #f3ffff;
   border-radius: .5em;
   cursor: pointer;
-  background: linear-gradient(#004346, #172a3a);
+  background: linear-gradient(#508991, #172a3a);
   margin: 2em 2em 2em 2em;
-  appearance: button;
-  -moz-appearance: button;
-  -webkit-appearance: button;
   width: 8em;
   padding: .15em 0 .15em 0;  
 }
-.footer-link:hover {
+a.button:hover {
   background: #172a3a;
   color: #f3ffff;
 
 }
-.footer-link:active {
+a.button:active {
   color: #a62704;
 }
 .web-address {
@@ -164,13 +169,12 @@ h3 {
 .footer-container {
   padding-top: 1em;
 }
-.footer-link {
+a.button {
   padding: .8em;
   margin: .5em 1em .5em 1em;
   font-size: 1.2em;
-  border-radius: .5em;
 }
-.footer-link:hover {
+a.button:hover {
   background: #172a3a;
   color: #f3ffff;
 
@@ -193,7 +197,7 @@ h3 {
 </header>
 
 <div class="logo-container">
-  <img class="logo" src="/sg-logo/cold-1294166.svg" width="50%">
+  <img class="logo" src="/sg-logo/cold-1294166.svg" width="70%">
 </div>
  
 <h2>About... </h2>
@@ -238,13 +242,15 @@ h3 {
 <footer>
   <div class="footer-container">
     <div class="footer-group">
-       <a target="self" class="footer-link" 
+       <a target="self" class="button" 
          href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
             Style Guide </a>
       
-      <a class="footer-link" href:"">Link 2
+      <a class="button"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+ Link 2
       </a>
-      <a class="footer-link" href:"">Link 3
+      <a class="button"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+ Link 3
       </a>
     </div>
  <div class="web-address">www.study-groups.org</div>
