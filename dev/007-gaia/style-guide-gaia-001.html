@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowing Gaia: style-guide-gaia-001</title>
+<!-- NOTE: This webpage and style guide were created with the default font.  -->
+<style>
+/* CSS BEGIN */
+html {
+  font-size: 12pt;
+}
+body {
+  background: #fff;
+  padding: 0;
+  margin: 2em;
+  color: #000;
+}
+.asterisk-divider {
+    font-size: 1.5em;
+    letter-spacing: .5em;
+    color: #;
+}
+@media only screen and (max-width: 600px) {
+  .asterisk-divider {
+    text-align: center;
+  }
+}
+/* Large Color Samples */
+.background-primary, .background-secondary, .background-card, .background-hover, .background-active, .complimentary-color-2 {
+  height: 50px;
+  width: 300px;
+  margin: 1em 0 2em 0;
+}
+.background-primary {
+  background: #172a3a;;
+  border: 1px solid #ffffff;
+}
+.background-secondary {
+	background: #004346;
+}
+.background-card, .card-background {
+	background: #487082;
+}
+.background-card-active {
+	background: #508991;
+}
+.complimentary-color-2 {
+  background: #23d6a4;
+}
+/* Small Color Samples */
+.font-color, .links-color, .links-hover, .links-clicked, .card-border-color, .card-text-color, .card-background,
+.card-background-hover, .card-background-active, .footer-background-color, .footer-text-color {
+  height: 25px;
+	width: 150px;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+.font-color, .card-border-color, .card-text-color, .footer-text-color {
+	background: #f3ffff;
+}
+.links-color {
+	background: #487082;
+}
+.links-hover {
+	background: #e36441;
+}
+.links-clicked {
+	background: #a62704;
+}
+.card-background, .card-background-hover {
+  background: #487082;
+}
+.background-card-active, .card-background-active{
+  background: #508991;
+}
+.background-active {
+  background: #508991;
+}
+.footer-background-color {
+  background: #004346;
+}
+.paragraph {
+  line-height: 140%;
+  max-width: 800px;
+}
+.paragraph-container {
+  margin-left: 40px
+}
+.box-with-radius {
+  height: 50px;
+  width: 150px;
+  border: 1px solid #f3ffff;
+  border-radius: 16px;
+  background: #487082;
+}
+.box-with-radius-hover {
+  height: 50px;
+  width: 150px;
+  border: 1px solid #f3ffff;
+  border-radius: 16px;
+  box-shadow: 1px 1px 5px 1px #f3ffff;
+  background: #487082;
+}
+.box-with-radius-active {
+  height: 50px;
+  width: 150px;
+  border: 1px solid #f3ffff;
+  border-radius: 16px;
+  box-shadow: 1px 1px 5px 1px #f3ffff;
+  background: #508991;
+}
+.card-sample-margin {
+  margin-bottom: 5px;
+}
+
+</style>
+<!-- CSS END -->
+</head>
+<body>
+  <h1>Knowing Gaia Style Guide</h1>
+  <h2>style-guide-gaia-001.html</h2>
+<div class="asterisk-divider">*****</div>
+
+<h3>PROJECT SUMMARY:</h3>
+<div>
+Create a mobile application from existing Knowing-Gaia webpage (http://knowing-gaia.net) using design concepts from study-groups. App should include the html semantic tags including article and section tags, and should meet accessibility standards. App will have navbar functionality that is simple and easy to use and be created using html, CSS and some JS if necessary. No CSS framewords will be used.
+</div>
+
+<!-- ------------- Basic Color Palette-------------------- -->
+  
+<h3>Basic Color Palette</h3>
+  <div>
+    Background-primary: #
+  </div>
+  <div class="background-primary"></div>
+
+  <div>
+    Background-secondary: #
+  </div>
+  <div class="background-secondary"></div>
+
+  <div>
+    Background-card/Background-card-hover: #
+  </div>
+  <div class="background-card"></div>
+
+  <div>Background-active: #</div>
+  <div class="background-active"></div>
+
+  <div>Complimentary Color 2: #</div>
+  <div class="complimentary-color-2"></div>
+  <div class="asterisk-divider">*****</div>
+
+
+<!-- ------------- Typography ----------------------------- -->
+
+<h2>Color Palette: Typography</h2>
+  <div>Primary Font Color: #ffffff</div>
+  <div class="font-color"></div>
+
+  <div style="color: ">Inline Links color: #</div>
+  <div class="links-color"></div>
+
+  <div style="color: #">Links-hover: #</div>
+  <div class="links-hover"></div>
+
+  <div style="color: #"> Links-visited: #</div>
+  <div class="links-clicked"></div>
+
+  <div class="asterisk-divider">*****</div>
+
+
+<!--- FONT --->
+
+<h3>FONT</h3>
+  <h4>Font-Family: Times New Roman</h4>
+    <h3>Headers...</h3>
+  
+    <h1>H-1: Knowing Gaia</h1>
+    <h2>H-2: Knowing-Gaia</h2>
+    <h3>H-3: Knowing-Gaia</h3>
+    <h4>H-4: Knowing-Gaia</h4>
+  
+  
+    <h3>Body Properties...</h3>
+
+    <h4>Paragraph</h4>
+      <div>Paragraph: Line-height - 140%</div>
+    <br>
+      <div>
+        Sample Paragraph with inline-line faux link examples in three states:
+      </div>
+    <p class="paragraph">
+      Lorem ipsum dolor sit amet, <span style = color:#;>Inline Link </span>, consectetur adipiscing elit, 
+      sed do eiusmod <span style = color:#;>Inline Link Hover </span>ut labore et dolore magna aliqua. 
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+      <span style = color:#;>Inline-Link-Visited </span>, velit esse cillum dolore eu fugiat nulla 
+      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+      culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+
+  </div>
+    
+<br>
+
+<div class="asterisk-divider">*****</div>
+
+<h3>Card Button/Link Styling</h3>
+  <div>Text and Border Color: #</div>
+    <div class="card-border-color card-text-color"></div>
+
+  <div>Card Background Color/Background Color-hover: #</div>
+    <div class="card-background card-background-hover"></div>
+
+  <div>Card Background Color Active: #</div>
+    <div class="card-background-active"></div>
+
+   <div><strong>Box-shadow applied to card border on hover.</strong></div> 
+   <h4>Box-shadow Properties:</h4>
+   <ul> 
+     <li>X-offset: 1px</li>
+     <li>Y-offset: 1px</div>
+     <li>Spread: 5px</li>
+     <li>Color: #</li>
+   </ul>
+
+    <div>
+     Border-radius: 16px
+    </div>
+    <br>
+    <div class="card-sample-margin">Card Sample Default</div>
+    <div class="box-with-radius"></div>
+<br>
+<div class="card-sample-margin">Card Sample on hover</div>
+  <div class="box-with-radius-hover"></div>
+  <br>
+<div class="card-sample-margin">Card Sample Active</div>
+<div class="box-with-radius-active"></div>
+<br>
+<div class="asterisk-divider">*****</div>
+
+  <h3>CSS Element Modifiers</h3>
+  <h4>Headers</h4>
+  <h4>H-1, Main Header</h4>
+  <ul>
+  <li>Margin-top: 2em</li>
+  <li>Font-size: 2.8em</li>
+  <li>Letter-spacing: 2px</li>
+  </ul>
+  <h4>H-2</h4>
+    <ul>
+      <li>Font-size: 2em</li>
+      <li>Padding-top: .5em</li>
+    </ul>
+  <h4>H-3</h4>
+    <ul>
+      <div>Margin-top: .6em</div>
+    </ul>
+  <h4>H-4</h4>
+  <ul>
+  <li>No Modifiers</li>
+  </ul>
+  <h4>Paragraph Modifiers</h4>
+  <ul>
+    <li>Intro Paragraph max-width: 40em</li>
+    <li>Font-size: 1.25em</li>
+  </ul>
+ 
+  <h4>Card Positioning</h4>
+  <ul>
+    <li>Padding: 0</li>
+    <li>Margin: 1em 1em 1em 1em</li>
+    <li>Display: Inline-Block</li>
+  </ul>
+    <div class="asterisk-divider">*****</div>
+      <h3>Footer</h3>
+        <div >Footer Background Color: #</div>
+        <div class="footer-background-color"></div>
+        <div>Footer Text Color: #</div>
+        <div class="footer-text-color"></div>
+<!--- TODO's --->
+
+<h2>TODO's</h2>
+<div>Identify Color Palette</div>
+<div>Identify Font Family</div>
+<div>Review sematic tags to be used</div>
+<div>Review code for navbar using html/CSS</div>
+
+
+
+
+
+</body>
+</html>
