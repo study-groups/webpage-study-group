@@ -1,0 +1,15 @@
+mv gaia to 005-gaia
+add 005-gaia/001
+
+mkdir assets
+mv sg-logo assets
+
+mkdir production
+ln  -s ../dev/001-simple/003 production/study-groups
+Considder rename simple to basic?
+
+rm styleguide.html
+ln -s dev/001-styleguide/003 dev/styleguild-current
+
+mv favicon.ico to assets/
+
