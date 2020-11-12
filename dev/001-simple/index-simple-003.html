@@ -15,20 +15,24 @@ body {
   text-align: center;
   margin: 0;
 }
+.logo-container {
+  position: relative;
+}
 .logo {
-  margin: auto;
   position: absolute;
-  z-index: -1;
-  opacity: 15%;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  margin-left: -100px;
 }
 h1 {
-  margin-top: 3em;
+  margin-top: 2em;
   font-size: 2.8em;
   letter-spacing: 2px;
 }
 h2 {
   font-size: 2.3em;
-  margin: 2em 0 1.5em 0;
+  margin: 1em 0 1.5em 0;
 }
 h3 {
   font-size: 1.2em;
@@ -72,7 +76,7 @@ a.btn {
   text-decoration: none;
 }
 a.btn:hover {
-  box-shadow: 1px 1px 5px 1px #f3ffff;
+  box-shadow: 0px 0px 5px 1px #f3ffff;
 }
 a.btn:active {
   box-shadow: 1px 1px 5px 1px #f3ffff;
@@ -82,7 +86,6 @@ a.btn:active {
   font-size: 1.5em;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
-
   color: #508991;
   letter-spacing: .2em;
 }
@@ -96,7 +99,7 @@ a.btn:active {
 .quote {
   margin-top: .5em;
   margin-bottom: .4em;
-  positioni: relative;
+  position: relative;
   opacity: 75%;
 }
 .author {
@@ -106,37 +109,41 @@ a.btn:active {
 }
 .footer-container {
   background: #004346;
-  height: auto;
-  margin: auto;
-  border-top: 1px solid rgb(255,255,255, .5);
+  border-top: 1px solid rgba(35, 214, 164, .8);
+  position: absolute; 
+  bottom: 0;
+  width: 100%;
 }
 .footer-group {
-  display: inline-block;  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 2em 0 2em;
 }
-.footer-link {
-  color: #f3ffff;
+a.button {
+  color: rgba(35, 214, 164, .8);
   font-size: 1em;
   text-decoration: none;
-  border: 1px solid #f3ffff;
+  border: 1px solid rgba(35, 214, 164, .8);
   border-radius: .5em;
   cursor: pointer;
-  background: linear-gradient(#004346, #172a3a);
+  background: rgba(23, 42, 58, .5);
   margin: 2em 2em 2em 2em;
-  appearance: button;
-  -moz-appearance: button;
-  -webkit-appearance: button;
   width: 8em;
   padding: .15em 0 .15em 0;  
 }
-.footer-link:hover {
-  background: #172a3a;
-  color: #f3ffff;
+a.button:hover {
+  color: #004346;
+  box-shadow: 0px 0px 3px 1px #23d6a4;
+  color: rgba(35, 214, 164, .8);
 
 }
-.footer-link:active {
-  color: #a62704;
+a.button:active {
+  background: #172a3a;
+  color: #23da64;
 }
 .web-address {
+  color: #23d6a4;
   display: block;
   position: relative;
   bottom: 0px;
@@ -145,6 +152,9 @@ a.btn:active {
 /* ----- Media 600px or Less ----- */
 
 @media only screen and (max-width: 600px) {
+.logo {
+  width: 40%;
+}
 p {
   font-size: 1.2em;
 }
@@ -163,22 +173,21 @@ h3 {
 }
 .footer-container {
   padding-top: 1em;
+  position: relative;
 }
-.footer-link {
+a.button {
   padding: .8em;
   margin: .5em 1em .5em 1em;
   font-size: 1.2em;
-  border-radius: .5em;
 }
-.footer-link:hover {
+a.button:hover {
   background: #172a3a;
   color: #f3ffff;
-
 }
+.fiooter-container {
+  
 
-.web-address {
-  margin: 0;
-}
+
 @media only screen and (max-width: 1640px) {
  
 
@@ -189,12 +198,13 @@ h3 {
 
 <body>
 <header>
+<div class="logo-container">
+  <img class="logo" src="/sg-logo/cold-1294166.svg" width="15%">
+</div>
+
 <h1> Study-Groups</h1>
 </header>
 
-<div class="logo-container">
-  <img class="logo" src="/sg-logo/cold-1294166.svg" width="50%">
-</div>
  
 <h2>About... </h2>
 <p>
@@ -238,13 +248,15 @@ h3 {
 <footer>
   <div class="footer-container">
     <div class="footer-group">
-       <a target="self" class="footer-link" 
+       <a target="self" class="button" 
          href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
             Style Guide </a>
       
-      <a class="footer-link" href:"">Link 2
+      <a class="button"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+ Link 2
       </a>
-      <a class="footer-link" href:"">Link 3
+      <a class="button"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+ Link 3
       </a>
     </div>
  <div class="web-address">www.study-groups.org</div>
