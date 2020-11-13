@@ -6,12 +6,21 @@
 <title>Study-Groups Main Page</title>
 <style>
 
+:root {
+  --font-primary: #f3ffff;
+  --bg-primary: #172a3a;
+  --bg-secondary: #004346;
+  --bg-card: #487082;
+  --bg-card-active: #508991;
+  --bg-card-hover: #487082;
+}
+
 html {
   font-size: 12pt;
 }
 body {
-  background: #172a3a;
-  color: #f3ffff;
+  background: var(--bg-primary);
+  color: var(--font-primary);
   text-align: center;
   margin: 0;
 }
@@ -36,7 +45,7 @@ h2 {
 }
 h3 {
   font-size: 1.2em;
-  color: #f3ffff;
+  color: var(--font-primary);
   margin: 1em 0 .6em 0;
 }
 p {
@@ -59,12 +68,13 @@ p {
   text-align: center;
   font-size: 1em;
   margin: .3em 0 0 0;
+  color: var(--font-primary);
 }
 a.btn {
   padding: 0;
   margin: 1em 1em 1em 1em;
   display: inline-block;
-  color: #f3ffff;
+  color: var(font-primary);
   background: #487082;
   border: 1px #f3ffff solid;
   border-radius: 16px;
@@ -108,7 +118,7 @@ a.btn:active {
   opacity: 75%;
 }
 .footer-container {
-  background: #004346;
+  background: var(--bg-secondary);
   border-top: 1px solid rgba(35, 214, 164, .8);
   position: absolute; 
   bottom: 0;
