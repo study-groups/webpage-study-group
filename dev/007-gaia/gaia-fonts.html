@@ -5,16 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Knowing Gaia: style-guide-gaia-001</title>
 
-
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+/* Gaia 9.png */
+/* :root {
+  --bk-primary: #352208;
+  --font-primary: #e1bb80;
+  --nav-bar-primary: #7b6b43;
+} */
+/* Gaia 10.png */
+/* :root {
+  --bk-primary: #373737;
+  --font-primary: #fce694;
+  --nav-bar-primary: #7b6b43;
+} */
+/* Gaia 10.png #2*/
+:root {
+  --bk-primary: #373737;
+  --font-primary: #c7dfc5;
+  --nav-bar-primary: #7b6b43;
+}
 
 html {
   font-size: 12pt;
-}
-body {
-  margin: 0 8em 0 8em;
 }
 .garamond-container {
   font-family: 'Cormorant Garamond', serif;
@@ -24,18 +38,37 @@ body {
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
 }
+body {
+  background: var(--bk-primary);
+  margin: 0 8em 0 8em;
+}
+h1, h2, h3, h4, p {
+  color: var(--font-primary);
+}
+.asterisk-divider {
+  color: var(--font-primary);
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 1em 1em 1em 1em;
+  }
+
+
+
+}
 </style>
 <!-- CSS END -->
 </head>
 <body>
-  <h1>Knowing Gaia Font Invetigation</h1>
+  <h1>Knowing Gaia Font & Color Investigation</h1>
   <h2>gaia-fonts.html</h2>
 <div class="asterisk-divider">*****</div>
 
 <h3>PROJECT SUMMARY:</h3>
-<div>
+<p>
 Create a mobile application from existing Knowing-Gaia webpage (http://knowing-gaia.net) using design concepts from study-groups. App should include the html semantic tags including article and section tags, and should meet accessibility standards. App will have navbar functionality that is simple and easy to use and be created using html, CSS and some JS if necessary. No CSS frameworks will be used.
-</div>
+</p>
 <hr>
 <div class="garamond-container">
 
@@ -46,7 +79,7 @@ Create a mobile application from existing Knowing-Gaia webpage (http://knowing-g
 <h3>H-3: Knowing Gaia</h3>
 <h4>H-4: Knowing Gaia</h4>
 
-<div>Paragraph</div>
+<p>Paragraph</p>
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
@@ -74,7 +107,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <!-- ------------- Typography ----------------------------- -->
 
 <h2>Color Palette: Typography</h2>
-  <div>Primary Font Color: #ffffff</div>
  
 <!--- FONT --->
 
@@ -96,7 +128,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
       <div>
         Sample Paragraph with inline-line faux link examples in three states:
       </div>
-    <p class="paragraph">
+    <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
       sed do eiusmod ut labore et dolore magna aliqua. 
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
