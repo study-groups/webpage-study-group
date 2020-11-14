@@ -18,12 +18,18 @@
 html {
   font-size: 12pt;
 }
+--red-100: #200
+--red-200: #401
+
 body {
   background: var(--bg-primary);
   color: var(--font-primary);
   text-align: center;
   margin: 0;
+  position: relative; /*relative body for absolute footer child placement */
+  min-height: 100vh; /* ensure body takes full view port height */ 
 }
+
 .logo-container {
   position: relative;
 }
@@ -51,12 +57,13 @@ h3 {
 p {
   margin: 1em 5% 1em 5%;
   font-size: 1.4em;
+  text-align: center;
 }
 .discord-image {
   width: 10em;
-  display: block;
+  display: inline-block;
+  border: 0px solid yellow; 
   padding: 1.5em 0 2em 0;
-  margin: auto;
 }
 .card {
   width: 17em;
@@ -92,6 +99,9 @@ a.btn:active {
   box-shadow: 1px 1px 5px 1px #f3ffff;
   background: #508991;
 }
+a.btn-image{
+  
+}
 .asterisk-divider {
   font-size: 1.5em;
   margin-bottom: 1.5em;
@@ -104,7 +114,7 @@ a.btn:active {
   position: relative;
 }
 .quote, .author {
-  font-size: 1iem;
+  font-size: 1em;
 }
 .quote {
   margin-top: .5em;
@@ -117,20 +127,33 @@ a.btn:active {
   right: 0;
   opacity: 75%;
 }
-.footer-container {
-  background: var(--bg-secondary);
+
+footer {
+  background: #004346;
   border-top: 1px solid rgba(35, 214, 164, .8);
   position: absolute; 
-  bottom: 0;
+  bottom:0;
   width: 100%;
 }
+
 .footer-group {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 2em 0 2em;
 }
-a.button {
+
+  width: 100%;
+}
+
+.footer-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 2em 0 2em;
+}
+
+a.btn-footer {
   color: rgba(35, 214, 164, .8);
   font-size: 1em;
   text-decoration: none;
@@ -142,15 +165,18 @@ a.button {
   width: 8em;
   padding: .15em 0 .15em 0;  
 }
-a.button:hover {
+
+a.btn-footer:hover {
   color: #004346;
   box-shadow: 0px 0px 3px 1px #23d6a4;
   color: rgba(35, 214, 164, .8);
 }
-a.button:active {
+
+a.btn-footer:active {
   background: #172a3a;
   color: #23da64;
 }
+
 .web-address {
   color: #23d6a4;
   display: block;
@@ -180,41 +206,39 @@ h3 {
 .card-item {
   font-size: 1.2em;
 }
-.footer-container {
+
+footer {
   padding-top: 1em;
-  position: relative;
 }
-a.button {
+
+a.btn-footer {
   padding: .8em;
   margin: .5em 1em .5em 1em;
   font-size: 1.2em;
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* removes defaults on Apple's webkit */
 }
-a.button:hover {
+a.btn-footer:hover {
   background: #172a3a;
   color: #f3ffff;
   -webkit-appearance: none;
 }
 
-
 @media only screen and (max-width: 1640px) {
- 
 
 }
 
 </style>
 </head>
 
-<body>
+<body id="body">
 <header>
 <div class="logo-container">
   <img class="logo" src="/sg-logo/cold-1294166.svg" width="15%">
 </div>
-
 <h1> Study-Groups</h1>
 </header>
 
- 
+<main>
 <h2>About... </h2>
 <p>
  Study Groups is an online meet-up to study technology of all sorts. 
@@ -223,17 +247,17 @@ a.button:hover {
 </p>
 <p>
   You can connect with us by following this link:
-  
+ <br> 
+<a href="https://discord.gg/bPvheDd"><img class="discord-image" 
+         src="/dev/001-simple/images/Discord-Wordmark-Color.png"></a>
 </p>
-<a href="https://discord.gg/bPvheDd">
-  <img class="discord-image" src="/dev/001-simple/images/Discord-Wordmark-Color.png"></a>
-
-<a class="btn" href="https://github.com/study-groups/js-study-group"> 
+<a class="btn" href="https://github.com/study-groups/js-study-group">
   <h3>Javascript & React</h3>
   <div class="card-item">Thursdays, 4 PM (EST)</div></a>
 
 
- <a class="btn" href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+ <a class="btn" 
+     href="http://study-groups.org:9000/dev/001-simple/error-page.html">
   <h3>Data Science</h3>
     <div class="card-item">Mondays, 10 AM (EST)</div></a>
 
@@ -254,23 +278,21 @@ a.button:hover {
 <br>
 <br>
 </div>
+</main>
 <footer>
-  <div class="footer-container">
     <div class="footer-group">
-       <a target="self" class="button" 
+       <a target="self" class="btn-footer" 
          href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
             Style Guide </a>
       
-      <a class="button"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+      <a class="btn-footer"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
  Link 2
       </a>
-      <a class="button"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+      <a class="btn-footer"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
  Link 3
       </a>
     </div>
  <div class="web-address">www.study-groups.org</div>
 </footer>
-
 </body>
-
 </html>
