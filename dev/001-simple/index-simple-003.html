@@ -26,7 +26,6 @@ body {
   position: relative; /*relative body for absolute footer child placement */
   min-height: 100vh; /* ensure body takes full view port height */ 
 }
-
 .logo-container {
   position: relative;
 }
@@ -57,9 +56,14 @@ p {
   text-align: center;
 }
 .discord-image {
-  display: inline-block;
+  display: block;
   border: 0px solid yellow; 
   padding: 1.5em 0 2em 0;
+  margin: auto;
+}
+.card-container {
+  margin: 2em 0 3em 0;
+  position: absolute;
 }
 .card {
   width: 17em;
@@ -102,12 +106,12 @@ a.btn-image{
   font-size: 1.5em;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
-  color: #508991;
+  color: var(--bg-card-active);
   letter-spacing: .2em;
 }
 .quote-container {
   margin: 0 12% 0 12%;
-  position: relative;
+  position: absolute;
 }
 .quote, .author {
   font-size: 1em;
@@ -136,15 +140,8 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 0 2em 0 2em;
+  margin: 0 6em 0 6em;
 }
-.footer-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 2em 0 2em;
-}
-
 a.btn-footer {
   color: rgba(35, 214, 164, .8);
   font-size: 1em;
@@ -170,7 +167,7 @@ a.btn-footer:active {
   display: block;
   position: relative;
   bottom: 0px;
-  padding: 1em 2em;
+  padding: 1em 2em 2em 2em;
 }
 /* ----- Media 600px or Less ----- */
 
@@ -197,6 +194,9 @@ h3 {
 footer {
   padding-top: 1em;
   position: relative;
+}
+.footer-group {
+  margin: 0 4em 0 4em;
 }
 a.btn-footer {
   padding: .8em;
@@ -229,23 +229,24 @@ a.btn-footer:hover {
 </p>
 <p>
   You can connect with us by following this link:
- <br> 
-<a href="https://discord.gg/bPvheDd"><img class="discord-image" 
-         src="/dev/001-simple/images/Discord-Wordmark-Color.png" width=0%></a>
 </p>
+<a href="https://discord.gg/bPvheDd"><img class="discord-image"
+   src="/dev/001-simple/images/Discord-Wordmark-Color.png" width=20%></a>
+
+<div class="card-container">
 <a class="btn" href="https://github.com/study-groups/js-study-group">
   <h3>Javascript & React</h3>
   <div class="card-item">Thursdays, 4 PM (EST)</div></a>
 
-
- <a class="btn" 
+<a class="btn" 
      href="http://study-groups.org:9000/dev/001-simple/error-page.html">
   <h3>Data Science</h3>
-    <div class="card-item">Mondays, 10 AM (EST)</div></a>
+  <div class="card-item">Mondays, 10 AM (EST)</div></a>
 
 <a class="btn" href="https://github.com/study-groups/math-study-group/tree/master/category-theory">
   <h3>Category Theory</h3>
-    <div class="card-item">Thursdays, 4 PM (EST)</div></a>
+  <div class="card-item">Thursdays, 4 PM (EST)</div></a>
+</div>
 
 <div class="asterisk-divider">* * * * *</div>
 
@@ -255,10 +256,6 @@ a.btn-footer:hover {
     involve me and I learn."
   </div>
   <div class="author">&mdash; Benjamin Franklin</div>
-</div>
-<br>
-<br>
-<br>
 </div>
 </main>
 <footer>
