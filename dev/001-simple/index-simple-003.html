@@ -28,13 +28,13 @@ body {
 }
 .logo-container {
   position: relative;
+  left: 0;
 }
 .logo {
   position: absolute;
   top: 0;
-  left: 25%;
-  right: 25%;
-  margin-left: -100px;
+  margin: auto;
+  z-index: -2;
 }
 h1 {
   margin-top: 2em;
@@ -62,13 +62,12 @@ p {
   margin: auto;
 }
 .card-container {
-  margin: 2em 0 3em 0;
+  margin: 2em 0 2em 0;
   position: relative;
 }
 .card {
   width: 17em;
   height: 7em;
-  margin: auto;
   margin-top: 1em 0 0 0;
 }
 .card-item {
@@ -109,16 +108,17 @@ a.btn:active {
   color: var(--bg-card-active);
   letter-spacing: .2em;
 }
-/* .quote-container {
-  margin: 0 12% 0 12%;
-  position: absolute;
-} */
+.quote-container {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 45%;
+}
 .quote, .author {
   font-size: 1em;
 }
 .quote {
-  margin-top: .5em;
-  margin-bottom: .4em;
+  margin: .5em 0 .4em 0;
   position: relative;
   opacity: 75%;
 }
@@ -140,7 +140,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 0 6em 0 6em;
+  margin: 0 15em 0 15em;
 }
 a.btn-footer {
   color: rgba(35, 214, 164, .8);
@@ -149,7 +149,7 @@ a.btn-footer {
   border: 1px solid rgba(35, 214, 164, .8);
   border-radius: .5em;
   cursor: pointer;
-  margin: 2em 2em 2em 2em;
+  margin: 2em 0 2em 0;
   width: 8em;
   padding: .15em 0 .15em 0;  
 }
@@ -174,26 +174,44 @@ a.btn-footer:active {
 @media only screen and (max-width: 600px) {
 .logo {
   width: 40%;
+  position: relative;
+  margin: 2em 0 0 0;
 }
-p {
-  font-size: 1.2em;
+.discord-image {
+  width: 50%;
+  padding: 0;
 }
 h1 {
-  margin-top: 2em;
+  margin: .2em 0 .2em 0;
 }
 h2 {
-  margin: 1.5em 0 1em 0;
+  margin: .5em 0 1em 0;
 }
 h3 {
   font-size: 1.4em;
   margin: .7em 0 .4em 0;
 }
+p {
+  font-size: 1.4em;
+  margin: 0 5% 0 5%;
+  padding: 0 0 1.25em 0;
+}
 .card-item {
   font-size: 1.2em;
 }
+.asterisk-divider {
+  margin: .5em 0 1em 0;
+}
 footer {
+  margin: 3em 0 0 0;
   padding-top: 1em;
   position: relative;
+}
+.quote-container {
+  max-width: 100%;
+}
+.author {
+  padding: 0 1em 0 0;
 }
 .footer-group {
   margin: 0 4em 0 4em;
@@ -215,7 +233,7 @@ a.btn-footer:hover {
 <body id="body">
 <header>
 <div class="logo-container">
-  <img class="logo" src="/sg-logo/cold-1294166.svg" width="15%">
+  <img class="logo" src="/sg-logo/cold-1294166.svg.png" width="20%">
 </div>
 <h1> Study-Groups</h1>
 </header>
