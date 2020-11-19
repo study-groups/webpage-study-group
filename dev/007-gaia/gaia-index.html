@@ -5,19 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 <style>
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+/*:root {
   --bk-primary: #352208;
   --font-primary: #e1bb80;
   --nav-bar-primary: #7b6b43;
+}*/
+:root {
+  --bk-primary: #373737;
+  --font-primary: #c7dfc5;
+  --nav-bar-primary: #7b6b43;
+  --divider-line: #fce694;
 }
 body {
   background: var(--bk-primary);
   font-size: 12pt;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  line-height: 1.6em;
   margin: 4em;
 }
-
-h1, h2, h3, h4, p {
+h1 {
+  color: var(--divider-line);
+}
+h2, h3, h4, p {
   color: var(--font-primary);
+}
+@media and screen and (max-width: 667px) {
+  body {  
+    margin: 2em;
+  }
 }
 
 </style>
@@ -47,7 +65,6 @@ h1, h2, h3, h4, p {
 
 <footer></footer>
 
-<h3>Color Palette: Gaia.png</h3>
 </head>
   
 </body>
