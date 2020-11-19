@@ -13,6 +13,8 @@
   --bg-card: #487082;
   --bg-card-active: #508991;
   --bg-card-hover: #487082;
+  --discord-blue: #7289da;
+  --discord-active: #3F56A7;
 }
 
 html {
@@ -59,11 +61,24 @@ p {
   font-size: 1.4em;
   text-align: center;
 }
-.discord-image {
+.discord-container {
   display: block;
-  border: 0px solid yellow; 
-  padding: 1.5em 0 2em 0;
-  margin: auto;
+  padding: 2em 0 2em 0;
+  margin: auto 2em;
+}
+img.discord-image {
+  width: 15%;
+  border: 1px solid rgba(114, 137, 218, .5);
+  border-radius: .5em;
+  padding: .3em;
+  margin: 2em 0 1em 0;
+}
+img.discord-image:hover {
+  box-shadow: 0px 0px 5px 1px var(--discord-blue);
+}
+img.discord-image:active {
+  box-shadow: 0px 0px 5px 1px var(--discord-active);
+
 }
 .card-container {
   margin: 2em 0 2em 0;
@@ -85,8 +100,8 @@ a.btn {
   margin: 1em 1em 1em 1em;
   display: inline-block;
   color: var(font-primary);
-  background: #487082;
-  border: 1px #f3ffff solid;
+  background: var(--bg-card);
+  border: 1px var(--font-primary) solid;
   border-radius: 16px;
   height: 6em;
   width: 16em;
@@ -96,15 +111,12 @@ a.btn {
   text-decoration: none;
 }
 a.btn:hover {
-  box-shadow: 0px 0px 5px 1px #f3ffff;
+  box-shadow: 0px 0px 5px 1px var(--font-primary);
 }
 a.btn:active {
-  box-shadow: 1px 1px 5px 1px #f3ffff;
+  box-shadow: 1px 1px 5px 1px var(--font-primary);
   background: #508991;
 }
-/* a.btn-image{
-  
-} */
 .asterisk-divider {
   font-size: 1.5em;
   margin-bottom: 1.5em;
@@ -135,8 +147,9 @@ a.btn:active {
 footer {
   background: #004346;
   border-top: 1px solid rgba(35, 214, 164, .8);
-  position: relative;
+  position: fixed;
   width: 100%;
+  bottom: 0;
 }
 
 .footer-group {
@@ -145,7 +158,6 @@ footer {
   justify-content: space-around;
   margin: 0 15em 0 15em; 
 }
-
 a.btn-footer {
   color: rgba(35, 214, 164, .8);
   font-size: 1em;
@@ -176,10 +188,10 @@ a.btn-footer:active {
 /* ----- Media 600px or Less ----- */
 
 @media only screen and (max-width: 600px) {
-.discord-image {
-  width: 50%;
-  padding: 0;
-}
+img.discord-image {
+  width: 40%;
+  padding: .3em;
+} 
 .logo {
   width: 80%;
 }
@@ -244,16 +256,11 @@ a.btn-footer:hover {
 <main>
 <!--<h2>About... </h2> -->
 <p>
- Study Groups is an online meet-up to study technology of all sorts. 
- The current focus is on JavaScript and data science. While there,
- you may see other things of interest.
-</p>
-<p>
-  You can connect with us by following this link:
-</p>
-<a href="https://discord.gg/bPvheDd"><img class="discord-image"
-   src="/dev/001-simple/images/Discord-Wordmark-Color.png" width=20%></a>
+Study Groups is a an online meet-up to study and practice a broad spectrum of skills. Current focus is on web development and data science. Connect with us on Discord:</p>
 
+<div discord-container>
+<a href="https://discord.gg/bPvheDd"><img class="discord-image" src="/dev/001-simple/images/Discord-Wordmark-Color.png"></a>
+</div>
 <div class="card-container">
 <a class="btn" href="https://github.com/study-groups/js-study-group">
   <h3>Javascript & React</h3>
