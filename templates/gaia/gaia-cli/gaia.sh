@@ -13,7 +13,7 @@ EOF
 }
 gaia-extract(){
   echo "Paste entire raw text document then hit ctrl-D on new line."
-  cat > ./raw.txt
+  cat > ./data.txt
 }
 
 gaia-clean(){
@@ -24,7 +24,17 @@ gaia-index(){
   ./indexer clean.txt > clean.index
 }
 
-gaia-between(){
+gaia-make-notes(){
+  gaia-notes-md > notes.md
+}
+
+gaia-reset(){
+  rm clean.txt
+  rm clean.index
+  rm notes.md
+}
+
+gaia-get-between(){
   local start=$1;
   local end=$2;
   local file=clean.txt;
@@ -48,11 +58,10 @@ gaia-get-unit-text(){
   local idNext=$((id + 1))
   local offset=$(gaia-get-offset $id)
   local offsetNext=$(gaia-get-offset $idNext)
-  #echo $id, $offset, $offsetNext
-  gaia-between $((offset+1)) $offsetNext
+  gaia-get-between $((offset+1)) $offsetNext
 }
 
-gaia-get-chapter(){
+gaia-get-chapter-offset(){
   line=($(awk /"chapterStart C$1"/ ./clean.index))
   echo ${line[0]}
 }
@@ -71,7 +80,7 @@ gaia-display(){
   local chapter=$1
   local prompt=$2
   local unitId=$(gaia-get-unit-id $chapter $prompt)
-  local chapterText=$(gaia-get-line $(gaia-get-chapter $chapter))
+  local chapterText=$(gaia-get-line $(gaia-get-chapter-offset $chapter))
   local promptText=$(gaia-get-prompt $prompt)
   local text=$(gaia-get-unit-text $unitId)
   local textFmt=$(echo -e "$chapterText\n\n$promptText\n\n$text" | 
@@ -90,19 +99,27 @@ gaia-display(){
   fi 
 }
 
-gaia-notes(){
-cat <<EOF
+gaia-notes-md(){
+echo '
 # Knowing Gaia Dev Note
 
 ## Original source
 - https://docs.google.com/document/d/1QCWu6BMxVjcee9mf7tEMx8Z048ciYwlmx-EkoVSyzVI
 
-## Extract Transform Load
+## ETL: Extract Transform Load
 ### Extract
 - Use Docs to Markdown Add-on in Google Doc
 - paste into raw.html
 
+### Transform
+- `gaia-clean` transforms quote marks, etc
+- `gaia-transform` creates long form webpage
+
+### Load
+- `gaia-index` creates data.index
+- `gaia-display 3 5` displays Chapter 3, prompt 2.
 
 ## References
-EOF
+- markserv ./ -a 0.0.0.0 -p 8000  # serve ./, accept port 8000 on all interfaces
+'
 }
