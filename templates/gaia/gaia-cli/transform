@@ -1,0 +1,76 @@
+#!/usr/bin/php
+<?php
+$doc = new DOMDocument();
+$rawHtml=file_get_contents($argv[1]);
+$html=str_replace(array("“","”","‘","’"), array("\"","\"","'","'"),$rawHtml);
+$html=str_replace(array("<ol>","</ol>"), array("<ul>","</ul>"),$html);
+$html=replace_youtube($html);
+
+echo makeHeader();
+echo $html;
+echo makeFooter();
+
+function replace_youtube($html){
+  $newhtml="";
+  $lines = explode(PHP_EOL,$html);
+  foreach($lines as  $line){
+    if(startsWith($line,"http")){
+      $line=lineToYoutube($line); 
+    } 
+    if(startsWith($line,"<a ")){
+      $line=lineToYoutube($line); 
+    } 
+    $newhtml .=$line."\n";
+  }
+  return $newhtml;
+}
+
+function startsWith($string, $startString) 
+{ 
+  $len = strlen($startString); 
+  return (substr($string, 0, $len) === $startString); 
+} 
+
+// https://youtu.be/5sBI2WY5B58
+// <a href="https://youtu.be/FGnS-Xk0ZqU">https://youtu.be/FGnS-Xk0ZqU</a>
+function lineToYoutube($line){
+
+  $tokens=explode("/",$line);
+  $hash=strtok($tokens[3],"\""); //get up to first quote
+  //fwrite(STDERR,"$line = $hash \n" );       
+  $html= <<<EOT
+<iframe width="560" height="315"  class="video"
+	src="https://www.youtube.com/embed/$hash" 
+	frameborder="0" 
+	allow="accelerometer; autoplay; encrypted-media; 
+	       gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
+EOT;
+return $html;
+
+
+}
+function makeHeader(){
+  $header = <<< EOT
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"
+type="text/css"
+href="style.css"
+>
+</head>
+<body>
+EOT;
+
+return $header;
+}
+
+function makeFooter(){
+$footer=<<<EOT
+</body>
+</html>
+EOT;
+return $footer;
+}
+?>
