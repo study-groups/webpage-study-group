@@ -1,5 +1,5 @@
 
-/* ------------- INDEX-FILE CSS---------------- */
+/* ------------- COMBINED CSS FILE ---------------- */
 
 :root {
   --main-text: #f3ffff;
@@ -16,22 +16,21 @@
 html {
   font-size: 12pt;
 }
-#body-index-file, .body-style-guide {
+.body-index-file, .body-style-guide {
   color: var(--main-text);
   background: var(--bg-main);
-
-
-}
-#body-index-file {
-  text-align: center;
-  margin: 0;
-  position: relative; /*relative body for absolute footer child placement */
-  min-height: 100vh; /* ensure body takes full view port height */
 }
 .body-style-guide { /*copied frm stylesheet, chgd to class to avoid conflicts */
   padding: 0;
   margin: 2em;
 }
+.body-index-file {
+  text-align: center;
+  margin: 0;
+  position: relative; /*relative body for absolute footer child placement */
+  min-height: 100vh; /* ensure body takes full view port height */
+}
+
 .logo-container {
   position: absolute;
   left: 50%;
@@ -95,7 +94,7 @@ img.discord-image:active {
   text-align: center;
   font-size: 1em;
   margin: .3em 0 0 0;
-  color: var(--main-test);
+  color: var(--main-text);
 }
 a.btn {
   padding: 0;
@@ -254,12 +253,15 @@ a.btn-footer {
 /* ----- STYLE-GUIDE CSS----- */
 
 /* Large Color Samples */
+
 .color-block-bg-main, .bg-footer, .background-card, .background-hover, .background-active, .ftr-lt-green {
   height: 50px;
   width: 300px;
   margin: 1em 0 2em 0;
 }
-.color-block.bg-main {
+.color-block-bg-main {
+  height: 50px;
+  width: 300px;
   background: var(--bg-main);
   border: 1px solid #ffffff;
 }
