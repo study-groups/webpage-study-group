@@ -13,7 +13,7 @@ EOF
 }
 gaia-extract(){
   echo "Paste entire raw text document then hit ctrl-D on new line."
-  cat > ./data.txt
+  cat > ./raw.txt
 }
 
 gaia-clean(){
