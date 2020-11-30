@@ -79,12 +79,13 @@ gaia-get-line(){
 gaia-display(){
   local chapter=$1
   local prompt=$2
+  local width=${3:-60}
   local unitId=$(gaia-get-unit-id $chapter $prompt)
   local chapterText=$(gaia-get-line $(gaia-get-chapter-offset $chapter))
   local promptText=$(gaia-get-prompt $prompt)
   local text=$(gaia-get-unit-text $unitId)
   local textFmt=$(echo -e "$chapterText\n\n$promptText\n\n$text" | 
-                   fmt -60 | sed -e 's/^/         /')
+                   fmt -$width | sed -e 's/^/         /')
   local len=$(echo -e "$textFmt" | wc -l );
   local margin=$(( (24-len)/2 ))
   clear;

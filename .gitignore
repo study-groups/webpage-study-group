@@ -4,3 +4,8 @@ mike
 *.swp
 *.zip
 .qik
+*.raw
+clean.index
+clean.txt
+data.txt
+
