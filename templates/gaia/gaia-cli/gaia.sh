@@ -1,3 +1,4 @@
+PS1="gaia> "
 gaia-help(){
   cat <<EOF
 This is a collection of Bash functions for Extraction,
