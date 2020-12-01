@@ -76,6 +76,25 @@ p {
   margin: 0 10% 1.35em 10%;
   line-height: 170%;
 }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 @media and screen and (max-width: 667px) {
   body {  
     margin: 2em;
@@ -85,9 +104,25 @@ p {
 </head>
 
 <body>
-<nav>
+<nav class="navbar">
 <a href="#C1">Introduction</a>
 <a href="#C2">Chapter 2</a>
+  <div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+      <a href="#">What am I?</a>
+      <a href="#">Integrity</a>
+      <a href="#">Living in a dream</a>
+      <a href="#">Inner body</a>
+      <a href="#">My whole self</a>
+      <a href="#">Power</a>
+      <a href="#">Touch</a>
+      <a href="#">Ideology</a>
+      <a href="#">Breath</a>
+      <a href="#">Self</a>
+    </div>
+  </div>
+
 <a href="#C3">Chapter 3</a>
 <a href="#C4">Chapter 4</a>
 <a href="#C5">Chapter 5</a>
