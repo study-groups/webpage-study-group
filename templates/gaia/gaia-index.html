@@ -54,12 +54,16 @@ nav {
   width: 100%;
   
 }
-a {
+.navbar {
+  overflow: hidden;
+}
+.navbar a {
+  float: right;
   text-decoration: none;
 }
 h1 {
   color: var(--h1-color);
-  margin: 1.5em 10% 1em 10%;
+  margin: 1.5 10% 1em 10%;
 }
 h2 {
   color: var(--h2-color);
@@ -85,6 +89,9 @@ p {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+}
+.dropdown-content a {
+
 }
 .dropdown-content a:hover {
   float: none;
