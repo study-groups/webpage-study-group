@@ -43,27 +43,20 @@ body {
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
   line-height: 1.6em;
-  margin: 0;
-  pading: 0;
 }
 nav {
-  display: hidden;
+  display: block;
   color: var(--h1-color);
   background: #1e1e1e;
   height: 5em;
   width: 100%;
+  margin: 0;
+  padding: 0;
   
 }
-.navbar {
-  overflow: hidden;
-}
-.navbar a {
-  float: right;
-  text-decoration: none;
-}
-h1 {
+.main-header {
   color: var(--h1-color);
-  margin: 1.5 10% 1em 10%;
+  margin: 1.5em 10% 1em 10%;
 }
 h2 {
   color: var(--h2-color);
@@ -82,28 +75,6 @@ p {
   line-height: 170%;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-
-}
-.dropdown-content a:hover {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 @media and screen and (max-width: 667px) {
   body {  
     margin: 2em;
@@ -113,8 +84,9 @@ p {
 </head>
 
 <body>
-<nav class="navbar">
-<a href="#C1">Introduction</a>
+
+<nav class="nav">
+<!--<a href="#C1">Introduction</a>
 <a href="#C2">Chapter 2</a>
   <div class="dropdown">
   <button class="dropbtn">Dropdown</button>
@@ -141,12 +113,14 @@ p {
 <a href="#C9">Chapter 9</a>
 <a href="#C10">Chapter 10</a>
 <a href="#C11">Chapter 11</a>
+-->
 </nav>
+
 
 <main>
 
 <header>
-<h1>Knowing Gaia</h1>
+<h1 class="main-header">Knowing Gaia</h1>
 </header>
 
 <section role="contentinfo" aria-label="Chapter One Introduction">
