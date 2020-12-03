@@ -9,6 +9,7 @@
   --bg-card-active: #508991;
   --bg-card-hover: #487082;
   --ftr-lt-green: #23d6a4;
+  --ftr-btn-bg-color: rgba(35, 214, 164, .8);
   --discord-blue: #7289da;
   --discord-active: #3F56A7;
 }
@@ -199,7 +200,11 @@ a.btn-footer:active {
 
 /* Large Color Samples */
 
-.color-block-bg-main, .bg-footer, .background-card, .background-hover, .background-active, .ftr-lt-green {
+.color-block-bg-main,
+.bg-footer,
+.background-card,
+.background-hover,
+.background-active {
   height: 50px;
   width: 300px;
   margin: 1em 0 2em 0;
@@ -213,7 +218,8 @@ a.btn-footer:active {
 .bg-footer {
   background: var(--bg-footer);
 }
-.background-card, .card-background {
+.background-card,
+.card-background {
   background: var(--bg-card);
 }
 .background-card-active {
@@ -223,14 +229,23 @@ a.btn-footer:active {
   background: var(--ftr-lt-green);
 }
 /* Small Color Samples */
-.font-color, .links-color, .card-border-color, .card-text-color, .card-background,
-.card-background-hover, .card-background-active, .footer-background-color {
+.font-color,
+.links-color,
+.card-border-color,
+.card-text-color,
+.card-background,
+.card-background-hover,
+.card-background-active,
+.footer-background-color,
+.ftr-lt-green {
   height: 25px;
   width: 150px;
   margin-top: 1em;
   margin-bottom: 2em;
 }
-.font-color, .card-border-color, .card-text-color {
+.font-color,
+.card-border-color,
+.card-text-color {
   background: var(--main-text);
 }
 .links-color {
@@ -242,17 +257,16 @@ a.btn-footer:active {
 .links-clicked {
   background: ;
 }
-.card-background, .card-background-hover {
+.card-background,
+.card-background-hover {
   background: var(--bg-card);
 }
-.background-card-active, .card-background-active{
+.background-card-active,
+.card-background-active {
   background: var(--bg-card-active);
 }
 .background-active {
   background: var(--bg-card-active);
-}
-.footer-background-color {
-  background: var(--bg-footer);
 }
 .paragraph {
   line-height: 140%;
@@ -286,4 +300,13 @@ a.btn-footer:active {
 }
 .card-sample-margin {
   margin-bottom: 5px;
+}
+.footer-background-color {
+  background: var(--bg-footer);
+}
+.ftr-lt-color {
+  color: var(--ftr-lt-green);
+}
+.ftr-btn-bg-color {
+  color: var(--ftr-btn-bg-color);
 }
