@@ -26,6 +26,7 @@ html {
   margin: 2em;
 }
 .body-index-file {
+  color: var(--main-text);
   text-align: center;
   margin: 0;
   position: relative; /*relative body for absolute footer child placement */
@@ -50,9 +51,17 @@ h1 {
   font-size: 2.8em;
   letter-spacing: 2px;
 }
+.sg-h1 {
+  margin: 1.5em 0 .5em 0;
+  font-size: 2.3em;
+}
 h2 {
   font-size: 2.3em;
   margin: 1em 0 1.5em 0;
+}
+.sg-h2 {
+  font-size: 1.6em;
+  
 }
 h3 {
   font-size: 1.2em;
@@ -69,7 +78,7 @@ p {
   padding: 2em 0 2em 0;
   margin: auto 2em;
 }
-img.discord-image {
+.discord-image {
   width: 15%;
   border: 1px solid rgba(114, 137, 218, .5);
   border-radius: .5em;
@@ -121,11 +130,17 @@ a.btn:active {
 }
 .asterisk-divider {
   font-size: 1.5em;
-  margin-bottom: 1.5em;
-  margin-top: 1.5em;
+  margin: 1.5em 0 1.5em 0;
   color: var(--bg-card-active);
   letter-spacing: .2em;
 }
+.style-sheet-asterisk-divider {
+  font-size: 1.5em;
+  margin: 1em 0 1em 0;
+  color: var(--bg-card-active);
+  letter-spacing: .2em;
+}
+
 .quote-container {
   margin-left: auto;
   margin-right: auto;
@@ -159,15 +174,6 @@ footer {
   margin: 0 15em 0 15em; 
 }
 a.btn-footer {
- color: rgba(35, 214, 164, .8);
-}
-.footer-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 15em 0 15em; 
-}
-a.btn-footer {
   color: rgba(35, 214, 164, .8);
   font-size: 1em;
   text-decoration: none;
@@ -179,14 +185,33 @@ a.btn-footer {
   padding: .15em 0 .15em 0;  
 }
 a.btn-footer:hover {
-  color: #004346;
   box-shadow: 0px 0px 3px 1px #23d6a4;
   color: rgba(35, 214, 164, .8);
 }
 a.btn-footer:active {
   background: #172a3a;
-  background: #172a3a;
   color: #23da64;
+}
+.sg-ftr-link,
+.sg-ftr-link-hover,
+.sg-ftr-link-active {
+  color: var(--ftr-lt-green);
+  font-size: 1em;
+  border: 1px solid rgba(35, 214, 164, .8);
+  border-radius: .5em;
+  margin: 2em 0 2em 0;
+  width: 8em;
+  text-align: center;
+  background: var(--bg-footer);
+}
+.sg-ftr-link-hover {
+  box-shadow: 0px 0px 3px 1px #23d6a4;
+  background: var(--bg-footer);
+}
+.sg-ftr-link-active {
+  box-shadow: 0px 0px 3px 1px #23d6a4;
+  background: var(--bg-main);
+
 }
 .web-address {
  color: #23d6a4;
