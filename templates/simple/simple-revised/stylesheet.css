@@ -73,6 +73,10 @@ p {
   font-size: 1.4em;
   text-align: center;
 }
+.sg-paragraph {
+  font-size: 1em;
+  text-align: left;
+}
 .discord-container {
   display: block;
   padding: 2em 0 2em 0;
