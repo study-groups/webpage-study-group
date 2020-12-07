@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study-Groups Main Page</title>
+<script src="main.js"></script>
 <style>
 
 :root {
-  --font-primary: #f3ffff;
+  --text-primary: #f3ffff;
   --bg-main: #172a3a;
   --bg-footer: #004346;
   --bg-card: #487082;
@@ -17,17 +18,29 @@
   --discord-blue: #7289da;
   --discord-active: #3F56A7;
 }
-
+<-- :root.light-theme {
+  --text-primary: #0c0000;
+  --bg-main: #e8d5c5;
+  --bg-footer: #ffbcb9;
+  --bg-card: #b78f7d;
+  --bg-card-active: #7F766E;
+  --bg-card-hover: #B78F7D;
+  --ftr-lt-green: #DC295B;
+} -->
+  
 html {
   font-size: 12pt;
 }
 body {
   background: var(--bg-main);
-  color: var(--font-primary);
+  color: var(--text-primary);
   text-align: center;
   margin: 0;
   position: relative; /*relative body for absolute footer child placement */
   min-height: 100vh; /* ensure body takes full view port height */ 
+}
+body.light-theme  {
+  background: var(--bg-main);
 }
 .logo-container {
   position: absolute;
@@ -54,7 +67,7 @@ h2 {
 }
 h3 {
   font-size: 1.2em;
-  color: var(--font-primary);
+  color: var(--text-primary);
   margin: 1em 0 .6em 0;
 }
 p {
@@ -94,15 +107,15 @@ img.discord-image:active {
   text-align: center;
   font-size: 1em;
   margin: .3em 0 0 0;
-  color: var(--font-primary);
+  color: var(--text-primary);
 }
 a.btn {
   padding: 0;
   margin: 1em 1em 1em 1em;
   display: inline-block;
-  color: var(font-primary);
+  color: var(--text-primary);
   background: var(--bg-card);
-  border: 1px var(--font-primary) solid;
+  border: 1px var(--text-primary) solid;
   border-radius: 16px;
   height: 6em;
   width: 16em;
@@ -112,10 +125,10 @@ a.btn {
   text-decoration: none;
 }
 a.btn:hover {
-  box-shadow: 0px 0px 5px 1px var(--font-primary);
+  box-shadow: 0px 0px 5px 1px var(--text-primary);
 }
 a.btn:active {
-  box-shadow: 1px 1px 5px 1px var(--font-primary);
+  box-shadow: 1px 1px 5px 1px var(--text-primary);
   background: #508991;
 }
 .asterisk-divider {
@@ -245,10 +258,10 @@ a.btn-footer:hover {
 </style>
 </head>
 
-<body id="body">
+<body class="dark-theme" || "light-theme">
 <header>
 <div class="logo-container">
-  <img class="logo" src="../assets/sg-logo/cold-1294166.svg.png"
+  <img class="logo" src="../simple/assets/sg-logo/cold-1294166.svg.png"
        width="100%">
 </div>
 </header>
@@ -261,7 +274,7 @@ Study Groups is a an online meet-up to study and practice a broad spectrum of sk
 <div discord-container>
   <a href="https://discord.gg/bPvheDd">
   <img class="discord-image" 
-       src="../assets/images/Discord-Wordmark-Color.png">
+       src="../simple/assets/images/Discord-Wordmark-Color.png">
   </a>
 </div>
 
@@ -319,14 +332,14 @@ This is the style.
   
   <h3>Basic Color Palette</h3>
     <div>Background-main: #172a3a</div>
-    <div>CSS: var(--font-primary)
+    <div>CSS: var(--text-primary)
  	  <div class="bg-main"></div> <!-- color swatch -->
 
-<!-- ---------- -->
+<!-- --------- -->
     <div>Background-footer: #004346</div>
     <div>CSS: var(--bg-footer)
   	  <div class="bg-footer"></div><!-- color swatch -->
-<!-- ---------- -->
+<!-- --------- -->
     <div>Background-card/Background-card-hover: #487082</div>
     <div>CSS: var(--bg-card), var(--bg-card-hover)
   	  <div class="background-card"></div><!-- color swatch -->
