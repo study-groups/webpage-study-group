@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study-Groups Main Page</title>
+<link href="stylesheet.css"rel="stylesheet" type="text/css"/>
+<style>
+/* ----- Media-query, Index file, 600px or Less ----- */
+@media only screen and (max-width: 600px) {
+img.discord-image {
+  width: 40%;
+  padding: .3em;
+} 
+.logo {
+  width: 80%;
+}
+.main-header {
+  margin: 1.5em 0 1em 0;
+}
+h2 {
+  margin: .5em 0 1em 0;
+}
+h3 {
+  font-size: 1.4em;
+  margin: .7em 0 .4em 0;
+}
+p {
+  font-size: 1.4em;
+  margin: 0 5% 0 5%;
+  padding: 0 0 1.25em 0;
+}
+.card-item {
+  font-size: 1.2em;
+}
+.asterisk-divider {
+  margin: .5em 0 1em 0;
+}
+.style-sheet-asterisk-divider {/* copied to index stylesheet, changed name to avoid conflicts */
+  font-size: 1.5em;
+  letter-spacing: .5em;
+  color: var(--bg-card-active);
+}
+footer {
+  margin: 3em 0 0 0;
+  padding-top: 1em;
+  position: relative;
+}
+.quote-container {
+  max-width: 100%;
+}
+.author {
+  padding: 0 1em 0 0;
+}
+.footer-group {
+  margin: 0 4em 0 4em;
+}
+a.btn-footer {
+  padding: .8em;
+  margin: .5em 1em .5em 1em;
+  font-size: 1.2em;
+  -webkit-appearance: none; /* removes defaults on Apple's webkit */
+}
+</style>
+</head>
+
+<body class="body-index-file">
+<header>
+<div class="logo-container">
+  <img class="logo" src="../assets/sg-logo/cold-1294166.svg.png"
+       width="100%">
+</div>
+</header>
+<h1 class="main-header"> Study-Groups</h1>
+<main>
+<!--<h2>About... </h2> -->
+<p>
+Study Groups is a an online meet-up to study and practice a broad spectrum of skills. Current focus is on web development and data science. Connect with us on Discord:</p>
+
+<div discord-container>
+  <a href="https://discord.gg/bPvheDd">
+  <img class="discord-image" 
+       src="../assets/images/Discord-Wordmark-Color.png">
+  </a>
+</div>
+
+<div class="card-container">
+<a class="btn" href="https://github.com/study-groups/js-study-group">
+  <h3>Javascript & React</h3>
+  <div class="card-item">Thursdays, 4 PM (EST)</div></a>
+
+<a class="btn" 
+     href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+  <h3>Data Science</h3>
+  <div class="card-item">Mondays, 10 AM (EST)</div></a>
+
+<a class="btn" href="https://github.com/study-groups/math-study-group/tree/master/category-theory">
+  <h3>Category Theory</h3>
+  <div class="card-item">Thursdays, 4 PM (EST)</div></a>
+</div>
+
+<div class="asterisk-divider">* * * * *</div>
+
+<div class="quote-container">
+  <div class="quote">
+    "Tell me and I forget, teach me and I may remember,
+    involve me and I learn."
+  </div>
+  <div class="author">&mdash; Benjamin Franklin</div>
+</div>
+</main>
+<footer>
+  <div class="footer-group">
+       <a target="self" class="btn-footer" 
+         href="http://www.study-groups.org:9000/dev/001-simple/style-guide-simple-003.html">
+            Style Guide </a>
+      
+      <a class="btn-footer"  href="http://study-groups.org:9000/dev/001-simple/error-page.html">
+ Link 2
+      </a>
+      <!-- <a class="btn-footer"  href="http://study-groups.org:9000/dev/001-simple/error-page.html"> -->
+      <a class="btn-footer"  href="#" onclick="showStyleguide()">
+ Link 3
+      </a>
+  </div>
+ <div class="web-address">www.study-groups.org</div>
+</footer>
+</body>
+
