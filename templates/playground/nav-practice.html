@@ -107,7 +107,7 @@ chapter=document.getElementById("chapter");
 prompt=document.getElementById("prompt");
 text=document.getElementById("text");
 
-for(let el of chapterNav.children){
+for(let el of chapterNav.children){  //children are <li>'s for chapter (C1, C2, C3, etc.
     el.addEventListener('click',handleEvent);
 }
 for(let el of promptNav.children){

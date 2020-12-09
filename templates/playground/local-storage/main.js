@@ -1,6 +1,9 @@
 const storageInput = document.querySelector('.storage');
 const text = document.querySelector('.text');
 const button = document.querySelector('.button');
+const data = [];
+const dataRecord = 
+
 
 storageInput.addEventListener('input', letter => {
   console.log(letter.target.value)
