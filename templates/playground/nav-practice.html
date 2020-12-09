@@ -37,11 +37,27 @@ article{
 <li>C1</li>
 <li>C2</li>
 <li>C3</li>
+<li>C4</li>
+<li>C5</li>
+<li>C6</li>
+<li>C7</li>
+<li>C8</li>
+<li>C9</li>
+<li>C10</li>
+<li>C11</li>
 </ul>
 <ul id="promptNav">
 <li>P1</li>
 <li>P2</li>
 <li>P3</li>
+<li>P4</li>
+<li>P5</li>
+<li>P6</li>
+<li>P7</li>
+<li>P8</li>
+<li>P9</li>
+<li>P10</li>
+
 </ul>
 <div style="clear:both">
 <div id="chapter"></div>
@@ -61,15 +77,22 @@ console.log("gaia-web-000m1");
 //////////////
 // MODEL
 //////////////
-if(!localStorage.getItem('text')) { //If localStorage is null(no saved data),   
+if(!localStorage.getItem('text')) {    
   localStorage.setItem('chapter',2);
   localStorage.setItem('prompt',3);
   localStorage.setItem('text',"Text for prompt 3 of chapter 2.");
   localStorage.setItem('action','idle');
 }
 
+// The model consists of four key, value pairs for the keys chapter, prompt, text, and action and their associated values as identified above. The key value pairs are added to localStorage if the condition created by the "if" statement it true. The "if" statement evaluates with the text variable is null and if so, populates localStorage, and updates the DOM. 
+
+//Questions:
+// 1.
+//-----------------
 // Object of key/values where the value is a function that
 // is called when key changes. Currently only handleModelUpdateView
+
+// Did not work in depth on this function as it appears to be related to pub/sub, and I will return to this later.
 
 var subs={}; // should be in Model closure.
 modelSubscribe('any',updateView);
@@ -85,17 +108,26 @@ function modelSetItem(key,val){
   for (var sub in subs){subs[sub](data);};
 }
 
+// The function modelSetItem above, is called by the controller. It writes a key value pair to the DOM/localStorage when called, and operates on a variable named "data", it is associated with pub/sub can involves updating of the data, along with the function below. 
+
 // Model with publish changes to subscribed functions.
 // Assumes fun(data) where data is Object of key/val from model.
 function modelSubscribe(key,fn){
   subs[key]=fn;
 }
-
+//-----------------
 // Only fired when called from another tab. 
 window.addEventListener('storage', (e) => {
   text.innerHTML=`Got window.onstorage event.`; // VIEW
   console.log(e); // M & V
 });
+
+// This function is a event listerner on the Window object which only fires when it is called from another tab. The type of " storage" (involves stored data). When called the sets the value of text.innerHTML equal to the string "Got window.onstorage event" and then logs the event to the console.
+
+//Questions: 
+// 1. Does the event listener on the window object auto-magically know the event is a click on a new tab? So far, the event is defined as a generic event on the window object on the window object, correct?
+// 2. The `Got window...event.` is identified as a string by the use of backticks, correct? 
+
 
 //////////
 //VIEW
@@ -107,12 +139,23 @@ chapter=document.getElementById("chapter");
 prompt=document.getElementById("prompt");
 text=document.getElementById("text");
 
+// The six lines of code above define variables (left side of = sign) and sets them equal to html id's.
+
+// Questions:
+// 1. Why is the var or const identifier not needed here? If I'm correct there is a reason that I am not recalling.
+
+//----------------
+
 for(let el of chapterNav.children){  //children are <li>'s for chapter (C1, C2, C3, etc.
     el.addEventListener('click',handleEvent);
 }
 for(let el of promptNav.children){
    el.addEventListener('click',handleEvent);
 }
+// Comment/question:
+// Here I am a little confused. Is the "for" statemnt being used to assign the event handler to the element children of chapterNav?, and similarly for promptNav.children?
+
+// The function "handeEvent", the second perameter of the variable definition, embedded in a for statement, is defined in the controller below.
 
 // Called by Model when state changes.
 function updateView(data){ // VIEW 
@@ -120,6 +163,13 @@ function updateView(data){ // VIEW
   prompt.innerText=`prompt:${data.prompt}`; // VIEW
   text.innerHTML=`updateView with ${data.text}`; // VIEW
 }
+
+// The update function above (an alternative to pub/sub and resulting in some differences to what is updated in the DOM when called (?)).
+
+// This is a tough one! LOL!
+
+// The function "updateview" has a perameter of, and calls on the data currently in localStorage(?). No, that is not correct...It is using the data submitted to change state and updating it. It is updating the value of chapter.innerText (is this a variable?) to the value of the input associated with data.chapter. Likewise for prompt.html and text.html.    
+
 
 ///////////////
 //CONTROLLER
