@@ -37,27 +37,11 @@ article{
 <li>C1</li>
 <li>C2</li>
 <li>C3</li>
-<li>C4</li>
-<li>C5</li>
-<li>C6</li>
-<li>C7</li>
-<li>C8</li>
-<li>C9</li>
-<li>C10</li>
-<li>C11</li>
 </ul>
 <ul id="promptNav">
 <li>P1</li>
 <li>P2</li>
 <li>P3</li>
-<li>P4</li>
-<li>P5</li>
-<li>P6</li>
-<li>P7</li>
-<li>P8</li>
-<li>P9</li>
-<li>P10</li>
-
 </ul>
 <div style="clear:both">
 <div id="chapter"></div>
@@ -80,11 +64,17 @@ console.log("gaia-web-000m1");
 if(!localStorage.getItem('text')) {    
   localStorage.setItem('chapter',2);
   localStorage.setItem('prompt',3);
-  localStorage.setItem('text',"Text for prompt 3 of chapter 2.");
+  localStorage.setItem('text',"Text for prompt 3 of chapter 2."); // ???
   localStorage.setItem('action','idle');
 }
 
-// The model consists of four key, value pairs for the keys chapter, prompt, text, and action and their associated values as identified above. The key value pairs are added to localStorage if the condition created by the "if" statement it true. The "if" statement evaluates with the text variable is null and if so, populates localStorage, and updates the DOM. 
+/* The model consists of four key, value pairs for the 
+keys chapter, prompt, text, and action and their associated 
+values as identified above. The key value pairs are added 
+to localStorage if the condition created by the "if" statement 
+it true. The "if" statement evaluates with the text variable 
+is null and if so, populates localStorage, and updates the DOM. 
+*/
 
 //Questions:
 // 1.
@@ -92,7 +82,8 @@ if(!localStorage.getItem('text')) {
 // Object of key/values where the value is a function that
 // is called when key changes. Currently only handleModelUpdateView
 
-// Did not work in depth on this function as it appears to be related to pub/sub, and I will return to this later.
+// Did not work in depth on this function as it appears to be 
+// related to pub/sub, and I will return to this later.
 
 var subs={}; // should be in Model closure.
 modelSubscribe('any',updateView);
@@ -108,7 +99,17 @@ function modelSetItem(key,val){
   for (var sub in subs){subs[sub](data);};
 }
 
-// The function modelSetItem above, is called by the controller. It writes a key value pair to the DOM/localStorage when called, and operates on a variable named "data", it is associated with pub/sub can involves updating of the data, along with the function below. 
+// The function modelSetItem above, is called by the 
+// controller. It writes a key value pair to the DOM/localStorage 
+// when called, and operates on a variable named "data", 
+
+//m slight clarification: It *creates* an object called "data"
+//m and populates it with items from localStorage
+
+// it is associated with pub/sub can involves updating 
+// of the data, along with the function below. 
+
+//m Correct.
 
 // Model with publish changes to subscribed functions.
 // Assumes fun(data) where data is Object of key/val from model.
@@ -122,12 +123,34 @@ window.addEventListener('storage', (e) => {
   console.log(e); // M & V
 });
 
-// This function is a event listerner on the Window object which only fires when it is called from another tab. The type of " storage" (involves stored data). When called the sets the value of text.innerHTML equal to the string "Got window.onstorage event" and then logs the event to the console.
+// This function is a event listerner on the Window object
+//  which only fires when it is called from another tab. 
+// The type of " storage" (involves stored data). When called 
+// the sets the value of text.innerHTML equal to the string 
+// "Got window.onstorage event" and then logs the event to the console.
+
+//m Correct.
 
 //Questions: 
-// 1. Does the event listener on the window object auto-magically know the event is a click on a new tab? So far, the event is defined as a generic event on the window object on the window object, correct?
-// 2. The `Got window...event.` is identified as a string by the use of backticks, correct? 
+// 1. Does the event listener on the window object 
+// auto-magically know the event is a click on a new tab? 
 
+//m The event is not a click event, but rather, a storage event.
+//m This event listener is never used by us and I included 
+//m it just to be thorough and to point out the 'storage'
+//m event is typically never called. 
+
+// So far, the event is defined as a generic event on the 
+// window object on the window object, correct?
+
+//m not generic, but rather, a 'storage' event. But to be clear,
+//m we are never using this.
+
+// 2. The `Got window...event.` is identified as a string by
+// the use of backticks, correct? 
+
+//m A template string, yes. For example `The var is ${var}` 
+//m would print out the var value in the string.
 
 //////////
 //VIEW
@@ -139,12 +162,23 @@ chapter=document.getElementById("chapter");
 prompt=document.getElementById("prompt");
 text=document.getElementById("text");
 
-// The six lines of code above define variables (left side of = sign) and sets them equal to html id's.
+// The six lines of code above define variables 
+// (left side of = sign) and sets them equal to html id's.
+
+//m getElementById() returns a DOM element which is 
+//m which is essentially/semantical an HTML object.
 
 // Questions:
-// 1. Why is the var or const identifier not needed here? If I'm correct there is a reason that I am not recalling.
+// 1. Why is the var or const identifier not needed here? 
 
-//----------------
+//m It's never need but is good practice. Because I might 
+//m want to add a member variable to it, e.g. chapter.active=3
+//m I did not make it const. Good practice would be 
+//m to make it const and store the state info elsewhere.
+//m This is sloppy programming on my part.
+
+
+// ---------------
 
 for(let el of chapterNav.children){  //children are <li>'s for chapter (C1, C2, C3, etc.
     el.addEventListener('click',handleEvent);
@@ -152,10 +186,21 @@ for(let el of chapterNav.children){  //children are <li>'s for chapter (C1, C2, 
 for(let el of promptNav.children){
    el.addEventListener('click',handleEvent);
 }
-// Comment/question:
-// Here I am a little confused. Is the "for" statemnt being used to assign the event handler to the element children of chapterNav?, and similarly for promptNav.children?
 
-// The function "handeEvent", the second perameter of the variable definition, embedded in a for statement, is defined in the controller below.
+// Upon click the handleEvent() function in the controller is trigged.
+
+// Comment/question:
+// Here I am a little confused. Is the "for" statemnt 
+// being used to assign the event handler to the element 
+// children of chapterNav?, and similarly for promptNav.children?
+
+//m Yes, correct.
+
+// The function "handleEvent", the second perameter of the 
+// variable definition, embedded in a for statement, is defined 
+// in the controller below.
+
+//m Correct.
 
 // Called by Model when state changes.
 function updateView(data){ // VIEW 
@@ -164,12 +209,46 @@ function updateView(data){ // VIEW
   text.innerHTML=`updateView with ${data.text}`; // VIEW
 }
 
-// The update function above (an alternative to pub/sub and resulting in some differences to what is updated in the DOM when called (?)).
+// The update function above (an alternative to pub/sub 
+// and resulting in some differences to what is updated in 
+// the DOM when called (?)).
 
 // This is a tough one! LOL!
 
-// The function "updateview" has a perameter of, and calls on the data currently in localStorage(?). No, that is not correct...It is using the data submitted to change state and updating it. It is updating the value of chapter.innerText (is this a variable?) to the value of the input associated with data.chapter. Likewise for prompt.html and text.html.    
+//m Indeed. updateView is set as a subscriber and is called
+//m by the current pub/sub mechanism. But because it is the 
+//m only function in the subscribe list (e.g. subs), it 
+//m is called by the pub/sub 'for' loop at the 
+//m bottom modelSetItem() 
 
+// The function "updateview" has a perameter of, and calls 
+// on the data currently in localStorage(?). 
+
+//m Because we made a copy of data and are passing that 
+//m to updateView(data) we have 'decoupled' the view 
+//m from the model. This required us to make a copy of 
+//m data and pass it to the view. This way you can 
+//m test the view without having a model.
+
+//m But yes, it recieves a copy of what is in localStorage.
+
+// No, that is not correct...It is using the data submitted 
+// to change state and update it. It is updating the 
+// value of chapter.innerText (is this a variable?)
+
+//m You were correct. It is using a copy from localStorage
+//m and we are passing all of the variable in a copy 
+//m called data from the controller function called 
+//m handle which is passed into updateView.
+
+//m Since chapter is a DOM Element, innerText is a member
+//m variable of the DOM Element class. It turns out you
+//m can set either chapter.innerHTML or chapter.innerText
+//m Either will trigger the browser to re-draw the 
+//m contents of the Element with the new value you set.
+ 
+// to the value of the input associated with data.chapter. 
+// Likewise for prompt.html and text.html.    
 
 ///////////////
 //CONTROLLER
@@ -189,9 +268,16 @@ function handleEvent(e){ // CONTROLLER
 
 }); // document.addEventListener for 'DOMContentLoaded'
 
+// parentNode is a mixin: "a class containing methods that can be used by other classess without a need to inherit from it; a mixin provides methods that inplement a certain behavior, but it is not used alone, it is used to add the behavior to other classes."
+
+// The variable parent is defined as the event target of parentNode (a mixin). 
+
+
+
 // References:
 // https://reactnavigation.org/docs/navigation-events/
 // https://developer.mozilla.org/en-US/docs/Mozilla/\
 // Add-ons/WebExtensions/API/storage
+// Mixins https://javascript.info/mixins
 </script>
 </html>
