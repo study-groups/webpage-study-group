@@ -67,7 +67,8 @@ body {
 .card-background-hover,
 .card-background-active,
 .footer-background-color,
-.ftr-lt-green {
+.ftr-lt-green,
+.error-pg-font-color-primary; {
   height: 25px;
   width: 150px;
   margin-top: 1em;
@@ -160,7 +161,10 @@ body {
   box-shadow: 0px 0px 3px 1px #23d6a4;
   background: var(--bg-main);
 
-}}
+}
+.error-pg-font-color-primary {
+  color: var(--main-text);
+}
 </style>
 
 </head>
@@ -276,7 +280,10 @@ body {
 
   <div>Footer Link Active</div>
     <div class="sg-ftr-link-active">Study Guide</div>
- 
+<h3>Error Page</h3>
+  <div>Error Page - Primary Font Color:</div>
+  <div class="error-pg-font-color-primary"></div>
+   
   <h3>CSS Element Modifiers</h3>
 <p class="sg-paragraph">
   Various modifications have been added to the many html tags. For specifics, please review the css file. For example, the main header for the Study Groups main page has modified letter spacing. Paragraph elements have and adjustment for line height. Since these are more dynamic elements and may change over time, they were not listed here.
