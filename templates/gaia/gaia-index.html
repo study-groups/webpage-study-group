@@ -36,6 +36,8 @@ NOTE: This document will be using internal CSS styling because the document is r
   --divider-line: #fce694;
   --nav-bar-bg: #1e1e1e;
   --email-link: #A16317;
+  --video-links: #ac3d18;
+  --prompt-color: #E1F9DF;
 }
 
 body {
@@ -43,13 +45,15 @@ body {
   font-size: 12pt;
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
-  line-height: 1.6em;
+  letter-spacing: 1px;
 }
-nav {
-  display: block;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   color: var(--h1-color);
   background: #1e1e1e;
-  height: 5em;
+  height: 6em;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -57,12 +61,13 @@ nav {
 }
 .main-header {
   color: var(--h1-color);
-  margin: 1.5em 10% 1em 10%;
+  margin: 5em 10% 1em 10%;
 }
 h2 {
   color: var(--h2-color);
   margin: 1.5em 10% 1em 10%;
 
+q
 }
 h3, h4 {
   color: var(--font-primary);
@@ -72,6 +77,9 @@ p {
   color: var(--body-text);
   margin: 0 10% 1.35em 10%;
   line-height: 170%;
+}
+a {
+  color: var(--video-links);
 }
 #email {
   color: var(--email-link);
@@ -86,11 +94,20 @@ ul {
   color: var(--h1-color);
 }
 .zen-circle {
-  width: 10%;
+  width: 50%;
+  margin: auto;
+  display: block;
 }
-.@media and screen and (max-width: 667px) {
-  body {  
-    margin: 2em;
+@media screen and (max-width: 667px) {
+  .main-header {
+    margin: 4em 20px 0 20px;
+  } 
+  p {  
+     margin: 0 20px 0 20px;
+  }
+  h2 {
+    margin: 1.4em 0 .8em 1.2em;
+    font-size: 120%;  
   }
 }
 </style>
@@ -98,7 +115,7 @@ ul {
 
 <body>
 
-<nav></nav>
+<nav class="navbar"></nav>
 
 <main>
 
@@ -148,8 +165,7 @@ are killing. Yet the whole complex system not only continues, but continues to
 develop more complexity. It almost seems alive, and so, following Lovelock, I’m
 calling it Gaia.
 </p>
-<p>
-</p>
+
 <p>
 I’m setting aside the fact that traditional ideas of ‘mother’ imply the
 existence of ‘father’. Let’s just say the Sun is our father, and go ahead with
@@ -238,15 +254,14 @@ Here are the ten prompts I’m using. You could try making up your own. Just thi
 of some questions or statements which will challenge your own deeply held
 assumptions.
 </p>
-<p>
-        P1: Since living systems do not exist independently in nature, what am
-I? What does that feel like?
+<p>P1 ~ Since living systems do not exist independently in nature, what am
+        I? What does that feel like?
 </p>
-<p>
-        P2: Integrity is a function of how well a system is integrated. Are any
+<p class="p2-content">
+        P2 ~ Integrity is a function of how well a system is integrated. Are any
 conflicting emotions currently creating instability in me?
 </p>
-<p>
+<p class="p3-content">
         P3: The problem with living in a dream is that real people get hurt.
 What’s my most recent example of that?
 </p>
@@ -298,15 +313,15 @@ telling us how it should be done, or what we will find.
 For a bit of refreshment, I’ve included some youtube clips. Take a look...
 </p>
 <p>
-<a href="https://youtu.be/5sBI2WY5B58">https://youtu. /5sBI2WY5B58</a>
+<a target="blank" href="https://youtu.be/5sBI2WY5B58"><strong>MEDIA:</strong> The Evolution of Dogs</a>
 </p>
 </section>
 
 <section role="Contentinfo" aria-label="Chapter three, First Impressions?">
 <h2>Ch. 3 ~ First Impressions</h2>
-<p>
-    P1: Since living systems do not exist independently in nature, what am I?
-What does that feel like?
+<p class="P1">P1
+  <div>P1: Since living systems do not exist independently in nature, what am I?
+What does that feel like?</div>
 </p>
 <p>
 Contemplation begins with our ability to talk to ourselves. This ability can
@@ -462,7 +477,7 @@ ourselves, find boundaries, give names. If our minds became fully integrated
 with Gaia, as our bodies already are, perhaps we would be Gaia’s self.
 </p>
 <p>
-<a href="https://youtu.be/FGnS-Xk0ZqU">https://youtu.be/FGnS-Xk0ZqU</a>
+<a target="blank" href="https://youtu.be/FGnS-Xk0ZqU"><strong>MEDIA: </strong> Endosymiotic Theory</a>
 </p>
 </section>
 
@@ -609,7 +624,7 @@ favor us, we might need to offer ourselves as Gaia’s brain. From that, we will
 see what kind of self naturally emerges.
 </p>
 <p>
-https://youtu.be/pwymX2LxnQs
+<a target="blank" href="https://youtu.be/pwymX2LxnQs"><strong>MEDIA: </strong>Travel Deep Inside a Leaf</a>
 </p>
 </section>
 
@@ -771,10 +786,7 @@ range of activity which can occur will give us the energy to do this work. This
 faith is ungraspable, yet so simple. I’m suggesting a technique: shift attention
 to breathing and gravity. If you have a better technique, of course you will do
 that one. If you can open to what is here now using no technique, no concepts,
-no practice, no help from
-</p>
-<p>
-anyone, then you don’t even need faith.
+no practice, no help from anyone, then you don’t even need faith.
 </p>
 <p>
     P10: Does Gaia have a self? What would that mean?
@@ -803,7 +815,7 @@ system. For better or for worse - and who decides what is “better”, what is
 “worse”? We do. I think we would be smart to take a close look at that.
 </p>
 <p>
-https://youtu.be/GVU_zANtroE
+<a target="blank" href="https://youtu.be/GVU_zANtroE"><strong>MEDIA: </strong>Endosymbiotic Theory</a>
 </p>
 </section>
 
@@ -1007,7 +1019,7 @@ values, with intelligent purpose. If that’s what we want to do, we first need 
 adjust our own identities.
 </p>
 <p>
-<a href="https://youtu.be/7t-NbF77ceM">https://youtu.be/7t-NbF77ceM</a>
+<a target="blank" href="https://youtu.be/7t-NbF77ceM"><strong>MEDIA: </strong>Urban Gangsta Gardener in South Central LA</a>
 </p>
 <h2>Ch. 7 ~ Investigating personal identity</h2>
 <p>
@@ -1239,7 +1251,7 @@ change our behavior before it’s too late? Gaia can’t do it for us, we have t
 grow up and do it for Gaia.
 </p>
 <p>
-<a href="https://youtu.be/DHyUYg8X31c">https://youtu.be/DHyUYg8X31c</a>
+<a target="blank" href="https://youtu.be/DHyUYg8X31c"><strong>MEDIA: </strong>Do Robots Deserve Rights?</a>
 </p>
 </section>
 
@@ -1324,10 +1336,7 @@ fully who I am right now.
 </p>
 <p>
 	P3: The problem with living in a dream is that real people get hurt. What’s my
-most
-</p>
-<p>
-            recent example of that?
+most recent example of that?
 </p>
 <p>
 Dreams drift around somewhere between being and doing. They remind us of how
@@ -1555,7 +1564,7 @@ environment. So there’s nothing new about that. What is new is the ability to
 say “Wait a minute. We need a plan.”
 </p>
 <p>
-<a href="https://youtu.be/tvA7CWSIbTc">https://youtu.be/tvA7CWSIbTc</a>
+<a target="blank" href="https://youtu.be/tvA7CWSIbTc"><strong>MEDIA: </strong>The Rhizosphere</a>
 </p>
 </section>
 
@@ -1865,7 +1874,7 @@ Maybe we can consciously control our own greed and aggression in support of
 Gaia.
 </p>
 <p>
-<a href="https://youtu.be/PUwmA3Q0_OE">https://youtu.be/PUwmA3Q0_OE</a>
+<a target="blank" href="https://youtu.be/PUwmA3Q0_OE"><strong>MEDIA: </strong>Human Population Through Time</a>
 </p>
 </section>
 
@@ -2120,7 +2129,7 @@ and resources to avoid creating a world which is more suitable for cyclones than
 for humans.
 </p>
 <p>
-<a href="https://youtu.be/LQmTKxI4Wn4">https://youtu.be/LQmTKxI4Wn4</a>
+<a target="blank" href="https://youtu.be/LQmTKxI4Wn4"><strong>MEDIA: </strong>Electron Transplant Chain</a>
 </p>
 </section>
 
@@ -2182,7 +2191,7 @@ You will find your own way of knowing Gaia.
 <br>
 <div class="divider-line"></div>
 
-  <img class="zen-circle" src="/templates/gaia/assets/zen-circle.png">
+  <img class="zen-circle" src="/templates/gaia/assets/zen-circle-mod.png">
 </div>
 <br>
 <section class="author-container">
