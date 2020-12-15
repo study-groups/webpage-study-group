@@ -36,13 +36,13 @@ NOTE: This document will be using internal CSS styling because the document is r
   --divider-line: #fce694;
   --nav-bar-bg: #1e1e1e;
   --email-link: #A16317;
-  --video-links: #ac3d18;
+  --video-links: #df7048;
   --prompt-color: #E1F9DF;
 }
 
 body {
   background: var(--bk-primary);
-  font-size: 12pt;
+  font-size: 14pt;
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
   letter-spacing: 1px;
@@ -86,10 +86,11 @@ ul {
   list-style-type: none;
   padding-left: 0;
 }
-hr { 
+.section-divider { 
   border-color: var(--nav-bar-bg);
-  width: 400px;
-  margin: 2em auto;
+  border-top: 2px 25em;
+  margin: 3em 25% 0 20%;
+  
 }
 .author {
   margin: 1.5em 10% 1em 10%;
@@ -101,6 +102,9 @@ hr {
   display: block;
 }
 @media screen and (max-width: 667px) {
+  body {
+    font-size: 12pt;
+}
   .main-header {
     margin: 4em 20px 0 20px;
   } 
@@ -111,6 +115,8 @@ hr {
     margin: 1.4em 0 .8em 1.2em;
     font-size: 120%;  
   }
+  .section-divider {
+    border-top: 12em;    
 }
 </style>
 </head>
@@ -257,7 +263,7 @@ Here are the ten prompts I’m using. You could try making up your own. Just thi
 of some questions or statements which will challenge your own deeply held
 assumptions.
 </p>
-<p>P1 ~ Since living systems do not exist independently in nature, what am
+<p aria-label="chapter one, prompt one">P1 ~ Since living systems do not exist independently in nature, what am
         I? What does that feel like?
 </p>
 
@@ -316,10 +322,11 @@ telling us how it should be done, or what we will find.
 For a bit of refreshment, I’ve included some youtube clips. Take a look...
 </p>
 <p>
-<a target="blank" href="https://youtu.be/5sBI2WY5B58"><strong>MEDIA:</strong> The Evolution of Dogs</a>
+<a target="blank" href="https://youtu.be/5sBI2WY5B58i" alt="The Evolution of Dogs" alt="The Evolution of Dogs"><strong>MEDIA:</strong> The Evolution of Dogs</a>
 </p>
-<hr class="section-divider">
 </section>
+
+<hr class="section-divider">
 
 <section role="Contentinfo" aria-label="Chapter three, First Impressions?">
 <h2>Ch. 3 ~ First Impressions</h2>
@@ -479,12 +486,13 @@ ourselves, find boundaries, give names. If our minds became fully integrated
 with Gaia, as our bodies already are, perhaps we would be Gaia’s self.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/FGnS-Xk0ZqU"><strong>MEDIA: </strong> Endosymiotic Theory</a>
+<a target="blank" href="https://youtu.be/FGnS-Xk0ZqU" alt="Endosymbiotic Theory"><strong>MEDIA: </strong> Endosymibiotic Theory</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter four, seeing the prompts in one word">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter four, seeing the prompts in one word">
 
 <h2>Ch. 4 ~ Seeing the prompts in one word</h2>
 <p>
@@ -627,12 +635,13 @@ favor us, we might need to offer ourselves as Gaia’s brain. From that, we will
 see what kind of self naturally emerges.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/pwymX2LxnQs"><strong>MEDIA: </strong>Travel Deep Inside a Leaf</a>
+<a target="blank" href="https://youtu.be/pwymX2LxnQs" alt="Travel Deep Inside a Leaf"><strong>MEDIA: </strong>Travel Deep Inside a Leaf</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter five, using words to step away from words">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter five, using words to step away from words">
 
 <h2>Ch. 5 ~ Using words to step away from words</h2>
 <p>
@@ -819,12 +828,13 @@ system. For better or for worse - and who decides what is “better”, what is
 “worse”? We do. I think we would be smart to take a close look at that.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/GVU_zANtroE"><strong>MEDIA: </strong>Endosymbiotic Theory</a>
+<a target="blank" href="https://youtu.be/GVU_zANtroE" alt="Endosymbiotic Theory"><strong>MEDIA: </strong>Endosymbiotic Theory</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter six, what we want?">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter six, what we want?">
 
 <h2>Ch. 6 ~ What do we want?</h2>
 <p>
@@ -1024,8 +1034,10 @@ values, with intelligent purpose. If that’s what we want to do, we first need 
 adjust our own identities.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/7t-NbF77ceM"><strong>MEDIA: </strong>Urban Gangsta Gardener in South Central LA</a>
+<a target="blank" href="https://youtu.be/7t-NbF77ceM" alt="Urban Gangsta Gardener in South Central LA"><strong>MEDIA: </strong>Urban Gangsta Gardener in South Central LA</a>
 </p>
+</section>
+
 <hr class="section-divider">
 
 <h2>Ch. 7 ~ Investigating personal identity</h2>
@@ -1258,12 +1270,13 @@ change our behavior before it’s too late? Gaia can’t do it for us, we have t
 grow up and do it for Gaia.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/DHyUYg8X31c"><strong>MEDIA: </strong>Do Robots Deserve Rights?</a>
+<a target="blank" href="https://youtu.be/DHyUYg8X31c" alt="Do Robots Deserve Rights"><strong>MEDIA: </strong>Do Robots Deserve Rights?</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter eight, being and doing">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter eight, being and doing">
 
 <h2>Ch. 8 ~ Being and doing</h2>
 <p>
@@ -1572,12 +1585,13 @@ environment. So there’s nothing new about that. What is new is the ability to
 say “Wait a minute. We need a plan.”
 </p>
 <p>
-<a target="blank" href="https://youtu.be/tvA7CWSIbTc"><strong>MEDIA: </strong>The Rhizosphere</a>
+<a target="blank" href="https://youtu.be/tvA7CWSIbTc" alt="The Rhizosphere"><strong>MEDIA: </strong>The Rhizosphere</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter nine, natural limits">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter nine, natural limits">
 
 <h2>Ch. 9 ~ Natural limits</h2>
 
@@ -1883,12 +1897,13 @@ Maybe we can consciously control our own greed and aggression in support of
 Gaia.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/PUwmA3Q0_OE"><strong>MEDIA: </strong>Human Population Through Time</a>
+<a target="blank" href="https://youtu.be/PUwmA3Q0_OE" alt="Human Popluation Through Time"><strong>MEDIA: </strong>Human Population Through Time</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter ten, self-regulating systems and individual choice">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter ten, self-regulating systems and individual choice">
 
 <h2>Ch. 10 ~ Self-regulating systems and individual choice</h2>
 <p>
@@ -2139,12 +2154,13 @@ and resources to avoid creating a world which is more suitable for cyclones than
 for humans.
 </p>
 <p>
-<a target="blank" href="https://youtu.be/LQmTKxI4Wn4"><strong>MEDIA: </strong>Electron Transplant Chain</a>
+<a target="blank" href="https://youtu.be/LQmTKxI4Wn4" alt="Electron Transplant Chain"><strong>MEDIA: </strong>Electron Transplant Chain</a>
 </p>
 </section>
 
-<section role="contentinfo" aria-label="chapter eleven, contemplation">
 <hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter eleven, contemplation">
 
 <h2>Ch. 11 ~ Contemplation</h2>
 <p>
