@@ -8,12 +8,12 @@
 
 <!--
 Consider using:
-     section tag,
-     article tag,
-     accesskey,
+     section tag, DONE
+     article tag, NOT NEEDED, used more commonly for blogging labels
+     accesskey, (evaluate for use with navigation to allow keyboard control rath        -er than a mouse event)
      tabindex,
      aria-keyboard navigation,
-     aria-role navigation
+     aria-role navigation 
 
 DEFINITIONS:
 <section> tag: The HTML <section> element represents a standalone section — which doesn't have a more specific semantic element to represent it — contained within an HTML document. Typically, but not always, sections have a heading.
@@ -29,14 +29,14 @@ NOTE: This document will be using internal CSS styling because the document is r
 
 :root {
   --nav-bar: #a45b27;
-  --bk-primary: #373737;
+  --bk-primary: #2a2a2a;
   --h1-color: #fbd651;
   --h2-color: #fce694;
   --body-text: #c7dfc5;
   --divider-line: #fce694;
   --nav-bar-bg: #1e1e1e;
-  --email-link: #A16317;
-  --video-links: #df7048;
+  --email-link: #F98A62;
+  --video-links: #F98A62;
   --prompt-color: #E1F9DF;
 }
 body {
@@ -247,7 +247,7 @@ what is actually here.
 <p>
 Contemplation comes naturally when we relax with uncertainty. We don’t need to
 manufacture any special mind states. Our conditioning, however, is well
-established. We think we like it because it is so familiar. I’m suggesting there
+tablished. We think we like it because it is so familiar. I’m suggesting there
 is something more natural, more nourishing. Doing something unnatural might help
 us get back in touch with the basics.  Using the principles of Gaia, I have some
 questions and statements which help me understand myself and the world better by
@@ -259,43 +259,45 @@ of some questions or statements which will challenge your own deeply held
 assumptions.
 </p>
 
-<p>P1 ~ Since living systems do not exist independently in nature, what am
+<h3 aria-label="ten prompts">Ten Prompts</h3>
+
+<p aria-label="prompt one">P1 ~ Since living systems do not exist independently in nature, what am
 I? What does that feel like?
 </p>
 
-<p>P2 ~ Integrity is a function of how well a system is integrated. Are any
+<p aria-label="promt two">P2 ~ Integrity is a function of how well a system is integrated. Are any
 conflicting emotions currently creating instability in me?
 </p>
 
-<p>P3 ~  The problem with living in a dream is that real people get hurt.
+<p aria-label="prompt three">P3 ~  The problem with living in a dream is that real people get hurt.
 What’s my most recent example of that?
 </p>
 
-<p>P4 ~ If I’m not feeling my inner body right now, I’m not feeling
+<p aria-label="prompt four">P4 ~ If I’m not feeling my inner body right now, I’m not feeling
 anything. Take a moment to check in.
 </p>
 
-<p>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can
+<p aria-label="prompt five">P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can
 only be honest with myself if I listen to my whole self. How can I do that?
 </p>
 
-<p>P6 ~  How much power do you think you have? How much do you want? How much
+<p aria-label="prompt six">P6 ~  How much power do you think you have? How much do you want? How much
 does the other person have? How much do you think they want?
 </p>
 
-<p>P7 ~  What am I being touched by right now, physically, emotionally,
+<p aria-label="prompt seven">P7 ~  What am I being touched by right now, physically, emotionally,
 intellectually?
 </p>
 
-<p>P8 ~  How does ideology creep into your thinking? What does it offer you?
+<p aria-label="propmt eight">P8 ~  How does ideology creep into your thinking? What does it offer you?
 What does it take away from knowing Gaia?
 </p>
 
-<p>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying
+<p aria-label="prompt nine">P9 ~  We’re breathing, we’re feeling the force of gravity. Paying
 attention to both at once places us squarely in the presence of Gaia. Try it.
 </p>
 
-<p>P10 ~  Does Gaia have a self? What would that mean?</p>
+<p aria-label="prompt ten">P10 ~  Does Gaia have a self? What would that mean?</p>
 
 <p>
 Now I’m going to circle through the prompts a number of times using a different
@@ -324,7 +326,7 @@ telling us how it should be done, or what we will find.
 <section role="Contentinfo" aria-label="Chapter three, First Impressions?">
 <h2>Ch. 3 ~ First Impressions</h2>
 
-<h3>P1 ~ Since living systems do not exist independently in nature, what am I?
+<h3 aria-label="chapter two, prompt one">P1 ~ Since living systems do not exist independently in nature, what am I?
 What does that feel like?</h3>
 <p>
 Contemplation begins with our ability to talk to ourselves. This ability can
@@ -339,7 +341,7 @@ from outside to support us in this inner work. But I have to do the work for
 myself, no one can do it for me.
 </p>
 
-<h3>P2 ~ Integrity is a function of how well a system is integrated. Are any
+<h3 aria-label="chapter two, prompt two">P2 ~ Integrity is a function of how well a system is integrated. Are any
 conflicting emotions currently creating instability in me?
 </h3>
 <p>
@@ -355,7 +357,7 @@ rather than conjecture. Emotions run between mind and body.  Observing my
 emotions can direct me toward what needs to be integrated.
 </p>
 
-<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s
+<h3 aria-label="chapter two, propmpt three">P3 ~  The problem with living in a diream is that real people get hurt. What’s
 my most recent example of that?
 </h3>
 <p>
@@ -372,7 +374,7 @@ refining it. Dreams can help! But only if I’m able to identify a dream as a
 dream, and make predictions based on what’s possible.
 </p>
 
-<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+<h3 aria-label="chapter two, prompt four">P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
 Take a moment to check in.
 </h3>
 <p>
@@ -389,7 +391,7 @@ state of unabsorbed flow radiates outward from the inner body, and we can tune
 in to that any time.
 </p>
 
-<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+<h3 aria-label="chapter two, prompt five">P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
 be honest with myself if I listen to my whole self. How can I do that?
 </h3>
 <p>
@@ -405,7 +407,7 @@ anchored in actual experience. An unabsorbed flow state is full of gaps, open to
 unexpected new information.
 </p>
 
-<h3>P6 ~  How much power do you think you have? How much do you want? How much
+<h3 aria-label="chapter two, prompt six">P6 ~  How much power do you think you have? How much do you want? How much
 does the other person have? How much do you think they want?
 </h3>
 
@@ -420,7 +422,7 @@ operates through probabilities rather than preconceptions, and the only real
 power is in what’s possible.
 </p>
 
-<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+<h3 aria-label="chapter two, prompt seven">P7 ~  What am I being touched by right now, physically, emotionally,
 intellectually?
 </h3>
 
@@ -437,7 +439,7 @@ silly. No need to correct anything, because I’m simply being touched by all
 these things, not trapped by them.
 </p>
 
-<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+<h3 aria-label="chapter two, prompt eight">P8 ~  How does ideology creep into your thinking? What does it offer you? What
 does it take away from knowing Gaia?
 </h3>
 <p>
@@ -452,7 +454,7 @@ sense of solidarity. Holding on to this security makes us afraid to open up
 perception to the complexity all around us because it can be so confusing.
 </p>
 
-<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+<h3 aria-label="chapter two, prompt nine">P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
 both at once places us squarely in the presence of Gaia. Try it.
 </h3>
 <p>
@@ -467,7 +469,7 @@ We do well to take a little time to give our usual concerns a rest, and focus on
 what is most near and most essential to life in each moment.
 </p>
 
-<h3>P10 ~  Does Gaia have a self? What would that mean?
+<h3 aria-label="chapter two, prompt ten">P10 ~  Does Gaia have a self? What would that mean?
 </h3>
 <p>
 Self exists only in relationship with other. By naming Gaia we are giving an
@@ -2196,13 +2198,13 @@ You will find your own way of knowing Gaia.
 </section>
 <br>
 
-  <img class="zen-circle" src="/templates/gaia/assets/zen-circle-mod.png">
+  <img class="zen-circle" src="/templates/gaia/assets/zen-circle-mod.png" alt="zen-circle">
 </div>
 <br>
 <section class="author-container">
 <div class="author">~AUTHOR~</div>
 <ul class="author">
-  <li>Pat Adducci</li>
+  <li aria-label="author's name">Pat Adducci</li>
   <li>Yucca Valley, California</li>
   <br>
   <li>May 15, 2020</li>
