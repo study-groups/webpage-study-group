@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop-down Menu Component</title>
+
+<!-- Hoverable dropdown component.-->  
+<!-- Move the mouse over the button to open the dropdown menu.-->
+<style>
+:root {
+  --nav-dropdown-btn: #a45b27;
+  --bk-primary: #2a2a2a;
+  --nav-bar-bg: #1e1e1e;
+  --h2-color: #fce694;
+}
+body {
+  background: var(--bk-primary);
+  font-size: 12pt;
+  font-weight: 400;
+}
+/* .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: var(--h1-color);
+  background: #1e1e1e;
+  height: 6em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+} */
+.dropdown-btn {
+  background: var(--h1-color);
+  color: var(--nav-dropdown-btn);
+  font-size: 2em;
+  border: none;
+  padding: 1em;
+
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--bk-primary);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px  rgba(0, 0, 0, 0.5);
+ 
+}
+.dropdown-content a {
+  color: var(--nav-dropdown-btn);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+
+<div class="dropdown">
+  <button class="dropdown-btn">Chapters</button>
+  <div class="dropdown-content">
+    <a href="#">Chapter 1</a>
+    <a href="#">Chapter 2</a>
+    <a href="#">Chapter 3</a>
+  </div>
+</div>
+
+<!-- <div class="dropdown-prompt">
+  <button class="dropdown-prompt-btn">Prompts</button>
+  <div clearr="dropdown-prompt-content">
+    <a href="#">Prompt 1</a>
+    <a href="#">Prompt 2</a>
+    <a href="#">Prompt 3</a>
+  </div>
+</div> -->
+
+
+  
+
+
+</body>
+</html>
