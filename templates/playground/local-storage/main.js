@@ -1,5 +1,6 @@
-const storageInput = document.querySelector('.storage');
-const text = document.querySelector('.text');
+const storageInput = document.querySelector('.item-storage');
+const item = document.querySelector('.item');
+const quantity = document.querySelector('.quantity');
 const button = document.querySelector('.button');
 const data = [];
 const dataRecord = 
@@ -7,11 +8,12 @@ const dataRecord =
 
 storageInput.addEventListener('input', letter => {
   console.log(letter.target.value)
-  text.textContent = letter.target.value
+  item.textContent = letter.target.value
 })
 
 const saveToLocalStorage = () => {
-  localStorage.setItem('textInput', text.textContent)
+  localStorage.setItem('textInput', item.textContent),
+  localStorage.setItem('textInput', quantity.textContent)
 }
 
 button.addEventListener('click', saveToLocalStorage)

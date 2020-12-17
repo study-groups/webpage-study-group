@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practice Using localStorage</title>
 <style>
-
+.storage-item, .storage-quantity {
+  margin: .5em;
+}
 </style>
 </head>
 <body>
-  
+<h1>Grocery List</h1>
 <div class="container">
-  <input class="storage" type="text">
-  <p class="record">Text</p>
-  <button class="button">Enter Item</button>
+
+  <label for="item-button">ITEM:</label>
+  <input class="item-storage" type="text">
+
+  <label for="quantity-button">QTY</labe>
+  <input class="quantity-storage" type="text">
+
+  <button class="item-button"button">Enter Item</button>
+
+  <div class="item">Apples</div>
+  <div class="quantity">QTY</div>
+
+
 </div>  
 </body>
 <script src="./main.js"></script>
