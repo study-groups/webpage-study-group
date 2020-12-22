@@ -1,8 +1,9 @@
 #!/bin/bash
 # shellcheck disable=SC2155
+## shellcheck disable=SC2086 
 # Dbl quote to prevent globbing and word splitting.
-# shellcheck disable=SC2086 
 PS1="gaia> "
+cat /dev/null > build.log
 gaia-help(){
   cat <<EOF
 This is a collection of Bash functions for Extraction,
@@ -51,7 +52,7 @@ gaia-get-between(){
   local start=$1;
   local end=$2;
   local file=${3:-clean.txt};
-  < $file tail -n +"$1" | head -n "$(($2 - $1))"
+  < "$file" tail -n +"$1" | head -n "$(($2 - $1))"
 }
 
 gaia-get-unit-id(){
@@ -63,9 +64,10 @@ gaia-get-unit-id(){
 
 gaia-get-offset(){
   local tokens=($(sed "$1q;d" ./clean.index))
-  echo ${tokens[0]} 
+  echo "${tokens[0]}" # quotes not necessary since its a token
 }
 
+#shellcheck disable=SC2086
 gaia-get-unit-text(){
   local id=$1
   local idNext=$((id + 1))
@@ -74,13 +76,27 @@ gaia-get-unit-text(){
   gaia-get-between $((offset+1)) $offsetNext
 }
 
+#shellcheck disable=SC2086
 gaia-get-chapter-offset(){
-  line=($(awk /"chapterStart C$1"/ ./clean.index))
+  local line=($(awk /"chapterStart C$1"/ ./clean.index))
   echo ${line[0]}
 }
 
+#shellcheck disable=SC2086
+gaia-get-author-offset(){
+  local line=($(awk /"authorStart"/ ./clean.index))
+  echo ${line[0]}
+}
+
+#shellcheck disable=SC2086
+gaia-get-document-end(){
+  local line=($(awk /"documentEnd"/ ./clean.index))
+  echo ${line[0]}
+}
+
+#shellcheck disable=SC2086
 gaia-get-prompt(){
-  indexLine=($(awk /"promptStart P$1"/ ./clean.index))
+  local indexLine=($(awk /"promptStart P$1"/ ./clean.index))
   local promptIndex=${indexLine[0]}
   gaia-get-line $promptIndex
 }
@@ -89,20 +105,23 @@ gaia-get-line(){
   sed "$1q;d" ./clean.txt
 }
 
+# Normally want to "" $variables. But when the variable
+# is known to be single token, do not quote (ignore SC2046 warning) 
+# shellcheck disable=SC2046,SC2086
 gaia-display(){
-  local chapter=$1
-  local prompt=$2
+  local chapter=$1 # single token number 
+  local prompt=$2  # single token number
   local width=${3:-60}
   local unitId=$(gaia-get-unit-id $chapter $prompt)
-  local chapterText=$(gaia-get-line $(gaia-get-chapter-offset $chapter))
-  local promptText=$(gaia-get-prompt $prompt)
+  local chapterText="$(gaia-get-line $(gaia-get-chapter-offset $chapter))"
+  local promptText="$(gaia-get-prompt $prompt)"
   local text=$(gaia-get-unit-text $unitId)
   local textFmt=$(echo -e "$chapterText\n\n$promptText\n\n$text" | 
                    fmt -$width | sed -e 's/^/         /')
   local len=$(echo -e "$textFmt" | wc -l );
   local margin=$(( (24-len)/2 ))
   clear;
-  if [[ $len < 23 ]]
+  if (( len < 23 ))
   then 
     printf '\n%.0s' $(seq 1 $margin) 
     echo "$textFmt" 
@@ -117,25 +136,59 @@ gaia-display(){
 # Think 'one paragraph per line'.
 gaia-str-to-sentences(){
   local str="$1"
-  lines=$(echo $str | sed 's/\. /\.\n/g')  # adds newlines
+  local lines=$(echo $str | sed 's/\. /\.\n/g')  # adds newlines
   echo "$lines"  # Glob to retain \n
 }
 
-# Example for quoting rules.
-gaia-str-to-array-demo(){
-  local str="$1"
-  echo "Got input: $1"
-  lines=$(echo $str | sed 's/\. /\.\n/g')  # adds newlines
-  echo "Got lines: $lines"
-  echo "Got lines[@]: ${lines[@]}"
-  echo "Got #lines[@]: ${#lines[@]}"
+gaia-get-chapter-lines(){
+  local authorOffset=$(gaia-get-author-offset)
+  local docEnd=$(gaia-get-document-end)
+  local chapter=$1;
+  local chapterPlus1=$((chapter + 1))
+  local start=$(gaia-get-chapter-offset $chapter)
+  local end=$(gaia-get-chapter-offset $chapterPlus1)
+  [[ -z $end ]] && end=$authorOffset
+  local chapterLines=$(gaia-get-between $start $end); # keeps new lines
+  echo "$chapterLines" #Quote to preserve newlines
+}
 
-  readarray arr <<<  $(echo "$lines");
+# Both $@ and $* expand to separate args and then wordsplit and globbed.
+# Quoted, "$@" expands each element as a separate argument,
+# while   "$*" expands to the args merged into one argument: 
+# "$1c$2c..." (where c is the first char of IFS).
 
-  echo "arr is ${arr[1]}"
-  echo "Got arr $arr"
-  echo "Got arr[@]: ${arr[@]}"
+# In contrast to the otherwise 1) StackOverflow below,
+# You should not expand "${arr[@]}" but instead use "${arr[*]}"
+# as printable string as recommended by shellcheck. However,
+# as 2) says, echo does not care if it is getting multiple
+# arguments or not. The args are separated by the first
+# char of the IFS, typical a space, so, end user of stdout
+#can't tell either.
+#
+# 1) https://stackoverflow.com/a/15692004/4249785
+# 2) https://stackoverflow.com/a/55149711/4249785
+# https://www.gnu.org/software/bash/manual/html_node/Word-Splitting.html
+# https://tldp.org/LDP/abs/html/globbingref.html
+#
+gaia-text-to-sentence-demo(){
+  local text="$1"
+  echo "Got input: $text"
+  local sentenceLines=$(echo $text | sed 's/\. /\.\n/g')  # adds newlines
+  echo "Got sentenceLines: $sentenceLines"
+  echo "Got sentenceLines[*]: ${sentenceLines[*]}" # its a string, not an array
+  echo "Got #sentenceLines[@]: ${#sentenceLines[@]}"# always one
+  echo "Got #sentenceLines: ${#sentenceLines}" # 
+
+  # Lines-to-Array method one. Looses \n.
+  arr=(); 
+  while IFS= read -r l; do arr+=("$l"); done <<< "$sentenceLines"
   echo "Got #arr[@]: ${#arr[@]}"
+  echo "Got arr[*]: ${arr[*]}"
+
+  # Lines-to-Array method two. Preserves \n.
+  readarray arr2 <<< $sentenceLines
+  echo "Got #arr2[@]: ${#arr2[@]}"
+  echo "Got arr2[*]: ${arr2[*]}"
 }
 
 
@@ -149,41 +202,95 @@ gaia-make-html-all(){
   gaia-make-html-footer
 }
 
-gaia-make-html-body(){
-  local start=$(gaia-get-chapter-offset 1)
-  local end=$(gaia-get-chapter-offset 2)
-  local chapterLines=$(gaia-get-between $start $end); # keeps new lines
-  local chapterName=$(gaia-get-line $(gaia-get-chapter-offset 1))
-  local modChapName="Ch. 1  ~ ${chapterName:3}"
-  gaia-make-chapter-html "$modChapName"
+gaia-get-color(){
+  local colors=(orange red)
+  local  ci=$(($1 % ${#colors[@]}))
+  local color=${colors[$ci]}
+  echo $color;
+}
+
+# Document Schema
+#
+# Header
+# Title
+# Chapter contains par and sections
+#  paragraph
+#  paragraph
+#  Section one of Prompt, Author
+#    para
+#
+# First line is chapter title
+# Each line thereafter is either a paragraph or a prompt.
+gaia-make-html-chapter(){
+  echo "in gaia-make-html-chapter $1" >> build.log
+  local chapterLines=$(gaia-get-chapter-lines $1)
+  readarray lineArray <<<  $chapterLines
+  gaia-make-html-chapter-title "${lineArray[0]}"
+  unset 'lineArray[0]'  # first line was chapter heading
+  local promptRegex="^P[0-9]+:"
+
+  # each line is either an 
+  #  1) unstructured paragraph (after chapter heading)
+  #  2) prompt section
+  #  3) Author info
  
-  while IFS= read -r line; do
-    local lineArray+=("$line") # glob line together as single array element
-  done <<< "$chapterLines"
+  local paragraphIndex=0
+  local promptIndex=0
+  # Each line in Chapter is paragraph, prompt or author 
+  for i in ${!lineArray[@]}; do 
+    local curLine=${lineArray[$i]}
 
- for i in "${!lineArray[@]}"; do # glob line or else get words
-    if (( i > 0 )) 
-    then
-      while IFS= read -r curLine; do
-        local sentLines=$(gaia-str-to-sentences "$curLine")
-      done <<< "${lineArray[$i]}"
+    #if it's not a prompt section
+    if [[ ! $curLine =~  $promptRegex ]]; then 
 
-      local sentArray=();
-      while IFS= read -r line;  do sentArray+=($line); done <<< "$sentLines"
+      printf "\n\n<p id='c$1-par$i'>"
+      ((paragraphIndex++))
+      sentLines="$(gaia-str-to-sentences "$curLine")"
+      readarray sentArray <<< $sentLines
 
-      for j in ${!sentArray}; do
-        echo "<p>I=$i J=$j sentArray is ${sentArray[$j]}</p>"  
+      for j in ${!sentArray[@]}; do
+        sent=${sentArray[$j]};
+        gaia-make-html-span "$sent" $(gaia-get-color $j)
       done
+      printf "\n</p>"  
+
     fi
- done
 
+    if [[ $curLine =~  $promptRegex ]]; then 
+        gaia-make-html-prompt "$curLine" "c$1-p$promptIndex"
+        ((promptIndex++))
+    fi 
+  done
+}
 
- for c in  3 4 5 6 7 
+gaia-make-html-prompt(){
+  printf "\n<h3 id='$2'>\n$1</h3>"
+}
+gaia-make-html-span(){
+  printf "\n<span style='color:$2'>\n$1</span>"
+}
+
+#shellcheck disable=SC2046,SC2086
+gaia-make-html-body(){
+  gaia-make-html-chapter 1
+  gaia-make-html-chapter 2
+  gaia-make-html-chapter 3
+  gaia-make-html-chapter 4 
+  gaia-make-html-chapter 5 
+  gaia-make-html-chapter 6  
+  gaia-make-html-chapter 7
+  gaia-make-html-chapter 8
+  gaia-make-html-chapter 9
+  gaia-make-html-chapter 10
+  gaia-make-html-chapter 11
+}
+
+gaia-make-html-chapters-old(){
+
+ for c in  3 4 5 6 7 8 9 10 11
   do
     local chapterName=$(gaia-get-line $(gaia-get-chapter-offset $c))
-    local modChapName="Ch. $c ~ ${chapterName:3}"
-    gaia-make-chapter-html "$modChapName"
-
+    gaia-make-chapter-html "$chapterName"
     for p in 1 2 3 4 5 6 7 8 9 10
     do
       local unitId=$(gaia-get-unit-id $c $p)
@@ -196,31 +303,78 @@ gaia-make-html-body(){
   done # chapter loop
 }
 
-gaia-make-html-css(){
-  gaia-get-between 38 130 ../gaia-index.html
+# NAV_HTML
+gaia-make-html-header() {
+  export local NAV_HTML=$(gaia-make-html-nav)
+  cat ./header.html | envsubst
 }
 
-gaia-make-html-header(){
-  local style="$(gaia-make-html-css)";
-  cat <<EOF
-<html>
-<head>
-$style
-</head>
-<h1 class="main-header" >Knowing Gaia</h1>
+gaia-make-html-nav(){
+  cat<<EOF
+<ul>
+<li onclick='ScrollTo("c1")'>c1</li>
+<li onclick='ScrollTo("c2")'>c2</li>
+<li onclick='ScrollTo("c3")'>c3</li>
+<li onclick='ScrollTo("c11")'>c11</li>
+</ul>
+<script>
+// https://stackoverflow.com/a/36929383/4249785
+function ScrollTo(name) {
+  ScrollToResolver(document.getElementById(name));
+}
+
+function ScrollToResolver(elem) {
+  var navbar=document.getElementById("navbar");
+  var navHeight=parseInt(navbar.getBoundingClientRect().height);
+  if(!navHeight) navHeight=0;
+
+  console.log("navHeight",navHeight);
+  var jump = parseInt((elem.getBoundingClientRect().top-navHeight) * .2);
+  document.body.scrollTop += jump;
+  document.documentElement.scrollTop += jump;
+  if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
+    elem.lastjump = Math.abs(jump);
+    setTimeout(function() { ScrollToResolver(elem);}, "40");
+  } else {
+    elem.lastjump = null;
+  }
+}
+</script>
 EOF
 }
-
 gaia-make-html-footer(){
   cat <<EOF
+<img class="zen-circle" 
+src="./assets/zen-circle-mod.png" 
+alt="zen-circle">
+<br>
+<section class="author-container">
+<ul class="author">
+  <li aria-label="author's name">Pat Adducci</li>
+  <li>Yucca Valley, California</li>
+  <br>
+  <li>May 15, 2020</li>
+</ul>
+</section>
+<a id="email" 
+  href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>
+</main>
+<footer>
+</footer>
+</body>
+</html>
+
 </html>
 EOF
 }
 
-gaia-make-chapter-html(){
-  local chapterTitle=$1
-  echo "<h2>$chapterTitle</h2>"
+gaia-make-html-chapter-title(){
+  local title="$1"
+  local number=$(echo $title | awk -F[C:] '{print $2}')
+  local text=$(echo $title | awk -F[:] '{print $2}')
+  printf "<h2 id='c$number'>Ch %s. ~ %s</h2>" "$number" "$text"
 }
+
 
 gaia-make-unit-html(){
   local promptText="$1"

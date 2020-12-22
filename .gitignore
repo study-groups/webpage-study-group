@@ -7,5 +7,10 @@ mike
 *.raw
 clean.index
 clean.txt
+raw.txt
 data.txt
+build.log
+err
+old/
+
 
