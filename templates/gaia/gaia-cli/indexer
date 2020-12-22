@@ -5,16 +5,19 @@ with open(filepath) as fp:
     line = fp.readline()
     index=[]; # list of locations with keys: cnt, type and line
     cnt = 1
+    chapter=0
     while line:
         line=line.strip()
-        if re.search(r'C.+: ',line) is not None:
+        if re.search(r'C[0-9]+: ',line) is not None:
             index.append({"cnt":cnt,"type":"chapterStart","line":line})
+        if re.search(r'^Pat Adducci',line) is not None:
+            index.append({"cnt":cnt,"type":"authorStart","line":line})
         if re.search(r'P.+: ',line) is not None:
             index.append({"cnt":cnt,"type":"promptStart","line":line})
         line = fp.readline()
         cnt += 1
 
-#print("\n".join( map(lambda x: str(x).strip()[:79], index))) 
-#print("\n".join( map(lambda x: str(x['cnt']), index))) 
+    index.append({"cnt":cnt,"type":"documentEnd","line":line})
+    
 for x in index:
   print(f'{x["cnt"]} {x["type"]} {x["line"][:55]}');
