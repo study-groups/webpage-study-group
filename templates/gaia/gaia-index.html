@@ -4,37 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaia Webpage</title>
-<head>
+<!--  <link rel="stylesheet" href="ScrollSpy.min.css"/>
+  <script src="ScrollSpy.min.js"</script> -->
+</head>
 
-<!--
-Consider using:
+<!-- Accessibility, Consider using:
   1. section tag, DONE
   2. article tag, NOT NEEDED, used more commonly for blogging labels
      accesskey, (evaluate for use with navigation to allow keyboard control 
      rather than a mouse event)
-     
   3. tabindex
   4. aria-keyboard navigation
   5. aria-role navigation 
+-->
+<!-- HTML Semantic Tags, defined:
+  <section> tag: The HTML <section> element represents a standalone section
+    which doesn't have a more specific semantic element to represent it
+    contained within an HTML document. Typically, but not always, sections
+    have a heading.
 
-DEFINITIONS:
-<section> tag: The HTML <section> element represents a standalone section
-  which doesn't have a more specific semantic element to represent it
-  contained within an HTML document. Typically, but not always, sections
-  have a heading.
-
-<article> tag:
-  The HTML <article> element represents a self-contained composition in a
+  <article> tag:
+    The HTML <article> element represents a self-contained composition in a
     document, page, application, or site, which is intended to be 
     independently distributable or reusable (e.g., in syndication). Examples 
     include: a forum post, a magazine or newspaper article, or a blog entry,
     a product card, a user-submitted comment, an interactive widget or gadget,
     or any other independent item of content.
- -->
-<!-- 
-NOTE: This document will be using internal CSS styling because the document is relatively simple and does not require extensive styling.
 -->
-
+<!--  NOTES:
+  1. This document will be using internal CSS styling because the document is 
+     relatively simple and does not require extensive styling.
+  2. JavaScript ScrollSpy used on navigation....
+-->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
 
@@ -133,12 +134,16 @@ ul {
 
 <nav class="navbar"></nav>
 
-<main>.
+<main>
 <header>
 <h1 class="main-header">Knowing Gaia</h1>
 </header>
 
-<section role="contentinfo" aria-label="Chapter One Introduction">
+<section 
+  role="contentinfo" 
+  aria-label="Chapter One Introduction"
+  class="scrollspy" spy-title="Chapter 1">
+</section>
 
 <h2>Ch. 1 ~ Introduction</h2>
 <p>
@@ -208,8 +213,12 @@ system, we merged.
 
 </section>
 
-<section role="contentinfo" aria-label="chapter 2, taking a leap into the deeply personal">
-
+<section
+  role="contentinfo"
+  aria-label="chapter 2, taking a leap into the deeply personal"
+  class="ScrollSpy"
+  spy-title="Chapter 2"
+>
 <h2>Ch. 2 ~ Taking a leap into the deeply personal</h2>
 <p>
 Contemplation is a way of investigating experiences which are particularly
@@ -334,7 +343,11 @@ telling us how it should be done, or what we will find.
 
 <hr class="section-divider">
 
-<section role="Contentinfo" aria-label="Chapter three, First Impressions?">
+<section 
+  role="Contentinfo" 
+  aria-label="Chapter three, First Impressions?"
+  class="ScrollSpy"
+  spy-title="Chapter 3"/>
 <h2>Ch. 3 ~ First Impressions</h2>
 
 <h3 aria-label="chapter two, prompt one">P1 ~ Since living systems do not exist independently in nature, what am I?
