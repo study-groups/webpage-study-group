@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaia Webpage</title>
-<!--  <link rel="stylesheet" href="ScrollSpy.min.css"/>
-  <script src="ScrollSpy.min.js"</script> -->
+  <link rel="stylesheet" href="ScrollSpy.min.css"/>
 </head>
 
 <!-- Accessibility, Consider using:
@@ -58,6 +57,14 @@ body {
   font-weight: 400;
   letter-spacing: 1px;
 }
+.indicator, ul {
+  color: var(--email-link);
+  z-index: 1;
+  position: absolute;
+  right: calc(2em);
+  list-style: none;
+  
+}
 .navbar {
   position: fixed;
   top: 0;
@@ -68,6 +75,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  z-index: 2;
 }
 .main-header {
   color: var(--h1-color);
@@ -91,18 +99,16 @@ a {
   color: var(--email-link);
   margin: 1.5em 10% 1em 10%;
 }
-ul {
+.author {
   list-style-type: none;
   padding-left: 0;
+  margin: 1.5em 10% 1em 10%;
+  color: var(--h1-color);
 }
 .section-divider { 
   border-color: var(--nav-bar-bg);
   border-top: 2px 25em;
   margin: 3em 25% 0 20%;
-}
-.author {
-  margin: 1.5em 10% 1em 10%;
-  color: var(--h1-color);
 }
 .zen-circle {
   width: 50%;
@@ -131,22 +137,30 @@ ul {
 </head>
 
 <body>
+    <div id="indicator">
+      <ul class="scrollspy-indicator-container">
+        <li class="spy-clickable spy-active">Chapter 1</li>
+        <li class=spy-clickable">Chapter 2</li>
+        <li class=spy-clickable">Chapter 3</li>
+      </ul>
+    </div>
 
 <nav class="navbar"></nav>
+   <main>
+      <header>
+        <h1 class="main-header">Knowing Gaia</h1>
+      </header>
 
-<main>
-<header>
-<h1 class="main-header">Knowing Gaia</h1>
-</header>
 <script src="https://unpkg.com/@sidsbrmnn/scrollspy@1.0.4/dist/scrollspy.min.js"></script>
 
-<section 
-  role="contentinfo" 
-  aria-label="Chapter One Introduction"
-  class="scrollspy" spy-title="Chapter 1">
-</section>
+  <div class="content">
+    <section 
+      role="contentinfo" 
+      aria-label="Chapter One Introduction"
+      class="scrollspy" spy-title="Chapter 1">
+    </section>
 
-<h2>Ch. 1 ~ Introduction</h2>
+      <h2>Ch. 1 ~ Introduction</h2>
 <p>
 After many years of Buddhist study and practice, and being influenced by less
 traditional non-duality speakers, I was inspired to develop a contemplation
@@ -209,18 +223,17 @@ extreme conditions following the impact, and became our ancestors. From a
 combination of chance, time and natural selection in a complex, self-regulating
 system, we merged.
 </p>
+</section>
 
 <hr class="section-divider"></hr>
 
-</section>
+    <section
+      role="contentinfo"
+      aria-label="chapter 2, taking a leap into the deeply personal"
+      class="ScrollSpy"
+      spy-title="Chapter 2">
 
-<section
-  role="contentinfo"
-  aria-label="chapter 2, taking a leap into the deeply personal"
-  class="ScrollSpy"
-  spy-title="Chapter 2"
->
-<h2>Ch. 2 ~ Taking a leap into the deeply personal</h2>
+        <h2>Ch. 2 ~ Taking a leap into the deeply personal</h2>
 <p>
 Contemplation is a way of investigating experiences which are particularly
 difficult to capture in symbols. “The name you can say isn’t the real name” is
@@ -344,15 +357,16 @@ telling us how it should be done, or what we will find.
 
 <hr class="section-divider">
 
-<section 
-  role="Contentinfo" 
-  aria-label="Chapter three, First Impressions?"
-  class="ScrollSpy"
-  spy-title="Chapter 3"/>
-<h2>Ch. 3 ~ First Impressions</h2>
+    <section 
+      role="Contentinfo" 
+      aria-label="Chapter three, First Impressions?"
+      class="ScrollSpy"
+      spy-title="Chapter 3">
+        
+        <h2>Ch. 3 ~ First Impressions</h2>
 
-<h3 aria-label="chapter two, prompt one">P1 ~ Since living systems do not exist independently in nature, what am I?
-What does that feel like?</h3>
+          <h3 aria-label="chapter two, prompt one">
+             P1 ~ Since living systems do not exist independently in nature, wha             t am I? What does that feel like?</h3>
 <p>
 Contemplation begins with our ability to talk to ourselves. This ability can
 sometimes seem like it’s out of control, turned into an exhausting, meaningless
@@ -2245,9 +2259,28 @@ You will find your own way of knowing Gaia.
 </main>
 <footer>
 </footer>
-</body>
+
+</div>
+</body/>
+<script src="ScrollSpy.min.js"</script>
 <script>
-// Put scroll code here.
+  var spy = new ScrollSpy({
+    contexts_class: 'scrollspy',
+    delay: 200,
+    callbackOnChange: function (el) {alert('Active Element Changed');},
+    callbackOnDestory: function () {alert('ScrollSpy Destoyed!');}
+});
+});
+
+  spy.Indicator({
+    element: document.getElementById('indicator'),
+    indicator_container_class: "scrollspy-indicator",
+    indicator_item_class: "scrollspy-indicator-item",
+    clickable: true,
+    forceActive: false,
+});
+
+  // Put scroll code here.
 // https://github.com/sidsbrmnn/scrollspy
 </script>
 </html>
