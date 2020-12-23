@@ -57,20 +57,33 @@ body {
   font-weight: 400;
   letter-spacing: 1px;
 }
-.indicator, ul {
+#indicator ul {
   color: var(--email-link);
   z-index: 1;
   position: absolute;
   right: calc(2em);
-  list-style: none;
-  
+  list-style: none;  
 }
+#indicator ul li.spy-active {
+  color: var(--prompt-color);
+}
+.scrollspy-indicator-container li.spy-clickable:hover {
+  color: var(--h2-color);
+}
+.scrollspy-indicator-container li.spy-clickable {
+  cursor: pointer;
+}
+
+.scrollspy-indicator-container li {
+  transition: .15s;
+}
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   color: var(--h1-color);
-  background: #1e1e1e;
+  background: var(--nav-bar-bg);
   height: 6em;
   width: 100%;
   margin: 0;
@@ -137,15 +150,15 @@ a {
 </head>
 
 <body>
-    <div id="indicator">
-      <ul class="scrollspy-indicator-container">
-        <li class="spy-clickable spy-active">Chapter 1</li>
-        <li class=spy-clickable">Chapter 2</li>
-        <li class=spy-clickable">Chapter 3</li>
-      </ul>
-    </div>
-
-<nav class="navbar"></nav>
+<nav class="navbar">
+  <div id="indicator">
+    <ul class="scrollspy-indicator-container">
+      <li class="spy-clickable spy-active">Chapter 1</li>
+      <li class=spy-clickable">Chapter 2</li>
+      <li class=spy-clickable">Chapter 3</li>
+    </ul>
+  </div>
+</nav>
    <main>
       <header>
         <h1 class="main-header">Knowing Gaia</h1>
@@ -2265,19 +2278,19 @@ You will find your own way of knowing Gaia.
 <script src="ScrollSpy.min.js"</script>
 <script>
   var spy = new ScrollSpy({
-    contexts_class: 'scrollspy',
-    delay: 200,
-    callbackOnChange: function (el) {alert('Active Element Changed');},
-    callbackOnDestory: function () {alert('ScrollSpy Destoyed!');}
+    contexts_class: 'scrollspy'
+//    delay: 200,
+//    callbackOnChange: function (el) {alert('Active Element Changed');},
+//    callbackOnDestory: function (el) {alert('ScrollSpy Destoyed!');}
 });
-});
+
 
   spy.Indicator({
     element: document.getElementById('indicator'),
-    indicator_container_class: "scrollspy-indicator",
-    indicator_item_class: "scrollspy-indicator-item",
-    clickable: true,
-    forceActive: false,
+//    indicator_container_class: "scrollspy-indicator",
+//    indicator_item_class: "scrollspy-indicator-item",
+//    clickable: true,
+//    forceActive: false,
 });
 
   // Put scroll code here.
