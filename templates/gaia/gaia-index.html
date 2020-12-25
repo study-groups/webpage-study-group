@@ -6,11 +6,8 @@
   <title>Gaia Webpage</title>
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-  <link rel="stylesheet" href="ScrollSpy.min.css"/>
-=======
- <link rel="stylesheet" href="ScrollSpy.min.css"/>
->>>>>>> e52cc12b0ae2f1e01266a807b5fd4cc2c72e69a5
+<link rel="stylesheet" type="text" href="ScrollSpy.min.css"/>
+<srcipt src="Scrollspy.min.js"></script>
 </head>
 
 <!-- Accessibility, Consider using:
@@ -42,10 +39,7 @@
   2. JavaScript ScrollSpy used on navigation....
 -->
 <style>
-<<<<<<< HEAD
-=======
 
->>>>>>> e52cc12b0ae2f1e01266a807b5fd4cc2c72e69a5
 :root {
   --nav-bar: #a45b27;
   --bk-primary: #2a2a2a;
@@ -213,6 +207,7 @@ take care of us. Unfortunately, we don’t know that. Evidence so far suggests
 that Gaia is heartless. We are only as special as we make ourselves to be. Gaia
 is mother to all her children - frog and fly, Neanderthal and Homo Sapiens. Life
 forms thrive, or not, in an ever-changing web. Everyone needs something to eat.
+
 Animals eat plants which were thriving on the carbon dioxide exhaled by those
 very animals. The animals are thriving on the oxygen produced by the plants they
 are killing. Yet the whole complex system not only continues, but continues to
@@ -2272,39 +2267,44 @@ You will find your own way of knowing Gaia.
 <a id="email" 
   href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>
 <br>
-<br>
-<br>
-<br>
 </main>
 <footer>
 </footer>
 
 </div>
 </body>
-<script src="ScrollSpy.min.js"></script>
+
+
+<!-- MOVED MIN.JS FILE TO HEADER -->
+<!-- Texted all of the following way of spelling scrollspy, none worked -->
+<!--<script src="ScrollSpy.min.js"></script>
+<script src="scrollspy.min.js"></script> -->
+<!--<script src="scrollSpy.min.us"></script>-->
+
+<!-- <script src="/path/to/dist/scrollspy.min.js"></script> -->
+<!--From: https://www.cssscript.com/scrollspy-static/-->
+
 <script>
-  var spy = new ScrollSpy(
-    {
-      contexts_class: 'scrollspy'
-    }
-    
-  );
-//    Options  
-//    delay: 200,
-//    callbackOnChange: function (el) {alert('Active Element Changed');},
-//    callbackOnDestory: function (el) {alert('ScrollSpy Destoyed!');}
+  var spy = new ScrollSpy({
+    contexts_class: 'scrollspy',
+    delay: 100,
+    callbackOnChange: function callbackOnChange() {
 
-  spy.Indicator(
-    {
-      element: document.getElementById('indicator')
+    },
+    callbackOnDestroy: function callbackOnDestory() {
+
     }
-  );
+  });
+  var indicator = document.getElementById('indicator');
+  
+  spy.Indicator({
+    element: null,
+    indicator_container_class: "",
+    indicator_item_class: "",
+    clickable: true,
+    forceActive: false
+  });
 </script>
-
-<!-- //  indicator_container_class: "scrollspy-indicator",
-//  indicator_item_class: "scrollspy-indicator-item",
-//  clickable: true,
-//  forceActive: false
 
 // Put scroll code here.
 // https://github.com/sidsbrmnn/scrollspy
