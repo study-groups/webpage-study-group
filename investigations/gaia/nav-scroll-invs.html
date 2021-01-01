@@ -36,7 +36,7 @@ NOTE: This document will be using internal CSS styling because the document is r
 -->
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');*/
 
 :root {
   --nav-bar: #a45b27;
@@ -74,7 +74,7 @@ body {
   padding: 0;
   overflow: hidden;
 }
-.current-chapter {
+.chapterAlert {
   float: right;
   padding: 0 1em 0 0;
 }
@@ -161,10 +161,10 @@ ul {
 <li class="navbarLi" onclick='ScrollTo("c1")'>c1</li>
 <li class="navbarLi" onclick='ScrollTo("c2")'>c2</li>
 <li class="navbarLi" onclick='ScrollTo("c3")'>c3</li>
-<li onclick='ScrollTo("c11")'>c11</li>
+<li class="navbarLi" onclick='ScrollTo("c11")'>c11</li>
 </ul>
 
-<span class="chapterAlert">Current Chapter</span>
+<span class="chapterAlert"></span>
 <script>
 
 //  FUNCTIONS
@@ -205,7 +205,7 @@ ul {
 //  1. navbar:
 //  2. navHeight:
 //  3. jump:
-//  4. currentChapter:
+//  4. chapterAlert:
 
 //
 //  OTHER DEFINITIONS
@@ -250,28 +250,46 @@ function ScrollToResolver(elem) {
     elem.lastjump = null;
   }
 }
-////////////
-//  accesses li's in ul of navbar
-  var navbarLi = document.getElementsByClassName('navbarLi.innerText');
+////////////  SCROLL-CHAPTER ALERT ///////////////
+
+  var chap1 = document.getElementsByClassName('navbarLi')[0];
+  var chap2 = document.getElementsByClassName('navbarLi')[1];
+  var chap3 = document.getElementsByClassName('navbarLi')[2];
+  var chap11 = document.getElementsByClassName('navbarLi')[3];
+ 
+    console.log(chap1);
+    console.log(chap2);
+    console.log(chap3);
+    console.log(chap11);
+  
+//  switch (navbarLi) {
+//    case 'c1': {
+//       console.log(navbarLi.item(0));
+
+//      document.getElementById("chap1").onclick = function() { 
+//          var currrentChapter = document.createTextNode("Chapter One");
+//          chapterAlert.appendChild(currentChapter);
+                   
+
     
-  switch (navbarLi) {
-    case 'c1':
-      chapterAlert = "Chapter One";
-      break;
-    case 'c2':
-      chapterAlert = "Chapter Two";
-      break;
-    case 'c3':
-      chapterAlert = "Chapter Three";
-      break;
-    default:
-      chapterAlert = "Error";
-}
-  var chapterAlert = document.getElementByClassName('chapterAlert');
+//       }
+//    };
+//    break;
+
+//    case 'c2':
+//      chapterAlert = "Chapter Two";
+//     break;
+//    case 'c3':
+//      chapterAlert = "Chapter Three";
+//      break;
+//    default:
+//      chapterAlert = "Current Chapter";
+//}
+//  var chapterAlert = document.getElementsByClassName('chapterAlert');
 
   
   
-?  HTMLElement.innerText
+// ?  HTMLElement.innerText
 
 </script></nav>
 
@@ -4704,9 +4722,10 @@ You will find your own words and your own silence.
 <span style='color:orange'>
 You will find your own way of knowing Gaia.
 </span>
-</p><img class="zen-circle" 
+</p>
+<!-- <img class="zen-circle" 
 src="./assets/zen-circle-mod.png" 
-alt="zen-circle">
+alt="zen-circle"> -->
 <br>
 <section class="author-container">
 <ul class="author">
