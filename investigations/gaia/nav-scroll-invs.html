@@ -164,7 +164,7 @@ ul {
 <li class="navbarLi" onclick='ScrollTo("c11")'>c11</li>
 </ul>
 
-<span class="chapterAlert"></span>
+<span id="chapterAlert"></span>
 <script>
 
 //  FUNCTIONS
@@ -252,45 +252,34 @@ function ScrollToResolver(elem) {
 }
 ////////////  SCROLL-CHAPTER ALERT ///////////////
 
-  var chap1 = document.getElementsByClassName('navbarLi')[0];
-  var chap2 = document.getElementsByClassName('navbarLi')[1];
-  var chap3 = document.getElementsByClassName('navbarLi')[2];
-  var chap11 = document.getElementsByClassName('navbarLi')[3];
+  
+var chap = document.querySelector("li.navbarLi").onclick = {  
  
-    console.log(chap1);
-    console.log(chap2);
-    console.log(chap3);
-    console.log(chap11);
-  
-//  switch (navbarLi) {
-//    case 'c1': {
-//       console.log(navbarLi.item(0));
+  console.log(chap);
 
-//      document.getElementById("chap1").onclick = function() { 
-//          var currrentChapter = document.createTextNode("Chapter One");
-//          chapterAlert.appendChild(currentChapter);
-                   
-
-    
-//       }
-//    };
-//    break;
-
-//    case 'c2':
-//      chapterAlert = "Chapter Two";
-//     break;
-//    case 'c3':
-//      chapterAlert = "Chapter Three";
-//      break;
-//    default:
-//      chapterAlert = "Current Chapter";
-//}
-//  var chapterAlert = document.getElementsByClassName('chapterAlert');
-
-  
-  
-// ?  HTMLElement.innerText
-
+  function setAlert(chap) {
+    if(chap = "c1") {
+       span = document.getElementById("chapterAlert");
+       alert = document.createTextNode("Chapter One");
+       span.appendChild(alert); 
+    } else if (chap="c2") {
+       span = document.getElementById("chapterAlert");
+       alert = document.createTextNode("Chapter Two");
+       span.appendChild(alert); 
+    } else if (chap="c3") {
+       span = document.getElementById("chapterAlert");
+       alert = document.createTextNode("Chapter Three");
+       span.appendChild(alert); 
+    } else if (chap="c11") {
+       span = document.getElementById("chapterAlert");
+       alert = document.createTextNode("Chapter Eleven");
+       span.appendChild(alert); 
+    } else {
+       console.log("Not working.");
+    }
+  }
+}
+  setAlert(chap);  
 </script></nav>
 
 <main>
