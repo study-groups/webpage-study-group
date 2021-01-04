@@ -253,9 +253,11 @@ function ScrollToResolver(elem) {
 ////////////  SCROLL-CHAPTER ALERT ///////////////
 
   
-var chap = document.querySelector("li.navbarLi").onclick = {  
- 
-  console.log(chap);
+  var chap = document.querySelectorAll('li.navbarLi')
+
+  for (var values of chap) {
+       console.log(chap);
+  }
 
   function setAlert(chap) {
     if(chap = "c1") {
@@ -278,7 +280,7 @@ var chap = document.querySelector("li.navbarLi").onclick = {
        console.log("Not working.");
     }
   }
-}
+ 
   setAlert(chap);  
 </script></nav>
 
