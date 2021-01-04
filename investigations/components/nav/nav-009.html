@@ -1,0 +1,254 @@
+<html>
+<!-- Adds auto-generated section navigation tabs. -->
+<head>
+<style>
+nav li{
+   display:block;
+   float:left;
+   width:3rem; 
+   text-align:center;
+   height:1.5rem;
+   margin:.1rem; 
+   border:1px solid blue;
+   cursor:pointer;
+}
+nav li:hover{
+   background:#888;
+}
+.nav-selected{
+   background:#888;
+}
+
+nav ul{
+   clear:both;
+}
+nav{
+  float:none; 
+}
+article{
+  display:block;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<ul id="chapterNav"> </ul>
+<ul id="sectionNav"> </ul>
+<div style="clear:both">
+</div> 
+</nav>
+<!-- Debug info -->
+<div id="debug">
+<div id="action">idle</div>
+<span id="data">no data</span>
+<a href="#" 
+   onclick="document.getElementById('debug').style.display='none';"
+>hide</a>
+</div>
+<article id="article"></article>
+</body>
+<script>
+console.log("nav-009");
+document.addEventListener('DOMContentLoaded',init);
+
+function init(){
+  initModel();
+  initView();
+  initNav();
+}
+
+//////////////
+// MODEL
+// localStorage used for storing state of:
+//  1) Nav state (chapter) 
+//  2) App state (action, html)
+//
+// In addtion to localStorage, this model
+// includes a hidden DOM element 'book'.
+// with children div elements with class='chapter'.
+//////////////
+function initModel(){
+  //global book element for retrieving HTML chapters.
+  book=document.getElementById('book');
+
+  // if html doesn't exist, nothing exists, so init nav vars.
+  if(!localStorage.getItem('html')) {
+    localStorage.setItem('chapter',"");
+  }
+
+  // html is result of nav, part of biz logic,
+  localStorage.setItem('html',"To be retrieved.");
+  
+}
+
+// Object of key/values where the value is a function that
+// is called when key changes. Currently only handleModelUpdateView
+function modelSetItem(key,val){
+
+  // Set item
+  localStorage.setItem(key,val);
+  var actionStr=`set ${key}=${val}`
+  localStorage.setItem('action', actionStr);
+
+  // Build data object for views
+  var data={'chapter': localStorage.getItem('chapter'),
+            'action':  localStorage.getItem('action')
+           };
+
+  // Complete data object by getting chapter html 
+  data.html="To be retrived.";
+  const el=modelGetChapter(data.chapter);
+  if(el){
+    data.html=el.outerHTML;
+  }else{
+    data.html="Not found";
+  }
+  
+  // Pass data object to update fuctions, they'll 
+  // pick off what they need from data. Not effiecient.
+  updateNav(data);
+  updateView(data);
+}
+
+function modelGetChapter(chapter){
+  chapEls=book.getElementsByClassName("chapter");
+  if(chapEls[chapter-1]) 
+    return chapEls[chapter-1];
+  else
+    return null;
+}
+//////////
+//VIEW
+//////////
+// Global elements used by updateView()
+var chapterNav;
+var sectionNav;
+var article;
+var dataEl;
+var book;
+
+
+function initView(){
+  dataEl=document.getElementById("data");
+  article=document.getElementById("article");
+}
+
+function initNav(){
+  chapterNav=document.getElementById("chapterNav");
+  sectionNav=document.getElementById("sectionNav");
+  initNavChapters();
+}
+
+function initNavChapters(){
+  const chapEls=book.getElementsByClassName("chapter");
+  for(let chapEl of chapEls){
+      var navEl = document.createElement("li");
+
+      if(chapEl.dataset.navLabel)
+        navEl.innerHTML=chapEl.dataset.navLabel;
+      else 
+        navEl.innerHTML=chapterNav.childElementCount;
+    
+      chapterNav.appendChild(navEl);
+      navEl.dataset.chapter=chapterNav.childElementCount;
+
+      var secEls=chapEl.getElementsByClassName("section");
+      navEl.dataset.numOfSections=secEls.length;
+      navEl.dataset.curSec=0;
+      navEl.dataset.ulHtml=makeUlHtml(secEls);
+  }
+
+  for(let el of chapterNav.children){
+    el.addEventListener('click',handleEvent);
+  }
+
+}
+
+function makeUlHtml(secEls){
+  let ul=`<ul id='sectionNav' >`;
+  for(let el of secEls){
+     ul+=`<li>${el.id}</li>`
+  }
+  ul+="</ul>";
+  return ul;
+}
+function initNavSections(chapEl){
+
+}
+// Called by Model when state changes.
+function updateView(data){                         // VIEW 
+  action.innerText=`action:${data.action}`;        // VIEW
+  dataEl.innerText=`data:${JSON.stringify(data)}`; // VIEW
+  article.innerHTML=`${data.html}`;                // VIEW
+}
+
+function updateNav(data){                          // VIEW 
+  for(let el of chapterNav.children){
+    el.classList.remove('nav-selected');
+    if(el.dataset.chapter == data.chapter){
+      el.classList.add('nav-selected');
+      document.getElementById('sectionNav').outerHTML=el.dataset.ulHtml;
+    }
+  }
+}
+
+///////////////
+//CONTROLLER
+///////////////
+// All button handling goes thru here.
+function handleEvent(e){ // CONTROLLER
+  //console.log(`handleEvent: target.id ${e.target}`); // VIEW
+  
+  parent=e.target.parentNode; // VIEW-NAV 
+  if(parent.id==="chapterNav"){
+    modelSetItem('chapter', e.target.dataset.chapter);
+  }
+}
+
+// References:
+// https://reactnavigation.org/docs/navigation-events/
+// https://developer.mozilla.org/en-US/docs/Mozilla/\
+// Add-ons/WebExtensions/API/storage
+</script>
+</html>
+
+<div id="book">
+
+<h1>Book Title id='book'
+<a onclick="document.getElementById('book').style.display='none';"
+href="#">hide</a>
+</h1>
+<div>Chapter0 text</div>
+<div class="chapter" data-nav-label="ch1">
+  <h2  id='c1-h2'>Chapter 1: Introduction</h2>
+  <div class="section"  id="c1-s1">
+    <h3>Section prompt h3 in chapter 1 </h3>
+    <p id="c1-s1-p1"> 
+    First paragraph of section 1 text with id="c1-s1-p1".
+    </p>  <!-- c1-s1-p1 -->
+  </div>  <!-- c1-s1 -->
+</div> <!-- c1 -->
+
+<div class="chapter" data-nav-label="ch2">
+  <h2>Chapter 2: Getting started</h2>
+  <div class="section"  id="c2-s1">
+    <h3>Getting started section of Geting started</h3>
+    <p id="c2-s1-p1"> 
+    First paragraph of section 1 text with id="c2-s1-p1".
+    </p>  <!-- c1-s1-p1 -->
+    <p id="c2-s1-p2"> 
+    Second paragraph of section 1 text with id="c2-s1-p2".
+    </p>  <!-- c1-s1-p2 -->
+  </div>  <!-- c1-s1 -->
+  <div class="section"  id="c2-s2">
+    <h3>Section 2</h3>
+    <p id="c2-s1-p1"> 
+    First paragraph of chapter 2, section 2 text.
+    </p>  <!-- c1-s1-p1 -->
+    <p id="c2-s1-p2"> 
+    Second paragraph of chapter 2, section 2 text.
+    </p>  <!-- c2-s2-p2 -->
+  </div>  <!-- c2-s2 -->
+</div> <!-- c1 -->
+</div> <!-- book --!>
