@@ -1,0 +1,3 @@
+[submodule "investigations/scrollspy"]
+	path = investigations/scrollspy
+	url = git@github.com:sidsbrmnn/scrollspy.git
