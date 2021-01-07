@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaia Webpage</title>
 
-<!--  <link rel="stylesheet" href="ScrollSpy.min.css"/> -->
 <head>
 
 <style>
@@ -49,6 +48,10 @@ body {
   padding: 0;
   overflow: hidden;
 }
+.chapterAlert {
+  float: right;
+  padding: 0 1em 0 0;
+}
 li {
   float: left;
 }
@@ -59,13 +62,8 @@ li {
   padding: 16px;
   text-decoration: none;
 }
-
 li:hover {
   background-color: #111111;
-}
-
-
-.main-header {
   color: var(--h1-color);
   margin: 5em 10% 1em 10%;
 }
@@ -127,23 +125,15 @@ ul {
 </head>
 
 <body>
-<!-- <script src="ScrollSpy.min.js"</script> -->
- <nav id='navbar' class="navbar">
-  <ul>
-    <li onclick='ScrollTo("c1")'>c1</li>
-    <li onclick='ScrollTo("c2")'>c2</li>
-    <li onclick='ScrollTo("c3")'>c3</li>
-    <li onclick='ScrollTo("c11")'>c11</li>
-  </ul>
-  <div id="indicator">
-    <ul class="spyscroll-indicator-container">
-      <li class="spy-clickable">Chapter One</li>
-      <li class="spy-clickable">Chapter Two</li>
-      <li class="spy-clickable">Chapter Three</li>
-    </ul>
-  </div>
-</nav>
 
+<nav id='navbar' class="navbar"><ul>
+<li onclick='ScrollTo("c1")'>c1</li>
+<li onclick='ScrollTo("c2")'>c2</li>
+<li onclick='ScrollTo("c3")'>c3</li>
+<li onclick='ScrollTo("c11")'>c11</li>
+</ul>
+
+</nav>
 <script>
 // https://stackoverflow.com/a/36929383/4249785
 
@@ -160,7 +150,7 @@ ul {
     console.log("navHeight", navHeight);  
 
     var jump=parseInt((elem.getBoundingClientRect().top-navHeight) * .2);
-
+    
     document.body.scrollTop += jump;
     document.documentElement.scrollTop += jump;
     if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
@@ -170,28 +160,15 @@ ul {
       elem.lastjump = null;
     }
   }
-// --- ScrollSpy --- //
 
-    var spy = new ScrollSpy({
-      contexts_class: 'scrollspy',
-      callbackOnChange: function (el) {alert("Active Element Changed'); },
-      callbackOnDestroy: function () {alert("ScrollSpy Destroyed!); }  
-    });
-    
-    var indicator = document.getElementById('indicator');
-    
-    spy.Indicator({
-      element: document.getElementById('indicator'),
-
-    });
 </script>
-</nav>
-
 <main>
 <header>
-<h1 class="main-header">Knowing Gaia</h1>
+<h1 class="main-header">Knowing Gaia</h1>i
 </header>
-<div class="content">
+
+<div id="indicator"></div>
+
 <section class="Scrollspy" spy-title="Chapter One">
 
 <h2 id='c1'>Ch 1. ~  Introduction</h2>
@@ -4644,7 +4621,6 @@ alt="zen-circle"> -->
   <li>May 15, 2020</li>
 </ul>
 </section>
-</div>
 <a id="email" 
   href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>
 </main>
