@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaia Webpage</title>
-
-<!--  <link rel="stylesheet" href="ScrollSpy.min.css"/> -->
-<head>
-
+  <head>
+  <link rel="stylesheet" href="/ScrollSpy.min.css">
 <style>
 /* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');*/
 
@@ -121,9 +119,7 @@ ul {
 }
 </style>
 </head>
-
 <body>
-<!-- <script src="ScrollSpy.min.js"</script> -->
  <nav id='navbar' class="navbar">
   <ul>
     <li onclick='ScrollTo("c1")'>c1</li>
@@ -133,13 +129,13 @@ ul {
   </ul>
   <div id="indicator">
     <ul class="spyscroll-indicator-container">
-      <li class="spy-clickable">Chapter One</li>
+      <li class="spy-clickable spy-active">Chapter One</li>
       <li class="spy-clickable">Chapter Two</li>
       <li class="spy-clickable">Chapter Three</li>
+      <li class="spy-clickable">Chapter Four</li>
     </ul>
   </div>
 </nav>
-
 <script>
 // https://stackoverflow.com/a/36929383/4249785
 
@@ -166,18 +162,22 @@ ul {
       elem.lastjump = null;
     }
   }
+</script>
 // --- ScrollSpy --- //
 
+<script>
     var spy = new ScrollSpy({
       contexts_class: 'scrollspy',
-      callbackOnChange: function (el) {alert("Active Element Changed"); },
-      callbackOnDestroy: function () {alert("ScrollSpy Destroyed!"); }  
+      // callbackOnChange: function (el) {alert("Active Element Changed"); },
+      // callbackOnDestroy: function () {alert("ScrollSpy Destroyed!"); }  
     });
     
     var indicator = document.getElementById('indicator');
     
     spy.Indicator({
-      element: document.getElementById('indicator'),
+      element: indicator,
+      clickable: true,
+      forceActive: false,
 
     });
 </script>
@@ -185,7 +185,7 @@ ul {
 
 <main>
 <header>
-<h1 class="main-header">Knowing Gaia</h1>:wait
+<h1 class="main-header">Knowing Gaia</h1>
 </header>
 <div class="content">
 <section class="Scrollspy" spy-title="Chapter 1">
