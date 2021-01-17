@@ -2,7 +2,8 @@
  * ScrollSpy JavaScript Library v1.0.0
  * https://scrollspy.github.io
  */
- .scrollspy-indicator-container {
+  
+  .scrollspy-indicator-container {
    list-style:none;
    padding:0;
    margin:0;
@@ -27,3 +28,4 @@
   li.spy-clickable:hover {
     color:#ef5350
   }
+

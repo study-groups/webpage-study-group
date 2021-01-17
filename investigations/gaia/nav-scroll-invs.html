@@ -1,4 +1,4 @@
-<!DOCTYPE html>/ul
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -60,7 +60,6 @@ li {
   padding: 16px;
   text-decoration: none;
 }
-
 li:hover {
   background-color: #111111;
 }
@@ -68,14 +67,14 @@ li:hover {
   font-size: 2.25em;
   margin: 1.3em 10% 0 10%;
 }
-.content {
-  margin-top: 12em;
-}
 .indicator {
   margin-top: 5
 }
+#first-chapter {
+  margin-top: 17em;
+}
 h2, h3 {
-  margin: 0 10% 1em 10%;
+  margin: 0 10% .8em 10%;
 }
 h2, h3 {
   color: var(--h2-color);
@@ -90,15 +89,14 @@ a {
 }
 #email {
   color: var(--email-link);
-  margin: 1.5e 
-10% 1em 10%;
+  margin: 1.5em 10% 1em 10%;
 }
 ul {
   list-style-type: none;
   padding-left: 0;
 }
 .section-divider { 
-  border-color: var(--nav-bar-bg);
+  border-color: var(--divider-line);
   border-top: 2px 25em;
   margin: 3em 25% 0 20%;
 }
@@ -113,6 +111,10 @@ ul {
 }
 .spy-clickable {
   font-size: .8em;
+} 
+.assumption-horizontal-bar-lrg {
+    border-left: 1px solid #CFEBFF;
+    margin: 0 0 0 10%;
 }
 .assumption-leader {
   font-size: 1em;
@@ -123,15 +125,13 @@ ul {
   color: #9CB8DB;
   margin: 0 0 0 6em;
   font-size: inherit;
-  margin: 0 5% 33px 12%;
-}
-.scrollspy {
-  margin-top: 15em;
+  margin: 0 10% 33px 3%;
+  line-height: 130%;
 }
 @media screen and (max-width: 667px) {
   body {
     font-size: 12pt;
-}
+  }
   p {  
      margin: 0 20px 0 20px;
   }
@@ -145,132 +145,158 @@ ul {
 }
 </style>
 </head>
+
 <body>
 <script src="ScrollSpy.js"></script>
   <div class="content">
     <nav id='navbar' class="navbar">
-      <h1 class="main-header">Knowing Gaia</h1>
-        <div id="indicator">
-          <div id = "scrollTopLoc" class="dropdown">
-            <button class = "dropbtn">Chapters</button>
-            <li class="dropdown-content"></li>
-            <div class="spy-clickable">Chapter 1</div>
-            <div class="spy-clickable">Chapter 2</div>
-            <div class="spy-clickable">Chapter 3</div>
-            <div class="spy-clickable">Chapter 4</div>
-            <div class="spy-clickable">Chapter 5</div>
-            <div class="spy-clickable">Chapter 6</div>
-            <div class="spy-clickable">Chapter 7</div>
-            <div class="spy-clickable">Chapter 8</div>
-            <div class="spy-clickable">Chapter 9</div>
-            <div class="spy-clickable">Chapter 10</div>
-            <div class="spy-clickable">Chapter 11</div>
-          </div>
-        </div>
+    <h1 class="main-header">Knowing Gaia</h1>
+      <div id="indicator">
+        <ul class="scrollspy-indicator-container">
+          <li class="spy-clickable">Chapter 1</li>
+            <li #id="c1-par1" class="spy-clickable" >C1/P1</li>
+            <li #id="c1-par2" class="spy-clickable">C1/P2</li>
+            <li #id="c1-par3" class="spy-clickable">C1/P3</li>
+            <li #id="c1-par4" class="spy-clickable">C1-P4</li>
+            <li #id="c1-par5" class="spy-clickable">C1/P5</li>
+            <li #id="c1-par6" class="spy-clickable">C1/P6</li>
+
+          <li class="spy-clickable">Chapter 2</li>
+          <li class="spy-clickable">Chapter 3</li>
+          <li class="spy-clickable">Chapter 4</li>
+          <li class="spy-clickable">Chapter 5</li>
+          <li class="spy-clickable">Chapter 6</li>
+          <li class="spy-clickable">Chapter 7</li>
+          <li class="spy-clickable">Chapter 8</li>
+          <li class="spy-clickable">Chapter 9</li>
+          <li class="spy-clickable">Chapter 10</li>
+          <li class="spy-clickable">Chapter 11</li>
+        </ul>
       </div>
     </nav>
 <!-- SECTIONS/CHAPTERS -->
-    <div>
-      <section class="scrollspy" spy-title="Chapter 1">
-        <h2>Ch 1. ~  Introduction</h2>
-          <p id='c1-par1'>
-            After many years of Buddhist study and practice, and being i
-            influenced by less traditional non-duality speakers, I was inspired
-            to develop a contemplation practice called "Knowing Gaia". I've 
-            combined my experience of meditation and a Buddhist world view with
-            a more contemporary approach which is not based on any spiritual 
-            authority. In "Knowing Gaia" a scientific world view is bent a 
-            little bit in the direction of intuition, poetry and mysticism 
-            without making up any stories which contradict our modern common 
-            sense. The text is more of an invitation than a guide, and readers 
-            are expected to make their own discoveries which may well be 
-            radically different from my own.
-          </p>
-          <p id='c1-par2' style="color: var(--body-text-alt)">
-            Gaia, from Greek mythology, can be thought of as 'Mother Earth'. The mythology includes stories of creation, primordial conflict and shifting rulers. Here, I'm using a contemporary concept of Gaia. James Lovelock, an English scientist and inventor, started it. He was working for NASA investigating planetary atmospheres when he started thinking about how very odd Earth's atmosphere is, how unstable and unlikely. Of course this is a result of life processes exchanging gases, impossible for a non-living planet. He realized that not only does life adapt to changing conditions, but also changes conditions itself in a dynamic, self-regulating system.
-          </p>
-          <p id='c1-par3'>
-            There was nothing anthropomorphic in his idea, but his friend, novelist William Golding, found it poetic and suggested calling it 'Gaia' rather than a more prosaic 'Earth systems science'.
-          </p>
-          <p id='c1-par4' style="color: var(--body-text-alt)">
-            Some people have been enchanted by the poetry into thinking that our Earth will take care of us. Unfortunately, we don't know that. Evidence so far suggests that Gaia is heartless. We are only as special as we make ourselves to be. Gaia is mother to all her children - frog and fly, Neanderthal and Homo Sapiens. Life forms thrive, or not, in an ever-changing web. Everyone needs something to eat. Animals eat plants which were thriving on the carbon dioxide exhaled by those very animals. The animals are thriving on the oxygen produced by the plants they are killing. Yet the whole complex system not only continues, but continues to develop more complexity. It almost seems alive, and so, following Lovelock, I'm calling it Gaia.
-          </p>
-          <p id='c1-par5'>I'm setting aside the fact that traditional ideas of 'mother' imply the existence of 'father'. Let's just say the Sun is our father, and go ahead with Gaia as our subject. Think of the earth and everything on it. The oceans are home to phytoplankton cells in the billions, each separately working away at photosynthesis, releasing trace amounts of oxygen. Diatoms not only give us oxygen, but lock carbon in their miniscule shells.The shells drop down through the water when the diatom dies, taking that bit of carbon with them, cooling the planet, to the benefit of the living diatoms and everyone else who likes the temperature the way it is. Having discovered the amazing convenience of fossil fuels, we humans are about to defeat their efforts. Certain species of jellyfish think that's a great idea! They are already showing up in unprecedented numbers. So, who is choosing the future?
-          </p>
-          <p id='c1-par6' style="color: var(--body-text-alt)">
-            At the time of the asteroid impact that killed the dinosaurs, small mammals were living in burrows, out of danger from the huge beasts who had ruled the planet for 175 million years. These small rat-like mammals would not be our first choice of an ancestor, but hiding in their burrows they survived the fires and extreme conditions following the impact, and became our ancestors. From a combination of chance, time and natural selection in a complex, self-regulating system, we emerged.
-          </p>
-      </section>
+<div>
+<section id="first-chapter" class="scrollspy" spy-title="Chapter 1">
+<h2>Ch 1. ~  Introduction</h2>
+<p id='c1-par1'
+   class="scrollspy"
+   spy-title="C1/P1">
+After many years of Buddhist study and practice, and being influenced by less traditional non-duality speakers, I was inspired to develop a contemplation practice called "Knowing Gaia". I've combined my experience of meditation and a Buddhist world view with a more contemporary approach which is not based on any spiritual authority. In "Knowing Gaia" a scientific world view is bent a little bit in the direction of intuition, poetry and mysticism without making up any stories which contradict our modern common sense. The text is more of an invitation than a guide, and readers are expected to make their own discoveries which may well be radically different from my own.
+</p>
+<p id='c1-par2'
+   class="scrollspy"
+   spy-title="C1/P2"
+   style="color: var(--body-text-alt)">
+Gaia, from Greek mythology, can be thought of as 'Mother Earth'. The mythology includes stories of creation, primordial conflict and shifting rulers. Here, I'm using a contemporary concept of Gaia. James Lovelock, an English scientist and inventor, started it. He was working for NASA investigating planetary atmospheres when he started thinking about how very odd Earth's atmosphere is, how unstable and unlikely. Of course this is a result of life processes exchanging gases, impossible for a non-living planet. He realized that not only does life adapt to  changing conditions, but also changes conditions itself in a dynamic, self-regulating system.
+</p>
+<p id='c1-par3'
+class="scrollspy"
+spy-title="C1/P3">
+There was nothing anthropomorphic in his idea, but his friend, novelist William Golding, found it poetic and suggested calling it 'Gaia' rather than a more prosaic 'Earth systems science'.
+</p>
+<p id='c1-par4'
+   class="scrollspy"
+   spy-title="C1/P4"
+   style="color: var(--body-text-alt)">
+Some people have been enchanted by the poetry into thinking that our Earth will take care of us. Unfortunately, we don't know that. Evidence so far suggests that Gaia is heartless. We are only as special as we make ourselves to be. Gaia is mother to all her children - frog and fly, Neanderthal and Homo Sapiens. Life forms thrive, or not, in an ever-changing web. Everyone needs something to eat. Animals eat plants which were thriving on the carbon dioxide exhaled by those very animals. The animals are thriving on the oxygen produced by the plants they are killing. Yet the whole complex system not only continues, but continues to develop more complexity. It almost seems alive, and so, following Lovelock, I'm calling it Gaia.
+</p>
+<p id='c1-par5'
+   class="scrollspy"
+   spy-title="C1/P5">
+I'm setting aside the fact that traditional ideas of 'mother' simply the existence of 'father'. Let's just say the Sun is our father, and go ahead with Gaia as our subject. Think of the earth and everything on it. The oceans are home to phytoplankton cells in the billions, each separately working away at photosynthesis, releasing trace amounts of oxygen. Diatoms not only give us oxygen, but lock carbon in their miniscule shells.The shells drop down through the water when the diatom dies, taking that bit of carbon with them, cooling the planet, to the benefit of the living diatoms and everyone else who likes the temperature the way it is. Having discovered the amazing convenience of fossil fuels, we humans are about to defeat their efforts. Certain species of jellyfish think that's a great idea! They are already showing up in unprecedented numbers. So, who is choosing the future?
+</p>
+<p id='c1-par6'
+   class="scrollspy"
+   spy-title="C1/P6"
+   style="color: var(--body-text-alt)">
+At the time of the asteroid impact that killed the dinosaurs, small mammals were living in burrows, out of danger from the huge beasts who had ruled the planet for 175 million years. These small rat-like mammals would not be our first choice of an ancestor, but hiding in their burrows they survived the fires and extreme conditions following the impact, and became our ancestors. From a combination of chance, time and natural selection in a complex, self-regulating system, we  emerged.
+</p>
+</section>
 
-      <section class="scrollspy" spy-title="Chapter 2">
-        <h2>Ch 2. ~  Taking a leap into the deeply personal</h2>
-          <p id='c2-par1'> 
-            Contemplation is a way of investigating experiences which are particularly difficult to capture in symbols. "The name you can say isn't the real name" is how Ursula LeGuin expresses it in the beginning of her version of the Tao Te Ching. But there's no point in trying to stop thinking. Any attempt we make to stop thinking only fuels conflict resulting in either more frantic thinking, or a frozen silence, neither of which is productive of insight. And it is insight that I'm after, that's the goal - to bring awareness into what I've been ignoring.
-          </p>
-          <p id='c2-par2' style="color: var(--body-text-alt)">            How do I do that? First, it's important to state that how I do it is probably different from how you do it. Let's not get religious or ideological about a process which is so essentially personal. The question is simple and pragmatic - what works? And how do we know it is working? Let's say you're on a boat touring Antarctica and you suddenly feel a vastness which doesn't make you feel small, but includes you with a sudden loss of boundary. You look around at your fellow passengers and feel a surge of warmth, an appreciation for how unique and precious every single one of them is. Or let's say I'm in the garden picking strawberries and I ease into a vivid perception of red and green which makes me feel so much more alive than usual. The tangle of leaf, flower and fruit suddenly seems miraculous, a gift. I have an urge to share this gift with everyone I know. In both cases we have unexpectedly discovered something about ourselves, and about Gaia. Something we were not noticing before. In both cases words like vastness, precious, vivid, gift, contain only the slightest hint of the experience. What caused that shift in perception? Was it something we did sometime in the past? Was it brain chemistry? Was it a stage in a quest? Was it because we listened to one of the many people giving advice or teachings? Who knows. We can only make a guess and judge for ourselves how to proceed.
-          </p>
-          <p id='c2-par3'>
-            Developing an appetite for a state of unabsorbed flow has been very helpful for me. Usually we experience something like 'flow' when absorbed in some activity. Any activity which absorbs our attention, while encouraging a flow state, is what I'm calling 'absorbed flow'. We lose track of time, and effort becomes a simple flow of energy. What I mean by 'unabsorbed flow' is something quite different. You don't lose yourself in an activity. Also, you don't enter into any non-ordinary mind state as with a drug or other extreme or unusual experience.It feels completely like 'plain old me', but with a crucial difference. The 'me' in the unabsorbed flow state is light, often to the point of dissolution, but not because it's been absorbed into an activity. Rather, there has been a thinning of a sense of separation. We become more available to what is actually here.
-          </p>
-          <p id='c2-par4' style="color: var(--body-text-alt)">
-            Contemplation comes naturally when we relax with uncertainty. We don't need to manufacture any special mind states. Our conditioning, however, is well established. We think we like it because it is so familiar. I'm suggesting there is something more natural, more nourishing. Doing something unnatural might help us get back in touch with the basics. Using the principles of Gaia, I have some questions and statements which help me understand myself and the world better by serving as prompts for contemplation.
-          </p>
-          <p id='c2-par5'>
-            Here are the ten prompts I'm using. You could try making up your own. Just think of some questions or statements which will challenge your own deeply held assumptions.
-          </p>
-            <h3 class="assumptions" id='c2-p0'>
-            <div class="assumption-leader">Assumption 1 ~</div>
-              Since living systems do not exist independently in nature, 
-              what am I? What does that feel like?
-            </h3>
-            <h3 class="assumptions" id='c2-p1'>
-            <div class="assumption-leader">Assumption 2 ~</div>
-               Integrity is a function of how well a system is integrated. 
-               Are any conflicting emotions currently creating instability 
-               in me? 
-            </h3>
-            <h3 class="assumptions" id='c2-p2'>
-            <div class="assumption-leader">Assumption 3 ~</div>
-              The problem with living in a dream is that real people get hurt.
-              What's my most recent example of that?
-            </h3>
-            <h3 class="assumptions" id='c2-p3'>
-              <div class="assumption-leader">Assumption 4 ~</div>
-                If I'm not feeling my inner body right now, I'm not feeling 
-                anything. Take a moment to check in. 
-            </h3>
-            <h3 class="assumptions" id='c2-p4'>
-              <div class="assumption-leader">Assumption 5 ~</div>
-                Since Gaia is what's real, any gap in honesty separates us. 
-                I can only be honest with myself if I listen to my whole self. 
-                How can I do that?
-            </h3>
-            <h3 class="assumptions" id='c2-p5'>
-              <div class="assumption-leader">Assumption 6 ~</div>
-              How much power do you think you have? How much do you want? 
-              How much does the other person have? How much do you think 
-              they want?
-            </h3>
-            <h3 class="assumptions" id='c2-p6'>
-              <div class="assumption-leader">Assumption 7 ~</div>
-              What am I being touched by right now, physically, emotionally,
-              intellectually?
-            </h3>
-            <h3 class="assumptions" id='c2-p7'>
-              <div class="assumption-leader">Assumption 8 ~</div>
-              How does ideology creep into your thinking? What does it offer 
-              you? What does it take away from knowing Gaia?
-            </h3>
-            <h3 class="assumptions" id='c2-p8'>
-              <div class="assumption-leader">Assumption 9 ~</div>
-              We're breathing, we're feeling the force of gravity. Paying 
-              attention to both at once places us squarely in the presence of 
-              Gaia. Try it. 
-            </h3>
-            <h3 class="assumptions" id='c2-p9'>
-              <div class="assumption-leader">Assumption 10 ~</div>
-              Does Gaia have a self? What would that mean? 
-            </h3>
+<div class="section-divider"></div> <!-- Not working -->
+
+<section class="scrollspy" spy-title="Chapter 2">
+<h2>Ch 2. ~  Taking a leap into the deeply personal</h2>
+<p id='c2-par1'
+   class="scrolllspy"
+   spy-title="C2/P1">
+Contemplation is a way of investigating experiences which are particularly difficult to capture in symbols. "The name you can say isn't the real name" is how Ursula LeGuin expresses it in the beginning of her version of the Tao Te Ching. But there's no point in trying to stop thinking. Any attempt we make to stop thinking only fuels conflict resulting in either more frantic thinking, or a frozen silence, neither of which is productive of insight. And it is insight that I'm after, that's the goal - to bring awareness into what I've been ignoring.
+</p>
+<p id='c2-par2'
+   class="scrollspy"
+   spy-title="C2P2"
+   style="color: var(--body-text-alt)">
+How do I do that? First, it's important to state that how I do it is probably different from how you do it. Let's not get religious or ideological about a process which is so essentially personal. The question is simple and pragmatic - what works? And how do we know it is working? Let's say you're on a boat touring Antarctica and you suddenly feel a vastness which doesn't make you feel small, but includes you with a sudden loss of boundary. You look around at your fellow passengers and feel a surge of warmth, an appreciation for how unique and precious every single one of them is. Or let's say I'm in the garden picking strawberries and I ease into a vivid perception of red and green which makes me feel so much more alive than usual. The tangle of leaf, flower and fruit suddenly seems miraculous, a gift. I have an urge to share this gift with everyone I know. In both cases we have unexpectedly discovered something about ourselves, and about Gaia. Something we were not noticing before. In both cases words like vastness, precious, vivid, gift, contain only the slightest hint of the experience. What caused that shift in perception? Was it something we did sometime in the past? Was it brain chemistry? Was it a stage in a quest? Was it because we listened to one of the many people giving advice or teachings? Who knows. We can only make a guess and judge for ourselves how to proceed.
+</p>
+<p id='c2-par3'
+   class="scrolllspy"
+   spy-title="C2/P3">
+Developing an appetite for a state of unabsorbed flow has been very helpful for me. Usually we experience something like 'flow' when absorbed in some activity. Any activity which absorbs our attention, while encouraging a flow state, is what I'm calling 'absorbed flow'. We lose track of time, and effort becomes a simple flow of energy. What I mean by 'unabsorbed flow' is something quite different. You don't lose yourself in an activity. Also, you don't enter into any non-ordinary mind state as with a drug or other extreme or unusual experience.It feels completely like 'plain old me', but with a crucial difference. The 'me' in the unabsorbed flow state is light, often to the point of dissolution, but not because it's been absorbed into an activity. Rather, there has been a thinning of a sense of separation. We become more available to what is actually here.
+</p>
+<p id='c2-par4'
+   class="scrollslpy"
+   spy-title="C2/P4"
+   style="color: var(--body-text-alt)">
+Contemplation comes naturally when we relax with uncertainty. We don't need to manufacture any special mind states. Our conditioning, however, is well established. We think we like it because it is so familiar. I'm suggesting there is something more natural, more nourishing. Doing something unnatural might help us get back in touch with the basics. Using the principles of Gaia, I have some questions and statements which help me understand myself and the world better by serving as prompts for contemplation.
+</p>
+<p id='c2-par5'
+   class="scrollspy"
+   spy-title="C2/P5">
+Here are the ten prompts I'm using. You could try making up your own. Just think of some questions or statements which will challenge your own deeply held assumptions.
+</p>
+
+<!-- ASSUMPTIONS -->
+
+<div class="assumption-horizontal-bar-lrg">
+  <div class="assumptions" 
+       id='c2-p0'>
+     <div class="assumption-leader">Assumption 1 ~ What Am I?
+
+       <div class="scrollspy"
+            spy-title="A-1">       </div>
+       Since living systems do not exist independently in nature, what am I? What does that feel like?
+     </div>
+  </div>
+  <div class="assumptions" 
+       id='c2-p1'>
+     <div class="assumption-leader">vAssumption 2 ~ Integration</div>
+     Integrity is a function of how well a system is integrated. Are any conflicting emotions currently creating instability in me?
+    </div>
+  <div class="assumptions" id='c2-p2'>
+     <div class="assumption-leader">Assumption 3 ~ Living in a Dream</div>
+     The problem with living in a dream is that real people get hurt. What's my most recent example of that?
+  </div>
+    <div class="assumptions" id='c2-p3'>
+      <div class="assumption-leader">Assumption 4 ~ Feeling Inner Body</div>
+      If I'm not feeling my inner body right now, I'm not feeling anything. Take a moment to check in. 
+  </div>
+    <div class="assumptions" id='c2-p4'>
+      <div class="assumption-leader">Assumption 5 ~ Listening to Self</div>
+      Since Gaia is what's real, any gap in honesty separates us. I can only be honest with myself if I listen to my whole self. How can I do that?
+      </div>
+    <div class="assumptions" id='c2-p5'>
+      <div class="assumption-leader">Assumption 6 ~ Wanting Power</div>
+      How much power do you think you have? How much do you want? How much does the other person have? How much do you think they want?
+    </div>
+    <div class="assumptions" id='c2-p6'>
+      <div class="assumption-leader">Assumption 7 ~ Whats Touching Me?</div>
+      What am I being touched by right now, physically, emotionally, intellectually?
+    </div>
+      <div class="assumptions" id='c2-p7'>
+        <div class="assumption-leader">Assumption 8 ~ Ideology & Knowing Gaia
+        </div>
+        How does ideology creep into your thinking? What does it offer you? What does it take away from knowing Gaia?
+        </div>
+      <div class="assumptions" id='c2-p8'>
+        <div class="assumption-leader">Assumption 9 ~ Breath & Gravity</div>
+        We're breathing, we're feeling the force of gravity. Paying attention to both at once places us squarely in the presence of Gaia. Try it.
+        </div>
+          <div class="assumptions" id='c2-p9'>
+            <div class="assumption-leader">Assumption 10 ~ Does Gaia Have a Self?
+           </div>
+           Does Gaia have a self? What would that mean? 
+           </div>
+         </div>
 
             <p id='c2-par16'style="color: var(--body-text-alt)": >
               Now I'm going to circle through the prompts a number of times 
@@ -313,11 +339,16 @@ https://youtu.
 
       <section class="scrollspy" spy-title="Chapter 3">
 
-</p><h2 id='c3'>Ch 3. ~  First Impressions</h2>
-<h3 id='c3-p0'>
-P1: Since living systems do not exist independently in nature, what am I? What does that feel like?
-</h3>
-
+</p>i
+<h2 id='c3'>Ch 3. ~  First Impressions</h2>
+  <div class="assumption-horizontal-bar-sm">
+     <div class="assumption-leader">
+        Assumption 1 ~
+     </div>
+     <div id='c3-p0' class="assumptions">
+       Since living systems do not exist independently in nature, what am I? What does that feel like?
+     </div>
+  </div>
 <p id='c3-par2'>
 <span  >
 Contemplation begins with our ability to talk to ourselves.
@@ -3911,52 +3942,54 @@ Meanwhile, paying attention to what is touching me in fact now, and what is touc
       element: indicator,
       clickable: true
     });
-    // var startLoc = document.getElementById('scrollTopLoc');
-    // startLoc.scollTop =+ 249;
-
-    // Mike's code
-    // function ScrollTo(name) {
-    // ScrollToResolver(document.getElementById(name));
-    // }
-    // function ScrollToResolver(elem) { 
-    //   var navbar=document.getElementById("navbar");
     
-    //   var navHeight=parseInt(navbar.getBoundingClientRect().height);
-    //   if(!navHeight) navHeight = 0;
-
-    //   console.log("navHeight", navHeight);  
-
-    //   var jump=parseInt((elem.getBoundingClientRect().top-navHeight) * .2);
-
-    //   document.body.scrollTop += jump;
-    //   document.documentElement.scrollTop += jump;
-    //   if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
-    //     elem.lastjump = Math.abs(jump);
-    //     setTimeout(function() { ScrollToResolver(elem); }, "40");
-    //   } else {
-    //     elem.lastjump = null;
-    //   }
-    // }
-
-    // Ron's code
-    // var navbar = document.getElementById("navbar");
-    // var navbarHeight = navbar.offsetHeight;  // read-only property returns the height of an element including vert. padding and borders, as an integer
-
-    // console.log("navbarHeight", navbarHeight); // = 187
-
-    // var indicatorTop = indicator.getBoundingClientRect().top;
-    // console.log("indicatorTop", indicatorTop); // = 62.5
+    function myFunction() {
+      document.getElementById("myDropdown".classList.toggle("show"));
+    }
+  </script>
+<!-- // var startLoc = document.getElementById('scrollTopLoc');
+// startLoc.scollTop =+ 249;
+// Mike's code
+// function ScrollTo(name) {
+//   ScrollToResolver(document.getElementById(name));
+// }
+// function ScrollToResolver(elem) { 
+//   var navbar=document.getElementById("navbar");
     
-    // indicatorScrollLocation = parseInt(indicatorTop + navbarHeight);
-    // console.log("indicatorScrollLocation", indicatorScrollLocation); // = 249
+//   var navHeight=parseInt(navbar.getBoundingClientRect().height);
+//   if(!navHeight) navHeight = 0;
 
-    // var scrollStartLoc = document.getElementsByClassName('spy-clickable.active');
-    // scrollStartLoc.scrollTop = 249;
-    // console.log("scrollStartLoc", scrollStartLoc);
+//   console.log("navHeight", navHeight);  
 
-    
-  
-</script>
+//   var jump=parseInt((elem.getBoundingClientRect().top-navHeight) * .2);
+
+//   document.body.scrollTop += jump;
+//   document.documentElement.scrollTop += jump;
+//   if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
+//     elem.lastjump = Math.abs(jump);
+//     setTimeout(function() { ScrollToResolver(elem); }, "40");
+//   } else {
+//     elem.lastjump = null;
+//   }
+// }
+
+// Ron's code
+// var navbar = document.getElementById("navbar");
+// var navbarHeight = navbar.offsetHeight;  // read-only property returns 
+// the height of an element including vert. padding and borders, as an integer
+// console.log("navbarHeight", navbarHeight); // = 187
+
+// var indicatorTop = indicator.getBoundingClientRect().top;
+// console.log("indicatorTop", indicatorTop); // = 62.5
+   
+// indicatorScrollLocation = parseInt(indicatorTop + navbarHeight);
+// console.log("indicatorScrollLocation", indicatorScrollLocation); // = 249
+
+// var scrollStartLoc = document.getElementsByClassName('spy-clickable.active');
+// scrollStartLoc.scrollTop = 249;
+// console.log("scrollStartLoc", scrollStartLoc);
+-->
+
 </body>
 </html>
 
