@@ -988,44 +988,47 @@
       element: indicator,
       clickable: true
     });
-    var spyClickableArray = document.getElementsByClassName('spy-clickable');
-      console.log(spyClickableArray);
-      for(let i = 0; i < spyClickableArray.length; i++) {
-        console.log("spyClickableArray", spyClickableArray[i]);
-      }    
+    // End of scrollspy js
 
-    var activeSection = document.getElementsByTagName("li.spy-clickable.spy-active");
-      for(let i = 0; i = activeSection.length; i++);
-      console.log("activeSection", activeSection[i]);  
+    var spyClickableArray = document.getElementsByClassName('spy-clickable');
+      console.log(spyClickableArray); //returns HTML collection
+      for(let i = 0; i < spyClickableArray.length; i++) {
+        console.log("spyClickableArray", spyClickableArray[i]); //returns array
+    
+        activeItem = document.getElementsByClassName("spy-active");
+        
+    }    
+   
+    console.log(activeItem);
+    
+
+    // Forward and Back arrows
+    
+
+    //forward 'button'
+    document.getElementById('forward').addEventListener("click", function(e) { 
+      e.preventDefault()
+      console.log("goodbye");
+    });
+
 
     document.getElementById('back').addEventListener("click", function(e) {  //back 'button'
       e.preventDefault()
       console.log("hello");
     });
 
-    document.getElementById('forward').addEventListener("click", function(e) { //forward 'button'
-      e.preventDefault()
-      console.log("goodbye");
-    });
+   
+    // INVESTION RE: ELEMENT POSITIONING FOR SCROLLSPY //
 
-      //   document.addEventListener("click", funtion() {
-      // })
-      
-      // INVESTION RE: ELEMENT POSITIONING FOR SCROLLSPY //
-
-      // var navbar = document.getElementById("navbar");
-      // var navBarHeight = navbar.getBoundingClientRect(navbar);
-      // console.log("navbar height", navBarHeight);
-
-      // var firstChap = document.getElementById("first-chapter");
-
-      // var firstChapTop = firstChap.getBoundingClientRect().top;
-      // console.log("Top of first chapter bouding box", firstChapTop)
-
-      // var firstChap2 = document.getElementById("first-chapter");
-      // var firstChapTop2 = firstChap.getBoundingClientRect(firstChap);
-
-      // console.log("scroll position of first chapter boundind box", firstChap2.scrollLeft, firstChap2.scrollTop);
+    // var navbar = document.getElementById("navbar");
+    // var navBarHeight = navbar.getBoundingClientRect(navbar);
+    // console.log("navbar height", navBarHeight);
+    // var firstChap = document.getElementById("first-chapter");
+    // var firstChapTop = firstChap.getBoundingClientRect().top;
+    // console.log("Top of first chapter bouding box",firstChapTop)
+    // var firstChap2 = document.getElementById("firstchapter");
+    // var firstChapTop2 //=firstChap.getBoundingClientRect(firstChap);
+    // console.log("scroll position of first chapter boundind box", firstChap2.scrollLeft, firstChap2.scrollTop);
       
       </script>    
 
@@ -1035,30 +1038,8 @@
      
       // var startLoc = document.getElementById('scrollTopLoc');
       // startLoc.scollTop =+ 249;
-      // Mike's code
-      // function ScrollTo(name) {
-      //   ScrollToResolver(document.getElementById(name));
-      // }
-      // function ScrollToResolver(elem) { 
-      //   var navbar=document.getElementById("navbar");
-    
-      //   var navHeight=parseInt(navbar.getBoundingClientRect().height);
-      //   if(!navHeight) navHeight = 0;
-
-      //   console.log("navHeight", navHeight);  
-
-      //   var jump=parseInt((elem.getBoundingClientRect().top-navHeight) * .2);
-
-      //   document.body.scrollTop += jump;
-      //   document.documentElement.scrollTop += jump;
-      //   if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
-      //     elem.lastjump = Math.abs(jump);
-      //     setTimeout(function() { ScrollToResolver(elem); }, "40");
-      //   } else {
-      //     elem.lastjump = null;
-      //   }  
-      // }
-
+     
+      
       // Ron's code
       // var navbar = document.getElementById("navbar");
       // var navbarHeight = navbar.offsetHeight;  // read-only property returns 
