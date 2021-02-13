@@ -1,7 +1,7 @@
 <html>
 <head>
 <style>
-#alertBox{
+#colorBox{
   height:3rem;
   width:8rem;
   background:yellow;
@@ -9,24 +9,30 @@
 </style>
 </head>
 <body>
-<div id="alertBox">
+<h1>UI State Example 1</h1>
+<pre>
+colorBox.style.background is state for both Model and View.
+Typically app state is in Model and conveyed to View.
+</pre>
+
+<div id="colorBox">
 </div>
 <br>
 <button id="toggle">toggle</button>
 </body>
 <script>
 button=document.getElementById("toggle");
-alertBox=document.getElementById("alertBox");
+colorBox=document.getElementById("colorBox");
 
 button.addEventListener('click',handleClick);
 
 function handleClick(e){
-  // alertBox.style.background is state for both Model and View
+  // colorBox.style.background is state for both Model and View
   // Typically app state is in Model and conveyed to View
-  if(alertBox.style.background=="red")  
-    alertBox.style.background="yellow";  
+  if(colorBox.style.background=="red")  
+    colorBox.style.background="yellow";  
   else
-    alertBox.style.background="red";  
+    colorBox.style.background="red";  
 }
 </script>
 </html>
