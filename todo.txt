@@ -12,4 +12,3 @@ rm styleguide.html
 ln -s dev/001-styleguide/003 dev/styleguild-current
 
 mv favicon.ico to assets/
-
