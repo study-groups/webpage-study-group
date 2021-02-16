@@ -18,4 +18,3 @@ website-server(){
 website-list() {
   ps -ef | grep [h]ttp.server
 }
-
