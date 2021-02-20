@@ -26,11 +26,6 @@ build-to-remote-server() {
 
 cat << EOF
 
-  1. Generate public key
-  2. Add command to public key via:
-     https://security.stackexchange.com/a/94321
-  3. Install augmented public key in REMOTEROLE@SERVER
-
   echo scp -r $BUILD $ROLE@$SERVER:$WEB
   scp -r $BUILD $ROLE@$SERVER:$WEB
 
@@ -48,7 +43,13 @@ build-from-server-get-build(){
 
 nginx-restart-as-user(){
 cat << EOF
+
+Add following to sudo via visudo:
+$USER hostname ALL=NOPASSWD: /bin/systemctl
+
 https://dmitry.khlebnikov.net/2015/07/18/
 should-we-use-sudo-for-day-to-day-activities/ 
 EOF
+
+sudo systemctl restart nginx
 }
