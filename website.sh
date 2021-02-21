@@ -11,11 +11,11 @@ website-build(){
   echo "Add buiild info."
 }
 
-website-server(){
+website-server-start(){
   python3 -m http.server ${1:-8000} &
 }
 
-website-list() {
+website-server-list() {
   ps -ef | grep [h]ttp.server
 }
 
