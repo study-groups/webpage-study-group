@@ -1,7 +1,7 @@
 VER=001
 REPO=$(realpath "/home/$USER/src/webpage-study-group")
 TEMPLATE=$(realpath $REPO/templates/study-groups)
-BUILD=$(realpath ../../builds/study-groups)
+BUILD=$(realpath $REPO/builds/study-groups)
 
 tools-build(){
   rsync $TEMPLATE/index.html $BUILD/$VER/
