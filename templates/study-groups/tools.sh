@@ -13,12 +13,19 @@ tools-list-build(){
   ls -l $BUILD/$VER 
 }
 tools-publish(){
-  echo: git add $BUILD/$VER && git commit -m "Initial subtree commit."
-  #echo: git subtree push --prefix $BUILD/$VER origin gh-pages  
-  echo: git push origin `git subtree split --prefix build_folder master`:gh-pages --force
-  git add $BUILD/$VER && git commit -m "Initial subtree commit."
-  # git subtree push --prefix $BUILD/$VER origin gh-pages  
-  git push origin `git subtree split --prefix $BUILD/$VER main`:gh-pages --force
+  local tmpdir=/tmp/$(date +%s)
+  mkdir $tmpdir
+  git checkout main
+  echo: cp -r $BUILD/$VER/ /$tmpdir 
+  cp -r $BUILD/$VER/ /$tmpdir 
+  git checkout gh-pages 
+  git rm -r *
+  cp -r $tmpdir/* . 
+  git add .
+  git commit -m"Publishing version $VER."
+  git push origin gh-pages
+  git checkout main 
+  rm -rf $tmpdir
 }
 
 tools-clean(){
