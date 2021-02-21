@@ -1,24 +1,29 @@
 VER=001
+REPO=$(realpath "/home/$USER/src/webpage-study-group")
+TEMPLATE=$(realpath $REPO/templates/study-groups)
 BUILD=$(realpath ../../builds/study-groups)
 
 tools-build(){
-  rsync ./index.html $BUILD/$VER/
-  rsync ./styleguide.html $BUILD/$VER/
-  rsync ./error.html $BUILD/$VER/
-  cp -r ./assets $BUILD/$VER/assets
-  #ln -f -s $BUILD/assets $BUILD/$VER/assets
+  rsync $TEMPLATE/index.html $BUILD/$VER/
+  rsync $TEMPLATE/styleguide.html $BUILD/$VER/
+  rsync $TEMPLATE/error.html $BUILD/$VER/
+  cp -r $TEMPLATE/assets $BUILD/$VER/assets
 }
 
 tools-list-build(){
   ls -l $BUILD/$VER 
 }
-tools-publish(){
+tools-publish-DONTUSE(){
   local tmpdir=/tmp/$(date +%s)
   mkdir $tmpdir
   git checkout main
   echo: cp -r $BUILD/$VER/ /$tmpdir 
   cp -r $BUILD/$VER/ /$tmpdir 
   git checkout gh-pages 
+
+  echo Continue? Hit ctrl-c to exit, return to continue.
+  read varname
+
   git rm -r *
   cp -r $tmpdir/* . 
   git add .
