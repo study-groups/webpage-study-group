@@ -34,7 +34,7 @@ tools-publish(){
   git commit -m"Publishing version $VER."
   git push origin gh-pages
   rm -rf $tmpdir
-  git stash pop
+  #git stash pop
 }
 
 tools-clean(){
