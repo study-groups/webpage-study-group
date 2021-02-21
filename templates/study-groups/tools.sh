@@ -16,17 +16,12 @@ tools-list-build(){
 tools-publish(){
   local tmpdir="/tmp/$(date +%s)"
   mkdir $tmpdir
-  git stash push -m "$tmpdir"
- 
   echo cp -r $BUILD/$VER/* /$tmpdir/
   cp -r $BUILD/$VER/* /$tmpdir/
-
   git checkout gh-pages
-
   echo Using Repo: $REPO
   echo Continue? Hit ctrl-c to exit, return to continue.
   read varname
-  
   git rm -r $REPO 
   cp -r $tmpdir/* .
   cd $REPO
@@ -34,7 +29,6 @@ tools-publish(){
   git commit -m"Publishing version $VER."
   git push origin gh-pages
   rm -rf $tmpdir
-  #git stash pop
 }
 
 tools-clean(){
