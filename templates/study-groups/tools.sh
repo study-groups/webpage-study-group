@@ -14,9 +14,11 @@ tools-list-build(){
 }
 tools-publish(){
   echo: git add $BUILD/$VER && git commit -m "Initial subtree commit."
-  echo: git subtree push --prefix $BUILD/$VER origin gh-pages  
+  #echo: git subtree push --prefix $BUILD/$VER origin gh-pages  
+  echo: git push origin `git subtree split --prefix build_folder master`:gh-pages --force
   git add $BUILD/$VER && git commit -m "Initial subtree commit."
-  git subtree push --prefix $BUILD/$VER origin gh-pages  
+  # git subtree push --prefix $BUILD/$VER origin gh-pages  
+  git push origin `git subtree split --prefix $BUILD/$VER main`:gh-pages --force
 }
 
 tools-clean(){
