@@ -1,4 +1,4 @@
-VER=001pre4
+VER=001
 BUILD=$(realpath ../../builds/study-groups)
 
 tools-build(){
@@ -8,8 +8,12 @@ tools-build(){
   ln -f -s $BUILD/assets $BUILD/$VER/assets
 }
 
+tools-list-build(){
+  ls -l $BUILD/$VER 
+}
 tools-publish(){
-  git subtree push --prefix builds/$VER origin gh-pages  
+  git add $BUILD/$VER && git commit -m "Initial subtree commit."
+  git subtree push --prefix $BUILD/$VER origin gh-pages  
 }
 
 tools-clean(){
