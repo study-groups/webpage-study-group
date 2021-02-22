@@ -28,6 +28,15 @@
       --video-links: #F98A62;
       --prompt-color: #E1F9DF;
     }
+    #cover {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: var(--bk-primary);
+      z-index: 99;
+    }
     body {
       background: var(--bk-primary);
       font-size: 14pt;
@@ -213,10 +222,11 @@
 </head>
 
 <body>
+  <div id="cover"></div>
   <script src="ScrollSpy.js"></script>
     <div class="content">
       <nav id='navbar' class="navbar">
-        <span class="fas fa-angle-double-left" id="back"></span>
+        <span class="fas fa-angle-double-left" id="previous"></span>
           <div id="indicator">
             <ul class="scrollspy-indicator-container">
               <li class="spy-clickable">CHAPTER ~ 1</li>
@@ -233,8 +243,22 @@
               <li class="spy-clickable">The Author</li>
             </ul> 
           </div>  
-        <span class="fas fa-angle-double-right" id="forward"></span>
+        <span class="fas fa-angle-double-right" id="next" onclick="nextChapter()"></span>
       </nav>
+      <div class="arrowNavigation">
+        <a id="1" class="chapters" name="chapter1"></a>
+        <a id="2" class="chapters" name="chapter2"></a>
+        <a id="3" class="chapters" name="chapter3"></a>
+        <a id="4" class="chapters" name="chapter4"></a>
+        <a id="5" class="chapters" name="chapter5"></a>
+        <a id="5" class="chapters" name="chapter6"></a>
+        <a id="6" class="chapters" name="chapter7"></a>
+        <a id="7" class="chapters" name="chapter8"></a>
+        <a id="8" class="chapters" name="chapter9"></a>
+        <a id="9" class="chapters" name="chapter10"></a>
+        <a id="10" class="chapters" name="chapter11"></a>
+        <a id="11" class="chapters" name="author"></a>
+      </div>
     </div>
 <!-- SECTIONS/CHAPTERS -->
 <div>
@@ -245,10 +269,11 @@
     id="first-chapter"
     role="contentinfo"
     aria-label="Chapter 1 Introduction">
+    <a href="chapter1"></a>
 
     <h2>Ch 1. ~ Introduction</h2>
     <p id='c1-par1'>
-    After many years of Buddhist study and practice, and beininfluenced by less traditional non-duality speakers, I was inspired to develop a contemplation practice called "Knowing Gaia". I've combined my experience of meditation and a Buddhist world view with a more contemporary approach which is not based on any spirituaauthority. In "Knowing Gaia" a scientific world view is bent a little bit in the direction of intuition, poetry and mysticism without making up any stories which contradict our modern common sense. The text is more of
+    After many years of Buddhist study and practice, and be influenced by less traditional non-duality speakers, I was inspired to develop a contemplation practice called "Knowing Gaia". I've combined my experience of meditation and a Buddhist world view with a more contemporary approach which is not based on any spiritual authority. In "Knowing Gaia" a scientific world view is bent a little bit in the direction of intuition, poetry and mysticism without making up any stories which contradict our modern common sense. The text is more of
     an invitation than a guide, and readers are expected to make their own discoveries which may well be radically different from my own.
     </p>
     <p id='c1-par2' >
@@ -274,6 +299,8 @@
     spy-title="~ CHAPTER 2 ~"
     role="contentinfo"
     aria-label="Chapter 2, Taking a Leap into the Deeply Personal">
+    <a #href="chapter2"></a>
+
     <h2>Ch 2. ~ Taking a leap into the deeply personal</h2>
     <p>
     Contemplation is a way of investigating experiences which are particularly difficult to capture in symbols. "The name you can say isn't the real name" is how Ursula LeGuin expresses it in the beginning of her version of the Tao Te Ching. But there's no point in trying to stop thinking. Any attempt we make to stop thinking only fuels conflict resulting in either more frantic thinking, or a frozen silence, neither of which is productive of insight. And 
@@ -355,6 +382,7 @@
     spy-title="~ CHAPTER 3 ~"
     role="contentinfo"
     aria-label="Chapter 3, First Impressions">
+    <a #href="chapter3"></a>
 
     <h2>Ch 3. ~ First Impressions</h2>
     <p class="prompt-title">~ Prompt 1 ~ </p>
@@ -369,43 +397,46 @@
       Integrity is a function of how well a system is integrated. Are   anconflicting emotions currently creating instability in me?
     </p>
     <p>
-      Gaia creates by chance, not by design, and then gives beings free reito   design themselves. We admire flowers without seeing the lines insects can   perceive on some petals, leadinthe way to nectar, pollen and stigma. It's   hard for us to believe that small, random shifts in geneticfavoring specific  behavior has produced this intricate and highly balanced partnership between   bugs and plants witno access to planning ahead. In the past, people made up   fantastic stories about invisible sources ointelligence, but our human  intelligence gradually asserted its integrity and demanded that explanations   bbased on observation rather than conjecture. Emotions run between mind and   body. Observing my emotioncan direct me toward what needs to be integrated.
+      Gaia creates by chance, not by design, and then gives beings free rein to design themselves. We admire flowers without seeing the lines insects can perceive on some petals, leading the way to nectar, pollen and stigma. It’s hard for us to believe that small, random shifts in genetics favoring specific behavior has produced this intricate and highly balanced partnership between bugs and plants with no access to planning ahead. In the past, people made up fantastic stories about invisible sources of intelligence, but our human intelligence gradually asserted its integrity and demanded that explanations be based on observation rather than conjecture. Emotions run between mind and body.  Observing my emotions can direct me toward what needs to be integrated
     </p>
     <p class="prompt-title">~ Prompt 3 ~</p>
     <p class="prompt-body" id='c3-p2'>
       The problem with living in a dream is that real people get hurt. What'my most   recent example of that?
     </p>
     <p>
-      Accurate predictions transcend our personal hopes and fears. Caught ia dream  state, we are trapped in the personal. Stepping outside the dream state, we  can perceive ousurroundings clearly. We can see how, even with the best  intentions, we hurt other people. We can see how thehurt us, in spite of   their best intentions. Attempting to choose what I think are the best bits  for meI make bad predictions about the future. Our decisions affect the  environment, economy, internationapolitics, all aspects of our world. It's
-      bewildering. Turning to religion or political ideology for guidance, miss the   complexity of present conditions. So I have to rely on my own intuition, even   as I work orefining it. Dreams can help! But only if I'm able to identify a   dream as a dream, and make predictions based owhat's possible.
+      Accurate predictions transcend our personal hopes and fears. Caught in a dream state, we are trapped in the personal. Stepping outside the dream state, we can perceive our surroundings clearly. We can see how, even with the best intentions, we hurt other people. We can see how they hurt us, in spite of their best intentions. Attempting to choose what I think are the best bits for me,  I make bad predictions about the future. Our decisions affect the environment, economy,  international politics, all aspects of our world. It’s bewildering. Turning to religion or political ideology for guidance, I miss the complexity of present conditions. So I have to rely on my own intuition, even as I work on refining it. Dreams can help! But only if I’m able to identify a dream as a dream, and make predictions based on what’s possible.
+
     </p>
     <p class="prompt-title">~ Prompt 4 ~</p>
     <p class="prompt-body" id='c3-p2'>
       If I'm not feeling my inner body right now, I'm not feeling anythingTake a  moment to check in.
     </p>
     <p id='c3-par8'>
-      We all know the body is a dynamic system of interacting organs, cellschemical   reactions, messages, fluid transport, exchange of gases and home to colonies  of microbes. We takall that for granted. When something hurts, we pay  attention. What happens if I pay attention to the inneworkings when there is   no problem? It's like entering a forest with unexpected small creeks or   sudden bursts osunlight. It's like noticing the sound of a breeze, call of a  bird, odor of damp rotting leaves, an endlesfeast of sensations, direct  perception of Gaia in action. The body wants to listen to itself, the subtle   messagewhich usually go unheard as we are preoccupied with the constant   narrative of the mind. A state ounabsorbed flow radiates outward from the   inner body, and we can tune in to that any time.
+      We all know the body is a dynamic system of interacting organs, cells, chemical reactions, messages, fluid transport, exchange of gases and home to colonies of microbes. We take all that for granted. When something hurts, we pay attention. What happens if I pay attention to the inner workings when there is no problem? It’s like entering a forest with unexpected small creeks or sudden bursts of sunlight. It’s like noticing  the sound of a breeze, call of a bird, odor of damp rotting leaves, an endless feast of sensations, direct perception of Gaia in action. The body wants to listen to itself, the subtle messages which usually go unheard as we are preoccupied with the constant narrative of the mind. A state of unabsorbed flow radiates outward from the inner body, and we can tune in to that any time.
     </p>
     <p class="prompt-title">~ Prompt 5 ~</p>
     <p class="prompt-body" id='c3-p2'>
       The problem with living in a dream is that real people get hurt. What'my most   recent example of that?
     </p>
     <p id='c3-par10'>
-      Or maybe I don't even want to because I think it's alreadautomatically  happening, or maybe I'm afraid of getting some bad news about myself. I can  start with whatever iblocking the process, knowing what I have to work with.   I don't know where the drive toward wholeness is cominfrom, but it's  undeniable. It's also intuitively obvious that separation is fed by self-  deception. This is tough one. That's why it's so important to have a broad  focus, contemplating a few different areawhich invite me to go further.  Contemplation can produce unusual mind states which tempt us to make   uinteresting stories which are not anchored in actual experience. An  unabsorbed flow state is full ogaps, open to unexpected new information.
+      OOr maybe I don’t even want to because I think it’s already automatically happening, or maybe 
+      I’m afraid of getting some bad news about myself. I can start with whatever is blocking the process, knowing what I have to work with. I don’t know where the drive toward wholeness is coming from, but it’s undeniable. It’s also intuitively obvious that separation is fed by self-deception. This is a tough one. That’s why it’s so important to have a broad focus, contemplating a few different areas which invite me to go further. Contemplation can produce unusual mind states which tempt us to make up interesting stories which are not anchored in actual experience. An unabsorbed flow state is full of gaps, open to unexpected new information
+      
     </p>
     <p class="prompt-title">~ Prompt 6 ~</p>
     <p class="prompt-body">
       How much power do you think you have? How much do you want? How mucdoes the other person have? How much do you think they want?
     </p>
     <p id='c3-par12'>
-      Power to do what? Maybe all we want is the power to make the otheperson think we have more power than they do. Having the means to push other people around isn't power, it'force. Having enough nuclear weapons to obliterate another country in a first strike isn't power, it's forceWe want the power to create, but that power belongs to Gaia. Our predictions tend to be faulty, so our attempts to create a better world are rife with unintended consequences. Gaia operates through probabilitierather than preconceptions, and the only real power is in what's possible.
+      Power to do what? Maybe all we want is the power to make the other person think we have more power than they do. Having the means to push other people around isn’t power, it’s force. Having enough nuclear weapons to obliterate another country in a first strike isn’t power, it’s force. We want the power to create, but that power belongs to Gaia. Our predictions tend to be faulty, so our attempts to create a better world are rife with unintended consequences. Gaia operates through probabilities rather than preconceptions, and the only real power is in what’s possible. 
     </p>
     <p class="prompt-title">~ Prompt 7 ~</p>
     <p class="prompt-body">
       What am I being touched by right now, physically, emotionally intellectually?
     </p>
     <p id='c3-par14'>
-      I know I'm out of touch with Gaia, that's why I'm doing this practiceI know intellectually that I exist as a collection of processes, but 'm out of touch with those processesThat leaves me subject to misconceptions. So I need to take a backward step, out of thinking, out of doing, intmore basic experience. When I simply rest with awareness of the chair touching me, thsunlight coming through the window, the sound of the refrigerator, the smell of mint tea, everything comes aliveThen I can even feel touched by the idea 'everything comes alive'. Touched also by my hesitation to sasomething which might sound silly. No need to correct anything, because I'm simply being touched by all these thingsnot trapped by them.
+      I know I’m out of touch with Gaia, that’s why I’m doing this practice. I know intellectually that I exist as a collection of processes, but I’m out of touch with those processes. That leaves me subject to misconceptions. So I need to take a backward step, out of thinking, out of doing, into more basic experience. When I simply rest with awareness of the chair touching me, the sunlight coming through the window, the sound of the refrigerator, the smell of mint tea, everything comes alive. Then I can even feel touched by the idea ‘everything comes alive’. Touched also by my hesitation to say something which might sound silly. No need to correct anything, because I’m simply being touched by all these things, not trapped by them. 
+
     </p>
     <p class="prompt-title">~ Prompt 8 ~</p>
     <p class="prompt-body">
@@ -426,7 +457,7 @@
       Self exists only in relationship with other. By naming Gaia we argiving an impersonal system an identity related to a human self. Gaihas no way to know we're doing this, while we have a system of mentaactivity which is able to know what it is doing. We also have the ability to study systemoutside ourselves, find boundaries, give names. If our minds becamfully integrated with Gaia, as our bodies already are, perhaps wwould be Gaia's self.
     </p>
     <p>
-    <a id="c3-par21" target="blank" href="https://youtu.be/FGnS-Xk0ZqU" alt="Endosymbiotic Theory"><strong>MEDIA: </strong>Endosymibiotic Theory</a>
+    <a target="blank" href="https://youtu.be/FGnS-Xk0ZqU" alt="Endosymbiotic Theory"><strong>MEDIA: </strong>Endosymibiotic Theory</a>
     </p>
   </section>
 
@@ -435,11 +466,13 @@
     spy-title="~ CHAPTER 4 ~"
     role="contentinfo"
     aria-label="Chapter 4, Seeing the prompts in one word">
+    <a #href="chapter4"></a>
 
     <h2 id='c4'>Ch 4. ~ Seeing the prompts in one word</h2>
     <h3 id='c4-p0'>~ Prompt 1:  Independently ~</h3>
     <p id='c4-par2'>
-      Gaia is a self-regulating system in which no part exists independentlyGaia is dependent on the sun, rocks, water, air. Every part of Gaia idependent on the whole. One part, let's say Sierra Nevada bighorsheep, could die off and the whole would continue, although certaiother parts would be affected. Some local willows might flourish. Ithe whole system crashed could any bighorn sheep remain? Obviously notWe humans, however, have been led to believe that somewhere at thcenter of our being is a 'me' which        stands alone. Thiindependently existing static entity is supposed to be free anresponsible, subject to reward and punishment, praise and blameinclusion and banishment. How do you think that idea took hold? Becausit is a very convenient form of social control.
+      Gaia is a self-regulating system in which no part exists independently. Gaia is dependent on the sun, rocks, water, air. Every part of Gaia is dependent on the whole. One part, let’s say Sierra Nevada bighorn sheep, could die off and the whole would continue, although certain other parts would be affected. Some local willows might flourish. If the whole system crashed could any bighorn sheep remain? Obviously not. We humans, however,  have been led to believe that somewhere at the center of our being is a ‘me’ which stands alone. This independently existing static entity is supposed to be free and responsible, subject to reward and punishment, praise and blame, inclusion and banishment. How do you think that idea took hold? Because it is a very convenient form of social control. 
+
     </p>
     <h3 id='c4-p1'>~ Prompt 2: Integrated ~</h3>
     <p id='c4-par4'>
@@ -488,6 +521,7 @@
     spy-title="~ CHAPTER 5 ~"
     role="contentinfo"
     aria-label="Chapter 5, Using words to step away from words">
+    <a #href="chapter3"></a>
 
     <h2 id='c5'>Ch 5. ~ Using words to step away from words</h2>
     <h3 id='c5-p0'>~ Prompt 1: Indepently ~</h3>
@@ -571,6 +605,7 @@
     spy-title="~ CHAPTER 6 ~"
     role="contentinfo"
     aria-label="Chapter 6, What do we want">
+    <a #href="chapter6"></a>
 
     <h2 id='c6'>Ch 6. ~ What do we want?</h2>
     <h3 id='c6-p0'>
@@ -647,6 +682,7 @@
       spy-title="~ CHAPTER 7 ~"
       role="contentinfo"
       aria-label="Chapter 7, Investigating personal identity">
+      <a #href="chapter7"></a>
         
       <h2 id='c7'>Ch 7. ~ Investigating personal identity</h2>
       <h3 id='c7-p0'>
@@ -719,6 +755,8 @@
       spy-title="~ CHAPTER 8 ~"
       role="contentinfo"
       aria-label="Chapter 8, Being and Doing">
+      <a #href="chapter8"></a>
+
       <h2 id='c8'>Ch 8. ~ Being and doing</h2>
       <h3 id='c8-p0'>
         P1: Since living systems do not exist independently in nature, what amI? What does that feel like?
@@ -791,6 +829,7 @@
     spy-title="~ CHAPTER 9 ~"
     role="contentinfo"
     aria-label="Chapter 9, Natural Limits">
+    <a #href="chapter9"></a>
 
     <h2 id='c9'>Ch 9. ~ Natural limits</h2>
     <h3 id='c9-p0'>
@@ -863,6 +902,7 @@
     spy-title="~ CHAPTER 10 ~"
     role="contentinfo"
     aria-label="Chapter 10, Self-regulation systems and individual choice">
+    <a #href="chapter10"></a>
 
     <h2 id='c10'>Ch 10. ~ Self-regulating systems and individual choice</h2>
     <h3 id='c10-p0'>
@@ -934,6 +974,7 @@
     spy-title="~ CHAPTER 11 ~"
     role="contentinfo"
     aria-label="Chapter 11, Contemplation">
+    <a #href="chapter11"></a>
 
     <h2 id='c11'>Ch 11. ~ Contemplation</h2>
       <p id='c11-par1'>Contemplation is a way of knowing.</p>
@@ -963,6 +1004,7 @@
     spy-title="The Author"
     role="contentinfo"
     aria-label="About the author">
+    <a #href="author"></a>
 
     <h2 class="author">Author</h2>
       <h3 class="author">Pat Adducci</h3>
@@ -978,6 +1020,14 @@
   </footer>
       
   <script>
+  // Hide page until fully loaded //
+
+  document.getElementById('cover').style.display = "block";
+  
+  window.onload = function(){
+    document.getElementById('cover').style.display = "none";
+  }
+  // Scrollspy  //
     var spy = new ScrollSpy({
        contexts_class: 'scrollspy'
     });
@@ -990,32 +1040,54 @@
     });
     // End of scrollspy js
 
-    var spyClickableArray = document.getElementsByClassName('spy-clickable');
-      console.log(spyClickableArray); //returns HTML collection
-      for(let i = 0; i < spyClickableArray.length; i++) {
-        console.log("spyClickableArray", spyClickableArray[i]); //returns array
-    
-        activeItem = document.getElementsByClassName("spy-active");
+    // var spyClickableArray = document.getElementsByClassName('spy-clickable');
+    //   console.log(spyClickableArray); //returns HTML collection
+    //   for(let i = 0; i < spyClickableArray.length; i++) {
+    //     console.log("spyClickableArray", spyClickableArray[i]); //returns array
         
-    }    
-   
-    console.log(activeItem);
-    
-
+    // }    
     // Forward and Back arrows
     
 
     //forward 'button'
-    document.getElementById('forward').addEventListener("click", function(e) { 
-      e.preventDefault()
-      console.log("goodbye");
-    });
+    var nextArrow = document.getElementById('next');
+    var aTags = document.getElementsByClassName('chapters');
+    var currentATag = document.getElementById('1').name;  // result is chapter1
+   
+    console.log("Current a tag", currentATag);
+ 
 
 
-    document.getElementById('back').addEventListener("click", function(e) {  //back 'button'
-      e.preventDefault()
-      console.log("hello");
-    });
+
+      function nextChapter(){
+        if(currentATag === "chapter1"){
+          currentATag.replace("chapter1", "chapter2")
+        } else if (currentATag === "chapter2"){
+          currentATag.replace("chapter2", "chapter3")
+        }
+        
+      }
+       
+        var nextATag = currentATag.replace("chapter1", "chapter2");
+
+        console.log(nextATag);
+      
+
+      
+
+        console.log("Event Type", ev.type, "Event Target", ev.target, "Event: Current Target", ev.currentTarget);
+
+
+    
+
+
+
+    ////////// 
+    
+    // document.getElementById('back').addEventListener("click", function(e) {  //back 'button'
+    //   e.preventDefault()
+    //   console.log("hello");
+    // });
 
    
     // INVESTION RE: ELEMENT POSITIONING FOR SCROLLSPY //
