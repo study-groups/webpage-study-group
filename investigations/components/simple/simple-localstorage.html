@@ -1,0 +1,50 @@
+<html>
+<head>
+<style>
+#colorBox{
+  height:3rem;
+  width:8rem;
+  background:yellow;
+}
+</style>
+</head>
+<body>
+<h1>UI State Example 2</h1>
+<pre>
+colorBox.style.background is only considered part of the View.
+Model is global variable color.
+localStorage is used to persist between refreshes.
+</pre>
+<div id="colorBox">
+</div>
+<br>
+<button id="toggle">toggle</button>
+</body>
+<script>
+var color;
+
+button=document.getElementById("toggle");
+colorBox=document.getElementById("colorBox");
+
+button.addEventListener('click', function (){
+  // toggle needs to interact with localstorage
+  var c=localStorage.getItem("color");
+  if(c=="red")
+    c="yellow";
+  else
+    c="red";
+
+  localStorage.setItem("color",c);
+  colorBox.style.background=c;  
+});
+
+
+//Init Model
+if(!localStorage.getItem('color')) {
+  color=localStorage.setItem("color","red");
+}
+
+// Init View
+colorBox.style.background=localStorage.getItem('color');  
+</script>
+</html>

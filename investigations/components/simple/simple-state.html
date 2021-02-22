@@ -1,0 +1,38 @@
+<html>
+<head>
+<style>
+#colorBox{
+  height:3rem;
+  width:8rem;
+  background:yellow;
+}
+</style>
+</head>
+<body>
+<h1>UI State Example 1</h1>
+<pre>
+colorBox.style.background is state for both Model and View.
+Typically app state is in Model and conveyed to View.
+</pre>
+
+<div id="colorBox">
+</div>
+<br>
+<button id="toggle">toggle</button>
+</body>
+<script>
+button=document.getElementById("toggle");
+colorBox=document.getElementById("colorBox");
+
+button.addEventListener('click',handleClick);
+
+function handleClick(e){
+  // colorBox.style.background is state for both Model and View
+  // Typically app state is in Model and conveyed to View
+  if(colorBox.style.background=="red")  
+    colorBox.style.background="yellow";  
+  else
+    colorBox.style.background="red";  
+}
+</script>
+</html>

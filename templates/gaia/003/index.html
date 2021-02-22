@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaia Webpage</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text" href="ScrollSpy.min.css"/>
+<script src="Scrollspy.min.js"></script> -->
+</head>
+
+<!-- Accessibility, Consider using:
+  1. section tag, DONE
+  2. article tag, NOT NEEDED, used more commonly for blogging labels
+     accesskey, (evaluate for use with navigation to allow keyboard control 
+     rather than a mouse event)
+  3. tabindex
+  4. aria-keyboard navigation
+  5. aria-role navigation 
+-->
+<!-- HTML Semantic Tags, defined:
+  <section> tag: The HTML <section> element represents a standalone section
+    which doesn't have a more specific semantic element to represent it
+    contained within an HTML document. Typically, but not always, sections
+    have a heading.
+
+  <article> tag:
+    The HTML <article> element represents a self-contained composition in a
+    document, page, application, or site, which is intended to be 
+    independently distributable or reusable (e.g., in syndication). Examples 
+    include: a forum post, a magazine or newspaper article, or a blog entry,
+    a product card, a user-submitted comment, an interactive widget or gadget,
+    or any other independent item of content.
+-->
+<!--  NOTES:
+  1. This document will be using internal CSS styling because the document is 
+     relatively simple and does not require extensive styling.
+  2. JavaScript ScrollSpy used on navigation....
+-->
+<style>
+:root {
+  --nav-bar: #a45b27;
+  --bk-primary: #2a2a2a;
+  --h1-color: #fbd651;
+  --h2-color: #fce694;
+  --body-text: #c7dfc5;
+  --divider-line: #fce694;
+  --nav-bar-bg: #1e1e1e;
+  --email-link: #F98A62;
+  --video-links: #F98A62;
+  --prompt-color: #E1F9DF;
+}
+body {
+  background: var(--bk-primary);
+  font-size: 14pt;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+/* #indicator ul {
+  color: var(--email-link);
+  z-index: 1;
+  position: absolute;
+  right: calc(2em);
+  list-style: none;  
+}
+#indicator ul li.spy-active {
+  color: var(--prompt-color);
+}
+
+.scrollspy-indicator-container li.spy-clickable:hover {
+  color: var(--h2-color);
+}
+.scrollspy-indicator-container li.spy-clickable {
+  cursor: pointer;
+}
+.scrollspy-indicator-container li {
+  transition: .15s;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: var(--h1-color);
+  background: var(--nav-bar-bg);
+  height: 6em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+} */
+.main-header {
+  color: var(--h1-color);
+  margin: 2em 10% 1em 10%;
+}
+h2, h3 {
+  margin: 1.5em 10% 1em 10%;
+}
+h2, h3 {
+  color: var(--h2-color);
+}
+p {
+  color: var(--body-text);
+  margin: 0 10% 1.35em 10%;
+  line-height: 170%;
+}
+a {
+  color: var(--video-links);
+}
+#email {
+  color: var(--email-link);
+  margin: 1.5em 10% 1em 10%;
+}
+.author {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 1.5em 10% 1em 10%;
+  color: var(--h1-color);
+}
+.section-divider { 
+  border-color: var(--nav-bar-bg);
+  border-top: 2px 25em;
+  margin: 3em 25% 0 20%;
+}
+.zen-circle {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+@media screen and (max-width: 667px) {
+  body {
+    font-size: 12pt;
+}
+  .main-header {
+    margin: 4em 20px 0 20px;
+  } 
+  p {  
+     margin: 0 20px 0 20px;
+  }
+  h2 {
+    margin: 1.4em 0 .8em 1.2em;
+    font-size: 120%;  
+  }
+  .section-divider {
+    border-top: 12em;    
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- <nav class="navbar">
+  <div id="indicator">
+    <ul class="scrollspy-indicator-container">
+      <li class="spy-clickable spy-active">Chapter 1</li>
+      <li class="spy-clickable">Chapter 2</li>
+      <li class="spy-clickable">Chapter 3</li>
+    </ul>
+  </div>
+</nav> -->
+   <main>
+      <header>
+        <h1 class="main-header">Knowing Gaia</h1>
+      </header>
+
+<!-- <script src="https://unpkg.com/@sidsbrmnn/scrollspy@1.0.4/dist/scrollspy.min.js"></script> -->
+
+  <div class="content">
+    <section 
+      role="contentinfo" 
+      aria-label="Chapter One Introduction"
+      class="scrollspy" spy-title="Chapter 1">
+    
+
+      <h2>Ch. 1 ~ Introduction</h2>
+<p>
+After many years of Buddhist study and practice, and being influenced by less
+traditional non-duality speakers, I was inspired to develop a contemplation
+practice called “Knowing Gaia”. I’ve combined my experience of meditation and a
+Buddhist world view with a more contemporary approach which is not based on any
+spiritual authority. In “Knowing Gaia” a scientific world view is bent a little
+bit in the direction of intuition, poetry and mysticism without making up any
+stories which contradict our modern common sense. The text is more of an
+invitation than a guide, and readers are expected to make their own discoveries
+which may well be radically different from my own.
+</p>
+<p>
+Gaia, from Greek mythology, can be thought of as ‘Mother Earth’. The mythology
+includes stories of creation, primordial conflict and shifting rulers. Here, I’m
+using a contemporary concept of Gaia. James Lovelock, an English scientist and
+inventor, started it. He was working for NASA investigating planetary
+atmospheres when he started thinking about how very odd Earth’s atmosphere is,
+how unstable and unlikely. Of course this is a result of life processes
+exchanging gases, impossible for a non-living planet. He realized that not only
+does life adapt to changing conditions, but also changes conditions itself in a
+dynamic, self-regulating system.
+</p>
+<p>
+There was nothing anthropomorphic in his idea, but his friend, novelist William
+Golding, found it poetic and suggested calling it ‘Gaia’ rather than a more
+prosaic ‘Earth systems science’.
+</p>
+<p>
+Some people have been enchanted by the poetry into thinking that our Earth will
+take care of us. Unfortunately, we don’t know that. Evidence so far suggests
+that Gaia is heartless. We are only as special as we make ourselves to be. Gaia
+is mother to all her children - frog and fly, Neanderthal and Homo Sapiens. Life
+forms thrive, or not, in an ever-changing web. Everyone needs something to eat.
+
+Animals eat plants which were thriving on the carbon dioxide exhaled by those
+very animals. The animals are thriving on the oxygen produced by the plants they
+are killing. Yet the whole complex system not only continues, but continues to
+develop more complexity. It almost seems alive, and so, following Lovelock, I’m
+calling it Gaia.
+</p>
+<p>
+I’m setting aside the fact that traditional ideas of ‘mother’ imply the
+existence of ‘father’. Let’s just say the Sun is our father, and go ahead with
+Gaia as our subject. Think of the earth and everything on it. The oceans are
+home to phytoplankton cells in the billions, each separately working away at
+photosynthesis, releasing trace amounts of oxygen. Diatoms not only give us
+oxygen, but lock carbon in their miniscule shells.The shells drop down through
+the water when the diatom dies, taking that bit of carbon with them, cooling the
+planet, to the benefit of the living diatoms and everyone else who likes the
+temperature the way it is. Having discovered the amazing convenience of fossil
+fuels, we humans are about to defeat their efforts. Certain species of jellyfish
+think that’s a great idea! They are already showing up in unprecedented numbers.
+So, who is choosing the future?
+</p>
+<p>
+At the time of the asteroid impact that killed the dinosaurs, small mammals were
+living in burrows, out of danger from the huge beasts who had ruled the planet
+for 175 million years. These small rat-like mammals would not be our first
+choice of an ancestor, but hiding in their burrows they survived the fires and
+extreme conditions following the impact, and became our ancestors. From a
+combination of chance, time and natural selection in a complex, self-regulating
+system, we merged.
+</p>
+</section>
+
+<hr class="section-divider"></hr>
+
+    <section
+      role="contentinfo"
+      aria-label="chapter 2, taking a leap into the deeply personal"
+      class="scrollspy"
+      spy-title="Chapter 2">
+
+        <h2>Ch. 2 ~ Taking a leap into the deeply personal</h2>
+<p>
+Contemplation is a way of investigating experiences which are particularly
+difficult to capture in symbols. “The name you can say isn’t the real name” is
+how Ursula LeGuin expresses it in the beginning of her version of the Tao Te
+Ching. But there’s no point in trying to stop thinking.  Any attempt we make to
+stop thinking only fuels conflict resulting in either more frantic thinking, or
+a frozen silence, neither of which is productive of insight. And it is insight
+that I’m after, that’s the goal - to bring awareness into what I’ve been
+ignoring.
+</p>
+<p>
+How do I do that? First, it’s important to state that how I do it is probably
+different from how you do it. Let’s not get religious or ideological about a
+process which is so essentially personal. The question is simple and pragmatic -
+what works? And how do we know it is working? Let’s say you’re on a boat touring
+Antarctica and you suddenly feel a vastness which doesn’t make you feel small,
+but includes you with a sudden loss of boundary. You look around at your fellow
+passengers and feel a surge of warmth, an appreciation for how unique and
+precious every single one of them is.  Or let’s say I’m in the garden picking
+strawberries and I ease into a vivid perception of red and green which makes me
+feel so much more alive than usual. The tangle of leaf, flower and fruit
+suddenly seems miraculous, a gift. I have an urge to share this gift with
+everyone I know.  In both cases we have unexpectedly discovered something about
+ourselves, and about Gaia. Something we were not noticing before. In both cases
+words like vastness, precious, vivid, gift, contain only the slightest hint of
+the experience. What caused that shift in perception? Was it something we did
+sometime in the past? Was it brain chemistry? Was it a stage in a quest? Was it
+because we listened to one of the many people giving advice or teachings? Who
+knows. We can only make a guess and judge for ourselves how to proceed.
+</p>
+<p>
+Developing an appetite for a state of unabsorbed flow has been very helpful for
+me. Usually we experience something like ‘flow’ when absorbed in some activity.
+Any activity which absorbs our attention, while encouraging a flow state, is
+what I’m calling ‘absorbed flow’. We lose track of time, and effort becomes a
+simple flow of energy.  What I mean by ‘unabsorbed flow’ is something quite
+different. You don’t lose yourself in an activity. Also, you don’t enter into
+any non-ordinary mind state as with a drug or other extreme or unusual
+experience. It feels completely like ‘plain old me’, but with a crucial
+difference. The ‘me’ in the unabsorbed flow state is light, often to the point
+of dissolution, but not because it’s been absorbed into an activity. Rather,
+there has been a thinning of a sense of separation. We become more available to
+what is actually here.
+</p>
+<p>
+Contemplation comes naturally when we relax with uncertainty. We don’t need to
+manufacture any special mind states. Our conditioning, however, is well
+tablished. We think we like it because it is so familiar. I’m suggesting there
+is something more natural, more nourishing. Doing something unnatural might help
+us get back in touch with the basics.  Using the principles of Gaia, I have some
+questions and statements which help me understand myself and the world better by
+serving as prompts for contemplation.
+</p>
+<p>
+Here are the ten prompts I’m using. You could try making up your own. Just think
+of some questions or statements which will challenge your own deeply held
+assumptions.
+</p>
+
+<h3 aria-label="ten prompts">Ten Prompts</h3>
+
+<p aria-label="prompt one">P1 ~ Since living systems do not exist independently in nature, what am
+I? What does that feel like?
+</p>
+
+<p aria-label="promt two">P2 ~ Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</p>
+
+<p aria-label="prompt three">P3 ~  The problem with living in a dream is that real people get hurt.
+What’s my most recent example of that?
+</p>
+
+<p aria-label="prompt four">P4 ~ If I’m not feeling my inner body right now, I’m not feeling
+anything. Take a moment to check in.
+</p>
+
+<p aria-label="prompt five">P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can
+only be honest with myself if I listen to my whole self. How can I do that?
+</p>
+
+<p aria-label="prompt six">P6 ~  How much power do you think you have? How much do you want? How much
+does the other person have? How much do you think they want?
+</p>
+
+<p aria-label="prompt seven">P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</p>
+
+<p aria-label="propmt eight">P8 ~  How does ideology creep into your thinking? What does it offer you?
+What does it take away from knowing Gaia?
+</p>
+
+<p aria-label="prompt nine">P9 ~  We’re breathing, we’re feeling the force of gravity. Paying
+attention to both at once places us squarely in the presence of Gaia. Try it.
+</p>
+
+<p aria-label="prompt ten">P10 ~  Does Gaia have a self? What would that mean?</p>
+
+<p>
+Now I’m going to circle through the prompts a number of times using a different
+lens each time. Feel free to skip around throughout the text. This is not a
+narrative. Rather, it’s a series of reflections. You may find some provocative,
+some obvious, others irrelevant. It doesn’t matter. Go with what helps you
+expand your own direct perception, and call it what you will.
+</p>
+<p>
+ Touching Gaia can be a bit of a shock, causing a reflexive withdrawal. That’s
+why I think it’s helpful to keep coming back, from different angles, with
+different points of contemplation, none more important than any other. I’m
+hoping that what I’ve written will invite you into your own language and natural
+pathways. Keep in mind that we are doing an investigation together. No one is
+telling us how it should be done, or what we will find.
+</p>
+<p>For a bit of refreshment, I’ve included some youtube clips. Take a look...</p>
+
+<p>
+<a target="blank" href="https://youtu.be/5sBI2WY5B58i" alt="The Evolution of Dogs"><strong>MEDIA:</strong>The Evolution of Dogs</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+    <section 
+      role="Contentinfo" 
+      aria-label="Chapter three, First Impressions?"
+      class="scrollspy"
+      spy-title="Chapter 3">
+        
+        <h2>Ch. 3 ~ First Impressions</h2>
+
+          <h3 aria-label="chapter two, prompt one">
+             P1 ~ Since living systems do not exist independently in nature, wha             t am I? What does that feel like?</h3>
+<p>
+Contemplation begins with our ability to talk to ourselves. This ability can
+sometimes seem like it’s out of control, turned into an exhausting, meaningless
+stream of chatter. However, like Gaia, the brain is a self-regulating system.
+The stream of chatter is not coming from a dumb machine. It is running alongside
+intelligent awareness. An impulse to slow down and find meaning can arise, fed
+by our curiosity about ourselves. Probing questions can redirect our attention
+away from problems we can’t solve, to our most basic problem which is our
+misunderstanding about who and what we are. These days we have ample information
+from outside to support us in this inner work. But I have to do the work for
+myself, no one can do it for me.
+</p>
+
+<h3 aria-label="chapter two, prompt two">P2 ~ Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+Gaia creates by chance, not by design, and then gives beings free rein to design
+themselves. We admire flowers without seeing the lines insects can perceive on
+some petals, leading the way to nectar, pollen and stigma. It’s hard for us to
+believe that small, random shifts in genetics favoring specific behavior has
+produced this intricate and highly balanced partnership between bugs and plants
+with no access to planning ahead. In the past, people made up fantastic stories
+about invisible sources of intelligence, but our human intelligence gradually
+asserted its integrity and demanded that explanations be based on observation
+rather than conjecture. Emotions run between mind and body.  Observing my
+emotions can direct me toward what needs to be integrated.
+</p>
+
+<h3 aria-label="chapter two, propmpt three">P3 ~  The problem with living in a diream is that real people get hurt. What’s
+my most recent example of that?
+</h3>
+<p>
+Accurate predictions transcend our personal hopes and fears. Caught in a dream
+state, we are trapped in the personal. Stepping outside the dream state, we can
+perceive our surroundings clearly. We can see how, even with the best
+intentions, we hurt other people. We can see how they hurt us, in spite of their
+best intentions. Attempting to choose what I think are the best bits for me,  I
+make bad predictions about the future. Our decisions affect the environment,
+economy,  international politics, all aspects of our world. It’s bewildering.
+Turning to religion or political ideology for guidance, I miss the complexity of
+present conditions. So I have to rely on my own intuition, even as I work on
+refining it. Dreams can help! But only if I’m able to identify a dream as a
+dream, and make predictions based on what’s possible.
+</p>
+
+<h3 aria-label="chapter two, prompt four">P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+We all know the body is a dynamic system of interacting organs, cells, chemical
+reactions, messages, fluid transport, exchange of gases and home to colonies of
+microbes. We take all that for granted. When something hurts, we pay attention.
+What happens if I pay attention to the inner workings when there is no problem?
+It’s like entering a forest with unexpected small creeks or sudden bursts of
+sunlight. It’s like noticing  the sound of a breeze, call of a bird, odor of
+damp rotting leaves, an endless feast of sensations, direct perception of Gaia
+in action. The body wants to listen to itself, the subtle messages which usually
+go unheard as we are preoccupied with the constant narrative of the mind. A
+state of unabsorbed flow radiates outward from the inner body, and we can tune
+in to that any time.
+</p>
+
+<h3 aria-label="chapter two, prompt five">P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+Or maybe I don’t even want to because I think it’s already automatically
+happening, or maybe I’m afraid of getting some bad news about myself. I can
+start with whatever is blocking the process, knowing what I have to work with. I
+don’t know where the drive toward wholeness is coming from, but it’s undeniable.
+It’s also intuitively obvious that separation is fed by self-deception. This is
+a tough one. That’s why it’s so important to have a broad focus, contemplating a
+few different areas which invite me to go further. Contemplation can produce
+unusual mind states which tempt us to make up interesting stories which are not
+anchored in actual experience. An unabsorbed flow state is full of gaps, open to
+unexpected new information.
+</p>
+
+<h3 aria-label="chapter two, prompt six">P6 ~  How much power do you think you have? How much do you want? How much
+does the other person have? How much do you think they want?
+</h3>
+
+<p>
+Power to do what? Maybe all we want is the power to make the other person think
+we have more power than they do. Having the means to push other people around
+isn’t power, it’s force. Having enough nuclear weapons to obliterate another
+country in a first strike isn’t power, it’s force. We want the power to create,
+but that power belongs to Gaia. Our predictions tend to be faulty, so our
+attempts to create a better world are rife with unintended consequences. Gaia
+operates through probabilities rather than preconceptions, and the only real
+power is in what’s possible.
+</p>
+
+<h3 aria-label="chapter two, prompt seven">P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+
+<p>
+I know I’m out of touch with Gaia, that’s why I’m doing this practice. I know
+intellectually that I exist as a collection of processes, but I’m out of touch
+with those processes. That leaves me subject to misconceptions. So I need to
+take a backward step, out of thinking, out of doing, into more basic experience.
+When I simply rest with awareness of the chair touching me, the sunlight coming
+through the window, the sound of the refrigerator, the smell of mint tea,
+everything comes alive. Then I can even feel touched by the idea ‘everything
+comes alive’. Touched also by my hesitation to say something which might sound
+silly. No need to correct anything, because I’m simply being touched by all
+these things, not trapped by them.
+</p>
+
+<h3 aria-label="chapter two, prompt eight">P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowing Gaia?
+</h3>
+<p>
+An ideology is simply a system of ideas. Our problem is that the mind grasps
+onto concepts, narrative, names, labels, symbols, and uses those unreliable
+mental constructs as the basis for an equally unreliable self-image.  At that
+point ideology becomes a filter. Not only is perception reduced but the filter
+becomes predominantly what we experience.  Ideology makes me part of a system of
+ideas, with a nice feeling of being right. Some other people agree with me,
+reenforcing my confidence. Some other people disagree with us, reenforcing our
+sense of solidarity. Holding on to this security makes us afraid to open up
+perception to the complexity all around us because it can be so confusing.
+</p>
+
+<h3 aria-label="chapter two, prompt nine">P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+We depend on oxygen. We can’t taste, touch or see it, but we have evolved to
+continually breathe, trusting the air. It feels very good to notice the process
+more consciously.  Gravity is also a constant source of experience which we tend
+to neglect. We are surrounded by life forms with individual methods of
+respiration and some means of working with gravity. Tiny life forms in the ocean
+must adapt to the tendency of cold water to sink and warm water to rise. Huge
+trees must balance the weight of their limbs so they don’t pull the trunk down.
+We do well to take a little time to give our usual concerns a rest, and focus on
+what is most near and most essential to life in each moment.
+</p>
+
+<h3 aria-label="chapter two, prompt ten">P10 ~  Does Gaia have a self? What would that mean?
+</h3>
+<p>
+Self exists only in relationship with other. By naming Gaia we are giving an
+impersonal system an identity related to a human self. Gaia has no way to know
+we’re doing this, while we have a system of mental activity which is able to
+know what it is doing. We also have the ability to study systems outside
+ourselves, find boundaries, give names. If our minds became fully integrated
+with Gaia, as our bodies already are, perhaps we would be Gaia’s self.
+</p>
+
+<p>
+<a target="blank" href="https://youtu.be/FGnS-Xk0ZqU" alt="Endosymbiotic Theory"><strong>MEDIA: </strong> Endosymibiotic Theory</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter four, seeing the prompts in one word">
+
+<h2>Ch. 4 ~ Seeing the prompts in one word</h2>
+
+<h3>P1 ~ Independently</h3>
+<p>
+Gaia is a self-regulating system in which no part exists independently. Gaia is
+dependent on the sun, rocks, water, air. Every part of Gaia is dependent on the
+whole. One part, let’s say Sierra Nevada bighorn sheep, could die off and the
+whole would continue, although certain other parts would be affected. Some local
+willows might flourish. If the whole system crashed could any bighorn sheep
+remain? Obviously not. We humans, however,  have been led to believe that
+somewhere at the center of our being is a ‘me’ which stands alone. This
+independently existing static entity is supposed to be free and responsible,
+subject to reward and punishment, praise and blame, inclusion and banishment.
+How do you think that idea took hold? Because it is a very convenient form of
+social control.
+</p>
+
+<h3>P2 ~ Integrated</h3>
+<p>
+Gaia is strong because all parts must adapt to the whole. Each individual
+organism contains systems which support that organism’s ability to adapt.
+Sometimes the internal systems aren’t even related to that individual. Cows can
+eat grass because they have a special stomach where they host microbes which
+produce enzymes able to digest cellulose. Humans have developed language, a
+system available to each individual but able to survive that individual’s death.
+If an isolated language dies, the concept of ‘language’ lives on, and people can
+learn another language, making human culture an increasingly robust system.
+</p>
+
+<h3>P3 ~  Dream</h3>
+<p>
+Dreams add to the diversity of experience, enriching Gaia. But dreams don’t make
+the rules which we must follow if we are to flourish. Gaia doesn’t make the
+rules, either. Gaia is the action of the rules. That’s why it’s so important
+that we work on knowing Gaia. We can follow our dreams as much as we want, we
+have the freedom to do that, but we don’t have the freedom to determine the
+consequences. Knowing Gaia is a process of awakening, and dreams are much more
+useful when we’re awake.
+</p>
+
+<h3>P4 ~  Body</h3>
+<p>
+Knowing Gaia doesn’t happen through words, although words can play a part. The
+body’s way of knowing is feeling. It’s too bad we usually ignore those subtle
+feelings coming from deep inside until pain demands our attention. Experiencing
+our own physical well being is a direct experience of Gaia. The body is a
+complex self-regulating ecosystem just like Gaia. And just like Gaia we do not
+consciously experience the myriad interactions. If I let my attention wander
+around to different areas I may notice a tight muscle, or that my feet are
+tired, but I won’t be able to detect what my kidneys are doing. The dominant
+sensation is unitary. I think of it as ‘aliveness’. The same is true of sensing
+what Gaia is doing. As I become less focused on separation, I can feel that I am
+part of something much bigger than I am. As I become more curious about what
+that is, I can consciously study what other people have investigated. That
+conscious study can then include the details of what the body is doing.
+</p>
+
+<h3>P5 ~  Honesty</h3>
+<p>
+Gaia has allowed some devious creatures to come forth. A type of hawk moth
+caterpillar has markings which mimic a pit viper to scare off predators. People
+can tell each other fantastic stories to encourage cooperation, stories of
+punishment we experience while dead, or rewards in a next life. Gaia doesn’t
+listen to stories, Gaia sees behavior. If the caterpillar fools a bird, good for
+the caterpillar! If people fool themselves and each other, the resulting
+behavior might be adaptive, or it might not be. Humans are such habitual liars
+that we need the concept of ‘honesty’. Gaia doesn’t care about that, but we
+can’t know Gaia without the simplicity and directness of honesty.
+</p>
+
+<h3>P6 ~  Power
+</h3>
+<p>
+You know that Gaia owns the power because you know that ugly surprises await all
+of us, even the most supposedly powerful individuals. Beautiful surprises are
+also just around the corner, and, we suspect, beyond our control. We are driven
+by a strong desire for dominance. The mystique of power gets folded into the
+near constant struggle for dominance and status.  We are complicated organisms
+who can make strategic decisions to play along to get along. We also invent
+things which carry benefits or dangers, and we have a certain amount of control
+over those things. We are also subject to unintended consequences. When we make
+accurate predictions, Gaia rewards us handsomely. Inaccurate predictions
+sometimes work out just fine, and sometimes not. Then we pay the price.
+</p>
+
+<h3>P7 ~  Touched</h3>
+<p>
+Touching is personal. If Gaia isn’t something which touches me, there’s no point
+in knowing about Gaia. I can know all sorts of things which are impersonal, like
+how to make polenta. But if no one tastes the polenta, if the knowledge remains
+impersonal, then it’s of no use. A theory of Gaia which describes earth systems
+science, however accurately, doesn’t become truly useful until it touches us
+personally. Human experience has expanded into mental realms so compelling that
+I am overwhelmed and out of touch. Paying more attention to how one particular
+form is touching me relaxes distortions and clears my senses, offering a window
+to the activity of Gaia.
+</p>
+
+<h3>P8 ~  Ideology</h3>
+<p>
+Ideology creates tunnel vision. Knowing Gaia requires openness. Gaia can be used
+as an ideology just as easily as any other set of concepts. It happens when we
+forget that a concept is a tool to be used. Concepts are not a direct reflection
+of reality, but constructed through our own mental processes. Even if we
+understand that a concept is just a tool, we can misuse that tool to support
+useless activity like wanting to feel like I know something special, therefore I
+must be special. When that happens I develop a need to defend my concepts
+instead of continuing to explore how useful they are and for what job.
+</p>
+
+<h3>P9 ~  Presence</h3>
+<p>
+It takes a lot of work to sit and breathe. The blood in my feet must somehow
+make it to my kidneys. It’s literally a matter of life and death. The cells in
+my lungs must accurately select some elements of the air and reject others.
+There’s nothing in my experience which informs me of how to consciously do that.
+Yet I can sense that beneath my gross perceptions of light, sound, temperature,
+tension and so on, is a field of existence. There is an undifferentiated
+experience of aliveness which reveals itself in silence.
+</p>
+
+<h3>P10 ~  Self</h3>
+<p>
+There is a strange and wild beauty in a system which is unintentionally
+self-regulating. There is no need to anthropomorphize if what we are talking
+about includes humans. Gaia is not a person, but I am, and totally dependent
+upon Gaia. Other life systems are increasingly dependent upon human activity,
+and our ability to limit our own destructiveness. If we want Gaia to continue to
+favor us, we might need to offer ourselves as Gaia’s brain. From that, we will
+see what kind of self naturally emerges.
+</p>
+
+<p>
+<a target="blank" href="https://youtu.be/pwymX2LxnQs" alt="Travel Deep Inside a Leaf"><strong>MEDIA: </strong>Travel Deep Inside a Leaf</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter five, using words to step away from words">
+
+<h2>Ch. 5 ~ Using words to step away from words</h2>
+
+<h3>P1 ~  Since living systems do not exist independently in nature, what am I?
+What does that feel like?
+</h3>
+<p>
+What a relief it is to stop trying to do the impossible, even for a moment, to
+step back from trying to be a person made of words. I already know that the
+words in my head are not the things they represent, so how about not listening
+for a little while. I can take a break, turn my attention to unity rather than
+further division. I can allow Gaia to do the work. Just as I trust that the work
+of keeping me alive will continue when I fall asleep, I can turn my awake
+attention toward stillness and the ground of being.
+</p>
+
+<h3>P2 ~  Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+Emotions generate stories, and it’s easier to listen to the stories than to feel
+the emotions. We can approach emotions as music within the body, listen
+carefully to how different tensions create a range of feelings. The narrative
+can then start to fade into the background while the physical sensations bring
+us closer to the underlying motivations. Harmony brings stability and clarity.
+Our whole system, mind and body, seeks balance. If we dive beneath the surface
+waves of confusion, into the quiet depths, balance and buoyancy are simply
+there.
+</p>
+
+<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s
+my most recent example of that?
+</h3>
+<p>
+Dreams enrich our lives. I don’t want to live without dreams. Neither do I want
+to live in a dream. The first person to be hurt when I live in a dream is
+myself. Dreams are intensely personal, and make it impossible to love another
+person who is living in their own dream. I used to dream that I would find
+another person who lived in my dream. Didn’t happen. What happened instead is
+that I discovered, through a window of silence, how to open to what is actually
+here. There’s nothing better in the gap between past and future.
+</p>
+
+<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+The mind will continue to generate words because there is a part of me which
+believes it’s necessary. There’s another part of me which is able to perceive
+the unity underneath the division.
+</p>
+<p>
+Habitually, we pay more attention to words. Our environment has become choked
+with words, because, yes, the ability to use words is absolutely crucial for
+humans. We hope we can find unity through words and symbols, or maybe through a
+prescribed set of activities such as ‘pay more attention to the inner body’. I’m
+only suggesting you do that because I find it relatively easy and effective.
+Words are objects we can grasp, and so are the sensations of the body. Yet,
+somehow, feeling the sensations without making up a story about them can soften
+and open the mind. It does take practice to not make up yet another story about
+the body.
+</p>
+
+<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+Recognizing my filter of hopes and fears, I have to loosen up in order to allow
+more information to come in. If my motivation for allowing more information in
+is to protect me from my fears and advance the agendas of my hopes, o.k. That’s
+what is happening. But we humans are smart. That’s why Gaia should be afraid of
+us! We have the capability to crash the system. So let’s be honest about that.
+We can sit around talking about ‘knowing Gaia’ while our carbon emissions are
+accumulating in tons. We can sit in silence while other people are fighting
+mega-fires in Australia. We can practice being honest with ourselves for no
+other reason than it’s what we feel is right, then see what happens.
+</p>
+
+<h3>P6 ~  How much power do you think you have? How much do you want? How much
+does the other person have? How much do you think they want?
+</h3>
+<p>
+Thinking we need power keeps us running in circles, generating a torrent of
+words. We may be free from attachment to the usual status symbols, but still
+thinking ‘knowledge is power’. But then how much knowledge do I need? Is it
+possible to just pause for a bit? When I pause with no loss of alertness, I can
+sense my own energy. I’m using the word ‘energy’ in the basic sense of ‘ability
+to do work’, not as some quality which is mysterious and unique to me, not as
+some ‘power’. Energy, unlike power, is not guaranteed to get me what I want.
+Ability to do work may advance my personal agenda, or may not, depending on the
+situation. In quietness I’ve discovered something more reliable than the ability
+to do work. My conscious connection to Gaia allows me to rest. In deep rest I
+get a glimmer of basic being, in which there is no need to do anything.
+</p>
+
+<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+<p>
+I am being touched by other people’s words all the time. Words spoken to me in
+the past, all the way back to my most vulnerable childhood years, reverberate in
+memory. Words hurled at me when I was a confused adolescent are still shaping
+me. There are more gentle, nurturing messages from the forces keeping me alive
+now which I could give some attention. The electric light I switch on at night
+carries a message I might focus on for a moment. It is a message of caring
+combined with human ingenuity, touching me directly, now. I can shift my
+attention to sounds, especially in a quiet place away from the roar of traffic.
+Gaia is active everywhere, and our physical senses evolved in harmony with our
+source - sun, rocks, water, air. There’s nothing supernatural about that, and
+it’s easy to notice. When I hold a rock in my hand and allow it to touch me, it
+can be seen as a tool, a weapon, a garden ornament or simply a rock. When I dig
+in the garden and notice what happens to rocks when acted upon by countless
+generations of microbes allied with plants, I realize that I am eating rocks
+every day. An idea like that also touches me emotionally, beyond the words,
+sinks into my body, reassuring my gut that life goes on.
+</p>
+
+<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowling Gaia?
+</h3>
+<p>
+It takes a lot of words to construct and maintain an ideology. The word ‘Gaia’
+does not convey an ideology. The narrative I’ve been developing here could
+easily become an ideology. That’s why it’s so important to practice shifting
+attention away from words. There is no method for doing that, but if for some
+unknown reason your motivation is strong, you will find a way. If my motivation
+is to advance myself through an ideology, I will never know Gaia. Knowing Gaia
+demands surrender. It might not make me happy. There’s a good chance it will
+scare me, and I have to take that chance. What I’ve seen of Gaia so far tells me
+that I am unique, but nothing out of the ordinary. Ideologies of all kinds,
+religious, political, pseudo-scientific promise an unassailable identity, an
+individual merger with what appears more powerful than myself as an individual.
+My experience has been that the sooner you unmask the desire for power, the
+sooner you will start noticing the incredible beauty of things as they are.
+</p>
+
+<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+Shifting attention away from our habitual pursuits takes faith. I’d like to
+distinguish faith from belief. Belief depends on concepts; faith comes from
+direct experience. Faith guides us forward into that which is beyond the small,
+individual self activity. I’m calling that larger activity Gaia, but that’s just
+a name. You might have a name for it which is more meaningful to you. I just
+want to encourage you to get into it to the point where it’s not threatened by
+silence. That takes work because faith can be blocked by boredom. Part of our
+mind is so addicted to mental junk food that it keeps reaching for the next
+symbolic chip and the next and the next. It takes work to redirect attention
+away from words. If the motivation isn’t strong we’re going to quickly find a
+reason to quit. When the motivation is limited to a desire to feel good, feel
+secure, feel powerful, feel confident, feel loving or any other state which is
+temporary by nature, we will not practice knowing Gaia. Only faith in the entire
+range of activity which can occur will give us the energy to do this work. This
+faith is ungraspable, yet so simple. I’m suggesting a technique: shift attention
+to breathing and gravity. If you have a better technique, of course you will do
+that one. If you can open to what is here now using no technique, no concepts,
+no practice, no help from anyone, then you don’t even need faith.
+</p>
+
+<h3>P10 ~  Does Gaia have a self? What would that mean?</h3>
+<p>
+As far as we know Gaia is an unintentionally self-regulating system. The larger
+forces driving the Earth systems don’t care what happens. Gaia as a whole is
+incapable of making plans. The necessary equipment simply is not there. I find a
+strange and wild beauty in the midst of all that unguided complexity which is
+why I’ve picked up on the name “Gaia”. Then, watching a cat stalking a bird, I
+can see that the ability to make plans came onto the scene long before human
+intelligence evolved. The cat and I make plans because we are capable of
+intention. Our little individual organisms have the equipment required. There
+doesn’t need to be a static entity somehow producing intentions. The activity
+arises out of a huge collection of other activities, large and small. We can’t
+even begin to imagine how dynamic the whole thing is. And I say “thing” because
+our language is primitive; I know full well it isn’t a “thing”. Primitive
+thinking comes from an earlier time when we thought the world consisted of
+“things”. It looked like objects were acting on objects, and maybe there was
+some supernatural super-object managing all the other objects. But let’s look
+closely. There’s nothing static about intentions. The activity comes and goes.
+In silence I observe no self, including no observer. Out of silence emerges
+self-activity. We humans, with our intelligence, organizations, tools, machines,
+information, continuity and focus, are now capable of influencing the whole
+system. For better or for worse - and who decides what is “better”, what is
+“worse”? We do. I think we would be smart to take a close look at that.
+</p>
+
+<p>
+<a target="blank" href="https://youtu.be/GVU_zANtroE" alt="Endosymbiotic Theory"><strong>MEDIA: </strong>Endosymbiotic Theory</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter six, what we want?">
+
+<h2>Ch. 6 ~ What do we want?</h2>
+
+<h3>P1 ~  Since living systems do not exist independently in nature, what am I?
+What does that feel like?
+</h3>
+<p>
+A lot of the time it feels like “wanting”. I want this, I don’t want that, I
+want to be around people who want the same things I want. Then there’s always
+the next thing to want. I wonder if I’m choosing this condition, or even
+choosing what it is I think I want. Maybe all this wanting is a good thing,
+driving progress. Maybe it’s built into the evolutionary drive to survive. It
+certainly doesn’t make much sense to want to stop wanting.
+</p>
+
+<h3>P2 ~  Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+Not knowing what I want most of all creates conflicting emotions. A jumble of
+conflicting ideas about different possible directions can keep me stuck. Too
+many choices can pull me first in this direction, then in that one, here’s
+temporary success, here’s abject failure, off in the distance is a shining star
+always receding. If I reject any of the conflicting emotions, I will be
+constantly off balance because that emotion will remain active underground. I
+may become very convinced I’ve developed integrity, while ignoring parts of the
+system which will bite back. A good way to reveal hidden conflicting emotions is
+to look closely at my judgments of other people. It’s not a simple one to one
+correspondence, but there might be some sort of projection going on, and
+admitting it can be helpful in uncovering conflicting emotions in myself.
+</p>
+
+<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s
+my most recent example of that?
+</h3>
+<p>
+We live in Gaia and we need to know Gaia in order to make accurate predictions.
+Dreams are simple minded expressions of our hopes and fears. Gaia is complex.
+When we’re awake we’re able to listen to people who have their own dreams which
+sometimes clash with ours. When I’m awake I can explore the difference between
+desire and intention. I can consider the difference between what I want to get,
+and what I want to do. Whatever our intentions we need to keep in mind that Gaia
+is difficult for us to predict. Our preferences often do not match what is
+possible over the long haul. However, dreams can actually help us. After all,
+dreams would not even exist if they were not possible within Gaia’s many
+systems. I just need to be clear about what a dream is, and the difference
+between what I want to get, and what I want to do. Intentions can be generous,
+can include the dreams of other people and consider a wider range of all kinds
+of information. There is a gap between my dreams and the environment, including
+my body. Dreams often reflect our impatience with physical processes. We want to
+put on a cape and fly, rather than build an airplane. Dreams can help us see
+what we deeply want, even in our sleep. Awake, imagination can play freely, help
+us set intentions and experiment. Gaia will determine the outcome of the
+experiments. Outcomes, though, are not predetermined because Gaia includes input
+from our dreams.
+</p>
+
+<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+We talk about our feelings a lot, but often they are mainly bound up in
+thoughts. To experience feeling states more precisely it helps to check in with
+physical sensations, especially those far away from our skin.  Instead of
+thinking about why we feel a certain way, we can pay attention to the raw data
+in the physical system. All through our body cells and organs are wanting
+something. It seems like they even want attention, because when I give attention
+to the signals they are sending, everything calms down. If there’s a little gas
+pain in my belly, it will calm down and pass through more easily if I become
+quiet and listen. A sense of well-being gradually replaces the habitual hunger.
+We are so lucky to live in a time and place that has us well-fed - why not just
+sit down for a few minutes and experience it? I find if I do that I can then
+tune into larger questions about what I want for myself and the world with far
+less anxiety than when I am ignoring the inner body.
+</p>
+
+<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+I can only listen to my whole self if I honestly want to. We sabotage ourselves
+by trying to do the impossible. If I don’t want to be honest with my whole self,
+I will only wear myself out pretending, or make up elaborate justifications
+about how I’m already doing just fine. A very valuable clue is hidden in any
+sense of separation I’m experiencing. If I find that clue, I know I need to do
+something to be more in alignment with what is happening, and what will happen.
+</p>
+<p>
+Of course I can never actually be separate from Gaia because all these
+processes, including my confusion, are connected to all the other processes
+surrounding me. A sense of separation indicates that what I want is not
+possible. One thing to look at is how much we think we want something that will
+happen in the future. It’s much more accurate to look at what I’m experiencing
+right now that I want to get away from, as well as what I’m experiencing right
+now that I want more of. Then I can move in the direction away from or toward
+those experiences while remaining open to new information, and acting on the
+basis of what is actually happening. If I imagine I want something, but honestly
+don’t know what to do about it, I’m dreaming.  Honesty wakes me up.
+</p>
+
+<h3>P6 ~  How much power do you think you have? How much do you want? How much
+does the other person have? How much do you think they want?
+</h3>
+<p>
+Power is the most elusive and undependable goal we can possibly imagine. Think
+about it. The fact that it’s such a common desire does not make it any more
+sane. It makes people crazy. It makes people corrupt. The only healthy way to
+work with a desire for power is to first of all be honest with myself. If I want
+it, I want it. I don’t have to be ashamed of that. However, it might be helpful
+to examine what you think power is giving you, or would give you if you had more
+of it. Use other people you know or hear about in the media as a mirror. What do
+they have that you want? In particular, do you think they have all the power
+they want, or do they act like they’re trying to get more, and do they know
+where more will come from. In contemplating what you want, keep coming back to
+present experience because that’s all you know for sure. Even our memories are
+unreliable, especially our memories of something as elusive as power. If you
+know you want more power, you can at least understand what it’s supposedly going
+to do for you. I can tell you I feel a lot better since handing power over to
+Gaia.
+</p>
+
+<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+<p>
+I, as consciousness, am always being touched by the life processes of Gaia. I
+want to know Gaia more because I feel limited and blocked in ways I don’t
+understand, somehow separated from my own life processes. Contemplation is my
+method. To contemplate what is touching me doesn’t take time. In a flash I can
+notice my contact with the person I’m talking with, how I’m being touched by
+that unique conversation, the flow of emotion, the hesitation, the glimmer of
+mystery. When I’m walking down the street and notice a current of loneliness, I
+can be touched by it. Of course I don’t want pain. I want pleasure.  It’s
+confusing though, because the possibility of pain can be exciting, like when I’m
+meeting someone I find attractive. There is both potential pleasure and
+potential pain in meeting such a person. Gaia tells us there is no life without
+pain, and we want life. As I get more in touch with the elements of life, like
+the liquid touch of warm tea in my mouth, I instinctively see how to navigate
+pleasure and pain. Too hot - ouch! Put the cup down. Too cold - unappealing.
+It’s the same with everything. We don’t passively allow any and all kinds of
+touch. In contemplation each touch can be unique with its own flavor. We move
+toward what promotes life, and move away from harm. Generations of individual
+organisms have been doing this for millions of years. I can trust my instincts,
+especially as my mind becomes less clouded by memories of past hurt and
+helplessness, and less fixated on images of what I think I want. Fleeting
+connections, in all their richness, provide the nourishment I need.
+</p>
+
+<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowing Gaia?
+</h3>
+<p>
+Being a person is not easy. We’re definitely still in the experimental stages.
+The balance between competition and cooperation, for example, is really tricky.
+Do I want to be accepted, or do I want to win? One way to get both is to be a
+member of the conquering tribe, and joining a tribe can be as easy as agreeing
+with their ideas. Also, consider our need to know, to be certain. Ideology seems
+to offer a firm ground to stand on. It’s all mixed up with values and beliefs.
+The problem with beliefs is that fixating on a set of thoughts can blind us to
+the larger systems we depend on. Gaia has no beliefs and no values and we find
+that distasteful, even threatening. We confuse indifference with hostility. We
+want nature to value what we value. So we pile belief upon belief declaring our
+values to be eternal truths. As part of getting to know Gaia I want to let go of
+ideology and hold beliefs lightly. I don’t want my identity tied to any
+particular set of thoughts, especially not thoughts about something called
+“Gaia”. I want my values to be part of a living system, not depending on words
+set in stone.
+</p>
+
+<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+To do this practice I have to set aside any motivation for gain. Being in the
+presence of Gaia has nothing to do with getting what I want, or doing what I
+want. In order to sense that I’m not separate from the whole, I need to step
+away from preference for any of the parts. This is easier than it sounds at
+first because actually the “parts” consist of concepts created in my own mind.
+We are conditioned to experience division, but we don’t have to be focused on
+that. Concepts can stand quietly in the background while we invite Gaia to come
+forward. It’s helpful to set a time frame, maybe 10 minutes and be physically
+quiet, sitting comfortably. There might be a kind of gap in your usual
+experience. It might be very attractive, so now you want that gap. Then there’s
+a struggle, subtle or obvious, about trying to prefer no preference. That’s why
+it helps to have something concrete to focus on, the breath, the feeling of
+gravity, as an anchor. It can also be frightening, as though you’re going to
+lose yourself. No, you won’t, because Gaia is supporting you.
+</p>
+
+<h3>P10 ~  Does Gaia have a self? What would that mean?</h3>
+<h3>
+As our technology becomes more sophisticated and global, we are becoming Gaia’s
+brain. If we want to, we can become Gaia’s self. We can provide Gaia with
+values, with intelligent purpose. If that’s what we want to do, we first need to
+adjust our own identities.
+</p>
+
+<p>
+<a target="blank" href="https://youtu.be/7t-NbF77ceM" alt="Urban Gangsta Gardener in South Central LA"><strong>MEDIA: </strong>Urban Gangsta Gardener in South Central LA</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<h2>Ch. 7 ~ Investigating personal identity</h2>
+
+<h3>P1 ~  Since living systems do not exist independently in nature, what am I?
+What does that feel like?
+</h3>
+<p>
+Everything in Gaia is dynamic, always doing something. That bare tree we see in
+the snow is not growing, but we can tell by looking at it if it is surviving. If
+it is surviving, it is doing something to keep itself alive. The same is true of
+my self-image. A dead tree can stand up for a while, but there’s no such thing
+as a dead self-image. If a self-image exists at all, it must be fed constantly.
+It must be groomed all the time. It’s changing all the time, too, but we don’t
+notice. We’re captivated by the image of the moment. There is visual memory
+connected to my self-image, and sometimes it’s a bit of a shock to see myself in
+the mirror. Who is that old person? Primarily, though, it’s not a visual image,
+but a collection of concepts. This dynamic collection of concepts is not easy to
+change by an act of will, but it will change itself if it is seen clearly.
+</p>
+
+<h3>P2 ~  Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+When I glance in a mirror and see an old person there is a slight jolt of
+rejection. There is a conflict between how I think of myself, based on the past,
+and how I look now. Integrity demands that how I see myself in my mind’s eye and
+what my body is doing right now are in synch. Conflicting emotions can reveal
+cracks in my identity. What I look like is a small part of the process.
+Conceptual self-image includes things I did in the past which I regret. I might
+not talk about those things, or even think about them, but the memories linger.
+Those memories are not like the husk of a dead tree, they are part of a living
+system, my identity. While the dead tree in the forest has been colonized by
+fungus and other life forms, my memories of long past actions remain my own.
+Allowing distasteful memories to surface into consciousness gives the self
+system the opportunity to work on integration. Much of the work will take place
+outside our experience. The narrow band of the spectrum I experience as “I am
+doing” doesn’t need to be involved. I don’t know how unconscious forces work,
+but I do know that the system self-regulates as naturally as a tree drops leaves
+in winter. Just the fact that I react emotionally to some memories as ‘good’ and
+some as ‘bad’ shows me that a selection process is at work. Although I can’t
+select what happened in the past, I can consider the future as open ground.
+</p>
+
+<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s
+my most recent example of that?
+</h3>
+<p>
+ Dreams can reveal hidden dimensions of experience. The emotional significance
+of memories can be seen full blown in dreams. Dreams contain valuable clues
+about our unconscious identity. Trouble begins when I become a character in my
+own dream, and make other people into dream companions or adversaries. Sleep
+mostly keeps us safe. Being half-awake is dangerous. We’re not taking in enough
+information when we are half-awake. Our identity becomes very solid because it’s
+not being challenged. We might feel confident, stable, successful. But if we are
+not integrated with Gaia, our dreams will collapse sooner or later. When our
+identity is challenged it probably won’t be pleasant, and the deeper we were in
+our own dream, the more unpleasant it will be. It would be good to have some
+support from other people at that point, because what appears to be
+dysfunctional could be part of a very creative awakening. But if other people
+are caught in their own dreams, and Gaia is being ignored, I’m on my own.
+</p>
+
+<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+Identity depends on narrative, and most of what I feel is in reaction to a
+current narrative. In order to connect with my inner body, I need to step back
+from the narrative and pay attention to what we mistakenly label ‘physical
+sensations’. It is more accurate to label that level of feeling as ‘my basic
+experience’ because it can tell me much more about myself than any narrative.
+Those so-called ‘physical sensations’ are a direct link with Gaia. This is where
+identity begins, and it is where identity can change. It is when we are able to
+slip beneath experience that feeling becomes truly creative. How can I feel
+something that I’m not experiencing? By dissolving the subject/object division.
+When “I” am no longer feeling “my body” and yet awareness is actively sensing
+what is happening in the body, consciousness can expand into a sense of
+wholeness. Identity becomes fluid and open for business, so to speak.
+</p>
+
+<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+I can’t listen to my whole self if I am insecure about my identity.
+Defensiveness and dishonesty are two sides of the same coin. The way to disarm
+defensiveness is through compassion. Guided by my desire to open to Gaia, I can
+open to myself in the privacy of my own mind. I have the freedom to play
+whatever role I think I can handle in society, while in contemplation the mask
+can come off. I can admit my insecurities to myself and my friends while playing
+it safe with people I don’t trust. I don’t have to pretend to be honest with
+everyone. If I develop the ability to be honest with everyone, well great, but
+let’s not jump the gun. Relying on my deepening contemplation practice, I can
+see myself losing my own attraction to pretense, and develop more sympathy for
+people who still need it. I don’t think dishonesty is freely chosen. I think it
+is a weapon picked up out of perceived necessity. We have a deep desire to
+connect, and you don’t want to connect to a lie. Still, the need for self
+preservation drives us into strange territory we would not enter unless we
+thought we had to. In contemplation identity can slip, and that isn’t always a
+comfortable experience. Let’s be honest about that. Gaia can help. Thanks to
+science and technology I can watch a video describing cellular respiration. Who
+needs to pretend to be something they are not when we’re all sitting on cellular
+respiration! It’s a miracle, a totally natural miracle, happening every moment
+in each one of our cells. Although knowledge of cellular respiration is second
+hand and subject to change, it does tell me something about my whole self which
+inspires me to learn more.
+</p>
+
+<h3>P6 ~  How much power do you think you have? How much do you want? How much
+does the other person have? How much do you think they want?
+</h3>
+<p>
+The mystique of power closes identity. We can’t take any chances. The people who
+think I’m powerful are identifying with my story, but if those people knew the
+whole story, they would not be impressed. Some parts of my story might make
+people feel sorry for me, and although maybe I could exploit that to manipulate
+a few people, that’s not the self-image I want. You might think that power
+brings freedom to the individual, but I have to say it’s just the opposite.
+Since individual power depends entirely on fooling other people, you will need
+to keep fooling yourself. Otherwise you won’t be able to convince anyone else of
+your own importance. Does that sound like freedom? To me it seems like some
+weird game of mutual tyranny. In that game identity cannot naturally ebb and
+flow. The person we think is powerful is depending on weapons and tools which
+can be taken away. They might not even feel their own fear as fear, but some
+other people will be able to see it. In some species of animals there actually
+is an Alpha male or female. Humans are too smart for that. Although we sometimes
+conveniently ignore this fact, our positions of dominance are fluid. No matter
+how powerful an individual appears now, we know that individual will die
+someday. Not only that, we can think about all sorts of other ways individuals
+can lose power. We’ve told stories on this topic from as far back as we can
+remember. Some animals settle into a social hierarchy as though there’s no
+tomorrow. For humans there’s always tomorrow. We have the capability to imagine
+the unexpected. Unfortunately for those who desire power, the ability to imagine
+the unexpected detracts from our determination to hold onto current beliefs.
+Allowing current beliefs to fade, like waking up from a dream, can dissolve our
+game of mutual tyranny. Then we are available for opening identity in directions
+we haven’t even imagined.
+</p>
+
+<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+<p>
+Gaia is, above all else, a dynamic system. Interaction is what keeps it going.
+Concepts resist change. We somehow developed the belief that the feeling of
+‘holding on’ represents security. In contemplation we begin to notice there is
+nothing to hold on to. If I think repeating the same words over and over gives
+me any kind of security, I’m going to miss out on the richness of life. Common
+sense tells me that an appropriate response to current conditions is a more
+reliable form of security. Before I can respond, however, I must form an
+accurate sense of what is touching me. If that sense is based primarily on
+memory, I’m stuck in the past. Intelligence demands more. Yes, memory contains
+valuable information, but my mind wants to stretch and grow. It may sound
+ironic, but in order to leave the past behind, we need to stop reaching for the
+future. What’s here now is touching us on so many different levels. It doesn’t
+take much time to stop and simply feel, we can do it with amazing swiftness. All
+that’s required is the bravery to experience a gap in the process of identity.
+The gaps are there, always, and there’s no profit in fearing them, while there
+is tremendous potential profit in an accurate assessment of what’s happening.
+Without any attempt to figure out anything in advance, we can simply stop and
+feel at our deepest levels. What a relief!
+</p>
+
+<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowing Gaia?
+</h3>
+<p>
+No matter how hard I try I can never live up to the demands of an ideology.
+Values are easy because I can see them in action. Ideology exists as a set of
+ideals. We may think our heroes are able to enact those ideals, but talk to that
+hero at 3 a.m. and you may witness some cracks in the persona. Then you may turn
+against that person as a representation of failure, and feel better about
+yourself in comparison. Gaia, on the other hand, welcomes uncertainty and the
+creativity which goes along with it. How do I know when I’m being compassionate?
+I may be just making excuses. How do I measure wisdom? It always depends upon a
+particular situation, so we can never draw the comparisons necessary for
+measurement. Ideology requires group confirmation. Otherwise, the collection of
+ideas just seems kind of crazy. Within a group, crazy ideas can become the norm.
+The group doesn’t have to look like a group, as with people who idealize
+individualism. There just needs to be an image of a superior person which is
+then reflected back to me through some medium. Trying to live up to any image is
+a thankless task because I’m never quite there. Much easier to see what’s here,
+and what I value about it.
+</p>
+
+<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+Our most basic form of identity is “I am experiencing this”. With practice we
+can deliberately shrink attention from both “I am” and “this” to focus on
+“experiencing”. That is the unabsorbed flow state. There will still be
+conceptual judgments within the flow of experience, but they will be quick, easy
+and simple. If I’m sitting quietly in the safety of my own living room, I don’t
+need to make very many judgments. If I need to go to the bathroom, I get up and
+go to the bathroom. I find it helpful, though, not to obey every impulse,
+because I am doing a deliberate practice. If my mood starts to darken and I have
+an impulse to go to the kitchen to make a cup of tea, it’s better to wait. I’m
+curious about that shift in mood. Generally it’s like a cloud passing. It
+doesn’t take much time and it doesn’t have much impact. That’s good to know. I
+don’t have to either run from or chase moods. On the other hand, if I’ve left
+something burning on the stove, immediate action is required. If something more
+complicated is bothering me, like needing to earn money, it will probably take
+over my mind and it doesn’t help to try to focus too much away from it. Since
+breathing is always happening, and the force of gravity doesn’t go away, I can
+practice just being quiet with the whole thing for awhile, and then do something
+to solve my problem. Gaia informs me that individual identity is not a problem
+as long as I’m experiencing breath and gravity, I don’t have to prove anything
+about myself.
+</p>
+
+<h3>P10 ~  Does Gaia have a self? What would that mean?</h3>
+<p>
+ The Sun is sending out energy and Gaia is receiving it and using it to do work.
+There could not be a more perfect love, and yet neither system has had the
+capability to know that. Until now. We are not separate from these systems which
+are giving rise to our existence moment by moment. And we have somehow developed
+the capability to know something about what’s happening. Because we’re still in
+the early days of this development we don’t quite believe in it yet. We are
+mesmerized by our own imaginations at the cost of conscious connection with that
+which gives us life. We know we are going to die, we know it’s possible that all
+humans could die in a chain reaction to one cataclysmic event, and that
+knowledge is too much for us right now, with our limited identities. Yet we are
+smart enough to invent technology which can bring about the very death which we
+fear. We are smart enough to destroy our own environment. Are we smart enough to
+change our behavior before it’s too late? Gaia can’t do it for us, we have to
+grow up and do it for Gaia.
+</p>
+<p>
+<a target="blank" href="https://youtu.be/DHyUYg8X31c" alt="Do Robots Deserve Rights"><strong>MEDIA: </strong>Do Robots Deserve Rights?</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter eight, being and doing">
+
+<h2>Ch. 8 ~ Being and doing</h2>
+
+<h3>P1 ~  Since living systems do not exist independently in nature, what am I?
+What does that feel like?
+</h3>
+<p>
+The more firmly I am established in my sense of being, the less I have to prove
+by doing, or not doing. Gaia is doing the heavy lifting, always. A few billion
+years ago cellular metabolism and replication joined forces, and we are still
+riding that wave. I’m not on the wave, I’m in the wave, an integral part of it.
+Whatever I do is an expression of that wave of life. I can take a few minutes
+and deliberately not do anything, and the wave sweeps on. Taking a few minutes
+in a quiet place to deliberately ‘just be’ I notice that thinking goes on. There
+are varying degrees of experiencing thinking as something I’m doing or as
+something that is happening autonomously like breathing. There are other actions
+which are more autonomous than breathing, for example the stomach processing
+food. Breathing, I can decide to take a quick short breath or a long slow
+breath. Thinking is rather like that. I don’t depend on thinking as much as I
+used to, so I notice long pauses in the stream of thoughts. Those pauses help me
+become more aware of the feeling of being here. There’s a feedback loop from the
+feeling of being here which undermines watching myself be here. Watching myself
+be here is a form of grasping which relaxes as I notice I don’t need to make
+myself be here. When I get hungry, I will eat. I’m lucky to be living in a
+situation with food easily available. While I’m cooking or cleaning up I’m in
+harmony with the people in the background who produce the food and keep water
+flowing from the faucet. Some of those people might be having a hard time.
+Contemplation broadens my concerns; it’s not supposed to make me blindly happy.
+</p>
+
+<h3>P2 ~  Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+As being and doing become more integrated, my motivation for doing anything
+becomes more grounded in actual needs rather than superficial wants. If my goals
+are unrealistic it means I’m out of touch with being. ‘Being’ refers not only to
+my own basic existence, but to the nature of the systems I’m part of. The nature
+of these systems guide what I’m doing. Remember that Gaia is self-regulating. As
+I’m part of Gaia, I’m being regulated by Gaia. If I’m trying to do something
+difficult, the level of that difficulty has been set by Gaia, not by me. So I
+have to first of all pay attention to how I’m feeling. If I’m feeling good, that
+indicates some integrity. But that good feeling might be coming out of some
+fantastic story I’m telling myself. I may be integrated within my own mind, but
+if the story I’m believing conflicts with the facts of other systems, there is
+no real stability. So I have to look beyond my own mind for a wider integrity.
+What I see might cause some conflicting emotions. I might feel very good making
+myself a delicious breakfast with eggs. So far, so good. But if I happen to see
+pictures of how most chickens are living, I might find it revolting enough to
+stop buying eggs and miss my favorite breakfast. The system was stable until I
+was exposed to new information. Something in my being responded to the quality
+of life implied by the pictures of the chickens, and changed what I wanted to
+do. The amount of suffering in the life of all beings on a global scale is
+frightening. Stories of children in refugee camps, pictures of rainforests
+burning, can produce overwhelming feelings of helplessness. Is life on earth
+some crazy accident? Is it all a bad dream? When I return to my more basic
+experience of being alive, my breathing, any tension around the eyes, comfort in
+the gut, these physical sensations I usually ignore, I am led into an awareness
+of basic being which wordlessly answers my questions.The ability to vividly
+remember something from the past has been given to us by Gaia as yet another
+survival tool. But as with any tool, it must be used correctly. If used
+incorrectly, people can be injured. Unfortunately in our current culture we are
+not well educated in the uses and misuses of memory. Living in memories is just
+like living in a dream. We are not available to the immediate incoming
+information which is constantly changing. We live in memories when we believe
+that those images of the past represent who we are now. That doesn’t mean we
+should ignore memories. Even the most simple animals depend upon memories in
+order to respond in the present. I don’t know what it’s like to be a simple
+animal, but I do know that self-image is important to humans. Memories get
+tangled up in that self-image, and we believe it must survive intact. People who
+would exploit us know how to make use of our social instinct to preserve a
+self-image. We can free ourselves from their influence by realizing that our
+memories are there to be used as a guide to action, not to tell us who we are.
+When I am sitting quietly, remembering nothing, I am fully myself. Nothing is
+missing.  When I get hungry and need to find the refrigerator, memory will serve
+me well. Some memories from high school are probably best forgotten. I’m still
+fully who I am right now.
+</p>
+
+<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s my
+most recent example of that?
+</h3>
+<p>
+Dreams drift around somewhere between being and doing. They remind us of how
+much happens in the realm of the subconscious brain. They are a creative force
+between the certainty of being and the uncertainty of doing. They are immaterial
+and yet can have unpredictable influences on what happens in the material world.
+Artistic expression can be seen as a manifestation of a dream state. When I
+watch a movie I’m joining a large group of creators in a group dream. None of
+those creators are likely to know what that dream means to me. They don’t know
+how successful they will be in persuading me to believe something is possible,
+when it’s not. A man singing a song, surrounded by skilled musicians who easily
+awaken buried emotion, have no idea how they can change my life by changing my
+dreams. A group of people caught in a conspiracy theory which is essentially a
+bad dream can change an election, casting a shadow over the rest of us.
+</p>
+
+<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+You touch the opposite of existential angst by not avoiding it. Our thoughts
+connect to the biochemistry of the nervous system. Often when we’re not thinking
+of anything in particular a thought pops up about a problem that needs to be
+solved. Our biochemistry shifts away from simply being to doing. But how many
+thoughts do we have about problems which we are in no position to solve?
+Speaking for myself, a lot. With biochemistry poised for action, and no relevant
+action available, we go for the irrelevant. Confusion and anxiety are the
+result. Rather than trying to avoid that state, it is possible to recognize it
+fully and then have the motivation to simply halt the train. The train will slow
+down as I direct attention to the inner body. I can remind myself that conscious
+being is an alternative to doing. If this is a deficiency in my earlier
+education, it’s important to learn about it through my own experience. The
+countless mechanisms of the interlocking systems of Gaia are keeping me alive at
+this moment. Not forever, but that’s in the future. I’m here now. What’s it like
+to just be here? You might find your experience expanding, taking in all sorts
+of subtle perceptions and a recognition of the deep unity in everything which is
+happening. There is an unexplainable happiness in the dynamic quality of being.
+There is nothing passive about it. You are not being subjected to anything. You
+are not less alive than when you are doing something. You don’t need to seize
+upon some problem solving activity in order to justify your existence. If you
+want to help people, try passing along permission to experience basic being.
+There are countless ways to communicate this attitude, but first of all you must
+know it thoroughly in your direct experience.
+</p>
+
+<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+For a few minutes stop choosing your thoughts and see what comes up. Then if a
+bad or crazy thought comes up you’re not responsible because you did not choose
+it. You didn’t do it. It just happened. And, being a self-regulating system, you
+won’t act on that bad thought because you know it is bad and you don’t want the
+consequences of acting on it. Whatever bad or crazy thoughts drift through my
+mind are not who I am. The being that I am is what the thoughts - good, bad,
+irrelevant - pass through. Being itself is not changed. All kinds of clouds
+gather and blow and drift through the sky. To acknowledge my own thoughts is the
+beginning of honesty. To experience very strong emotions while doing nothing
+tells me something about where my actions are coming from. A self-regulating
+system is not necessarily a mechanical, deterministic system. My refrigerator is
+a mechanical, deterministic system which does a good job of keeping my food
+cold. But it’s not smart enough to know if there’s any food in it needing to be
+kept cold. It will keep going regardless. When our human system is functioning
+well, we know the difference between thinking about helping or hurting someone,
+and taking the action necessary to do the helping or hurting. Often when we hurt
+someone we don’t do it deliberately, but as a result of unconscious forces. The
+more honest I am with myself, the more those unconscious forces will reveal
+themselves. Intelligent action requires information, and nothing gives me more
+important information than being honest with myself.
+</p>
+
+<h3>P6 ~  How much power do you think you have? How much do you want? How much
+does the other person have? How much do you think they want?
+</h3>
+<p>
+Insecure about our possession of power, we cling to familiar thoughts. The need
+for power is an old, old human thought. All our ancient thoughts about gods,
+angels and demons reflect our desperation to exert control. Our modern
+investigations based on science seem to result in more control, so more of us
+are following science, abandoning the old gods. Yet the confusion goes on,
+blocking our access to the experience of being. Power is all about doing, who is
+doing what, who is influencing others, how we can join with others to amplify
+our personal power. We might believe that power is somehow embedded in being,
+that some people are just naturally more powerful than others. We notice that
+some public figures have charisma, some magical quality which makes them
+attractive to large numbers of people. What are they doing to create that charm?
+If I’m not in touch with basic being I can easily believe that those people
+don’t have to do anything to hold onto power. I might even believe that about
+myself because I seem to lead a charmed life. That’s why it’s so important to
+investigate the difference between being and doing. I’m embedded in a series of
+systems and those systems are giving me life. I can control bits and pieces of
+the network of systems, but I can’t control the whole thing. I can only do so
+much, and then I depend on other forces. Being doesn’t need to know what it is
+depending on . Being doesn’t need to possess any particular form. It’s happening
+- period. As we get in touch with being we realize that it isn’t a ‘thing’. And
+neither is it an activity. Weird, huh? There’s no way to explain it, yet we are
+all experiencing it right now and at every moment. We prefer to ignore it, keep
+it way in the background, because we are fixated on our preferences and how to
+maintain the forms we prefer. Being is formless, potentially all forms equally.
+My human form doesn’t have any more or less being than your human form. The
+forms have different capabilities, and we are naturally concerned about that
+because we have to take care of our individual survival and advancement. It
+makes us nervous to rest in being because we know we can’t trust it. It doesn’t
+favor our present, temporary form. It doesn’t care about our desire for power.
+</p>
+
+<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+<p>
+Contemplation is ‘doing’ reaching for ‘being’. It’s for people who want to be
+more in touch. Often we confuse grasping with touch. There’s too much doing in
+grasping. Allowing ourselves to be touched, we can see there’s no need to hold
+on to one particular touch. Contact is coming at us from every different
+direction on every different level. I can begin with air. Can I feel the air
+touching me? Is it cold or warm? Is it comfortably drawn through my nose and
+throat? Emotions are a different kind of experience. Is anything bothering me
+emotionally right now? What about intellectually - is the idea of contemplation
+making sense? Exactly how does an idea touch us? Isn’t touch always physical?
+Emotion certainly has a physical component. When I’m angry my whole body is in a
+state of anger. But emotions also involve the mind, which is not physical. Some
+ideas touch us emotionally with the excitement of disagreement or happy
+airgreement. But some ideas touch only the mind, and it is important to learn to
+see how that works. Because the mind is not physical we confuse it with being.
+Here’s the difference: being is unconditioned, mind is conditioned. An idea
+which touches the mind is part of the process of conditioning. Just as icy air
+stinging the nose conditions me to come inside where it’s warm, an idea like
+Gaia conditions me to seek certain kinds of information and see the world in a
+certain way. Maybe the idea of being is touching you right now. Maybe it strikes
+you (touch!) as vague and irrelevant to your life. Maybe it seems elusive yet
+something you want to dig into. This practice says to simply notice how it’s
+touching you. Then notice how the chair you’re sitting on is touching you. You
+know you don’t need to hold on to the chair. It continues to support you
+effortlessly, that’s just what it does. You’re invited in this contemplation to
+try just sitting in the chair, touched by a flow of emotions, touched by a flow
+of thoughts. Being is ungraspable, but it is touching you always, at the core of
+every form.
+</p>
+
+<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowing Gaia?
+</h3>
+<p>
+Blaming people for their actions is based on an ideology of separation. It is a
+grandiose idea connected to our desire for praise. Unfortunately it is not
+possible to have praise without the possibility of blame. To blame myself for
+doing something stupid is to ignore the painstaking step by step method by which
+Gaia has formed this web of life. During photosynthesis some chloroplasts have
+the choice to move across the cell toward the light or, if it’s too intense,
+away from it. It’s easy for them to do the right thing. It’s not easy for us.
+And so we create ideologies to share and to guide us. Any ideology, not just an
+ideology of individualism, ignores the clay from which we are constantly being
+formed. If we are loyal to a set of ideas we can’t risk observing our own
+limitations which include the limitations of knowing who is right. We can’t
+float in the ocean of being. We have to vigilantly maintain our tunnel vision
+against all the evidence which says it isn’t helping us. I’ve never consciously
+chosen an ideology. I’ve gravitated toward certain points of view and gradually
+I become enmeshed in an ideology with other people. It’s never been individual.
+It’s possible to be attached to a unique and lonely idea, but that’s not what I
+need to contemplate because I haven’t done that. What I have done is join
+groups, partly because of shared ideas but mostly because of chance encounters
+and attractions. Knowing Gaia, knowing I don’t choose my limitations, frees me
+from attempting to escape from my limitations through ideology. This freedom,
+rather than the freedom to choose what to do, opens the window to the emptiness
+of being.
+</p>
+
+<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+In Gaia there is no separation between being and doing. Breath and gravity are
+not in opposition. When I’m asleep I breathe without knowing it. Gravity keeps
+me on the bed while I’m lost in a dream. Although we’ve never left Gaia (that
+would be impossible) we are distracted by evolution’s shiny new toy, the human
+mind and all its inventions. Returning to the breath is returning to the basics
+of life. Noticing gravity we are in the company of everything. When a shark
+locks onto the scent of a prey animal, it doesn’t have to do much in order to be
+successful. Sharks have been perfecting this behavior for about 450 million
+years. We get confused. Do I want this? Do I want that? Did I hurt my friend
+when I said that? Will it help to say this? Or maybe I secretly want to hurt
+this so-called friend who has neglected me. Our lives are complex and we need
+all our intelligence. We don’t want to return to the world of sharks, and we
+can’t. Misguided motivation can squander our energy. Acting in contact with
+being is straightforward action. Being is not some mysterious force we need to
+get hold of. It is what we share with everything. It is the potential, the empty
+cup which accepts tea, soup or poison with equal graciousness. Nature never
+agreed to present us only with food, but has given us the ability to distinguish
+food from poison. Even when simply sitting with breath and gravity we are
+enjoying the challenge of insight into our own hidden beliefs and wishful
+thinking. Otherwise it would be better to take a nap. Sometimes I wake up from a
+nap with fresh insight. Yet there is something special about going into a deeply
+restful state while fully conscious, and not attempting to produce something
+non-ordinary. If you want to see your mind in a non-ordinary state there are
+some very good drugs you can take. I’ve had some interesting trips myself, back
+in the day. Breath and gravity are the most ordinary things imaginable. Ordinary
+might sound dull if we confuse it with mindless habitual activity. But when I
+give it my heartfelt attention it is anything but dull. When being and doing are
+not separate, freshness and a profound richness pervade all our experience, from
+the most simple to the most complex.
+</p>
+
+<h3>P10 ~  Does Gaia have a self? What would that mean?</h3>
+<p>
+Our lives depend on photosynthesis and we can’t do it. We depend on plants, and
+they benefit from our ability to recycle carbon. Gaia figured this out a long
+time ago. To us it seems like a clever system designed by someone. But we
+haven’t been able to find the designer. The whole thing just seems to be purely
+natural, which means no division between being and doing. In our language there
+is nothing artificial about the elaborate process of using light to create food.
+If humans manage to invent a process of inorganic photosynthesis, we will call
+it artificial. We will say we did it. Some people would then say that the
+process of inorganic photosynthesis arose completely naturally from the vast
+potentiality of being. We would agree, on an intellectual level, but would we
+feel that in our bones? When I’m in a plane hurtling down the runway and then
+lifting off, what I feel is an amazement that we are able to do this. Grateful
+that once again, it worked. It doesn’t feel natural. It has a beauty which is
+quite different from the beauty of the bird lifting off from the tree branch
+outside my window. Atmospheric carbon dioxide a few days ago passed 416 parts
+per million. We can’t live with that on a long term basis. We have to do
+something unnatural. We have to consciously assume responsibility for our own
+ecosystem. One of the key concepts of Gaia is that organisms affect their
+environment. So there’s nothing new about that. What is new is the ability to
+say “Wait a minute. We need a plan.”
+</p>
+<p>
+<a target="blank" href="https://youtu.be/tvA7CWSIbTc" alt="The Rhizosphere"><strong>MEDIA: </strong>The Rhizosphere</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter nine, natural limits">
+
+<h2>Ch. 9 ~ Natural limits</h2>
+
+<h3>P1 ~  Since living systems do not exist independently in nature, what am I?
+What does that feel like?
+</h3>Ch. 10
+<p>
+When thoughts quiet down a space opens up which feels not just vast but
+unlimited. We don’t need to make that into something, to give it a significance
+it doesn’t actually have. It’s so tempting to believe that death is not real,
+that we go on and on in different forms. Well, maybe we do, I don’t know. I just
+know how important it is to acknowledge the limitations of my current
+experience. The simple experience of being alive, which is so wonderful, is
+limited to being alive. All emotions are arising from current conditions, which
+are always changing. When I try to hold onto any particular feeling state, I’m
+blocking a fuller experience of what’s here now. I will never understand myself
+if I refuse to be fully what I am right now. When those futile efforts to stick
+to what I prefer start to fade away, it’s such a relief! Yes, I do want to be
+happy, but there is something so much better than happiness, and that is to be
+appropriately aligned with what is happening. To do that, I must be as supple as
+a pine tree in the wind. I can’t be in the wind and out of it at the same time.
+I can remember what it’s like to be in a quiet, windless snowfall, that’s part
+of being human. But let’s not overdo the memories, the predictions, the desires.
+Within the limits of current conditions, I can be in contact with what exists
+around me, and it is enough.
+</p>
+
+<h3>P2 ~  Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+My desire for stability has led me into a lot of rigid thinking. Trying to find
+something solid and dependable has blocked me from the unabsorbed flow state
+which is what I really want. Being afraid of my own limitations has kept me in a
+soup of conflicting emotions. Wanting stability, I didn’t recognize that Gaia
+demands dynamic integrity. How does a system remain integrated when everything,
+outside and inside, is moving? How does a pine tree remain a pine tree on a
+windy day or through a heavy snowfall? First, it is flexible. It doesn’t argue
+with the wind. It sheds the snow by bending and letting gravity do the work.
+Ancestral pine trees were shaped by wind and snow. If a pine tree has a weak
+limb and it snaps off in a storm, the tree itself adjusts to the loss. Humans
+are obviously much more complex than pine trees, especially since so much of our
+integrity resides in the mind. Because so much of what happens in the mind
+doesn’t appear to be physical, we have gravitated toward identification with
+thoughts as much as with physical form. Our conscious links with what we call
+physical have weakened, and this has weakened the integrity of the whole system.
+When I relax my fixation on words, attention can be more flexible. When I’m
+talking with someone and deliberately open my senses to the sound of their
+voice, facial expressions, posture and so on, I gain a much better sense of that
+person’s integrity. I can see what we share and what we don’t share. If I think
+my compassion is unlimited, I’m treading on unreliable ground. At some point my
+own integrity will demand that I close the door. Gaia is composed of individual
+organisms related to each other. When I die, you can continue to live. I want
+you to! No, I’m probably not going to lay down my life for you, but it makes me
+feel good to know that when I go down, I’m not taking everything with me. The
+integrity of life around me maintains itself through constant change. At some
+point life on earth will end. That’s all the more reason to take care of it
+while we can. If I notice I have some conflicting emotions I can ask myself what
+might help me be more resilient, more adaptable, more in harmony with Gaia.
+</p>
+
+<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s
+my most recent example of that?
+</h3>
+<p>
+When imagination gets tangled up in personal hopes and fears we see other people
+through that lens. We are limited by imagining how this person could help me or
+that person is frustrating. At that point we are living in a dream world,
+missing the complexity of real time interactions. We did not invent this world,
+it was forced upon us. Remembering the dreams I had last night can help me
+understand the causes of the emotional haze which binds me to the past. The
+clear potential of basic being is limited when old hurts and memories of
+happiness capture our attention. Emotion is supposed to motivate us to protect
+ourselves and work on enhancing our lives. The problem is a lack of
+coordination. Dreams arise from our primordial memories which is why they can be
+so emotionally rich yet weirdly irrational. Emotion tied to dreams is heavy,
+ponderous. Awake, our emotions are light, able to dance in a world of constant
+change. Memories are useful, but we can see their limits when we are awake. I
+can savor the intensity of dreams with no need to analyze them, because they
+already told me what I needed to know.  To get more in touch with basic being I
+need to expand identification by contacting what is here now. I can be liberated
+from my dreams without killing them. Within my natural limits I can work on
+coordinating past, present and future. I can be open to surprises. I can trust
+myself to respond creatively to a world of change, rather than dreaming of being
+a person who never makes mistakes. Dreams which promised me freedom from
+limitations only slammed me up against other people who inconveniently refused
+to be part of my dream. It’s much better to include all those people in who I
+think I am. Random encounters can take me out of my dreams and into Gaia where
+dreams are one more little piece of a much bigger picture.
+</p>
+
+<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+Emotions are brewing in the inner body all the time. I might think I’m happy
+because I’m looking at someone I love, and that’s true to some extent, but I’m
+probably ignoring the physical pathways which are doing the work of producing
+the feelings. Because we believe the body to be the source of limitations, we
+don’t want to hear what it is attempting to communicate throughout our entire
+field of experience. There’s good reason to make a deliberate practice aimed at
+turning this attitude around. Going back to the example of looking at someone I
+love, when I am more fully in tune with the inner body, it’s like hearing a
+beautiful piece of music. The complexity of messages coming from the region
+around the heart, and the relaxation deep in the gut, is of a very different
+quality from the complexities of thought. Each strand of emotion running through
+the body is simple and pure, even though the various strands may differ in tone.
+A strand of disappointment can run right alongside a strand of gratification. In
+my thoughts, all this complexity can easily become a muddle. I want to know
+which feeling is truly ‘how I feel’ about this person. The more adept I become
+at tuning into the inner body, the more compassion I find arising naturally
+along with the rest of the complexity. The way to practice is to choose a moment
+which is relatively simple, and listen to the messages coming from the body with
+affection and trust. I’m not trying to reform myself as I do this, and I most
+certainly am not trying to get past any perceived limitations. When I’m in pain,
+it’s like my body is screaming at all the natural limitations of life. So I need
+to practice while I am not in any unusual pain. There is always some pain in the
+body from past hurts, some constriction. As I notice that, I do not try to
+relax. Trying to relax is not the same as listening, and this is primarily a
+listening practice. Trying to heal is also a barrier to more deeply experiencing
+whatever it is we think needs to heal. There are other methods for healing, and
+of course we will make use of whatever we think will help us. This practice is
+for those times when we can afford to be quiet.
+</p>
+
+<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+Trying to be honest is severely limited if it includes an unfriendly accusation
+of dishonesty. This brings up a natural defensiveness, including self-deception.
+That’s why I need to keep coming back to contemplation with an attitude of
+friendly acceptance and no particular goal. Instead of holding a predetermined
+goal, we practice in the openness of potential. There is room for both
+acceptance and preference. Yes, it is tricky. It demands practice. Above all,
+contemplation requires interest. That’s how I can listen to my whole self; I’m
+extremely interested. I’m lucky to be living in a time and place which allows me
+to do this. I can imagine doing contemplation practice in a refugee camp, but I
+can’t say I would be able to. Maybe? I don’t know. This statement, “I don’t
+know” comes up a lot as I learn to be more honest with myself. If it feels like
+“I don’t know and I don’t care” I’m suspicious of the motivation. Probably I
+don’t want the pain of caring. I value caring, so I prefer the kind of “I don’t
+know” which does care, but acknowledges my limitations. I don’t know what it
+would be like to be in a refugee camp, but the pictures of children in the ads
+soliciting donations make me shudder. The ads don’t, however, make me send
+money. Can I be honest about why I don’t send money? When I begin to explain
+myself, I have to stop because it’s so obvious I don’t know why I don’t send
+money and I don’t know what other people should be doing about the problem. And
+I really enjoyed my dinner tonight.
+</p>
+
+<h3>P6 ~  How much power do you think you have? How much do you want? How much
+power does the other person have? How much do you think they want?
+</h3>
+<p>
+Power and meaning depend upon each other. A person without power is a person
+without meaning. Gaia refuses to give me any meaning and I’m learning to
+appreciate that freedom. My search for meaning now looks to me like a futile
+attempt to explain all the contradictory impulses I find within myself, and then
+to feel good about the whole mess. With that accomplished my naked desire for
+control could become something mystical and admirable, almost worthy of worship.
+After all, this desire for control, for dominance, includes the impulse to
+protect what I love. When I have a strong sense that something is deeply
+meaningful, that sense is coming from the unlikely joining together of opposing
+forces like love and hate. The energy is explosive. You become convinced that
+the energy is yours. If you’re suddenly able to accomplish something, or show
+some leadership, the excitement can be addictive, and it will attract other
+people, which is even more addictive. Remember though, that the energy is coming
+from the harnessing together of contradictory impulses. The horses pulling the
+chariot at any given moment might be praise and blame. They might be fear of
+blame and hope for praise. They might be love and the fear of losing love. Or
+the desire to prove yourself worthy of love, and confusion about how to do that.
+The system of concepts employed to make ourselves seem sometimes heroic,
+sometimes a victim, is necessarily based on beliefs and interpretations driven
+by overheated emotion. It’s a rickety system. Gaia is not a rickety system.
+</p>
+
+<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+<p>
+Every relationship we encounter, moment by moment, opens up into the network we
+call Gaia. As I pick up a spoon, I’m being touched by minerals which were mined
+somewhere on Earth. I don’t know where. I can feel the weight of the spoon, the
+smoothness. This is a piece of the natural world. Someone designed this
+particular spoon, in line with a long history of spoons. It’s useful, it’s
+pleasant to see and to handle. There is artifice here, as well as natural
+material. Human design and manufacture is as closely woven into the network of
+life as is the metal which formed in the Earth. The people who worked in the
+mine and the factory needed to eat. That food was another part of a long chain
+of relationships. All along the chain there are natural limits. I’m using this
+spoon to eat some oatmeal. A limited amount of oats can be grown, and I’m lucky
+to have some of them. I’m tasting the oatmeal, feeling the texture in my mouth,
+how the oatmeal settles easily into my stomach. The way Gaia works is that
+countless small relationships radiate outward, touching in all directions. Each
+component, everything that touches me, is limited. The number of possible
+relationships is practically unlimited. Recently I was looking at some pictures
+from Mars. There had been an upgrade in the resolution of images beamed from a
+rover, so the pictures were more vivid than any I had seen before. The pictures
+touched me strongly. Yes, we have barren, rocky places on Earth, but I knew, or
+believed, that these pictures showed what it is like on Mars. Through our
+machinery, Gaia has jumped to Mars! Of course the machinery has gone far beyond
+Mars, flying beyond our solar system, but the Mars rover is actually touching
+the substance of Mars, driving itself around and beaming pictures back to us. It
+struck me as momentus that Gaia could touch the stuff of Mars, and I could see
+pictures of it. I felt so proud to be human, to be part of this system which has
+taken Gaia beyond Earth. This spoon, the oatmeal, the bowl, these familiar
+objects don’t seem as momentus, yet they do touch me, and they are part of this
+same system. As our human touch reaches out into space it’s good to remember
+that oats depend on specific conditions to grow here on Earth, and those of us
+who like our oatmeal had better guard those conditions, even as we are moved by
+pictures of the stark beauty of rocks on Mars.
+</p>
+
+<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowing Gaia?
+</h3>
+<p>
+No emotion, anger, joy, pride, wants to hang out with uncertainty. The emotions
+are fine mixing it up with each other, like colors in a painter’s box, or chords
+on a piano. In fact, it takes an artist to express all the shades of hot or cold
+anger, longing which is playful and somewhat joyful, or extremely sad. What all
+these emotions have in common is a need for a cause. Ideology provides us with a
+‘cause’ in every sense of the word. Ideology can tell me exactly why I’m angry
+and if I’m justified or guilty to feel the way I do. Ideology can provide me
+with a program to change the way I feel, or promote it by joining a ‘cause’ with
+others who feel similarly. Emotion loves an agenda because it now has a future.
+Having the reassurance of a future, emotion can soften, lose the sharp edge of
+present naked feeling.  Gaia is full of surprises. It’s never quite clear what
+is causing what. The future is not assured. If I can recognize the natural
+limits of ideology then I’m not trapped in it. Seeing for myself how emotion
+tends to get itself trapped in a tangle of ideas can help my system find what it
+really needs, by being more in alignment with the larger system, with Gaia. Gaia
+apparently has no objection to the people I hate, because there they are, alive
+and well. Unlike certain other gods, Gaia has no plans to send anyone to hell.
+Not the people I hate, not me for hating them. I like my ideas, those people
+like their ideas. Our disagreement need not blow up our world. Time will tell
+which ideas flourish and which fade. Maybe the people I don’t like are right now
+in the process of inheriting the earth. Oh, well. I might want to loosen up my
+preferences. I might want to be less sure about who is causing what, and focus
+more on the effects as they are happening right now. There’s nothing wrong with
+looking for patterns and probabilities, nothing wrong with caring about the
+future, but it does not help to over simplify or indulge in wishful thinking. My
+emotions are getting used to hanging out in uncertainty, and they are all the
+more lively for doing so.
+</p>
+
+<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+Sometimes when I do this practice I feel like I could easily lose my motivation
+for doing any sort of work. I can see that so much of my effort comes from
+trying to be something I’m not. Just sitting, not listening to all the
+propaganda of culture and self, breathing, feeling gravity, I wonder why I would
+want to do anything else. That’s dangerous, right? Well, I’ve done it enough now
+to know that it’s much less dangerous than a lot of the things I do which are
+considered normal and perfectly safe, but just happen to be destroying our
+environment. I’ve done this practice enough to learn how restful it is, and to
+experience how rest has natural limits. Life is a flow of energy. Humans,
+unfortunately, have become addicted to unhealthy amounts of stimulation. We also
+exploit each other as workers, and become dependent on other people working too
+much, or in unhealthy ways. If we look to the pre-human world we can observe how
+other life forms have been shaped by sustainable energy flows. Sparrows would
+destroy the earth through their greed just as surely as we would, but they are a
+more simple form of life, and more easily kept within limits. To be in the
+presence of Gaia is to learn who we naturally are. We are not naturally lazy,
+far from it! We can afford to take some time in silence. For just a few minutes,
+as an experiment, drop all the stimulation which is supposed to be so
+entertaining, informative, relaxing or whatever, and come home to breath,
+gravity and the vast potential of basic being. Most likely you will not decide
+to starve, even if you do quit your present job in order to better enjoy the
+only life you will ever have.
+</p>
+
+<h3>P10 ~  Does Gaia have a self? What would that mean?</h3>
+<p>
+Self is a system in a world of other self-systems. If Gaia were all there is,
+there would be no need for Gaia to have a self. In the history of life, as soon
+as there were organisms with boundaries, metabolism and replication, there was
+competition for resources. The organisms that got the food were the organisms
+which reproduced. It all took place within the natural limits of the non-living
+environment, but you wouldn’t say that the non-living environment of rocks,
+water, air, sunlight was in any way competing with Gaia as the web of life grew.
+Now, thanks to humans, Gaia does have non-living competition in the form of
+machines. Machines which gobble up fossil fuels can’t destroy Gaia, but they can
+seriously upset the balance of nature. Machines producing nuclear energy can
+make water, air and rocks poisonous to most living organisms. Our common
+understanding of ‘nature’ means life and the physical substrate supporting it.
+When we want to go for a walk in nature, we might walk along a river. But we
+probably don’t stand on a bridge over an interstate highway admiring the
+traffic. As organic systems ourselves, we need to be on the side of Gaia. Yet we
+depend on our machines. How many people do you know who never use a car, or a
+bus, never buy food trucked in from the farm? Some of us are conscientious
+enough to buy cars which use less fuel, but our current choices are limited. If
+we were to consciously become a self for Gaia, rather than a slave to our
+machines, we could create a symbiosis. Our machines could support us as we
+created a symbiosis which promoted life systems and technology at the same time.
+There would still be competition for resources because the earth is limited.
+Maybe we can consciously control our own greed and aggression in support of
+Gaia.
+</p>
+<p>
+<a target="blank" href="https://youtu.be/PUwmA3Q0_OE" alt="Human Popluation Through Time"><strong>MEDIA: </strong>Human Population Through Time</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter ten, self-regulating systems and individual choice">
+
+<h2>Ch. 10 ~ Self-regulating systems and individual choice</h2>
+
+<h3>P1 ~  Since living systems do not exist independently in nature, what am I? 
+What does that feel like?
+</h3>
+<p>
+Our bodies need to be able to regulate their own water content. How do they do
+that? As you would expect, it’s very complicated. Physiologists can describe a
+lot of what is happening, but you need to know more about the properties of the
+water molecule than I do to even begin to talk about it. So let’s just agree
+that organisms for millions of years have successfully regulated their water
+content without thinking about it. At a certain point, I, as an individual,
+experience thirst. Then what. Do I have beer in the fridge? Do I reach for one?
+Do I have sparkling water imported from Italy? Do I want to drink some? Do I
+start the water kettle to make myself some herbal tea? Or do I just pick up a
+glass and turn on the tap.  Consider how these conditions have developed. These
+days when I’m in the supermarket I don’t even look at the shelves of soft
+drinks. Or the potato chips which go so beautifully with the sodas. (I do
+remember!) Obviously lots of other people are buying the stuff or there wouldn’t
+be so much of it. When I think of my friends and what they drink, I can’t think
+of a single person who stocks up on soda at the grocery store. Therefore, when
+they’re thirsty, soda is not an option. This tells me that my choice to drink
+soda, or not, is related to who I am socially. This is all leading up to the
+question of how I experience individual choice. I know that who I think I am has
+a lot to do with making choices. I know I never choose to be thirsty. I am or
+I’m not.  So how, precisely, does choice happen? How individual is it, really.
+</p>
+
+<h3>P2 ~  Integrity is a function of how well a system is integrated. Are any
+conflicting emotions currently creating instability in me?
+</h3>
+<p>
+Integrity is activity. Think of a Roman Arch, and it seems like one of the most
+static structures we can imagine, just standing there century after century.
+However, that arch which seems so static is doing something, moment by moment.
+Gravity never stops acting on the stones. The activity of compression holds the
+stones in place. The shape of the arch makes that possible. If you remove one
+block you know intuitively the whole arch will suddenly collapse. That’s because
+you’ve disrupted the compression, and the integrity of the structure is
+destroyed. We’re made of pieces of things just like the Roman arch, and these
+pieces of things are held together by constant activity. It sounds simple
+minded, but this view of being a person is not as simple minded, and much more
+believable than the theory based on a static self-concept. A static self-concept
+makes a person rigid, not resilient. There’s supposedly some mysterious thing
+called an ‘agent’ which makes choices all by itself. The easiest way to start to
+dismantle that theory is to get used to the idea that we are each a collection
+of activities tied to the outside world. It’s obvious once you start observing
+yourself closely. Doubt becomes your friend, conflicting emotions are not a
+problem, and disruption becomes creative. Unlike the Roman arches, life has the
+ability to reconstruct itself. Life has intelligence and the ability to make
+choices.
+</p>
+
+<h3>P3 ~  The problem with living in a dream is that real people get hurt. What’s
+my most recent example of that?
+</h3>
+<p>
+The self system is active night and day. The biological systems are pumping
+along, obviously. The emotional systems also have work to do. When I’m asleep
+it’s pretty simple. All my dream characters do what I want them to do without me
+even trying. Even this activity is not totally simple because there are always
+conflicting emotions, and sometimes I wake up from a dream feeling just awful.
+When I’m awake and trying to function in the world, my dream characters can be
+exceedingly troublesome. They will not do what I want them to! Suddenly they
+have their own wants and needs, and maybe I don’t do what they expect me to do.
+It can be truly a mess. The only possible solution is to choose to see a dream
+as a dream. Even the most rational narrative about my own life is essentially a
+dream. There are individual dreams and collective dreams. Even the most
+thoroughly researched scientific theory is essentially a dream - because it is
+put together and maintained by the human mind manipulating concepts. Lucky for
+the rest of us, scientists know this and are always working to debunk each
+others’ dreams. Therefore they can put together theories that are actually sort
+of useful in making stuff that works. I say ‘sort of’ because so often there are
+unintended consequences which turn around and bite us. How accurate is my theory
+of who and what you are? Is that going to have unintended consequences which
+turn around and bite us? It happens all the time. Especially with people who are
+way off the mark with their theories of who and what they are. It’s been very
+helpful for me to make a project of noticing when I’m making a real person into
+a dream character, or when someone is doing it to me. I know it’s been helpful
+because these days I like people so much better than I used to, and I’m getting
+very positive responses from them. Sometimes the negative responses are the most
+helpful in straightening me out, so I refer to them as ‘positive’ too. Bad
+dreams are good dreams if they wake you up.
+</p>
+
+<h3>P4 ~  If I’m not feeling my inner body right now, I’m not feeling anything.
+Take a moment to check in.
+</h3>
+<p>
+In order to direct compassionate attention to the inner body I need to choose to
+refrain from evaluation, manipulation and interpretation. I need to trust
+self-regulation at the deepest levels. These biological processes which I am
+sensing were running millions of years before humans started thinking about
+them. When we ignore them, when we lose ourselves in words and images, we’re
+ignoring the foundations of Gaia. Ignoring Gaia, there’s no way I can reconnect
+with basic being. Physical sensations themselves are not expressing basic being
+any more than my most random, irrelevant thought expresses basic being. It’s a
+question of how to rest the mind enough for it to be able to notice the subtlety
+of basic being as potential, not looking for it as something which exists. Going
+into the body, oddly enough, is like going into space. It can feel liberating.
+It can be a relaxation into primordial love.
+</p>
+
+<h3>P5 ~  Since Gaia is what’s real, any gap in honesty separates us. I can only
+be honest with myself if I listen to my whole self. How can I do that?
+</h3>
+<p>
+Setting the intention to be honest with myself is a form of self-regulation. But
+so is self-deception. Self-deception is a psychological survival strategy, and
+we better not go to war with it. There are subconscious forces at work which
+don’t want to be monkeyed with. Since we depend on social support to be less
+defensive, listening to my whole self includes listening to other people. Seeing
+how certain people in politics and the media are blatantly dishonest can help me
+to be more honest if I know I don’t want to be like them. I can seek out
+supportive environments.  If I am in a social situation which is dangerous, I
+can protect myself through judicious dishonesty. Being honest with myself gives
+me a lot of flexibility. I can choose my friends carefully. I can resist
+manipulation. I can balance attachment and autonomy. This is all very rewarding
+which motivates me to keep going further into the jungle of my mind. I notice
+how honesty is much more strongly connected to direct experience than it is to
+explanation, so I learn to waste less energy on fruitless or fanciful
+explanations. I don’t judge other people’s explanations harshly because I
+understand how strongly they believe they need to justify and promote
+themselves, even as my own needs diminish. Being more honest with myself, I can
+see why people resort to dishonesty. The ability to deceive oneself and others
+arose for a reason, and continues for good reasons. That’s how Gaia works. As I
+set my intention to be honest with myself, or any other intention, I acknowledge
+that Gaia controls the outcome. It’s just how the cookie crumbles.
+</p>
+
+<h3>P6 ~  How much power do you think you have? How much do you want? How much
+power does the other person have? How much do you think they want?
+</h3>
+<p>
+Machines make us feel powerful. From the point of view of Gaia, however, we’re
+kids playing with fire. Since machines can do so much work for us, we have more
+time to play. Since machines can make things cheaply, we have more things, more
+entertainment based on having lots of things. Making choices, as in shopping,
+gives us a sense of power. Gaia has no reason to prefer living things over
+machines. Gaia knows that our resources are limited and that our love for
+machines, which has a way of quickly becoming our dependence on machines, can
+squander those resources. Some people are using a lot more resources than
+others, which makes those others mad. When those others stop playing the game,
+the game changes for everyone. When playing with fire changes the climate, the
+climate changes for everyone. The system is self-regulating, and we can only
+push it so far before it pushes back. No matter how powerful we think we are, we
+are smaller systems running within larger systems, and all these systems are
+bound by laws. Our machines are bound by laws. Now we have machines which can
+help us study those laws, so let’s do that.
+</p>
+
+<h3>P7 ~  What am I being touched by right now, physically, emotionally,
+intellectually?
+</h3>
+<p>
+When I’m walking outside in a strong wind, it’s obvious how the wind is touching
+me. It’s less obvious how my reaction to the wind is also touching me. I know I
+can’t turn the wind off, and yet I react almost as if I could choose to do that.
+Can I choose to drop my resistance to the wind? I can try. Then I need to check
+carefully to see if I’m setting up a struggle, and how that’s affecting me
+overall. Maybe I can decide to go indoors, if that’s a possibility. It may be
+possible, but not desirable in a larger context. Being human is complicated! I
+think we can assume that for a frog, if it feels good it is good. Ah, that sun
+feels good….until it’s too much, and then plop! Back into the water. Sometimes
+my life is like that. But unlike the frog, I can read the news. I can be touched
+by thoughts of the future. I can be touched by the working conditions of the
+people who make my shoes. I can be touched by a panoply of images with no idea
+what I can do about any of it. In our world in recent years there has been an
+explosion of information. I believe that for a self-regulating system, the more
+information, the better. Including the information that I’m making myself crazy
+with too much information. Does a frog need to know there might be a drought
+coming? No, a frog can only deal with the fact that there is a drought starting
+now. Gaia has given the frog the ability to do that. Gaia has also given the
+frog the ability to deal with the uncertainty of the movements of a fly. But
+probably not the ability to worry about it when the fly is not present. Or the
+ability to endlessly discuss their speculations about a drought which might be
+coming. That’s not what all that croaking is about! Humans can be touched by
+images of what might happen, our own worries about that, what other people are
+saying about it, and our desire to make the future better for ourselves and
+everyone else. This level of complexity is still new in terms of evolutionary
+history. We’ll get used to it. Meanwhile, paying attention to what is touching
+me in fact now, and what is touching me as a ‘maybe’, seems like an exercise in
+sanity.
+</p>
+
+<h3>P8 ~  How does ideology creep into your thinking? What does it offer you? What
+does it take away from knowing Gaia?
+</h3>
+<p>
+If I say “I don’t think there’s any such thing as free will” I’m stating an
+opinion. By itself, an opinion doesn’t behave like an ideology. An opinion which
+is part of an ideology is tied to a web of other opinions. This web of ideas
+doesn’t have to sound rational to everyone, but to become part of a full blown
+ideology it helps to have some other people who are ‘like minded’. At that point
+the ideas have become a self-regulating system. If I’m choosing to ‘know Gaia’ I
+can’t be tied up in any web of ideas. I can’t be a person who loves nature. I
+can’t be a person who is defending the forest. I can’t be a person who opposes
+nuclear energy and supports wind farms. I begin to know Gaia when I begin to
+know that I am not a person based on identifying with any particular set of
+ideas, opinions, feelings, or appearances. What makes me a person is the same
+thing which makes Gaia Gaia, and I can know that directly only if I’m not caught
+in the past. I need to be able to use ideas which are based on past experience
+without being trapped by them. Gaia is not tied to any particular form of life.
+At the same time, it’s not true that anything is possible. What are the limits
+of what’s possible? I find out every time I make a wrong decision. So far, my
+decision to avoid ideology is proving to be possible.
+</p>
+
+<h3>P9 ~  We’re breathing, we’re feeling the force of gravity. Paying attention to
+both at once places us squarely in the presence of Gaia. Try it.
+</h3>
+<p>
+I want to review why I’m choosing to do this exercise. It’s not in order to get
+a good night’s sleep, even though getting a good night’s sleep is important. To
+be in the presence of Gaia is to experience basic being as potential. It is to
+experience the energy of our own system. The countless chemical reactions taking
+place to keep me alive moment by moment do not explain themselves to me.
+Elaborate research must be done by specially trained people to explain all that
+activity. We experience it as a simple, unitary feeling of aliveness. If we
+study the science behind that feeling, we can appreciate it all the more. But
+this exercise of paying attention to breath, paying attention to gravity, pulls
+us into a part of our mind which isn’t concerned with details. Bringing
+awareness to this part of the mind releases us from past ideas and beliefs, and
+brings the possibility of a great reformation. Emotion which was fixated on past
+hurts or past triumphs is suddenly available to propel us into a new motion in a
+new direction not premeditated. The potential of being is available to be pulled
+into a shape needed by the larger system, by Gaia. As we experience basic being
+our identity eagerly drops the old forms and rushes into the formless. If this
+brings up fears of losing my place in the world, the anchors of breath and
+gravity reassure me that no, this is absolutely natural and ordinary. This is
+not death, this is life.
+</p>
+
+<h3>P10 ~  Does Gaia have a self? What would that mean?</h3>
+<p>
+A self-regulating system must have some sort of self or we wouldn’t call it a
+self-regulating system. Consider the tropical cyclone, one of the forms of
+nature which will benefit from a warming climate. A cyclone requires an ocean
+water surface temperature of at least 79 degrees Fahrenheit. Once Cyclone A gets
+up and running, it churns up cooler water making life difficult for Cyclone B
+which is in its wake. We could make a cartoon showing the competition of
+cyclones as they regulate the water temperature to their own advantage. If
+Cyclone B had any sense it would steer clear of that cooler water caused by its
+older sibling. If humans have any sense we will regulate our own use of energy
+and resources to avoid creating a world which is more suitable for cyclones than
+for humans.
+</p>
+<p>
+<a target="blank" href="https://youtu.be/LQmTKxI4Wn4" alt="Electron Transplant Chain"><strong>MEDIA: </strong>Electron Transplant Chain</a>
+</p>
+</section>
+
+<hr class="section-divider">
+
+<section role="contentinfo" aria-label="chapter eleven, contemplation">
+
+<h2>Ch. 11 ~ Contemplation</h2>
+<p>
+Contemplation is a way of knowing.
+</p>
+<p>
+It is a way of processing information.
+</p>
+<p>
+It is a way of seeing from inside the fire of not knowing.
+</p>
+<p>
+It is a way of standing in the field of formless potential.
+</p>
+<p>
+Contemplation tied to belief might be comforting or it might lead to doubt.
+</p>
+<p>
+It is unpredictable.
+</p>
+<p>
+Contemplation is playful.
+</p>
+<p>
+We don’t know where the thoughts come from.
+</p>
+<p>
+There’s no need to be consistent.
+</p>
+<p>
+Knowing Gaia is not a goal, it is always new.
+</p>
+<p>
+Contemplation is not a debate, nor a way of finding what’s true.
+</p>
+<p>
+Knowing Gaia is an attitude.
+</p>
+<p>
+I must always reconsider.
+</p>
+<p>
+I can go back to silence.
+</p>
+<p>
+I can start over.
+</p>
+<p>
+You will find your own words and your own silence.
+</p>
+<p>
+You will find your own way of knowing Gaia.
+</p>
+</section>
+<br>
+
+  <img class="zen-circle" src="../assets/zen-circle-mod.png" alt="zen-circle">
+</div>
+<br>
+<section class="author-container">
+<div class="author">~AUTHOR~</div>
+<ul class="author">
+  <li aria-label="author's name">Pat Adducci</li>
+  <li>Yucca Valley, California</li>
+  <br>
+  <li>May 15, 2020</li>
+</ul>
+
+</section>
+<a id="email" 
+  href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>
+<br>
+</main>
+<footer>
+</footer>
+
+</div>
+</body>
+
+<!-- MOVED MIN.JS FILE TO HEADER -->
+<!-- Texted all of the following way of spelling scrollspy, none worked -->
+<!--<script src="ScrollSpy.min.js"></script>
+<script src="scrollspy.min.js"></script> -->
+<!--<script src="scrollSpy.min.us"></script>-->
+
+<!-- <script src="/path/to/dist/scrollspy.min.js"></script> -->
+<!--From: https://www.cssscript.com/scrollspy-static/-->
+
+<script>
+  var spy = new ScrollSpy({
+    contexts_class: 'scrollspy',
+    delay: 100,
+    callbackOnChange: function callbackOnChange() {
+
+    },
+    callbackOnDestroy: function callbackOnDestory() {
+
+    }
+  });
+  var indicator = document.getElementById('indicator');
+  
+  spy.Indicator({
+    element: null,
+    indicator_container_class: "",
+    indicator_item_class: "",
+    clickable: true,
+    forceActive: false
+  });
+</script>
+
+<!-- Put scroll code here.
+// https://github.com/sidsbrmnn/scrollspy
+-->
+</html>
