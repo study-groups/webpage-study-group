@@ -1,0 +1,4 @@
+Add gaia.html to investigations/scrollspy
+NO CSS in gaia.html
+NO CSS links to style pages
+Only use spyscroll CSS
