@@ -3,6 +3,8 @@
 ## shellcheck disable=SC2086 
 # Dbl quote to prevent globbing and word splitting.
 PS1="gaia> "
+GAIA_HTML="$PWD/html"
+
 cat /dev/null > build.log
 gaia-help(){
   cat <<EOF
@@ -38,16 +40,13 @@ gaia-index(){
   ./indexer clean.txt > clean.index
 }
 
-gaia-make-notes(){
-  gaia-notes-md > notes.md
-}
-
 gaia-reset(){
   rm clean.txt
   rm clean.index
-  rm notes.md
 }
 
+# get lines from $1 to $2 in file $3, $3=clean.txt by default.
+# consider rewriting with single awk cal
 gaia-get-between(){
   local start=$1;
   local end=$2;
@@ -55,10 +54,11 @@ gaia-get-between(){
   < "$file" tail -n +"$1" | head -n "$(($2 - $1))"
 }
 
+# Convert from two dim (chapter,prompt) to one dim (unitID).
+# Examples: (1,2) => 15; (2,2) => 26.
 gaia-get-unit-id(){
   local chapter=$1
   local prompt=$2
-  #echo "Getting unit id for Chapter $chapter, Prompt $prompt"
   echo $(( 2 + chapter*11 + prompt))
 }
 
@@ -202,6 +202,8 @@ gaia-make-html-all(){
   gaia-make-html-footer
 }
 
+#  take an integer and returns the string at index 
+#  modulo len(colors)
 gaia-get-color(){
   local colors=(orange red)
   local  ci=$(($1 % ${#colors[@]}))
@@ -286,7 +288,6 @@ gaia-make-html-body(){
 }
 
 gaia-make-html-chapters-old(){
-
  for c in  3 4 5 6 7 8 9 10 11
   do
     local chapterName=$(gaia-get-line $(gaia-get-chapter-offset $c))
@@ -299,73 +300,19 @@ gaia-make-html-chapters-old(){
       local modPromptText="P$p ~ ${promptText:3}"
       gaia-make-unit-html "$modPromptText" "$text"
     done # prompt loop
-
   done # chapter loop
 }
 
 # NAV_HTML
 gaia-make-html-header() {
-  export local NAV_HTML=$(gaia-make-html-nav)
-  cat ./header.html | envsubst
+  #export local NAV_HTML=$(gaia-make-html-nav)
+  export local NAV_HTML=$(cat $GAIA_HTML/nav.html)
+  export local STYLE_CSS=$(cat $GAIA_HTML/style.css)
+  cat "$GAIA_HTML/header.html.env" | envsubst
 }
 
-gaia-make-html-nav(){
-  cat<<EOF
-<ul>
-<li onclick='ScrollTo("c1")'>c1</li>
-<li onclick='ScrollTo("c2")'>c2</li>
-<li onclick='ScrollTo("c3")'>c3</li>
-<li onclick='ScrollTo("c11")'>c11</li>
-</ul>
-<script>
-// https://stackoverflow.com/a/36929383/4249785
-function ScrollTo(name) {
-  ScrollToResolver(document.getElementById(name));
-}
-
-function ScrollToResolver(elem) {
-  var navbar=document.getElementById("navbar");
-  var navHeight=parseInt(navbar.getBoundingClientRect().height);
-  if(!navHeight) navHeight=0;
-
-  console.log("navHeight",navHeight);
-  var jump = parseInt((elem.getBoundingClientRect().top-navHeight) * .2);
-  document.body.scrollTop += jump;
-  document.documentElement.scrollTop += jump;
-  if (!elem.lastjump || elem.lastjump > Math.abs(jump)) {
-    elem.lastjump = Math.abs(jump);
-    setTimeout(function() { ScrollToResolver(elem);}, "40");
-  } else {
-    elem.lastjump = null;
-  }
-}
-</script>
-EOF
-}
 gaia-make-html-footer(){
-  cat <<EOF
-<img class="zen-circle" 
-src="./assets/zen-circle-mod.png" 
-alt="zen-circle">
-<br>
-<section class="author-container">
-<ul class="author">
-  <li aria-label="author's name">Pat Adducci</li>
-  <li>Yucca Valley, California</li>
-  <br>
-  <li>May 15, 2020</li>
-</ul>
-</section>
-<a id="email" 
-  href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>
-</main>
-<footer>
-</footer>
-</body>
-</html>
-
-</html>
-EOF
+  cat "$GAIA_HTML/footer.html"
 }
 
 gaia-make-html-chapter-title(){

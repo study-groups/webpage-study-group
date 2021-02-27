@@ -1,41 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaia Webpage</title>
-<head>
-
-<!--
-Consider using:
-  1. section tag, DONE
-  2. article tag, NOT NEEDED, used more commonly for blogging labels
-     accesskey, (evaluate for use with navigation to allow keyboard control 
-     rather than a mouse event)
-     
-  3. tabindex
-  4. aria-keyboard navigation
-  5. aria-role navigation 
-
-DEFINITIONS:
-<section> tag: The HTML <section> element represents a standalone section
-  which doesn't have a more specific semantic element to represent it
-  contained within an HTML document. Typically, but not always, sections
-  have a heading.
-
-<article> tag:
-  The HTML <article> element represents a self-contained composition in a
-    document, page, application, or site, which is intended to be 
-    independently distributable or reusable (e.g., in syndication). Examples 
-    include: a forum post, a magazine or newspaper article, or a blog entry,
-    a product card, a user-submitted comment, an interactive widget or gadget,
-    or any other independent item of content.
- -->
-<!-- 
-NOTE: This document will be using internal CSS styling because the document is relatively simple and does not require extensive styling.
--->
-
-<style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
 
 :root {
@@ -149,14 +111,3 @@ ul {
     border-top: 12em;    
   }
 }
-</style>
-</head>
-
-<body>
-
-<nav id='navbar' class="navbar">$NAV_HTML</nav>
-
-<main>
-<header>
-<h1 class="main-header">Knowing Gaia</h1>
-</header>
