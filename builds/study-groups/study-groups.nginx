@@ -1,38 +1,38 @@
 server {
+    server_name dev.study-groups.org;
+    root /home/hirschro/src/webpage-study-group;
+    location / {
+       autoindex on; 
+    }
+    auth_basic “AdminArea”;
+    auth_basic_user_file /etc/apache2/.htpasswd; 
+
+    listen 80; # managed by Certbot
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/dev.study-groups.org/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/dev.study-groups.org/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
     server_name study-groups.org;
     server_name www.study-groups.org;
     root /var/study-groups.org;
     index index.html;
-#    location / {
-#        try_files $uri $uri/ =404;
-#    }
-
     location / {
-    proxy_buffering off;
-    proxy_pass https://study-groups.github.io/webpage-study-group/;
+        proxy_buffering off;
+        proxy_pass https://study-groups.github.io/webpage-study-group/;
     }
 
-
-#    location /imagesX {
-#    proxy_buffering off;
-#    proxy_pass https://study-groups.github.io/webpage-study-group/assets/images/
-#    }
-
-#    location /sg-logoX {
-#    proxy_buffering off;
-#    proxy_pass https://study-groups.github.io/webpage-study-group/assets/sg-logo;
-#    }
-    location /mother {
-    proxy_buffering off;
-    proxy_pass https://study-groups.github.io/webpage-study-group/;
-    }
 
     listen 443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/study-groups.org-0001/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/study-groups.org-0001/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
 
 } 
 
