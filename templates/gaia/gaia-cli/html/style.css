@@ -6,6 +6,7 @@
   --h1-color: #fbd651;
   --h2-color: #fce694;
   --body-text: #c7dfc5;
+  --body-text-alt: #8FF;
   --divider-line: #fce694;
   --nav-bar-bg: #1e1e1e;
   --email-link: #F98A62;
@@ -71,6 +72,12 @@ p {
 a {
   color: var(--video-links);
 }
+
+.sentence-alt{
+  color: var(--body-text-alt)
+}
+
+
 #email {
   color: var(--email-link);
   margin: 1.5em 10% 1em 10%;
