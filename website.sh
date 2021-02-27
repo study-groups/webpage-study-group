@@ -19,6 +19,13 @@ website-server-list() {
   ps -ef | grep [h]ttp.server
 }
 
+website-clear-chrome(){
+  cat << EOF
+Go to chrome://net-internals/#hsts
+Enter domain name in "Delete domain security policies"
+EOF
+}
+
 cat << EOF
 Website Study Group Todos
 
@@ -36,4 +43,5 @@ rm styleguide.html
 ln -s dev/001-styleguide/003 dev/styleguild-current
 
 mv favicon.ico to assets/
+
 EOF
