@@ -1,10 +1,3 @@
-<ul>
-<li onclick='ScrollTo("c1")'>c1</li>
-<li onclick='ScrollTo("c2")'>c2</li>
-<li onclick='ScrollTo("c3")'>c3</li>
-<li onclick='ScrollTo("c11")'>c11</li>
-</ul>
-<script>
 // https://stackoverflow.com/a/36929383/4249785
 function ScrollTo(name) {
   ScrollToResolver(document.getElementById(name));
@@ -26,4 +19,3 @@ function ScrollToResolver(elem) {
     elem.lastjump = null;
   }
 }
-</script>

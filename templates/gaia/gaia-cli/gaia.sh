@@ -4,6 +4,11 @@
 # Dbl quote to prevent globbing and word splitting.
 PS1="gaia> "
 GAIA_HTML="$PWD/html" # set when sourced
+GAIA_COMPONENTS="$PWD/components" # set when sourced
+
+source html.sh
+source components.sh
+source components/*.sh
 
 cat /dev/null > build.log
 gaia-help(){
@@ -67,7 +72,6 @@ gaia-get-offset(){
   echo "${tokens[0]}" # quotes not necessary since its a token
 }
 
-#shellcheck disable=SC2086
 gaia-get-unit-text(){
   local id=$1
   local idNext=$((id + 1))
@@ -76,25 +80,21 @@ gaia-get-unit-text(){
   gaia-get-between $((offset+1)) $offsetNext
 }
 
-#shellcheck disable=SC2086
 gaia-get-chapter-offset(){
   local line=($(awk /"chapterStart C$1"/ ./clean.index))
   echo ${line[0]}
 }
 
-#shellcheck disable=SC2086
 gaia-get-author-offset(){
   local line=($(awk /"authorStart"/ ./clean.index))
   echo ${line[0]}
 }
 
-#shellcheck disable=SC2086
 gaia-get-document-end(){
   local line=($(awk /"documentEnd"/ ./clean.index))
   echo ${line[0]}
 }
 
-#shellcheck disable=SC2086
 gaia-get-prompt(){
   local indexLine=($(awk /"promptStart P$1"/ ./clean.index))
   local promptIndex=${indexLine[0]}
@@ -150,134 +150,4 @@ gaia-get-chapter-lines(){
   [[ -z $end ]] && end=$authorOffset
   local chapterLines=$(gaia-get-between $start $end); # keeps new lines
   echo "$chapterLines" #Quote to preserve newlines
-}
-
-##################################################################
-# HTML Formatting
-# This function creates the entire HTML page.
-###################################################################
-gaia-make-html-all(){
-  gaia-make-html-header
-  gaia-make-html-body
-  gaia-make-html-footer
-}
-
-#  take an integer and returns the string at index 
-#  modulo len(colors)
-gaia-get-color(){
-  local colors=(orange red)
-  local  ci=$(($1 % ${#colors[@]}))
-  local color=${colors[$ci]}
-  echo $color;
-}
-
-# create array of two class names. $1 would typically 
-# be set by an outer loop over the sentences.
-gaia-get-alternating-sentence-class(){
-  local classes=("sentence" "sentence-alt")
-  local  i=$(($1 % ${#classes[@]}))
-  local class=${classes[$i]}
-  echo $class;
-}
-
-# Document Schema
-#
-# Header
-# Title
-# Chapter contains par and sections
-#  paragraph
-#  paragraph
-#  Section one of Prompt, Author
-#    para
-#
-# First line is chapter title
-# Each line thereafter is either a paragraph or a prompt.
-gaia-make-html-chapter(){
-  echo "in gaia-make-html-chapter $1" >> build.log
-  local chapterLines=$(gaia-get-chapter-lines $1)
-  readarray lineArray <<<  $chapterLines
-  gaia-make-html-chapter-title "${lineArray[0]}"
-  unset 'lineArray[0]'  # first line was chapter heading
-  local promptRegex="^P[0-9]+:"
-
-  # each line is either an 
-  #  1) unstructured paragraph (after chapter heading)
-  #  2) prompt section
-  #  3) Author info
- 
-  local paragraphIndex=0
-  local promptIndex=0
-  # Each line in Chapter is paragraph, prompt or author 
-  for i in ${!lineArray[@]}; do 
-    local curLine=${lineArray[$i]}
-
-    #if it's not a prompt section
-    if [[ ! $curLine =~  $promptRegex ]]; then 
-
-      printf "\n\n<p id='c$1-par$i'>"
-      ((paragraphIndex++))
-      sentLines="$(gaia-str-to-sentences "$curLine")"
-      readarray sentArray <<< $sentLines
-
-      for j in ${!sentArray[@]}; do
-        sent=${sentArray[$j]};
-        #gaia-make-html-span "$sent" $(gaia-get-color $j)
-        gaia-make-html-sentence \
-          "$sent" $(gaia-get-alternating-sentence-class $j)
-      done
-      printf "\n</p>"  
-
-    fi
-
-    if [[ $curLine =~  $promptRegex ]]; then 
-        gaia-make-html-prompt "$curLine" "c$1-p$promptIndex"
-        ((promptIndex++))
-    fi 
-  done
-}
-
-gaia-make-html-prompt(){
-  printf "\n<h3 id='$2'>\n$1</h3>"
-}
-gaia-make-html-sentence(){
-  printf "\n<span class='$2'>\n$1</span>"
-}
-gaia-make-html-span(){
-  printf "\n<span style='color:$2'>\n$1</span>"
-}
-
-#shellcheck disable=SC2046,SC2086
-gaia-make-html-body(){
-  gaia-make-html-chapter 1
-  gaia-make-html-chapter 2
-  gaia-make-html-chapter 3
-  gaia-make-html-chapter 4 
-  gaia-make-html-chapter 5 
-  gaia-make-html-chapter 6  
-  gaia-make-html-chapter 7
-  gaia-make-html-chapter 8
-  gaia-make-html-chapter 9
-  gaia-make-html-chapter 10
-  gaia-make-html-chapter 11
-}
-
-# NAV_HTML
-gaia-make-html-header() {
-  #export local NAV_HTML=$(gaia-make-html-nav)
-  export local NAV_HTML=$(cat $GAIA_HTML/nav.html)
-  export local STYLE_CSS=$(cat $GAIA_HTML/style.css)
-  cat "$GAIA_HTML/header.html.env" | envsubst
-}
-
-gaia-make-html-footer(){
-  cat "$GAIA_HTML/footer.html"
-}
-
-# Assumes title string is "C3: Third chapter title"
-# Grab the chapter number and the title text with awk.
-gaia-make-html-chapter-title(){
-  local title="$1"
-  local number=$(echo $title | awk -F[C:] '{print $2}')
-  local text=$(echo $title | awk -F[:] '{print $2}')
-  printf "<h2 id='c$number'>Ch %s. ~ %s</h2>" "$number" "$text"
 }
