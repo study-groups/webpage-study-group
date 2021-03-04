@@ -7,6 +7,7 @@ gaia-html-make-all(){
   gaia-html-make-header
   gaia-html-make-body  # calls make-chapter
   gaia-html-make-footer
+  gaia-html-cat-all > ./index.html
 }
 gaia-html-cat-all(){
   local dir="./html"
@@ -104,6 +105,7 @@ gaia-html-make-span(){
 # COMPOSE HTML
 gaia-html-make-header() {
   export local NAV_HTML=$(cat $GAIA_HTML/nav.html)
+  export local JOYSTICK_HTML=$(cat $GAIA_HTML/joystick.html)
   export local STYLE_CSS=$(cat $GAIA_HTML/style.css)
   cat "html/header.env" | envsubst > "./html/header.html"
 }
@@ -122,7 +124,6 @@ gaia-html-make-body(){
   gaia-html-make-chapter 10 >> $bodyfile
   gaia-html-make-chapter 11 >> $bodyfile
 }
-
 
 gaia-html-make-footer(){
   export local FOOTER_JS=$(cat $GAIA_COMPONENTS/*.js)
