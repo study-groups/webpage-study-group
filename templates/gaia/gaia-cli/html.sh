@@ -3,6 +3,12 @@
 # HTML Formatting
 # This function creates the entire HTML page.
 ###################################################################
+gaia-html-make-all-old(){
+  gaia-html-make-header
+  gaia-html-make-body-old  # calls make-chapter
+  gaia-html-make-footer
+  gaia-html-cat-all > ./index-old.html
+}
 gaia-html-make-all(){
   gaia-html-make-header
   gaia-html-make-body  # calls make-chapter
@@ -10,7 +16,7 @@ gaia-html-make-all(){
   gaia-html-cat-all > ./index.html
 }
 gaia-html-cat-all(){
-  local dir="./html"
+  local dir=$GAIA_HTML
   cat  "$dir/header.html" "$dir/body.html" "$dir/footer.html"
 }
 
@@ -90,28 +96,28 @@ gaia-html-make-chapter(){
 }
 
 gaia-html-make-prompt(){
-  printf "\n<h3 id='$2'>\n$(echo $1 | fmt -65)\n</h3>"
+  printf "\n<h3 id='$2'>\n$1\n</h3>"
+  #printf "\n<h3 id='$2'>\n$(echo $1 | fmt -65)\n</h3>"
 }
 gaia-html-make-sentence(){
-  
-  printf "\n<span class='$2'>\n$(echo $1 | fmt -65)\n</span>"
+  printf "\n<span class='$2'>\n$1\n</span>"
+  #printf "\n<span class='$2'>\n$(echo $1 | fmt -65)\n</span>"
 }
 gaia-html-make-span(){
-  printf "\n<span style='color:$2'>\n$(echo $1 | fmt -65)\n</span>"
+  printf "\n<span style='color:$2'>\n$1\n</span>"
+  #printf "\n<span style='color:$2'>\n$(echo $1 | fmt -65)\n</span>"
 }
-
-
 
 # COMPOSE HTML
 gaia-html-make-header() {
   export local NAV_HTML=$(cat $GAIA_HTML/nav.html)
   export local JOYSTICK_HTML=$(cat $GAIA_HTML/joystick.html)
   export local STYLE_CSS=$(cat $GAIA_HTML/style.css)
-  cat "html/header.env" | envsubst > "./html/header.html"
+  cat "$GAIA_COMPONENTS/header.env" | envsubst > "$GAIA_HTML/header.html"
 }
 
 gaia-html-make-body(){
-  local bodyfile="html/body.html"
+  local bodyfile="$GAIA_HTML/body.html"
   gaia-html-make-chapter 1 > $bodyfile
   gaia-html-make-chapter 2 >> $bodyfile
   gaia-html-make-chapter 3 >> $bodyfile
@@ -127,7 +133,7 @@ gaia-html-make-body(){
 
 gaia-html-make-footer(){
   export local FOOTER_JS=$(cat $GAIA_COMPONENTS/*.js)
-  cat "$GAIA_HTML/footer.env" | envsubst > "./html/footer.html"
+  cat "$GAIA_COMPONENTS/footer.env" | envsubst > "$GAIA_HTML/footer.html"
 }
 
 # Assumes title string is "C3: Third chapter title"
