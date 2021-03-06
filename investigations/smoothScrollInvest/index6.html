@@ -106,20 +106,19 @@ body {
   
 const nextBtn = document.getElementById("previous");
 const previousBtn = document.getElementById("next");
-chaptersArray = ["1", "2", "3", "4"]; 
+chaptersArray = [1, 2, 3, 4]; 
 var i = 0;
 var currentChapter = chaptersArray[i];
-// var currentChapterToNumber = Number(currentChapter); // converts string to number
 document.getElementById('next').addEventListener('click', nextChapter);
 
 function nextChapter(){
     
     while(i < chaptersArray.length){
         i = 0;
-        // console.log("i = ", i);  
+        console.log("i = ", i);  
 
         currentChapter = chaptersArray[i];
-        console.log("current chapter  =", currentChapter[i]);
+        console.log("current chapter  =", currentChapter);
                 
         var element = document.getElementById(currentChapter);
         console.log("scroll to this element: ", element);
@@ -131,11 +130,10 @@ function nextChapter(){
             top: offsetPosition,
             behavior: "smooth"
           });  
+        nextChapter = chaptersArray[i + 1];
+          console.log("next chater", nextChapter);
         
-        // currentChapter = currentChapter[i + 1];
-        console.log("next chapter", currentChapter);
-          
-        // if()
+      
           
 
         break;
