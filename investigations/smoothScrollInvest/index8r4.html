@@ -158,13 +158,13 @@ function smoothScroll(target, duration){
         var headerOffset = 128;
         var targetOffsetPosition = targetPosition - headerOffset;
         var startPosition = window.pageYOffset;
-        var distance = targetOffsetPosition - startPosition;
+        // var distance = targetPosition - startPosition;
         var startTime = null;
 
         function animation(currentTime){
             if(startTime === null) startTime = currentTime;
             var timeElapsed = currentTime - startTime;
-            var run = ease(timeElapsed, startPosition, distance, duration);
+            var run = ease(timeElapsed, startPosition, targetOffsetPosition, duration);
             window.scrollTo(0, run);
             if(timeElapsed < duration) requestAnimationFrame(animation);
         }
@@ -180,8 +180,7 @@ function smoothScroll(target, duration){
       console.log("IN smoothScroll",
                   "target", target, "\n",
                   "targetPosition =",targetPosition,"\n",
-                  "startPosition =", startPosition, "\n",
-                  "distance =", distance);
+                  "startPosition =", startPosition, "\n");
 }
 </script>
 </html>
