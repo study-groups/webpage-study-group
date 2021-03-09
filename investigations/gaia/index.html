@@ -36,6 +36,11 @@
       left: 0;
       background: var(--bk-primary);
       z-index: 99;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+    #cover.fade {
+      opacity: 0;
     }
     body {
       background: var(--bk-primary);
@@ -219,15 +224,7 @@
           margin: 2em 0 0 0;
         }
       }
-      .prompt-header {
-       
-      }
-      .prompt-title {
-       
-      }
-      .prompt-body {
-        /* margin-left: 5px 5% 0 5%; */
-      }
+
   </style>
 </head>
 <body>
@@ -254,20 +251,7 @@
           </div>  
         <span class="fas fa-angle-double-right" id="nextArrow" onclick="nextChapter()"></span>
       </nav>
-      <!-- <div class="arrowNavigation">
-        <a class="chapters" name="chapter1"></a>
-        <a class="chapters" name="chapter2"></a>
-        <a class="chapters" name="chapter3"></a>
-        <a class="chapters" name="chapter4"></a>
-        <a class="chapters" name="chapter5"></a>
-        <a class="chapters" name="chapter6"></a>
-        <a class="chapters" name="chapter7"></a>
-        <a class="chapters" name="chapter8"></a>
-        <a class="chapters" name="chapter9"></a>
-        <a class="chapters" name="chapter10"></a>
-        <a class="chapters" name="chapter11"></a>
-        <a class="chapters" name="author"></a>
-      </div> -->
+      
     </div>
 <!-- SECTIONS/CHAPTERS -->
 <div>
@@ -279,7 +263,7 @@
     role="contentinfo"
     aria-label="Chapter 1 Introduction">
 
-    <h2 id="1" class="chapter">Ch 1. ~ Introduction</h2>
+    <h2 id="ch1" class="chapter">Ch 1. ~ Introduction</h2>
     <p id='c1-par1'>
     After many years of Buddhist study and practice, and be influenced by less traditional non-duality speakers, I was inspired to develop a contemplation practice called "Knowing Gaia". I've combined my experience of meditation and a Buddhist world view with a more contemporary approach which is not based on any spiritual authority. In "Knowing Gaia" a scientific world view is bent a little bit in the direction of intuition, poetry and mysticism without making up any stories which contradict our modern common sense. The text is more of
     an invitation than a guide, and readers are expected to make their own discoveries which may well be radically different from my own.
@@ -314,7 +298,7 @@
     role="contentinfo"
     aria-label="Chapter 2, Taking a Leap into the Deeply Personal">
     
-    <h2 id="2" class="chapter">Ch 2. ~ Taking a leap into the deeply personal</h2>
+    <h2 id="ch2" class="chapter">Ch 2. ~ Taking a leap into the deeply personal</h2>
     <p>
     Contemplation is a way of investigating experiences which are particularly difficult to capture in symbols. "The name you can say isn't the real name" is how Ursula LeGuin expresses it in the beginning of her version of the Tao Te Ching. But there's no point in trying to stop thinking. Any attempt we make to stop thinking only fuels conflict resulting in either more frantic thinking, or a frozen silence, neither of which is productive of insight. And 
     it is insight that I'm after, that's the goal - to bring awareness into what I've been ignoring.
@@ -401,7 +385,7 @@
     aria-label="Chapter 3, First Impressions">
     <a #href="chapter3"></a>
 
-    <h2 id="3" class="chapter">Ch 3. ~ First Impressions</h2>
+    <h2 id="ch3" class="chapter">Ch 3. ~ First Impressions</h2>
     <p class="prompt-title">~ Prompt 1 ~ </p><br>
     <p class="prompt-body">
       Since living systems do not exist independently in nature, what aI? What does that feel like?
@@ -485,7 +469,7 @@
     aria-label="Chapter 4, Seeing the prompts in one word">
     <a #href="chapter4"></a>
 
-    <h2 id="4" class="chapter">Ch 4. ~ Seeing the prompts in one word</h2>
+    <h2 id="ch4" class="chapter">Ch 4. ~ Seeing the prompts in one word</h2>
     <h3 id='c4-p0'>~ Prompt 1:  Independently ~</h3>
     <p id='c4-par2'>
       Gaia is a self-regulating system in which no part exists independently. Gaia is dependent on the sun, rocks, water, air. Every part of Gaia is dependent on the whole. One part, let’s say Sierra Nevada bighorn sheep, could die off and the whole would continue, although certain other parts would be affected. Some local willows might flourish. If the whole system crashed could any bighorn sheep remain? Obviously not. We humans, however,  have been led to believe that somewhere at the center of our being is a ‘me’ which stands alone. This independently existing static entity is supposed to be free and responsible, subject to reward and punishment, praise and blame, inclusion and banishment. How do you think that idea took hold? Because it is a very convenient form of social control. 
@@ -540,7 +524,7 @@
     aria-label="Chapter 5, Using words to step away from words">
     <a #href="chapter5"></a>
 
-    <h2 id="5">Ch 5. ~ Using words to step away from words</h2>
+    <h2 id="ch5">Ch 5. ~ Using words to step away from words</h2>
     <h3 id='c5-p0'>~ Prompt 1: Indepently ~</h3>
     <p class="prompt-body" style="font-weight: bolder">
       Since living systems do not exist independently in nature, what am I? What does that feel like?
@@ -624,7 +608,7 @@
     aria-label="Chapter 6, What do we want">
     <a #href="chapter6"></a>
 
-    <h2 id='c6'>Ch 6. ~ What do we want?</h2>
+    <h2 id='ch6'>Ch 6. ~ What do we want?</h2>
     <h3 id='c6-p0'>
       P1: Since living systems do not exist independently in nature, what am I? What does that feel like?
     </h3>
@@ -701,7 +685,7 @@
       aria-label="Chapter 7, Investigating personal identity">
       <a #href="chapter7"></a>
         
-      <h2 id='c7'>Ch 7. ~ Investigating personal identity</h2>
+      <h2 id='ch7'>Ch 7. ~ Investigating personal identity</h2>
       <h3 id='c7-p0'>
         P1: Since living systems do not exist independently in nature, what am I? What does that feel like?
       </h3>
@@ -774,7 +758,7 @@
       aria-label="Chapter 8, Being and Doing">
       <a #href="chapter8"></a>
 
-      <h2 id='c8'>Ch 8. ~ Being and doing</h2>
+      <h2 id='ch8'>Ch 8. ~ Being and doing</h2>
       <h3 id='c8-p0'>
         P1: Since living systems do not exist independently in nature, what amI? What does that feel like?
       </h3>
@@ -848,7 +832,7 @@
     aria-label="Chapter 9, Natural Limits">
     <a #href="chapter9"></a>
 
-    <h2 id='c9'>Ch 9. ~ Natural limits</h2>
+    <h2 id='ch9'>Ch 9. ~ Natural limits</h2>
     <h3 id='c9-p0'>
       P1: Since living systems do not exist independently in nature, what am I? What does that feel like?
     </h3>
@@ -921,7 +905,7 @@
     aria-label="Chapter 10, Self-regulation systems and individual choice">
     <a #href="chapter10"></a>
 
-    <h2 id='c10'>Ch 10. ~ Self-regulating systems and individual choice</h2>
+    <h2 id='ch10'>Ch 10. ~ Self-regulating systems and individual choice</h2>
     <h3 id='c10-p0'>
       P1: Since living systems do not exist independently in nature, what am I? What does that feel like?
     </h3>
@@ -1042,7 +1026,7 @@
   document.getElementById('cover').style.display = "block";
   
   window.onload = function(){
-    document.getElementById('cover').style.display = "none";
+    cover.classList.toggle('fade');
   }
   // Scrollspy  //
     var spy = new ScrollSpy({
@@ -1050,106 +1034,21 @@
     });
 
     var indicator = document.getElementById('indicator');
-
     spy.Indicator({
       element: indicator,
       clickable: true
     });
-    // End of scrollspy js
-
-    // var spyClickableArray = document.getElementsByClassName('spy-clickable');
-    //   console.log(spyClickableArray); //returns HTML collection
-    //   for(let i = 0; i < spyClickableArray.length; i++) {
-    //     console.log("spyClickableArray", spyClickableArray[i]); //returns array
-        
-    // }    
-    // Forward and Back arrows
-    
-
-    //forward 'button'
-    var nextArrow = document.getElementById('nextArrow');
-    var aTags = document.getElementsByClassName('chapters');
-      
-    
-    nextArrow.addEventListener('click', nextChapter)
-
-    chapters = document.getElementsByClassName("chapter");
-      
-      console.log(chapters);
-
-    function nextChapter(ev){
-      event.preventDefault();
-    }
-        // for (i = 0; i < chapters.length; i++)
-       
-
-        // if(currentChapter.id = "1") {
-        //   currentChapter.scrollIntoView(true);
-        //   console.log(currentChapter);
-        // } else if (currentChapter.id = "2"){
-        //   currentChapter.scrollIntoView(true);
-        //   console.log(currentChapter);
-        // } else if (currentChapter){
-        //   currentChapter = document.getElementById("4")
-        //   currentChapter.scrollIntoView(true);
-        //   console.log(currentChapter);
-        // } else (currentChapter = document.getElementById("5"))
-        //   currentChapter.scrollIntoView(true);
-        //   console.log(currentChapter);
-        // }
-         
-      
-        // console.log("Event Type", ev.type, "Event Target", ev.target, "Event: Current Target", ev.currentTarget);
-
-    
-
-
-
-    ////////// 
-    
-    // document.getElementById('back').addEventListener("click", function(e) {  //back 'button'
-    //   e.preventDefault()
-    //   console.log("hello");
-    // });
-
    
-    // INVESTION RE: ELEMENT POSITIONING FOR SCROLLSPY //
 
-    // var navbar = document.getElementById("navbar");
-    // var navBarHeight = navbar.getBoundingClientRect(navbar);
-    // console.log("navbar height", navBarHeight);
-    // var firstChap = document.getElementById("first-chapter");
-    // var firstChapTop = firstChap.getBoundingClientRect().top;
-    // console.log("Top of first chapter bouding box",firstChapTop)
-    // var firstChap2 = document.getElementById("firstchapter");
-    // var firstChapTop2 //=firstChap.getBoundingClientRect(firstChap);
-    // console.log("scroll position of first chapter boundind box", firstChap2.scrollLeft, firstChap2.scrollTop);
-      
-      </script>    
+    // END OF SCROLLSPY CODE
 
-      <!-- 
-      // var firstChapLocation = element.getBoundingClientRect().top;
-      // console.log("Coordinates for Chapter 1 location.", firstChapLocation);
-     
-      // var startLoc = document.getElementById('scrollTopLoc');
-      // startLoc.scollTop =+ 249;
-     
-      
-      // Ron's code
-      // var navbar = document.getElementById("navbar");
-      // var navbarHeight = navbar.offsetHeight;  // read-only property returns 
-      // the height of an element including vert. padding and borders, as an integer
-      // console.log("navbarHeight", navbarHeight); // = 187
+    // BEGIN PREVIOUS/NEXT CODE
 
-      // var indicatorTop = indicator.getBoundingClientRect().top;
-      // console.log("indicatorTop", indicatorTop); // = 62.5
-   
-      // indicatorScrollLocation = parseInt(indicatorTop + navbarHeight);
-      // console.log("indicatorScrollLocation", indicatorScrollLocation); // = 249
 
-      // var scrollStartLoc = document.getElementsByClassName('spy-clickable.active');
-      // scrollStartLoc.scrollTop = 249;
-      // console.log("scrollStartLoc", scrollStartLoc);
-      -->
+
+
+  </script>    
+
+    
 </body>
 </html>
