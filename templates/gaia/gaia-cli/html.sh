@@ -9,6 +9,16 @@ gaia-html-make-all-old(){
   gaia-html-make-footer
   gaia-html-cat-all > ./index-old.html
 }
+
+gaia-html-update-style(){
+  echo "Building version: $GAIA_VERSION"
+  gaia-components-to-html
+  gaia-html-make-header
+  gaia-html-make-footer
+  gaia-html-cat-all > "./$GAIA_VERSION.html"
+}
+
+
 gaia-html-build(){
   echo "Building version: $GAIA_VERSION"
   gaia-components-to-html

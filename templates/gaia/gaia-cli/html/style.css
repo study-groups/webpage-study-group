@@ -9,30 +9,33 @@
   --body-text-alt: #8FF;
   --divider-line: #fce694;
   --nav-bar-bg: #1e1e1e;
+  --navbar-height: 5em;
   --email-link: #F98A62;
   --video-links: #F98A62;
   --prompt-color: #E1F9DF;
 }
 body {
   background: var(--bk-primary);
+  padding-top: 6em;
   font-size: 14pt;
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
   letter-spacing: 1px;
 }
 .navbar {
+  position:fixed;
   top: 0;
   left: 0;
   color: var(--h1-color);
   background: #1e1e1e;
-  height: 6em;
+  height: var(--navbar-height);
   width: 100%;
   margin: 0;
   padding: 0;
 }
 .navbar ul{
   list-style-type: none;
-  margin: 0;
+  margin: auto;
   padding: 0;
   overflow: hidden;
 }
@@ -48,17 +51,18 @@ li {
   text-decoration: none;
 }
 
-li:hover {
+li:hover, .nav-selected {
   background-color: #111111;
+  border: 2px solid  var(--h2-color);
 }
 
 
 .main-header {
   color: var(--h1-color);
-  margin: 3em 10% 1em 10%;
+  margin: 1em 10% 1em 10%;
 }
 h2, h3 {
-  margin: 1.5em 10% 1em 10%;
+  margin: .5em 10% 1em 10%;
 }
 h2, h3 {
   color: var(--h2-color);
@@ -104,7 +108,7 @@ ul {
     font-size: 12pt;
 }
   .main-header {
-    margin: 4em 20px 0 20px;
+    margin: 0em 20px 0 20px;
   }
   p {
      margin: 0 20px 0 20px;
