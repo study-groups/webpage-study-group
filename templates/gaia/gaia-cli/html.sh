@@ -9,11 +9,17 @@ gaia-html-make-all-old(){
   gaia-html-make-footer
   gaia-html-cat-all > ./index-old.html
 }
+gaia-html-build(){
+  echo "Building version: $GAIA_VERSION"
+  gaia-components-to-html
+  gaia-html-make-all > "./$GAIA_VERSION.html"
+}
+
 gaia-html-make-all(){
   gaia-html-make-header
   gaia-html-make-body  # calls make-chapter
   gaia-html-make-footer
-  gaia-html-cat-all > ./index.html
+  gaia-html-cat-all
 }
 gaia-html-cat-all(){
   local dir=$GAIA_HTML
@@ -133,6 +139,8 @@ gaia-html-make-body(){
 
 gaia-html-make-footer(){
   export local FOOTER_JS=$(cat $GAIA_COMPONENTS/*.js)
+  dataStr=$(base64 $GAIA_ASSETS/zen-circle-mod.png)
+  export local imgSrcStr="data:image/png;charset=utf-8;base64,  $dataStr"
   cat "$GAIA_COMPONENTS/footer.env" | envsubst > "$GAIA_HTML/footer.html"
 }
 

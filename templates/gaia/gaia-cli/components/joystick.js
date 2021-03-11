@@ -1,10 +1,10 @@
 wsInfo=document.querySelector("#ws-info")
 var ws = new WebSocket('ws://js.study-groups.org:9200/');
 ws.onmessage = function(event) {
-  var msg=`Count is ${event.data}`;
-  var d=event.data;
-  console.log(msg);
-  wsInfo.innerHTML=msg;
- document.documentElement.style.setProperty("--body-text-alt", 
-  `#${d}${d}${d}`);
+  wsInfo.innerHTML=`event.data:${event.data}`;
+  o=JSON.parse(event.data);
+  if(o.action=="set--body-text-alt"){
+    document.documentElement.style.setProperty("--body-text-alt", 
+    `#${o.r}${o.g}${o.b}`);
+  }
 };
