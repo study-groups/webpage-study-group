@@ -5,7 +5,7 @@ export NAV_CHAPTERS
 nav-html-chapters(){
   for c in  $(seq 1 11)
     do
-      printf "<li onclick='ScrollTo(\"c$c\")'>c$c</li>\n"
+      printf "<li>$c</li>\n"
   done
 }
 
