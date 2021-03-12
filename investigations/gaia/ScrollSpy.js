@@ -198,7 +198,7 @@ function ScrollSpy(
         let offset;
 
         if (element.offsetHeight > page_visible_height) {
-            offset = element.offsetTop - 150;
+            offset = element.offsetTop - 200;
         } else {
             offset = element.offsetTop - ((page_visible_height - element.offsetHeight) / 2);
         }

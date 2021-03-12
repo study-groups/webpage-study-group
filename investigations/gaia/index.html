@@ -58,7 +58,7 @@
       float: left;
       /* border: 3px solid var(--video-links); */
       padding: 2px;
-      margin: 1.125em 0 0 10%;
+      margin: 0em 0 0 10%;
     }
     .fa-angle-double-left:hover, .fa-angle-double-right:hover  {
       color: #d32f2f;
@@ -68,8 +68,6 @@
       color: var(--video-links);
       font-size: 1.8em;
       float: right;
-      /* border: 3px solid var(--video-links); */
-      padding: 2px;
       margin-right: 10%;
     }
     .navbar {
@@ -77,7 +75,7 @@
       position: fixed;
       left: 0;
       background: #111;
-      height: 7em;
+      height: 10em;
       width: 100%;
       margin: auto !important;
     }
@@ -119,10 +117,13 @@
       text-decoration: none;
     }
     .main-header {
-      margin-top: 300px;
+      /* margin-top: 100px; */
       color: var(--email-link);
-      font-size: 2.8em;
-      margin: 3em 10% 0 10%;
+      font-size: 2.5em;
+      margin: 1em 10% 0 10%;
+    }
+    .arrowNavigation {
+      margin:  -1em 0 0 0;
     }
     #first-chapter {
       margin: 3em 0 0 0;
@@ -151,6 +152,7 @@
     }
     a {
       color: var(--video-links);
+      margin-bottom: 1em;
     }
     #email {
       color: var(--email-link);
@@ -165,27 +167,31 @@
       margin: auto;
       display: block;
     }
-    
+    .version {
+      color: var(--body-text-alt);
+      font-size: 10pt;
+      text-align: center;
+      margin: 10em 0px 3em 0px;
+    }    
     @media screen and (max-width: 667px) {
     body {
-      font-size: 11pt;
+      font-size: 13pt;
     }
     .navbar {
-      height: 5em;
+      height: 7em;
     }
     .main-header {
       font-size: 1.8em;
-      margin: 3.5em 5% 0 4%;
+      margin: .5em 0 0 .5em;
     }
     .fa-angle-double-left {
       font-size: 1.5em;
       /* border: 1px solid var(--video-links); */
-      margin: 1.325em 0 0 17%;
     }
     .fa-angle-double-right {
       font-size: 1.5em;
-      /* border: 1px solid var(--video-links); */
-      margin-right: 20%;
+      margin-right: 5%;
+      
     }
       li {
         font-size: 13px;
@@ -200,6 +206,7 @@
       margin-right: -65px;
       position: absolute;
       padding: 2px;
+      top: 3.8em;
     }
     .scrollspy-indicator-container
     li.spy-active {
@@ -229,8 +236,9 @@
 <body>
   <div id="cover"></div>
   <script src="ScrollSpy.js"></script>
-    <div class="content">
       <nav id='navbar' class="navbar">
+        <h1 class="main-header">Knowing Gaia</h1>
+        <div class="arrowNavigation">
         <span class="fas fa-angle-double-left" id="previousArrow"></span>
           <div id="indicator">
             <ul class="scrollspy-indicator-container">
@@ -249,12 +257,11 @@
             </ul> 
           </div>  
         <span class="fas fa-angle-double-right" id="nextArrow" onclick="smoothScroll()"></span>
+      </div>
       </nav>
-      
-    </div>
-<!-- SECTIONS/CHAPTERS -->
+    <!-- SECTIONS/CHAPTERS -->
 <div>
-  <h1 class="main-header">Knowing Gaia</h1>
+  <!-- <h1 class="main-header">Knowing Gaia</h1> -->
   <section 
     class="scrollspy"
     spy-title="~ CHAPTER 1 ~" 
@@ -808,8 +815,9 @@
       In Gaia there is no separation between being and doing. Breath and gravity are not in opposition. When I'm asleep I breathe without knowing it. Gravity keeps me on the bed while I'm lost in a dream. Although we've never left Gaia (that would be impossible) we are distracted by evolution's shiny new toy, the human mind and all its inventions. Returning to the breath is returning to the basics of life. Noticing gravity we are in the company of everything. When a shark locks onto the scent of a prey animal, it doesn't have to do much in order to be successful. Sharks have been perfecting this behavior for about 450 million years. We get confused. Do I want this? Do I want that? Did I hurt my friend when I said that? Will it help to say this? Or maybe I secretly want to hurt this so-called friend who has neglected me. Our lives are complex and we need all our intelligence. We don't want to return to the world of sharks, and we can't. Misguided motivation can squander our energy. Acting in contact with being is straightforward action. Being is not some mysterious force we need to get hold of. It is what we share with everything. It is the potential, the empty cup which accepts tea, soup or poison with equal graciousness. Nature never agreed to present us only with food, but has given us the ability to distinguish food from poison. Even when simply sitting with breath and gravity we are enjoying the challenge of insight into our own hidden beliefs and wishful thinking. Otherwise it would be better to take a nap. Sometimes I wake up from a nap with fresh insight. Yet there is something special about going into a deeply restful state while fully conscious, and not attempting to produce something non-ordinary. If you want to see your mind in a non-ordinary state there are some very good drugs you can take. I've had some interesting trips myself, back in the day. Breath and gravity are the most ordinary things imaginable. Ordinary might sound dull if we confuse it with mindless habitual activity. But when I give it my heartfelt attention it is anything but dull. When being and doing are not separate, freshness and a profound richness pervade all our experience, from the most simple to the most complex.
     </p>
     <p id='c8-par20'>
-      P10: Does Gaia have a self? What would that mean?
+     <h3> P10: Does Gaia have a self? What would that mean?</h3>
     </p>
+    <p>
       Our lives depend on photosynthesis and we can't do it. We depend on plants, and they benefit from our ability to recycle carbon. Gaia figured this out a long time ago. To us it seems like a clever system designed by someone. But we haven't been able to find the designer. The whole thing just seems to be purely natural, which means no division between being and doing. In our language there is nothing artificial about the elaborate process of using light to create food. If humans manage to invent a process of inorganic photosynthesis, we will call it artificial. We will say we did it. Some people would then say that the process of inorganic photosynthesis arose completely naturally from the vast potentiality of being. We would agree, on an intellectual level, but would we feel that in our bones? When I'm in a plane hurtling down the runway and then lifting off, what I feel is an amazement that we are able to do this. Grateful that once again, it worked. It doesn't feel natural. It has a beauty which is quite different from the beauty of the bird lifting off from the tree branch outside my window. Atmospheric carbon dioxide a few days ago passed 416 parts per million. We can't live with that on a long term basis. We have to do something unnatural. We have to consciously assume responsibility for our own ecosystem. One of the key concepts of Gaia is that organisms affect their environment. So there's nothing new about that. What is new is the ability to say "Wait a minute. We need a plan."
     </p>
     <p id='c8-par22'>
@@ -1001,7 +1009,11 @@
         <div class="author">Yucca Valley, California</div>
           
         <a id="email" href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>
-        
+        <div class="version">
+          <span>
+            Knowing Gaia | v005.pre1
+          </span>
+        </div>
         
         
   </section>
@@ -1054,14 +1066,15 @@
     
     nextBtn.addEventListener('click', function(){
       curChapterIndex = (curChapterIndex + 1) % chapterIds2.length;
-      var target = 
-        document.getElementById(chapterIds2[curChapterIndex]);
+      var target = document.getElementById(chapterIds2[curChapterIndex]);
+      console.log("target", target);
+
       console.log("IN CLICK HANDLER", "target", target);
       smoothScroll(target, 1000);
     });
     function smoothScroll(target, duration){
         var targetPosition = target.getBoundingClientRect().top;
-        var headerOffset = 128;
+        var headerOffset = 200;
         var targetOffsetPosition = targetPosition - headerOffset;
         var startPosition = window.pageYOffset;
         // var distance = targetPosition - startPosition;
