@@ -17,3 +17,4 @@ templates/gaia/gaia-cli/index.html
 templates/study-groups/archive/
 
 investigations/playground/
+investigations/gaia/builds/*pre*
