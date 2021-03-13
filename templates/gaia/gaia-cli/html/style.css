@@ -80,6 +80,15 @@ a {
   color: var(--body-text-alt)
 }
 
+#joystick{
+  color: var(--email-link);
+  position:fixed;
+  font-size:.5em;
+  text-align:right;
+  width:20%;
+  top: 0;
+  right: 0;
+}
 
 #email {
   color: var(--email-link);

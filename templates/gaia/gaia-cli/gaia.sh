@@ -29,11 +29,13 @@ It is also a command line interface for reading the book.
 4. gaia-display 2 3 # display Chapter 2, Prompt 3
 
 To make webpage:
-
-5. gaia-make-html-all > index.html
+1. Set version bash variable GAIA_VERSION
+2. gaia-components-to-html   # takes ./components -> ./html
+3. gaia-html-make-all > $GAIA_VERSION.html 
 
 EOF
 }
+
 gaia-extract(){
   echo "Paste entire raw text document then hit ctrl-D on new line."
   cat > ./raw.txt
