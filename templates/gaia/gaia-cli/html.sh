@@ -3,6 +3,19 @@
 # HTML Formatting
 # This function creates the entire HTML page.
 ###################################################################
+
+#  https://unix.stackexchange.com/a/24955
+gaia-html-watch-components(){
+#  inotifywait -m ./components -e create -e moved_to |
+#    while read dir action file; do
+#        echo "The file '$file' appeared in directory '$dir' via '$action'"
+#        # do something with the file
+#    done
+  while inotifywait -e close_write ./components;\
+  do gaia-html-update-style; done
+
+}
+
 gaia-html-make-all-old(){
   gaia-html-make-header
   gaia-html-make-body-old  # calls make-chapter
