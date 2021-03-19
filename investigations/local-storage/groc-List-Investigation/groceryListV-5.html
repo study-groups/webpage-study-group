@@ -169,6 +169,25 @@ li {
 .checked { 
   text-decoration: line-through;
 }
+.print-list {
+  width: 10em;
+  height: 2.8em;
+  border-radius: 5px;
+  background: #3da561;
+  color: white;
+  font-size: 1em;
+}
+  @media screen and (min-width: 320px) {
+    .departments-header {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3;
+    }
+    .departments {
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+    }
+  }
+}
 </style>
 
 <body>
@@ -221,11 +240,10 @@ li {
                 <label for="qty">Quantity</label>
                   <input 
                     id = "qty"
-                    class="quantity"
-                    name="itemQty"
+                    class="item-input"
                     placeholder="Qty"
                     type="number"
-                    value="1">
+                  >
               </div>
               <div class="input-elements-box-content">
                 <button 
@@ -249,8 +267,11 @@ li {
           <button class="delete-button">X</button>
         </li>
       </ul>
+      <button class="print-list">Print Shopping List</button>
     </div>
+
   </div>
+
   
   <!-- <script type="text/javascript" src="js/script.js"></script> -->
 </body>
@@ -261,7 +282,7 @@ li {
 const enterItemsForm = document.querySelector('.grocery-form');
 const itemInput = document.querySelector('.item-input');
 const itemItemsList = document.querySelector('.grocery-list-box');
-var itemQty  = document.querySelector('quantity');
+var itemInputQty = document.querySelector('qty');
 
 var items = [];
 
@@ -276,7 +297,7 @@ function addItem(item) {
       id: Date.now(),
       name: item,
       completed: false,
-      itemQty: itemQty
+      itemInputQty: itemInputQty
     };
 
   items.push(item);
