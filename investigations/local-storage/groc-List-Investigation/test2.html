@@ -4,17 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <title>Test 2</title>
 </head><style>
   body {
     margin: 10em;
     font-size: 1.5em;
+    background-color: rgb(235, 235, 235);
+    font-family: 'Roboto', sans-serif;
   }
   div {
-    margin: 2em;
+    margin: 1em;
   }
   input {
     font-size: .8em;
+    margin: 0px 0px 0px 1em;
+  }
+  #age-input {
+    margin-left: 4.8em;
+  }
+  #email-input {
+    margin-left: 3.9em;
   }
   button {
     width: 100px;
@@ -24,12 +35,23 @@
     background: green;
     color: white;
   }
+  .name-entry-form {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .people-list-group {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+  }
+
 </style>
 <body>
 
 <form class="name-entry-form">
   <div>
-    <label for="fName-input">First Name</label>
+    <label for="fName-input">First Name: </label>
     <input 
       id="fName-input"
       class="fName-input"
@@ -37,7 +59,7 @@
       type="fName-input">
   </div>
   <div>
-    <label for="lName-input">Last Name</label>
+    <label for="lName-input">Last Name:</label>
     <input 
       id="lName-input"
       class="lName-input"
@@ -45,21 +67,30 @@
       type="lName-input">
   </div>
   <div>
-    <label for="age-input">Age</label>
+    <label for="age-input">Age:</label>
     <input 
       id="age-input"
       class="age-input"
       placeholder="Enter First Name"
       type="age-input">
   </div>
+  <div>
+    <label for="email-inpput">Email:</label>
+    <input 
+      id="email-input"
+      class="email-input"
+      placeholder="Enter email address"
+      type="email">
+  </div>
 
   <button id="enter-btn" class="enter-btn" type="submit">Add</button>
   <input id="reset-btn" class="reset-btn" type="reset">
 </form>  
-
-<ul class="people-list">
-  <li></li>
-</ul>
+<div class="people-list-group">
+  <ul class="people-list">Names
+    <li></li>
+  </ul>
+</div>
 
 <button class="print-name-list" id="print-name-list" type="submit">Print</button>
   
