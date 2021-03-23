@@ -1,4 +1,4 @@
-VER=001
+VER=001pre6
 REPO=$(realpath "/home/$USER/src/webpage-study-group")
 TEMPLATE=$(realpath $REPO/templates/study-groups)
 BUILD=$(realpath $REPO/builds/study-groups)
@@ -10,9 +10,18 @@ tools-build(){
   cp -r $TEMPLATE/assets $BUILD/$VER/assets
 }
 
+tools-list-template(){
+  ls -l $TEMPLATE
+}
+
 tools-list-build(){
   ls -l $BUILD/$VER 
 }
+
+tools-list-builds(){
+  ls -l $BUILD/
+}
+
 tools-publish(){
   local tmpdir="/tmp/$(date +%s)"
   mkdir $tmpdir
