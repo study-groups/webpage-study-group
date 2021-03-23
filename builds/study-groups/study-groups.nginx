@@ -20,13 +20,15 @@ server {
 server {
     server_name study-groups.org;
     server_name www.study-groups.org;
-    root /var/study-groups.org;
+    root /home/hirschro/src/webpage-study-group/builds/study-groups/001;
     index index.html;
-    location / {
-        proxy_buffering off;
-        proxy_pass https://study-groups.github.io/webpage-study-group/;
-    }
+#    location / {
+#        proxy_buffering off;
+#        proxy_pass https://study-groups.github.io/webpage-study-group/;
+#    }
 
+    location / {
+    }
 
     listen 443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/study-groups.org-0001/fullchain.pem; # managed by Certbot
