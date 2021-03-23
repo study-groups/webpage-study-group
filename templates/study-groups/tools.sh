@@ -1,13 +1,16 @@
-VER=001pre6
 REPO=$(realpath "/home/$USER/src/webpage-study-group")
 TEMPLATE=$(realpath $REPO/templates/study-groups)
 BUILD=$(realpath $REPO/builds/study-groups)
+export VER=001pre6
 
 tools-build(){
-  rsync $TEMPLATE/index.html $BUILD/$VER/
+  
   rsync $TEMPLATE/styleguide.html $BUILD/$VER/
   rsync $TEMPLATE/error.html $BUILD/$VER/
-  cp -r $TEMPLATE/assets $BUILD/$VER/assets
+  cat   $TEMPLATE/index.html | envsubst >  $BUILD/$VER/index.html
+  ln -s $TEMPLATE/assets $BUILD/$VER/assets
+  
+  #cp -r $TEMPLATE/assets $BUILD/$VER/assets
 }
 
 tools-list-template(){
