@@ -12,6 +12,7 @@ data.txt
 build.log
 err
 old/
+builds/
 templates/gaia/gaia-cli/assets
 templates/gaia/gaia-cli/index.html
 templates/study-groups/archive/
