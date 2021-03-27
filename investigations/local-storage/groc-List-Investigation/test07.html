@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Test 6</title>
+  <title>Test 7</title>
 </head><style>
   @media screen and (max-width: 1400px) {
  
@@ -61,9 +61,8 @@
       align-self: center;
       justify-self: center;
     }
-    #display-btn {
+    #print-btn {
       border-radius: 0 0 5px 5px;
-      margin-top: 5px;
     }
     /* FORM BOX/CONTAINER */
     .grid-container {
@@ -219,7 +218,6 @@
 
     <!-- <button class="btn" id="delete-btn"  type="submit">Delete</button> -->
 
-    <button disabled class="btn" id="display-btn" type="submit">Display List</button>
 
 </form>  
 </div>
@@ -250,7 +248,6 @@
 <script>
 // const tMask = document.getElementById('phone-input').inputmask({"mask":"(999) 999-9999"});
 const nameEntryForm = document.querySelector('.name-entry-form');
-const displayBtn = document.querySelector('.display-btn');
 const resetBtn = document.querySelector('.reset-btn');
 const fNameInput = document.querySelector('.fName-input');
 const lNameInput = document.querySelector(".lName-input");
@@ -294,7 +291,7 @@ var card = document.createElement('div');
 card.id = "name-card";
 
 function styleCard(){
-    document.getElementById('name-card');
+    document.getElementById('style');
     const styles = {
       minWidth: '300px',
       height: "auto",
