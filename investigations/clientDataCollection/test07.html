@@ -52,7 +52,7 @@
       padding: .6em;
       border: 1px solid var(--header-border);
       border-radius: 10px;
-      max-width: 740px;
+      max-width: 300px;
       font-size: 1.5em;
       color: var(--text);
     }
@@ -71,6 +71,7 @@
       margin: .5em 0 0 0;
      }
     input {
+      font-size: 1.2em;
       margin: .5em 2em .5em 1em;
       height: 30px;
       width: 215px;
@@ -178,7 +179,7 @@
       background: var(--background-color);
     }
     .main-header {
-      width: 90%;
+      width: 86%;
       font-size: 1em;
      }
     .grid-container {
@@ -230,29 +231,40 @@
     }
     .button-container {
       grid-area: 12 / 1 / 13 / 2;
+      margin: 1.7em;
+      border: none;
     }
-    .btn {
-      width: 300px;
-      height: 45px;
+    #add-btn, #reset-btn, #print-btn {
+      font-size: .8em;
+      margin: 0 auto;
+      width: 275px;
     }
     #add-btn {
       grid-area: 6 / 1 / 7 / 2;
+      border-radius: 5px 5px 0 0;
     }
     #reset-btn {
       grid-area: 7 / 1 / 8 / 2;
     }
+    #print-btn {
+      border-radius: 0 0 5px 5px;
+    }
     input {
-      font-size: .5em;
+      font-size: .6em;
     }
     label {
-      font-size: .7em;
+      font-size: .6em;
+      justify-items: left;
+    }
+    .people-list-group {
+      font-size: 1rem;
+      margin: .5em;
     }
   }
 </style>
 <body>
 
 <div class="main-container"> 
-
   <div class="main-header">Cleint Data Input Form</div>
   <div class="form-container">
     <form class="name-entry-form grid-container">
@@ -334,7 +346,7 @@
         <input 
           id="email-input"
           class="email-input"
-          placeholder="Email address (xyz@xyz.com)"
+          placeholder="Email: (xyz@xyz.com)"
           type="email">
       </div>
       <div class="phone-input-group">
@@ -366,20 +378,18 @@
 
 <!-- <h3 class="todo-list">ToDo List</h3>
 <ol class="todos">
-  <li>determine why some inputs are not clearing values after enter</li>
-  <li>correct input mask (type ?) for url</li>
+  <li>load display list at start-up</li>
+  <li>correct start location of 1st card (starts at #2)</li>
   <li>correct alignment in mobile view</li>
-  <li>input mask not working for phone & email</li>
   <li>tweak mobile view css</li>
   <li>create better transition between full screen and mobile view</li>
   <li>move location of placeholder ex: https://stackoverflow.com/questions/48260921/css-how-to-change-position-of-input-placeholder</li>
   <li>add delete button functionality</li>
   <li>add print functionality and operationalize print button</li>
   <li>move delete button (to display card)</li>
-  <li>add additional data collection fields when working properly</li>
-  <li>determine why Tele: label is too far left</li>
   <li>correct tab order</li>
-  <li>format list display</li>
+  <li>format list display margins in mobile view</li>
+  <li>correctly align input fields in mobile view</li>
 </ol> -->
 
 <script>
@@ -478,7 +488,7 @@ function renderList(list) {
       list[i].cityInput + ", " +
       list[i].stateInput + " " +
       list[i].zipCodeInput + " " +
-      list[i].emailInput + " " +
+      list[i].emailInput + " " + "<br>" +
       list[i].phoneInput + " " +
       list[i].urlInput + " " +
       list[i].dobInput
