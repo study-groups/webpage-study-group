@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Test 7</title>
+  <link href="theme-slider.css" rel="stylesheet">
+  <title>Test 8</title>
 </head>
 <script src="input-mask.js"></script>
 <!-- https://www.cssscript.com/lightweight-pure-javascript-input-mask/ -->
 <style>
   /*  This page's colors */
-  :root {
+  .wine-theme {
     --background-color: #691699;
     --button-color: #981671;
     --button-hover-color: #161A98;
@@ -26,7 +27,7 @@
 
   }
   /* Study-group's colors */
-  [data-theme="study-groups"] {
+  .sg-theme {
     --background-color: #172a3a;
     --background: #487082;
     --text: #fff;
@@ -82,35 +83,22 @@
       font-weight: 600;
       border-right: 1px solid black;
     }
-    .wine-theme-tab {
+    .tab-2 {
+      grid-area: 1 / 2 / 2 / 3;
+      text-align: center;
+      margin: .6em 0 0 0;
+    }
+    .tab-3 {
       grid-area: 1 / 3 / 2 / 4;
       text-align: center;
       margin: .6em 0 0 0;
     }
-    .wine-theme-btn {
-      font-size: .8em;
-      font-weight: 600;
-      height: 30px;
-      border-radius: 10px 0 0 10px;
-      color: var(--btn-text-color);
-      background-image: linear-gradient(to bottom right, var(--background-color), var(--button-color));
-      margin: 0 0 0 78px;
-    }
-    .study-grps-theme-tab {
+    .tab-4 {
       grid-area: 1 / 4 / 2 / 5;
       text-align: center;
       margin: .6em 0 0 0;
-      
     }
-    .study-grps-theme-btn {
-      font-size: .8em;
-      font-weight: 600;
-      height: 30px;
-      border-radius: 0 10px 10px 0;
-      color: var(--btn-text-color);
-      background-image: linear-gradient(to bottom right, var(--background-color), var(--button-color));
-      margin: 0 22px 0 0;
-    }
+
     input {
       font-size: 1.2em;
       margin: .5em 2em .5em 1em;
@@ -303,26 +291,22 @@
     }
   }
 </style>
+<html class="wine-theme">
 <body>
 
 <div class="main-container"> 
-  <div class="theme-btns-wrapper">
-    <label class="theme-btns" id="wine-theme-btn">
-      
-    </label>
-    <label class="theme-btns" id="study-gps-theme-btn">
-      
-    </label>
-  </div>
+
 
   <div class="tabs-container">
     <div class="tabs-grid-container">
       <div class="main-header-tab" id="main-header-tab">Client Input Data Form</div>
-      <div class="wine-theme-tab">
-        <button class="wine-theme-btn" id="wine-them-button" type="submit">Wine Theme</button>
-      </div>
-      <div class="study-grps-theme-tab">
-        <button class="study-grps-theme-btn" id="study-grps-theme-button" type="submit">Study Groups Theme</button>
+      <div class="tab-2">Tab 2</div>
+      <div class="tab-3">Tab 3</div>
+      <div class="theme-switch-container">
+        <label id="switch" class="switch">
+          <input type="checkbox" onchange="toggleTheme()" id="slider">
+          <span class="slider round"></span>
+      </label>
       </div>
     </div>
   </div>
@@ -451,10 +435,36 @@
   <li>correct tab order</li>
   <li>format list display margins in mobile view</li>
   <li>correctly align input fields in mobile view</li>
+  <li>correct card output format (where is DOB?)</li>
+  <li>complete code for theme (color) changes, code not working correctly</li>
 </ol> -->
 
 <script>
+// THEME CODE //
+function setTheme(themeName) {
+  localStorage.setItem('theme', themeName);
+  document.documentElement.classname = themeName;
+}
+function toggleTheme() {
+  if (localStorage.getItem('theme') === 'wine-theme') {
+    setTheme('sg-theme');
+  } else {
+    setTheme('wine-theme');
+  }
+}
+// Immediately invoked function to set the theme on initial load
+(function () {
+  if (localStorage.getItem('theme') === 'wine-theme') {
+    setTheme('wine-theme');
+    document.getElementById('slider').checked = false;
+    } else {
+    setTheme('sg-theme');
+    document.getElementById('slider').checked = true;
+    }
+})();
+// https://medium.com/@haxzie/dark-and-light-theme-switcher-using-css-variables-and-pure-javascript-zocada-dd0059d72fa2
 
+// FROM CODE //
 const nameEntryForm = document.querySelector('.name-entry-form');
 const resetBtn = document.querySelector('.reset-btn');
 const fNameInput = document.querySelector('.fName-input');
@@ -536,7 +546,9 @@ function addName(person) {
 document.getElementById("people-list");
 
 function renderList(list) {
-  peopleList.innerHTML !== ""; // ensures ol has no contents
+  peopleList.innerHTML !== ""; 
+
+   // ensures ol has no contents
 
   for(i = 0; i < list.length; i++) {
 
@@ -547,11 +559,11 @@ function renderList(list) {
       list[i].streetAddress1 + ", " +
       list[i].streetAddress2 + " " + "<br>" +
       list[i].cityInput + ", " +
-      list[i].stateInput + " " +
-      list[i].zipCodeInput + " " +
+      list[i].stateInput + " " + "<br>" +
+      list[i].zipCodeInput + " " + "<br>" + 
       list[i].emailInput + " " + "<br>" +
-      list[i].phoneInput + " " +
-      list[i].urlInput + " " +
+      list[i].phoneInput + " " + "<br>"
+      list[i].urlInput + " " + "<br>" + "DOB:" + 
       list[i].dobInput
 
       const styles = {
@@ -568,7 +580,7 @@ function renderList(list) {
       Object.assign(li.style, styles);
   } 
   peopleList.appendChild(li); // peopleList = <ol>
-   
+  
 } 
 function addToLocalStorage(person) { // add to localStorage
   localStorage.setItem("person", JSON.stringify(person));
