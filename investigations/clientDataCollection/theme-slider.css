@@ -10,7 +10,7 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 45px;
   height: 34px;
 }
 
@@ -32,13 +32,14 @@
   background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  margin-top: 15px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
   height: 40px;
-  width: 40px;
+  width: 50px;
   left: 0px;
   bottom: 4px;
   top: 0;
@@ -47,13 +48,15 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   box-shadow: 0 0px 15px #2020203d;
-  background: white url('https://i.ibb.co/FxzBYR9/night.png');
+  background: white ;
   background-repeat: no-repeat;
   background-position: center;
 }
-
+/* url('https://i.ibb.co/FxzBYR9/night.png') */
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #691699;
+  height: 20px;
+  width: 40px;
 }
 
 input:focus + .slider {
@@ -64,11 +67,11 @@ input:checked + .slider:before {
   -webkit-transform: translateX(24px);
   -ms-transform: translateX(24px);
   transform: translateX(24px);
-  background: white url('https://i.ibb.co/7JfqXxB/sunny.png');
+  background: white;
   background-repeat: no-repeat;
   background-position: center;
 }
-
+/* url('https://i.ibb.co/7JfqXxB/sunny.png') */
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
