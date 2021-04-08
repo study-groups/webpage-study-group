@@ -15,249 +15,186 @@
   --text-black: #383838;
 }
 body {
-  background: linear-gradient(#5cff8d, #5cbeff);
   font-family: sans-serif;
+  font-weight: bold;
+  background: linear-gradient(#5cff8d, #5cbeff);
 }
-/* common style ends */
-h1 {
+.main-header {
   color: var(--text-black);
-  font-size: 3rem;
+  font-size: 2em;
   text-align: center;
-  margin: 1em 0 1em 0;
+  margin: 1.3em 0 1em 0;
 }
 /* container */
 .flexbox-container {
   display: flex;
 }
-.dept-header {
-  margin-left: .3em;
-  height: 50px;
-}
 .dept-container {
   border: 1px solid var(--text-black);
-  margin: 0 1em 3em 4em;
-  padding: 1em;
-  max-width: 230px;
+  margin: 0 1em 1em 2em;
+  max-width: 350px;
   border-radius: 10px 0 0 10px;
+  padding: 1em;
 }
-ol {
-  margin: .5em 0 .5em 1.5em;
+.dept-header {
+  font-size: 1.5em;
+  padding: 0 0 .5em 0;
+}
+ul {
+  margin: .5em 0 .5em .2em;
+  list-style-type: none;
 }
 li {
   padding: .5em 0 1em .5em;
+  font-weight: normal;
 }
-.form-container {
-  display: flex;
+.input-container {
+  flex-direction: row;
   border: 1px solid var(--text-black);
-  min-height: 50px;
-  flex-grow: 1;
-  margin: 0 3em 3em 0;
   border-radius: 0 10px 10px 0;
+  margin: 0 2em 1em 0;
+  flex-grow: 1;
+  font-size: 1.5em;
 }
-.data-entry-header {
-  height: 30px;
-
-
-
-
+.data-input-header {
+  
+  padding: .7em 0 0 .6em;
 }
-/* .dept-selector-label {
-  display: block;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: .7em;
-}
-.input-elements-box-content {
-  font-size: 1.3em;
-} */
-
-
-
-/* .department-list {
-  margin: 1em 0px 0px .25em;
-}
-li {
-  margin: 0px 0px 1em 0px;
-}
-.department-form {
-  height: 40px;
-  width: 200px;
-  border-radius: 5px;
-}
-.department-input {
-  background: transparent;
-  border: none;
-  font-size: 1em;
-  color: var(--text-black);
-
-}
-.input-elements-box {
-  border: 1px solid #8a8888;
-  border-radius: 5px;
-  min-width: 500px;
-}
-.input-elements-box-content {
-  margin: .5em 0px .5em 1em;
-}
-select, .input-elements-box-content {
-  width: 20.5em;
-}
-input, select {
-  font-size: 1em;
-  padding: 7px;
-  border-radius: 5px;
-}
-.data-entry-section {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-  min-width: min-content;
-  padding: 2em;
-
-}
-label {
-  margin: 1em;
-  padding: 0;
-  font-size: 1em;
-}
-.grocery-form {
-  margin: 1em 0px;
-}
-li {
-  padding: 5px;
-}
-.add-button, .reset {
-  background-color: #0000ff;
-  color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 0px 5px 5px 0px;
-  padding: 7px;
-  font-size: 1rem;
-  /* margin: 0px 0xp 0px 10px; */
-}
-.grocery-list-box {
-  max-width: 450px;
+.data-input-box {
+  align-items: center;
+  padding: 0 0 0 1em;
   margin: 1em 0 0 0;
+
 }
-.item {
-  background-color: #fff;
-  padding: 10px;
-  font-size: 1rem;
+.dept-selector-title {
+  display: inline-block;
 }
-.item:first-child {
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+.dept-selector {
+  padding: .5em 0 .5em .5em;
+  margin: 0 0 0 .8em;
+  width: 300px;
 }
-.item:last-child {
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-}
-.checkbox {
-  margin-right: 10px;
-}
-.delete-button {
-  float: right;
-  background-color: #dc143c;
-  border: none;
-  outline: none;
-  border-radius: 7px;
-  padding: 2px 5px;
-  margin-left: 10px;
-  font-size: 1.1rem;
-  font-weight: 550;
-}
-.checked { 
-  text-decoration: line-through;
-}
-.print-list {
-  width: 10em;
-  height: 2.8em;
-  border-radius: 5px;
-  background: #3da561;
-  color: white;
+.item-input {
   font-size: 1em;
 }
-  @media screen and (min-width: 375px) {
-    .departments-header {
-      grid-column: 1 / 4;
-      grid-row: 2 / 3;
-    }
-    .departments {
-      grid-column: 1 / 4;
-      grid-row: 3 / 4;
-    }
-  } */
-
+@media screen and (max-width: 812px) {
+  .flexbox-container {
+    flex-direction: column;
+  }
+  .main-header {
+    font-size: 1.8em;
+  }
+  .dept-container {
+    border-radius: 10px 10px 0 0;
+    margin: 0 .8em .5em .8em;
+  }
+  .dept-header {
+    padding: 0;
+  }
+  li {
+    padding: 0 0 0 0;
+    font-size: 1em;
+    display: inline-block;
+  }
+  .input-container {
+    margin: 0 .8em 1em .8em;
+    border-radius: 0 0 5px 5px;
+    flex-direction: row;
+    flex-grow: 0;
+    font-size: 1.2em;
+  }
+  .data-input-header {
+    padding: .5em 0 0 .6em;
+  }
+  .data-input-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: unset;
+    margin: 0;
+    padding: 0;
+  }
+  .dept-selector {
+    width: 190px;
+    height: 35px;
+    margin: .5em 0 0 .8em;
+  }
+  .dept-selector-title {
+    margin: 1em 0 .5em .8em;
+  }
+}
 </style>
 
 <body>
-  <div class="main-header">
-    <h1>Grocery Shopping List</h1>
-  </div>
+  <section>
+  <div class="main-header">Grocery Shopping List</div>
   <div class="flexbox-container">
     
-    <div class="dept-container flexbox-1">
-      <h2 class="dept-header">Departments</h2>
-        <ol class="departments">
+    <div class="dept-container">
+      <div class="dept-header">Departments</div>
+        <ul class="departments">
           <li>Produce</li>
           <li>Meat/Seafood</li>
           <li>Frozen Food</li>
           <li>Dairy</li>
           <li>Paper Goods</li>
-          <li>Health & Beauty Aids</li>
-          <li>International Foods</li>
+          <li>Health & Beauty</li>
+          <li>Intn'l Foods</li>
           <li>Deli</li>
           <li>Bakery</li>
-          <li>Dry Goods/Canned Items</li>
+          <li>Dry/Canned Goods</li>
           <li>Cleaning Supplies</li>
-        <ol>
+        <ul>
     </div>
 
-    <div class="form-container flexbox-2">
-      <h2 id="data-entry-header">Enter Items</h2>
-      
-      <div class="flex-container flexbox-3">
-      <div class="input-elements-box">
+    <div class="input-container">
+      <div class="data-input-header">Enter Items</div>
+
+        <div class="data-input-box"> 
+
+          <div class="dept-selector-container">     
+            <label for="dept-selector" class="dept-selector-title">Select Depart.:</label>
+            <select class="dept-selector" id="dept-selector" name="department">
+              <option value="produce">Produce</option>
+              <option value="meat-seafood">Meat/Seafood</option>
+              <option value="frozen-food">Frozen Food</option>
+              <option value="dairy">Dairy</option>
+              <option value="paper-goods">Paper Goods</option>
+              <option value="hba">Health & Beauty Aids</option>
+              <option value="Internation Foods">International      Foods</option>
+              <option value="deli">Deli</option>
+              <option value="bakery">Bakery</option>
+              <option value="dry-canned-goods">Dry & Canned      Items</option>
+              <option value="cleaning">Cleaning Supplies</option>
+            </select>
+          </div>
         
-        <h2 class="dept-selector-label">Select Department</h2>
-        <select class="input-elements-box-content" name="department" >
-          <option value="produce">Produce</option>
-          <option value="meat-seafood">Meat/Seafood</option>
-          <option value="frozen-food">Frozen Food</option>
-          <option value="dairy">Dairy</option>
-          <option value="paper-goods">Paper Goods</option>
-          <option value="hba">Health & Beauty Aids</option>
-          <option value="Internation Foods">International Foods</option>
-          <option value="deli">Deli</option>
-          <option value="bakery">Bakery</option>
-          <option value="dry-canned-goods">Dry & Canned Items</option>
-          <option value="cleaning">Cleaning Supplies</option>
-        </select>
-
-
+          <div class="item-input-group">
+            <label id="item-input-label" for="item-input-label">Item:</label>
+              <input 
+                class="item-input"
+                placeholder="Enter an Item..."
+                type="text">
+          </div>
+          <div>
+          <label for="qty">Qty:</label>
+            <input 
+              id = "qty"
+              class="item-input"
+              placeholder="Qty"
+              type="number">
+          </div>
+          
+          <div class="list-header">Items List</div>
       </div>
-
-    </div>
-      
     </div>
 
-    
 
-
-
+</div> 
+</section>
+</body>
     <!-- 
-        <div class="data-entry-section">
-          <div class="input-elements-box">
-            <form class="grocery-form">
-              
-              <div class="input-elements-box-content">
-                <label for="item-input">Item</label>
-                  <input 
-                    class="item-input"
-                    placeholder="Enter an Item..."
-                    type="text">
-              </div>
-              <div class="input-elements-box-content"> 
+
+              <div class="department-selector-input-content"> 
                 <label for="qty">Quantity</label>
                   <input 
                     id = "qty"
@@ -266,13 +203,13 @@ li {
                     type="number"
                   >
               </div>
-              <div class="input-elements-box-content">
+              <div class="department-selector-input-content">
                 <button 
                   class="reset" 
                   type="reset">Reset
                 </button>
               </div>
-              <div class="input-elements-box-content">
+              <div class="department-selector-input-content">
                 <button 
                   class="add-button"
                   type="submit">Add
@@ -290,13 +227,10 @@ li {
       </ul>
       <button class="print-list">Print Shopping List</button>
     </div> -->
-
-  </div>
-
   
   <!-- <script type="text/javascript" src="js/script.js"></script> -->
-</body>
-<script>
+
+<!-- <script>
 
 // items array structure: [{"id", id.value}, {"department", department}, {"name", item}, {"itemQty", number}  ]
 
@@ -395,5 +329,5 @@ itemItemsList.addEventListener('click', function(event) {
 // Source
 // https://thecodingpie.com/post/how-to-build-a-todo-list-app-with-javascript-and-local-storage/
 // https://www.webcodegeeks.com/html5/html5-local-storage-example/
-</script>
+</script> -->
 </html>
