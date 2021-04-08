@@ -196,6 +196,9 @@
       margin: 2em 0 0 0;
       text-align: left;
     }
+    label {
+      width: 160px;
+    }
   }
   @media screen and (max-width: 812px) {
     body {
@@ -422,6 +425,8 @@
   <li>add print functionality and operationalize print button</li>
   <li>move ::marker left in mobile view</li>
   <li>correct button active state colors (inc. border)</li>
+  <li>correct odd border colors on buttons (hover and active?)</li>
+  <li>add clear locatStorage button</li>
 </ol> -->
 
 <script>
@@ -461,17 +466,17 @@ let peopleArray = [];
 nameEntryForm.addEventListener('submit', function(event) {
   event.preventDefault();
   addName(
-    fNameInput,
-    lNameInput,
-    streetAddress1,
-    streetAddress2,
-    cityInput,
-    stateInput,
-    zipCodeInput,
-    phoneInput,
-    emailInput,
-    urlInput,
-    dobInput);
+    fNameInput.value,
+    lNameInput.value,
+    streetAddress1.value,
+    streetAddress2.value,
+    cityInput.value,
+    stateInput.value,
+    zipCodeInput.value,
+    phoneInput.value,
+    emailInput.value,
+    urlInput.value,
+    dobInput.value);
 });
 function addName(person) {
   if(person !== ""){
@@ -557,6 +562,7 @@ function getFromLocalStorage(){      // retrieve from localStorage
     renderPeopleArray(peopleArray);
   }
 }
+getFromLocalStorage();
 
 </script>
 
