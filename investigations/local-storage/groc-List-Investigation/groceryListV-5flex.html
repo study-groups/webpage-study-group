@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grocery List 5-flex</title>
 </head>
+<!-- TODOS
+1) add reset button
+2) 
+ -->
 <style>
   /* common styles */
 * {
@@ -18,6 +22,7 @@ body {
   font-family: sans-serif;
   font-weight: bold;
   background: linear-gradient(#5cff8d, #5cbeff);
+  
 }
 .main-header {
   color: var(--text-black);
@@ -48,35 +53,49 @@ li {
   padding: .5em 0 1em .5em;
   font-weight: normal;
 }
-.input-container {
+.main-input-container {
   flex-direction: row;
   border: 1px solid var(--text-black);
   border-radius: 0 10px 10px 0;
   margin: 0 2em 1em 0;
-  flex-grow: 1;
+  flex-grow: .5;
   font-size: 1.5em;
 }
 .data-input-header {
-  
   padding: .7em 0 0 .6em;
 }
 .data-input-box {
-  align-items: center;
+  display: inline-block;
   padding: 0 0 0 1em;
   margin: 1em 0 0 0;
-
+  
+}
+.dept-selector-container {
+  display: inline-block;
 }
 .dept-selector-title {
-  display: inline-block;
+ 
 }
 .dept-selector {
   padding: .5em 0 .5em .5em;
   margin: 0 0 0 .8em;
-  width: 300px;
+  width: 250px;
+  font-size: .8em;
+  height: 40px;
+
+}
+.item-input-group {
+  display: flex;
+  margin: 1em 0 1em 0;
 }
 .item-input {
   font-size: 1em;
+  margin: 0 0 0 .5em;
 }
+.qty-input-group {
+  margin: 0 0 0 .5em;
+}
+
 @media screen and (max-width: 812px) {
   .flexbox-container {
     flex-direction: column;
@@ -96,7 +115,7 @@ li {
     font-size: 1em;
     display: inline-block;
   }
-  .input-container {
+  .main-input-container {
     margin: 0 .8em 1em .8em;
     border-radius: 0 0 5px 5px;
     flex-direction: row;
@@ -146,7 +165,7 @@ li {
         <ul>
     </div>
 
-    <div class="input-container">
+    <div class="main-input-container">
       <div class="data-input-header">Enter Items</div>
 
         <div class="data-input-box"> 
@@ -174,160 +193,24 @@ li {
                 class="item-input"
                 placeholder="Enter an Item..."
                 type="text">
+        
+            <div class="qty-input-group">
+              <label for="qty">Qty:</label>
+                <input 
+                  id = "qty"
+                  class="item-input"
+                  min="0"
+                  max="99"
+                  placeholder="Qty"
+                  type="number">
+            </div>
           </div>
-          <div>
-          <label for="qty">Qty:</label>
-            <input 
-              id = "qty"
-              class="item-input"
-              placeholder="Qty"
-              type="number">
-          </div>
-          
-          <div class="list-header">Items List</div>
-      </div>
+        </div>
+      <div class="list-header">Items List</div>
     </div>
 
 
 </div> 
 </section>
 </body>
-    <!-- 
-
-              <div class="department-selector-input-content"> 
-                <label for="qty">Quantity</label>
-                  <input 
-                    id = "qty"
-                    class="item-input"
-                    placeholder="Qty"
-                    type="number"
-                  >
-              </div>
-              <div class="department-selector-input-content">
-                <button 
-                  class="reset" 
-                  type="reset">Reset
-                </button>
-              </div>
-              <div class="department-selector-input-content">
-                <button 
-                  class="add-button"
-                  type="submit">Add
-                </button>
-              </div>
-            </form>
-          </div>
-    
-      <ul class="grocery-list-box">
-        <li class="item" data-key="1594003133171">
-          <input class="checkbox" type="checkbox">
-            Oranges
-          <button class="delete-button">X</button>
-        </li>
-      </ul>
-      <button class="print-list">Print Shopping List</button>
-    </div> -->
-  
-  <!-- <script type="text/javascript" src="js/script.js"></script> -->
-
-<!-- <script>
-
-// items array structure: [{"id", id.value}, {"department", department}, {"name", item}, {"itemQty", number}  ]
-
-const enterItemsForm = document.querySelector('.grocery-form');
-const itemInput = document.querySelector('.item-input');
-const itemItemsList = document.querySelector('.grocery-list-box');
-var itemInputQty = document.querySelector('qty');
-
-var items = [];
-
-enterItemsForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  addItem(itemInput.value); // call addItem function with input box current value
-});
-
-function addItem(item) {
-  if (item !== '') {
-    var item = {
-      id: Date.now(),
-      name: item,
-      completed: false,
-      itemInputQty: itemInputQty
-    };
-
-  items.push(item);
-    addToLocalStorage(items); 
-
-  itemInput.value = '';
-
-  }
-}
-
-function renderItems(items) {
-  itemItemsList.innerHTML = '';
-
-  items.forEach(function(item) {
-    const checked = item.completed ? 'checked': null;
-    const li = document.createElement('li');
-      li.setAttribute('class', 'item');
-      li.setAttribute('data-key', item.id);
-   
-    if (item.completed === true) {
-      li.classList.add('checked');
-    }
-
-    li.innerHTML = `
-      <input type="checkbox" class="checkbox" ${checked}>
-      ${item.name}
-      <button class="delete-button">X</button>
-    `;
-    
-    itemItemsList.append(li);
-  });
-
-}
-function addToLocalStorage(items) {
-  localStorage.setItem('items', JSON.stringify(items));
-  renderItems(items);
-}
-function getFromLocalStorage() {
-  const reference = localStorage.getItem('items');
-  if (reference) {
-    items = JSON.parse(reference);
-    renderItems(items);
-  }
-}
-function toggle(id) {
-  items.forEach(function(item) {
-    if (item.id == id) {
-      item.completed = !item.completed;
-    }
-  });
-  addToLocalStorage(items);
-}
-function deleteItem(id) {
-  items = items.filter(function(item) {
-  return item.id != id;
-  });
-  addToLocalStorage(items);
-}
-getFromLocalStorage();
-
-itemItemsList.addEventListener('click', function(event) {
-  if (event.target.type === 'checkbox') {
-    toggle(event.target.parentElement.getAttribute('data-key'));
-  }
-  if (event.target.classList.contains('delete-button')) {
-    deleteItem(event.target.parentElement.getAttribute('data-key'));
-  }
-});
-
-
-
-
-
-// Source
-// https://thecodingpie.com/post/how-to-build-a-todo-list-app-with-javascript-and-local-storage/
-// https://www.webcodegeeks.com/html5/html5-local-storage-example/
-</script> -->
 </html>
