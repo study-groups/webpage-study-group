@@ -417,41 +417,19 @@
 <!-- <h3 class="todo-list">ToDo List</h3>
 <ol class="todos">
   <li>load display list at start-up</li>
-  <li>correct start location of 1st card (starts at #2)</li>
-  <li>correct alignment in mobile view</li>
-  <li>tweak mobile view css</li>
   <li>create better transition between full screen and mobile view</li>
-  <li>move location of placeholder (optional) ex: https://stackoverflow.com/questions/48260921/css-how-to-change-position-of-input-placeholder</li>
   <li>add delete button functionality</li>
   <li>add print functionality and operationalize print button</li>
-  <li>move delete button (to display card)</li>
-  <li>format list display margins in mobile view</li>
-  <li>correctly align input fields in mobile view</li>
-  <li>correct card output format (where is DOB?)</li>
-  <li>complete code for theme (color) changes, code not working correctly</li>
   <li>move ::marker left in mobile view</li>
-  <li>change color names, non-sematic</li>
   <li>correct button active state colors (inc. border)</li>
 </ol> -->
 
 <script>
 // THEME CODE //
 
-// function changeTheme(){
-//   if (document.body.classlist = ""){
-//     document.body.classlist = "sg"
-//   } else {
-//     (document.body.classList = "");
-//   };
-// }
-// changeTheme();
-
 document.querySelector('.theme-toggle-button').addEventListener('click', () => {
   document.body.classList.toggle("sg");
 });
-
-
-
 
 // FORM CODE //
 const nameEntryForm = document.querySelector('.name-entry-form');
@@ -495,7 +473,6 @@ nameEntryForm.addEventListener('submit', function(event) {
     urlInput,
     dobInput);
 });
-
 function addName(person) {
   if(person !== ""){
     var person = {
@@ -512,7 +489,6 @@ function addName(person) {
       urlInput: urlInput.value,
       dobInput: dobInput.value
     }
-
     peopleArray.push(person);
     addToLocalStorage(peopleArray); // trigger add function below
 
@@ -531,14 +507,12 @@ function addName(person) {
     dobInput.value = "";
   }
 }
-
 function renderPeopleArray(peopleArray) {
   peopleList.innerHTML = ''; 
 
    // ensures ol has no contents
 
   for(i = 0; i < peopleArray.length; i++) {
-
     var li = document.createElement("li"); //add other fields when working properly
     li.innerHTML = 
       peopleArray[i].name + " " +
@@ -563,7 +537,6 @@ function renderPeopleArray(peopleArray) {
         borderRadius: "5px",
         margin: "15px 0 15px 7px",
         background: "var(--background-card)"
-
       }
       Object.assign(li.style, styles);
   } 
@@ -575,7 +548,6 @@ function addToLocalStorage(peopleArray) { // add to localStorage
   
   renderPeopleArray(peopleArray);
 
-
 }
 function getFromLocalStorage(){      // retrieve from localStorage
   var reference = localStorage.getItem('peopleArray');
@@ -584,7 +556,6 @@ function getFromLocalStorage(){      // retrieve from localStorage
     peopleArray = JSON.parse(reference);
     renderPeopleArray(peopleArray);
   }
-
 }
 
 </script>
