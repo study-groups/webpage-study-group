@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> 
+  <title>Grocery List 5-flex</title>
+</head>
+<style>
+body {
+  font-size: 1.5em;
+  margin-left: 2em;
+}
+.main-header {
+  text-align: center;
+}
+.main-container {
+  display: flex;
+  border: 4px solid blue;
+  max-width: 750px;
+  margin: auto;
+
+}
+.department-container {
+  border: 4px solid purple;
+  margin: 10px;
+  padding: .5em;
+}
+.data-input-container {
+  /* display: flex;
+  flex-direction: column; */
+  border: 4px solid green;
+  margin: 10px;
+  min-width: 400px;
+  padding: .5em;
+}
+.data-output-container {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid palevioletred;
+  margin: 10px;
+  padding: .5em;
+}
+ul {
+  list-style: none;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid red;
+  margin: 10px;
+  padding: .8em;
+}
+label {
+  display: inline-block;
+  width: 130px;
+  text-align: left;
+}
+input.dept-selector {
+  width: 200px;
+}
+input.item-input {
+  width: 200px;
+}
+input.qty-input {
+  width: 50px;
+}
+li {
+  font-size: .8em;
+}
+button {
+  margin: .5em 0 .5em 0;
+}
+
+</style>
+<main>
+  <h1 class="main-header">Grocery Shopping List</h1>
+  <div class="main-container">
+    <!-- DEPARTMENT LIST -->
+    <div class="department-container">
+      <div class="department-list">Departments</div>
+      <ul>
+        <li>Ex. 1</li>
+        <li>Ex. 2</li>
+        <li>Ex. 3</li>
+      </ul>
+    </div>
+    <div class="data-container">
+      <!-- DATA INPUT -->
+      <div class="data-input-container">
+        <div class="dept-input">
+          <label for="dept-input" id="dept-input-label">Department:</label>
+          <input class="dept-selector" placeholder="Enter department">
+        </div>
+        <div class="item-input">
+          <label for="item-input" id="item-input-label">Item:</label>
+          <input class="item-input" placeholder="Enter item...">
+        </div>
+        <div class="qty-input">
+          <label for="qty-input" id="qty-input-label">Quantity:</label>
+            <input class="qty-input" placeholder="Qty...">
+          
+        </div>
+      </div> 
+      <!-- DATA OUTPUT -->
+      <div class="data-output-container">
+        <div class="output-list">Shopping List</div>
+          <ul class="grocery-items">
+            <li><input classs="checkbox" type="checkbox">Item 1
+              <button class="delete-btn">Delete</button>
+            </li>
+            <li><input classs="checkbox" type="checkbox">Item 2
+              <button class="delete-btn">Delete</button>
+            </li>
+            <li><input classs="checkbox" type="checkbox">Item 3
+              <button class="delete-btn">Delete</button>
+            </li>
+            <li><input classs="checkbox" type="checkbox">Item 4
+              <button class="delete-btn">Delete</button>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <!-- BUTTONS -->
+    <div class="button-container">
+      <button class="add-btn" type="button">ADD</button>
+      <button class="reset-btn" type="reset">RESET</button>
+      <button class="print-btn" type="submit">PRINT</button>
+    </div>
+    
+    
+  </main>
+</body>
+</html>
