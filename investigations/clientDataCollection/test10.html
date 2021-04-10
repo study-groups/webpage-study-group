@@ -512,25 +512,26 @@ function addName(person) {
     dobInput.value = "";
   }
 }
-function renderPeopleArray(peopleArray) {
+function renderList(peopleArray) {
   peopleList.innerHTML = ''; 
 
    // ensures ol has no contents
 
   for(i = 0; i < peopleArray.length; i++) {
-    var li = document.createElement("li"); //add other fields when working properly
+    var li = document.createElement("li");
+    
     li.innerHTML = 
-      peopleArray[i].name + " " +
-      peopleArray[i].name2 + " " + "<br>" +
-      peopleArray[i].streetAddress1 + ", " +
-      peopleArray[i].streetAddress2 + " " + "<br>" +
-      peopleArray[i].cityInput + ", " +
-      peopleArray[i].stateInput + " " + "<br>" +
-      peopleArray[i].zipCodeInput + " " + "<br>" + 
-      peopleArray[i].emailInput + " " + "<br>" +
-      peopleArray[i].phoneInput + " " + "<br>"
-      peopleArray[i].urlInput + " " + "<br>" + "DOB:" + 
-      peopleArray[i].dobInput
+      `${peopleArray[i].name}` + " " +
+      `${peopleArray[i].name2}` + `<br>` +
+      `${peopleArray[i].streetAddress1}` + ", " +
+      `${peopleArray[i].streetAddress2}` + `<br>` +
+      `${peopleArray[i].cityInput}` + ", " +
+      `${peopleArray[i].stateInput}` + " " + " " +
+      `${peopleArray[i].zipCodeInput}` + `<br>` + `<br>` + "E: " +
+      `${peopleArray[i].emailInput}` + "" + `<br>` + "P: " +
+      `${peopleArray[i].phoneInput}` + "" + `<br>` + "URL: " +
+      `${peopleArray[i].urlInput}` + "" + `<br>` + "DOB: " +
+      `${peopleArray[i].dobInput}`
 
       const styles = {
         maxWidth: "300px",
@@ -545,23 +546,30 @@ function renderPeopleArray(peopleArray) {
       }
       Object.assign(li.style, styles);
   } 
-  peopleList.appendChild(li); // peopleList = <ol>
-  
+
+
+  peopleList.append(li); // peopleList = <ol>
+
 } 
+
 function addToLocalStorage(peopleArray) { // add to localStorage
   localStorage.setItem('peopleArray', JSON.stringify(peopleArray));
   
-  renderPeopleArray(peopleArray);
+  renderList(peopleArray);
 
 }
 function getFromLocalStorage(){      // retrieve from localStorage
-  var reference = localStorage.getItem('peopleArray');
+  var listNames = localStorage.getItem('peopleArray');
 
-  if(reference) {
-    peopleArray = JSON.parse(reference);
-    renderPeopleArray(peopleArray);
+  var list = JSON.parse(listNames);
+  console.log("list name", list);
+
+  renderList(list);
+  // if(reference) {
+  //   peopleArray = JSON.parse(reference);
+  //   renderPeopleArray(peopleArray);
   }
-}
+
 getFromLocalStorage();
 
 </script>
