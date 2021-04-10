@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> 
   <title>Grocery List 5-flex</title>
 </head>
 <!-- TODOS
@@ -16,17 +18,21 @@
   margin: 0;
 }
 :root {
-  --text-black: #383838;
+  --black: #3a3a3a;
+  --input: #fff;
+  --input-text: #818080;
+  --accent1: #5cc5f2;
 }
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   background: linear-gradient(#5cff8d, #5cbeff);
   
 }
 .main-header {
-  color: var(--text-black);
+  color: var(--black);
   font-size: 2em;
+  font-weight: bold;
   text-align: center;
   margin: 1.3em 0 1em 0;
 }
@@ -35,7 +41,7 @@ body {
   display: flex;
 }
 .dept-container {
-  border: 1px solid var(--text-black);
+  border: 1px solid var(--black);
   margin: 0 1em 1em 2em;
   max-width: 350px;
   border-radius: 10px 0 0 10px;
@@ -44,6 +50,7 @@ body {
 .dept-header {
   font-size: 1.5em;
   padding: 0 0 .5em 0;
+  border-bottom: 2px solid var(--accent1);
 }
 ul {
   margin: .5em 0 .5em .2em;
@@ -53,47 +60,76 @@ li {
   padding: .5em 0 1em .5em;
   font-weight: normal;
 }
-.main-input-container {
+.main-container {
   flex-direction: row;
-  border: 1px solid var(--text-black);
+  /* border: 1px solid var(--black); */
   border-radius: 0 10px 10px 0;
-  margin: 0 2em 1em 0;
-  flex-grow: .5;
+  margin: 0 0 1em 0;
   font-size: 1.5em;
+  padding: 0 1em 0 0;
 }
 .data-input-header {
-  padding: .7em 0 0 .6em;
+  margin: .7em 0 1em 0;
+  padding: 0 0 .5em 0;
+  border-bottom: 2px solid var(--accent1);
 }
 .data-input-box {
   display: inline-block;
-  padding: 0 0 0 1em;
-  margin: 1em 0 0 0;
-  
+  padding: 0 1em 0 1em;
+  margin: 0 0 0 0;
+  border: 1px solid var(--black);
+  border-radius: 0 10px 0 0;
 }
 .dept-selector-container {
-  display: inline-block;
-}
-.dept-selector-title {
- 
+  display: flex;
+  flex-direction: column;
 }
 .dept-selector {
-  padding: .5em 0 .5em .5em;
-  margin: 0 0 0 .8em;
-  width: 250px;
-  font-size: .8em;
-  height: 40px;
-
+  padding: 0 0 0 .5em;
+  /* margin: 0 0 0 .8em; */
+  width: 270px;
+  font-family: 'Roboto', sans-serif;
+  font-size: .9em;
+  height: 35px;
+  border-radius: 5px;
+  vertical-align: middle;
+  color: var(--input-text);
 }
-.item-input-group {
-  display: flex;
+.input-group {
+  /* display: flex; */
   margin: 1em 0 1em 0;
 }
 .item-input {
-  font-size: 1em;
+  font-size: .9em;
   margin: 0 0 0 .5em;
+  font-family: 'Roboto', sans-serif;
+  height: 32px;
+  border-radius: 5px;
+  vertical-align: middle;
+  padding: 0 0 0 10px;
 }
 .qty-input-group {
   margin: 0 0 0 .5em;
+}
+.ouput-container {
+  flex-direction: row;
+  border: 1px solid var(--black);
+  border-radius: 0 10px 10px 0;
+  margin: 0 0 1em 0;
+  flex-grow: .5;
+  font-size: 1.5em;
+  padding: 0 1em 0 0;
+}
+.output-group {
+  border: 1px solid var(--black);
+  border-radius: 0 0 10px 0;
+  margin: .3em 0 0 0;
+  min-height: 340px;
+  padding: 1em;
+}
+.output-header {
+  padding: 0 0 .5em 0;
+  border-bottom: 2px solid var(--accent1);
 }
 
 @media screen and (max-width: 812px) {
@@ -115,11 +151,11 @@ li {
     font-size: 1em;
     display: inline-block;
   }
-  .main-input-container {
+  .main-container {
     margin: 0 .8em 1em .8em;
     border-radius: 0 0 5px 5px;
     flex-direction: row;
-    flex-grow: 0;
+    /* flex-grow: 0; */
     font-size: 1.2em;
   }
   .data-input-header {
@@ -131,6 +167,7 @@ li {
     align-items: unset;
     margin: 0;
     padding: 0;
+   
   }
   .dept-selector {
     width: 190px;
@@ -165,14 +202,12 @@ li {
         <ul>
     </div>
 
-    <div class="main-input-container">
+    <div class="main-container">
+      <div class="data-input-box"> 
       <div class="data-input-header">Enter Items</div>
-
-        <div class="data-input-box"> 
-
           <div class="dept-selector-container">     
-            <label for="dept-selector" class="dept-selector-title">Select Depart.:</label>
-            <select class="dept-selector" id="dept-selector" name="department">
+              <label for="dept-selector" class="dept-selector-title">Select   Depart.:</label>
+              <select class="dept-selector" id="dept-selector" name="department">
               <option value="produce">Produce</option>
               <option value="meat-seafood">Meat/Seafood</option>
               <option value="frozen-food">Frozen Food</option>
@@ -184,31 +219,37 @@ li {
               <option value="bakery">Bakery</option>
               <option value="dry-canned-goods">Dry & Canned      Items</option>
               <option value="cleaning">Cleaning Supplies</option>
-            </select>
-          </div>
+              </select>
+            </div>
         
-          <div class="item-input-group">
-            <label id="item-input-label" for="item-input-label">Item:</label>
+            <div class="input-group">
+              <label id="item-input-label" for="item-input-label">Item:</label>
               <input 
                 class="item-input"
                 placeholder="Enter an Item..."
                 type="text">
-        
-            <div class="qty-input-group">
-              <label for="qty">Qty:</label>
-                <input 
-                  id = "qty"
-                  class="item-input"
-                  min="0"
-                  max="99"
-                  placeholder="Qty"
-                  type="number">
+              <div class="qty-input-group">
+                <label for="qty">Qty:</label>
+                  <input 
+                    id = "qty"
+                    class="item-input"
+                    min="0"
+                    max="99"
+                    placeholder="Qty"
+                    type="number">
+              </div>
             </div>
           </div>
+          <div class="output-group">
+            <div class="output-header">Items List</div>
+            <ul class="list-output">
+              <!-- <li>'s to go here -->
+            </ul>
+          </div>
         </div>
-      <div class="list-header">Items List</div>
-    </div>
-
+        
+  
+</div>
 
 </div> 
 </section>
