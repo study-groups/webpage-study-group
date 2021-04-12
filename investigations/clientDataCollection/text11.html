@@ -15,7 +15,7 @@
   body {
     /* main body colors */
     --background-body: #691699;
-    --background-form: #efefef;
+    --background-form: #bfbfbf;
     --form-text: #000;
 
     /* input form colors */
@@ -87,7 +87,7 @@
       width: 275px;
       text-align: center;
       align-self: center;
-      font-size: 1.2em;
+      font-size: 1.4em;
       font-weight: 600;
       border-right: 1px solid black;
       padding: 1em;
@@ -117,6 +117,7 @@
       width: 215px;
       font-size: 1em;
       padding: 0 0 0 5px;
+      border-radius: 5px;
     }
     /* INPUT GROUPS */
     .gap-div {
@@ -215,15 +216,20 @@
       margin: 1em 6em 1em 6em;
       background: var(--background-output-cards);
       border-radius: 10px;
-
+      font-size: 1.5em;
+      color: var(--button-text);
+      justify-content: center;
+    }
+    .list-header {
+      text-align: center;
+      font-size: 1.3em;
+      color: var(--button-text);
+      margin: 1em;
     }
     .people-list-group {
       text-align: center;
-      /* background: var(--background-output); */
-      border-bottom: 1 px solid var(--background-output);
       color: #fff;
-      margin: 1em;
-      font-size: 1.5em;
+      line-height: 105%;
       /*
       text-align: center;
       
@@ -234,13 +240,11 @@
       justify-content: space-evenly;
       flex-wrap: wrap;
       font-size: .9em;
-      margin: 2em 0 0 0;
       text-align: left;
-      background: var(--background-output);
     }
     .card-format {
-      min-width: 300px;
-      margin: 1em;
+      margin: 0;
+      border: 1px solid var(--background-form);
     }
     label {
       width: 110px;
@@ -340,13 +344,21 @@
     #print-btn {
       border-radius: 0 0 5px 5px;
     }
+    .list-header {
+      font-size: .8em;
+    }
     .output-container {
       display: block;
-      
+      margin: .3em .15em 2em .15em;
+      padding: .2em 0 .2em 0;
     }
     .people-list-group {
-      font-size: .8em;
+      font-size: .6em;
       margin: .5em;
+      line-height: normal;
+    }
+    .people-list {
+      margin-left: -1.5em;
     }
   }
 </style>
@@ -459,8 +471,9 @@
         <!-- <button class="btn" id="delete-btn"  type="submit">Delete</button> -->
       </form>  
     </div>
+    <div class="list-header">-- List Data --</div>
     <div class="output-container">
-      <div id="people-list-group"class="people-list-group">List Data
+      <div id="people-list-group"class="people-list-group">
         <ol id="people-list" class="people-list">
             <!-- <li>'s' from javascript -->
         </ol>
@@ -592,10 +605,10 @@ function renderList(peopleArray) {
         li.setAttribute("class", "card-format");
 
         const styles = {
+          minWidth: "285px",
           maxWidth: "300px",
           height: "auto",
           color: "#fff",
-          border: "1px solid #fff",
           fontSize: ".8em",
           padding: "10px 0 10px 15px",
           borderRadius: "5px",
