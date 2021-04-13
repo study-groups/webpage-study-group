@@ -8,18 +8,17 @@
   <title>Grocery List 6-flex</title>
 </head>
 <style>
-body {
-  font-size: 1.5em;
-  margin-left: 2em;
-}
+
 .main-header {
   text-align: center;
+  flex-grow: 1;
 }
 .main-container {
   display: flex;
   border: 4px solid blue;
   max-width: 750px;
   margin: auto;
+  padding-right: 10px;
 
 }
 .department-container {
@@ -81,9 +80,17 @@ button {
     <div class="department-container">
       <div class="department-list">Departments</div>
       <ul>
-        <li>Ex. 1</li>
-        <li>Ex. 2</li>
-        <li>Ex. 3</li>
+        <li>Produce</li>
+        <li>Meat/Seafood</li>
+        <li>Frozen Foods</li>
+        <li>Dairy</li>
+        <li>Paper Goods</li>
+        <li>Health $ Beauty</li>
+        <li>Int'l Foods</li>
+        <li>Deli</li>
+        <li>Bakery</li>
+        <li>Dry Goods/Canned Items</li>
+        <li>Cleaning</li>
       </ul>
     </div>
     <div class="data-container">
@@ -127,6 +134,10 @@ button {
       <button class="add-btn" type="button">ADD</button>
       <button class="reset-btn" type="reset">RESET</button>
       <button class="print-btn" type="submit">PRINT</button>
+      <button class="sort-btn" type="submit">SORT</button>
+      <button class="delete-all-btn" type="submit">DELETE LIST</button><!-- AKA: clear localStorage  -->
+      <button class="search" type="submit">SEARCH</button>
+      
     </div>
     
     
