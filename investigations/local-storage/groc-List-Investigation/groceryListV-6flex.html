@@ -8,48 +8,101 @@
   <title>Grocery List 6-flex</title>
 </head>
 <style>
-
+:root {
+  --text: #140d94;
+  --text-alt: #fff;
+  --borders: #140d94;
+  --buttons: #63c1f7;
+}
+body {
+  background: gray;
+  font-size: 16px;
+  color: var(--text);
+  font-family: 'Roboto', sans-serif;
+}
 .main-header {
+  font-size: 2.5em;
   text-align: center;
   flex-grow: 1;
+  color: var(--text-alt);
+  margin: 2em 0 1.5em 0;
 }
 .main-container {
-  display: flex;
-  border: 4px solid blue;
   max-width: 750px;
   margin: auto;
-  padding-right: 10px;
-
+  background: linear-gradient(#6ef46e, #f9f78b, #63c1f7);
+  font-size: 1.4em;
+  min-height: 900px;
+  border-radius: 10px;
+}
+.dept-header, .data-input-header, 
+.btn-header, .shop-list-header {
+  font-size: 90%;
+  text-align: center;
+  padding: .5em 0 .5em 0;
+  letter-spacing: 3px;
 }
 .department-container {
-  border: 4px solid purple;
-  margin: 10px 0 10px 10px;
+  display: flex;
+  border: 1px solid var(--borders);
+  border-radius: 10px 10px 0 0;
+  justify-content: space-evenly;
+  margin: 3px 10px 5px 10px;
+  color: #140d94;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  list-style: none;
+  /* padding: .5em .5em; */
+}
+.dept-grp {
+  margin: 0;
   padding: .5em;
 }
+li {
+  /* margin: 5px; */
+  font-size: .7em;
+  line-height: 130%;
+}
 .data-input-container {
-  /* display: flex;
-  flex-direction: column; */
-  border: 4px solid green;
-  margin: 10px;
-  min-width: 400px;
-  padding: .5em;
+  display: flex;
+  border: 1px solid var(--borders);
+  margin: 3px 10px 5px 10px;
+  padding: 1em 0 1em 2em;
+}
+input {
+  font-size: .8em;
+  border-radius: 5px;
+  padding: 5px;
+  margin: .3em 0 0 0;
 }
 .data-output-container {
   display: flex;
   flex-direction: column;
-  border: 4px solid palevioletred;
+  border: 2px solid var(--borders);
   margin: 10px;
   padding: .5em;
 }
-ul {
-  list-style: none;
-}
 .button-container {
   display: flex;
-  flex-direction: column;
-  border: 4px solid red;
-  margin: 10px 0 10px 0;
-  padding: 1.2em;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 2px solid var(--borders);
+  margin: 0 10px;
+  padding: 1em;
+  justify-content: center;
+}
+.btn {
+  margin: 5px;
+  padding: 5px;
+  min-width: 200px;
+  border-radius: 5px;
+  color: var(--text-alt);
+  font-weight: bold;
+  font-size: .8em;
+  background-color: var(--buttons);
 }
 label {
   display: inline-block;
@@ -65,82 +118,109 @@ input.item-input {
 input.qty-input {
   width: 50px;
 }
-li {
-  font-size: .8em;
-}
 button {
   margin: .5em 0 .5em 0;
 }
-
+@media only screen and (max-width: 812px) {
+  .main-header {
+    font-size: 1.5em;
+    margin: 1em 1em;
+  }
+  .department-container {
+    display: inline-flex;
+    font-size: .8em;
+  }
+  .data-input-container {
+    flex-direction: column;
+  }
+}
 </style>
-<main>
-  <h1 class="main-header">Grocery Shopping List</h1>
-  <div class="main-container">
-    <!-- DEPARTMENT LIST -->
-    <div class="department-container">
-      <div class="department-list">Departments</div>
-      <ul>
-        <li>Produce</li>
-        <li>Meat/Seafood</li>
-        <li>Frozen Foods</li>
-        <li>Dairy</li>
-        <li>Paper Goods</li>
-        <li>Health $ Beauty</li>
-        <li>Int'l Foods</li>
-        <li>Deli</li>
-        <li>Bakery</li>
-        <li>Dry Goods/Canned Items</li>
-        <li>Cleaning</li>
-      </ul>
-    </div>
-    <div class="data-container">
-      <!-- DATA INPUT -->
-      <div class="data-input-container">
-        <div class="dept-input">
-          <label for="dept-input" id="dept-input-label">Department:</label>
-          <input class="dept-selector" placeholder="Enter department">
+  <main>
+    <h1 class="main-header">GROCERY LIST</h1>
+      <div class="main-container">
+        <!-- DEPARTMENT LIST -->
+        <div>
+          <div class="dept-header">~ Departments ~</div>
+            <div class="department-container">
+              <ul class="dept-grp">
+                <li>Produce</li>
+                <li>Meat/Seafood</li>
+                <li>Frozen Foods</li>
+              </ul>
+              <ul class="dept-grp">
+                <li>Dairy</li>
+                <li>Paper Goods</li>
+                <li>Health & Beauty</li>
+              </ul>
+              <ul class="dept-grp">  
+                <li>Int'l Foods</li>
+                <li>Deli</li>
+                <li>Bakery</li>
+              </ul>
+              <ul class="dept-grp">
+                <li>Dry Goods/</li>
+                <li>Canned Items</li>
+                <li>Cleaning</li>
+              </ul>
+            </div>
         </div>
-        <div class="item-input">
-          <label for="item-input" id="item-input-label">Item:</label>
-          <input class="item-input" placeholder="Enter item...">
+        <!-- DATA INPUT -->
+        <div>
+          <div class="data-input-header">~ Enter Items ~</div>
+            <div class="data-input-container">
+              <div class="dept-input">
+                <label for="dept-input" id="dept-input-label">Department:</label>
+                <input class="dept-selector" placeholder="Enter department">
+              </div>
+              <div class="item-input">
+                <label for="item-input" id="item-input-label">Item:</label>
+                <input class="item-input" placeholder="Enter item...">
+              </div>
+              <div class="qty-input">
+                <label for="qty-input" id="qty-input-label">Qty:</label>
+                <input class="qty-input" placeholder="Qty...">
+              </div>
+            </div>
         </div>
-        <div class="qty-input">
-          <label for="qty-input" id="qty-input-label">Quantity:</label>
-            <input class="qty-input" placeholder="Qty...">
-          
+        <!-- BUTTONS -->
+        <div>
+          <div class="btn-header">~ Controls ~</div>
+            <div class="button-container">
+              <div class="btn-grp-1">
+                <button class="add-btn btn" type="button">ADD</button>
+                <button class="reset-btn btn" type="reset">RESET</button>
+                <button class="print-btn btn" type="submit">EDIT ITEM</button>
+              </div>
+              <div class="btn-grp-2">
+                <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
+                <button class="delete-all-btn btn" type="submit">DELETE LIST</button><!-- AKA: clear localStorage  -->
+                <button class="search btn" type="submit">PRINT</button>
+              </div>
+            </div>
         </div>
-      </div> 
-      <!-- DATA OUTPUT -->
-      <div class="data-output-container">
-        <div class="output-list">Shopping List</div>
-          <ul class="grocery-items">
-            <li><input classs="checkbox" type="checkbox">Item 1
-              <button class="delete-btn">Delete</button>
-            </li>
-            <li><input classs="checkbox" type="checkbox">Item 2
-              <button class="delete-btn">Delete</button>
-            </li>
-            <li><input classs="checkbox" type="checkbox">Item 3
-              <button class="delete-btn">Delete</button>
-            </li>
-            <li><input classs="checkbox" type="checkbox">Item 4
-              <button class="delete-btn">Delete</button>
-            </li>
-          </ul>
+        <!-- DATA OUTPUT -->
+        <div class="shop-list-header">~ Shopping List ~
+          <div class="data-output-container">
+            <div class="output-list"></div>
+              <ul class="grocery-items">
+                <li><input classs="checkbox" type="checkbox">Item 1
+                  <button class="delete-btn">Delete</button>
+                </li>
+                <li><input classs="checkbox" type="checkbox">Item 2
+                  <button class="delete-btn">Delete</button>
+                </li>
+                <li><input classs="checkbox" type="checkbox">Item 3
+                  <button class="delete-btn">Delete</button>
+                </li>
+                <li><input classs="checkbox" type="checkbox">Item 4
+                  <button class="delete-btn">Delete</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- BUTTONS -->
-    <div class="button-container">
-      <button class="add-btn" type="button">ADD</button>
-      <button class="reset-btn" type="reset">RESET</button>
-      <button class="print-btn" type="submit">PRINT</button>
-      <button class="sort-btn" type="submit">SORT</button>
-      <button class="delete-all-btn" type="submit">DELETE LIST</button><!-- AKA: clear localStorage  -->
-      <button class="search" type="submit">SEARCH</button>
-      
-    </div>
-    
-    
   </main>
 </body>
 </html>
