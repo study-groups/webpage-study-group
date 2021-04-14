@@ -617,8 +617,6 @@ function renderList(peopleArray) {
 
     })
   };
-
-
 function addToLocalStorage(peopleArray) { // add to localStorage
   localStorage.setItem('peopleArray', JSON.stringify(peopleArray));
   
@@ -626,17 +624,17 @@ function addToLocalStorage(peopleArray) { // add to localStorage
 
 }
 function getFromLocalStorage(){      // retrieve from localStorage
+  
   var listNames = localStorage.getItem('peopleArray');
-
-  var list = JSON.parse(listNames);
-  console.log("list name", list);
+  
+  if(listNames) { 
+    peopleArray = JSON.parse(listNames);
+    console.log("list name", listNames);
 
   renderList(peopleArray);
-  // if(reference) {
-  //   peopleArray = JSON.parse(reference);
-  //   renderPeopleArray(peopleArray);
-  }
 
+  }
+}
 getFromLocalStorage();
 
 </script>
