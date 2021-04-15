@@ -13,6 +13,7 @@
   --text-alt: #fff;
   --borders: #140d94;
   --buttons: #63c1f7;
+  --input-box: #999898;
 }
 body {
   background: gray;
@@ -33,20 +34,24 @@ body {
   background: linear-gradient(#6ef46e, #f9f78b, #63c1f7);
   font-size: 1.4em;
   min-height: 900px;
+  border: 3px solid var(--borders);
   border-radius: 10px;
 }
 .dept-header, .data-input-header, 
 .btn-header, .shop-list-header {
+  color: var(--text-alt);
   font-size: 90%;
   text-align: center;
-  padding: .5em 0 .5em 0;
+  padding: .1em 0 .3em 0;
   letter-spacing: 3px;
-}
+  /* border: 1px solid var(--borders); */
+  margin: 15px;
+  border-radius: 8px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.2);
+} 
 .department-container {
   display: flex;
-
-  border: 1px solid var(--borders);
-  border-radius: 10px 10px 0 0;
   justify-content: space-evenly;
   margin: 3px 10px 5px 10px;
   color: #140d94;
@@ -67,12 +72,17 @@ li {
   font-size: .7em;
   line-height: 130%;
 }
-.data-input-container {
+.data-input-form {
   display: flex;
-  border: 1px solid var(--borders);
-  margin: 3px 10px 5px 10px;
-  padding: 1em 0 1em 2em;
+
 }
+label {
+  /* margin-left: 15px; */
+}
+.dept-input {
+  margin: 0 0 0 50px;
+}
+
 input {
   font-size: .8em;
   border-radius: 5px;
@@ -82,7 +92,6 @@ input {
 .data-output-container {
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--borders);
   margin: 10px;
   padding: .5em;
   border-radius: 0 0 10px 10px;
@@ -91,7 +100,6 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 2px solid var(--borders);
   margin: 0 10px;
   padding: 1em;
   justify-content: center;
@@ -106,20 +114,6 @@ input {
   font-size: .8em;
   background-color: var(--buttons);
 }
-label {
-  display: inline-block;
-  width: 130px;
-  text-align: left;
-}
-input.dept-selector {
-  width: 200px;
-}
-input.item-input {
-  width: 200px;
-}
-input.qty-input {
-  width: 50px;
-}
 button {
   margin: .5em 0 .5em 0;
 }
@@ -132,11 +126,12 @@ button {
     display: inline-flex;
     font-size: .8em;
   }
-  .data-input-container {
+  .data-imput-form {
     flex-direction: column;
   }
 }
 </style>
+<body>
   <main>
     <h1 class="main-header">GROCERY LIST</h1>
       <div class="main-container">
@@ -168,25 +163,25 @@ button {
         </div>
         <!-- DATA INPUT -->
         <div>
-          <div class="data-input-header">~ Enter Items ~</div>
-            <div class="data-input-container">
-              <div class="dept-input">
-                <label for="dept-input" id="dept-input-label">Department:</label>
-                <input class="dept-selector" placeholder="Enter department">
-              </div>
-              <div class="item-input">
-                <label for="item-input" id="item-input-label">Item:</label>
-                <input class="item-input" placeholder="Enter item...">
-              </div>
-              <div class="qty-input">
-                <label for="qty-input" id="qty-input-label">Qty:</label>
-                <input class="qty-input" placeholder="Qty...">
-              </div>
-            </div>
-        </div>
+          <div class="data-input-header">~~ Enter Items ~~</div>
+              <form class="data-input-form">
+                <div class="dept-input">
+                  <label for="department" >Department:</label>
+                  <input id="department"placeholder="Enter department" class="department">
+                </div>
+                <div class="item-input">
+                  <label for="item-input" id="item-input-label">Item:</label>
+                  <input class="item-input" placeholder="Enter item...">
+                </div>
+                <div class="qty-input">
+                  <label for="qty-input" id="qty-input-label">Qty:</label>
+                  <input class="qty-input" placeholder="Qty...">
+                </div>
+              </form>
+           </div>
         <!-- BUTTONS -->
         <div>
-          <div class="btn-header">~ Controls ~</div>
+          <div class="btn-header">~~~ Controls ~~~</div>
             <div class="button-container">
               <div class="btn-grp-1">
                 <button class="add-btn btn" type="button">ADD</button>
@@ -201,7 +196,7 @@ button {
             </div>
         </div>
         <!-- DATA OUTPUT -->
-        <div class="shop-list-header">~ Shopping List ~
+        <div class="shop-list-header">~~~~ Shopping List ~~~~
           <div class="data-output-container">
             <div class="output-list"></div>
               <ul class="grocery-items">
@@ -224,5 +219,57 @@ button {
       </div>
     </div>
   </main>
+  <script>
+    const dataInputContainer = document.querySelector('data-imput-form');
+    const department = document.querySelector('dept-selector');
+    const item = document.querySelector('item-input');
+    const qty = document.querySelector('qty-input');
+    
+    var itemsArray = [];
+
+    dataInputContainer.addEventListener('submit', function(event) {
+      event.preventDefault();
+      addItem(
+        department.value,
+        item.value,
+        qty.value
+      )
+    });
+
+    function addItem(item) {
+      if(item !=="") {
+        var item = {
+          department: department.value,
+          item: item.value,
+          qty: qty.value
+        }
+      itemsArray.push(item);
+      addToLocalStorage(itemsArray);
+
+      console.log("item", itemsArray);
+      }
+    }
+    // function renderItemsList(itemsArray) {
+
+    // }
+    function addToLocalStorage(itemsArray) {
+      localStorage.setItem('itemsArray',
+      JSON.stringify(itemsArray));
+
+      renderItemsList(itemsArray);
+    }
+    function getFromLocalStorage(){
+      var items = localStorage.getItem('itemsArray');
+
+      if(items) {
+        itemsArray = JSON.parse("itemsArray");
+        console.log("itemsArray", itemsArray);
+
+        renderItemsList(itemsArray);
+      }
+    }
+    getFromLocalStorage();
+
+  </script>
 </body>
 </html>
