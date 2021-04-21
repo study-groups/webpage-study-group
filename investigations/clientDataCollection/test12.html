@@ -705,15 +705,15 @@ function getFromLocalStorage(){      // retrieve from localStorage
 }
 getFromLocalStorage();
 
-// Modal Code //
+// MODAL CODE //
 
-
+// Open Modal //
 for(i = 0; i < card.length; i++) {
   card[i].onclick = function(){
     modal.style.display = "block";
-    
   }
 }
+// Close modal (2 methods) //
 span.onclick = function(){
   modal.style.display = "none";
 }
@@ -722,16 +722,16 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-delBtn.addEventListener("click", deleteCard);
+// Delete Btn Inside Modal //
 
-function deleteCard(id) {
+delBtn.onclick = function deletePerson(id) {
   personArray = personArray.filter(function(person){
     return person.id != id;
-    // should it be personArray.id != id;
+    // should return an new array less one person whose id matches the clicked card.
   });
 
   // console.log("new person Array", personArray);
-  addToLocalStorage(personArray);
+  // addToLocalStorage(personArray);
 }
 
 
