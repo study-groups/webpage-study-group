@@ -727,10 +727,17 @@ window.onclick = function(event) {
 delBtn.onclick = function deletePerson(id) {
   personArray = personArray.filter(function(person){
     return person.id != id;
+
+
+    // this did not work, nor did using console.log by itself
+      // for(i = 0; i < personArray.length; i++){
+      //   console.log("new personArray", personArray[i]);
+      // }
+
     // should return an new array less one person whose id matches the clicked card.
   });
+  
 
-  // console.log("new person Array", personArray);
   // addToLocalStorage(personArray);
 }
 
