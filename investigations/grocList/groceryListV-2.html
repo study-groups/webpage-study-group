@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local storage investigation/shopping list</title>
+</head>
+<style>
+  body {
+    font-size: 1.5em;
+    margin: 0 10em 0 5em;
+  }
+  input {
+    padding: 80x;
+    height: 40px;
+    width: 300px;
+  }
+  button {
+    margin: 5px 5px 0 0;
+    font-size: .8em;
+  }
+  .listDisplay {
+    display: block;
+  }
+  #input {
+    font-size: 1em;
+  }
+
+</style>
+<body>
+  
+  <h2>Grocery List</h2>
+
+  <fieldset>
+    <legend>Insert Grocery Item</legend>
+    <input id="input" type="text" placeholder="Enter Item...">
+    <br>
+    <button onClick="save();" type="button">Save Items</button>
+    <button onClick="view();" type="button">Display List</button>
+    <button onClick="clearList();" type="button">Delete Current List</button>
+
+  </fieldset>
+
+  <br>
+  <fieldset class="listDisplay">
+    <legend>Display List</legend>
+    <ul id="itemsOutput"></ul>
+  </fieldset>
+</body>
+
+<script type="text/javascript">
+  function save(){
+    var new_data = " " + document.getElementById('input').value;
+  
+    if(localStorage.getItem('groceries') == null){
+      localStorage.setItem("groceries", '[]');
+  
+    var old_data = JSON.parse(localStorage.getItem('groceries'));
+      old_data.push(new_data);
+
+    localStorage.setItem('groceries', JSON.stringify(old_data));
+    }
+  }  
+  function view(){
+    if(localStorage.getItem('groceries') != null){
+      list = document.getElementById('itemsOutput').innerHTML = JSON.parse(localStorage.getItem('groceries'));
+
+    }
+  }
+  function clearList(){
+    localStorage.clear();
+    location.reload();
+  }
+
+  
+
+</script>
+
+
+</html>
+<!--  -->
+<!-- // our array
+var movies = ["Reservoir Dogs", "Pulp Fiction", "Jackie Brown", 
+"Kill Bill", "Death Proof", "Inglourious Basterds"];
+ 
+// storing our array as a string
+localStorage.setItem("quentinTarantino", JSON.stringify(movies));
+ 
+// retrieving our data and converting it back into an array
+var retrievedData = localStorage.getItem("quentinTarantino");
+var movies2 = JSON.parse(retrievedData);
+ 
+//making sure it still is an array
+alert(movies2.length); -->
