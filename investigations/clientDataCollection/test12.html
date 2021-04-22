@@ -711,7 +711,13 @@ getFromLocalStorage();
 for(i = 0; i < card.length; i++) {
   card[i].onclick = function(){
     modal.style.display = "block";
+  
+  delBtn.onclick = function deletePerson(id) {
+    personArray = personArray.filter(function(person){
+    return person.id != id;
+    });
   }
+}
 }
 // Close modal (2 methods) //
 span.onclick = function(){
@@ -720,13 +726,20 @@ span.onclick = function(){
 window.onclick = function(event) {
   if(event.target == modal) {
     modal.style.display = "none";
+    
   }
 }
 // Delete Btn Inside Modal //
 
-delBtn.onclick = function deletePerson(id) {
-  personArray = personArray.filter(function(person){
-    return person.id != id;
+// delBtn.onclick = function deletePerson(id) {
+
+//   personArray = personArray.filter(function(person){
+//     return person.id != id;
+
+
+    // Function signature: defines the input and ouput of functions or methods.
+      // input = id, which is a string or a number depending on JSON status.
+
 
 
     // this did not work, nor did using console.log by itself
@@ -735,11 +748,11 @@ delBtn.onclick = function deletePerson(id) {
       // }
 
     // should return an new array less one person whose id matches the clicked card.
-  });
+  // });
   
 
   // addToLocalStorage(personArray);
-}
+// }
 
 
 
