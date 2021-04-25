@@ -243,6 +243,7 @@ function deleteTodo(id) {
     // use != not !==, because here types are different. One is number and other is string
     return item.id != id;
   });
+  console.log(todos);
   // update the localStorage
   addToLocalStorage(todos);
 }
