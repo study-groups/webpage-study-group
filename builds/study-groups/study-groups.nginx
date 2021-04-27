@@ -20,7 +20,7 @@ server {
 server {
     server_name study-groups.org;
     server_name www.study-groups.org;
-    root /home/hirschro/src/webpage-study-group/builds/study-groups/001;
+    root /home/hirschro/src/webpage-study-group/builds/study-groups/current;
     index index.html;
 #    location / {
 #        proxy_buffering off;
