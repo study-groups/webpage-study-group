@@ -10,11 +10,15 @@
 <style>
 :root {
   --text: #140d94;
+  --department-container: var(--text);
+
   --text-alt: #fff;
   --borders: var(--text);
   --modal-bg: var(--text);
-  --buttons: #63c1f7;
+  --buttons: rgb(86, 140, 216);
   --input-box: #999898; 
+  --bg-color-primary: #6DF176;
+  --dept-li-active: var(--bg-color-primary);
 }
 body {
   background-image: url(assets/carts-bg3.svg);
@@ -31,7 +35,6 @@ body {
   flex-grow: 1;
   color: var(--text-alt);
   margin: 0 auto;
-
 }
 .main-container {
   max-width: 750px;
@@ -43,6 +46,7 @@ body {
   border: 3px solid #000;
   border-radius: 10px;
 }
+/* DEPARTMENTS SECTION */
 .dept-header, .data-input-header, 
 .btn-header, .shop-list-header {
   color: var(--text-alt);
@@ -51,8 +55,8 @@ body {
   padding: .1em 0 .3em 0;
   letter-spacing: 3px;
   /* border: 1px solid var(--borders); */
-  margin: 15px;
-  border-radius: 8px;
+  margin: 15px 45px 15px 45px;
+  border-radius: 5px;
   height: 20px;
   background: rgba(0, 0, 0, 0.2);
 } 
@@ -60,14 +64,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin: 3px 10px 5px 10px;
-  color: #140d94;
-}
-ul {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  list-style: none;
-  /* padding: .5em .5em; */
+  color: var(--text);
 }
 .dept-grp {
   margin: 0;
@@ -78,33 +75,49 @@ li {
   font-size: .7em;
   line-height: 130%;
 }
-.form-container {
-  margin: 0 10px;
-  padding: 1em;
-}
+/*  DATA INPUT SECTION */
 .data-input-form {
   display: flex;
   justify-content: space-around;
+  margin: 0 10px;
+  padding: .5em 1em .5em 1em;
 }
 label {
   display: block;
+  color: var(--text);
 }
-.modal{
+.modal {
   display: none;
-  background: var(--modal-bg);
-  height: 50px;
+  position: fixed;
   width: 200px;
+  background: var(--modal-bg);
   border-radius: 5px;
+  overflow: auto;
 }
-
-.dept-input-header {
-  display: block;
-  color: var(--text-alt);
-  font-size: .75em;
-  text-align: center;
+.modal-content {
+  margin: auto;
+  padding: 20px 0 0 0;
+  width: 180px;
 }
 span {
   color: var(--text-alt);
+  float: right;
+  margin: -15px 10px 0 0;
+}
+.modal-list {
+  list-style-type: circle;
+  padding: 0 0 0 15px;
+}
+.modal-li-item {
+  color: var(--text-alt);
+  margin: .5em 0 .5em 0;
+  overflow: hidden;
+}
+.modal-li-item:hover {
+  font-size: 102%;
+}
+.modal-li-item:active {
+  color: var(--dept-li-active);
 }
 input {
   font-size: .8em;
@@ -112,6 +125,14 @@ input {
   padding: 5px;
   margin: .3em 0 0 0;
 }
+/* DATA OUTPUT */
+.grocery-items {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 .data-output-container {
   display: flex;
   flex-direction: column;
@@ -124,7 +145,7 @@ input {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 10px;
-  padding: 1em;
+  padding: .5em 1em .5em 1em;
   justify-content: center;
 }
 .btn {
@@ -183,116 +204,159 @@ button {
                 <li>Cleaning</li>
               </ul>
             </div>
-        </div>
-        <!-- DATA INPUT -->
-        <div>
-          <div class="data-input-header">~~ Enter Items ~~</div>
-            <div class="form-container">
+          </div>
+          <!-- DATA INPUT -->
+          <div>
+            <div class="data-input-header">~~ Enter Items ~~</div>
               <form class="data-input-form">
-                <div class="dept-input-group">
-                  <label for="dept-input-label">Department:</label>
-                  <input id="dept-input"placeholder="Select department" class="department">
-                  <div id="modal" class="modal">
-                  <!-- Modal Content -->
-                    <div class="modal-content">
-                      <span id="close" class="close">&times;</span>
-                      <p class="dept-input-header">Departments</p>
+                <div class="dept-input-grp">
+                  <label for="dept-input" id="dept-input-label">Department:</label>
+                  <input 
+                    id="dept-input"
+                    class="department"
+                    placeholder="Select department"
+                    type="text">
+                    <div id="modal" class="modal">
+                      <!-- Modal Content -->
+                      <div class="modal-content">
+                        <span id="close" class="close">&times;</span>
+                        <p class="modal-header"></p>
+                        <ul class="modal-list">
+                          <li class="modal-li-item" id="produce">Produce</li>
+                          <li class="modal-li-item"   id="meatSeafood">Meat/Seafood</li>
+                          <li class="modal-li-item" id="frozenFood">Frozen- foods</li>
+                          <li class="modal-li-item" id="dairy">Dairy</li>
+                          <li class="modal-li-item" id="paperGoods">Paper Goods</li>
+                          <li class="modal-li-item" id="healthBeauty">Health & Beauty</li>
+                          <li class="modal-li-item" id="intlFoods">Int'l Foods</li>
+                          <li class="modal-li-item" id="deli">Deli</li>
+                          <li class="modal-li-item" id="bakery">Bakery</li>
+                          <li class="modal-li-item" id="dryGoods">Dry Goods</li>
+                          <li class="modal-li-item" id="cannedItems">Canned Items</li>
+                          <li class="modal-li-item" id="cleaning">Cleaning</li>
+                          <li class="modal-li-item" id="other">Other</li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                
-                
-                </div>
-                
-                <div class="item-input">
+                <div class="item-input-grp">
                   <label for="item-input" id="item-input-label">Item:</label>
-                  <input class="item-input" placeholder="Enter item...">
+                  <input 
+                    id="item-input"
+                    class="item-input"
+                    placeholder="Enter item..."
+                    type="text">
                 </div>
-                <div class="qty-input">
+                <div class="qty-input-grp">
                   <label for="qty-input" id="qty-input-label">Qty:</label>
-                  <input class="qty-input" placeholder="Qty...">
+                  <input 
+                    id="qty-input"
+                    class="qty-input"
+                    placeholder="Qty..."
+                    type="number">
                 </div>
               </form>
-            </div>    
-           </div>
-        <!-- BUTTONS -->
-        <div>
-          <div class="btn-header">~~~ Controls ~~~</div>
-            <div class="button-container">
-              <div class="btn-grp-1">
-                <button class="add-btn btn" type="button">ADD</button>
-                <button class="reset-btn btn" type="reset">RESET</button>
-                <button class="print-btn btn" type="submit">EDIT ITEM</button>
-              </div>
-              <div class="btn-grp-2">
-                <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
-                <button class="delete-all-btn btn" type="submit">DELETE LIST</button><!-- AKA: clear localStorage  -->
-                <button class="search btn" type="submit">PRINT</button>
-              </div>
             </div>
-        </div>
-        <!-- DATA OUTPUT -->
-        <div class="shop-list-header">~~~~ Shopping List ~~~~
-          <div class="data-output-container">
-            <div class="output-list"></div>
-              <ul class="grocery-items">
-                <li><input classs="checkbox" type="checkbox">Item 1
-                  <button class="delete-btn">Delete</button>
-                </li>
-                <li><input classs="checkbox" type="checkbox">Item 2
-                  <button class="delete-btn">Delete</button>
-                </li>
-                <li><input classs="checkbox" type="checkbox">Item 3
-                  <button class="delete-btn">Delete</button>
-                </li>
-                <li><input classs="checkbox" type="checkbox">Item 4
-                  <button class="delete-btn">Delete</button>
-                </li>
-              </ul>
+              <!-- BUTTONS -->
+          <div>
+            <div class="btn-header">~~~ Controls ~~~</div>
+              <div class="button-container">
+                <div class="btn-grp-1">
+                  <button class="add-btn btn" type="submit">ADD</button>
+                  <button class="reset-btn btn" type="reset">RESET</button>
+                  <button class="print-btn btn" type="submit">EDIT ITEM</button>
+                </div>
+                <div class="btn-grp-2">
+                  <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
+                  <button class="delete-all-btn btn" type="submit">DELETE LIST</button><!-- AKA: clear localStorage  -->
+                  <button class="search btn" type="submit">PRINT</button>
+                </div>
+              </div>
+          </div>
+          <!-- DATA OUTPUT -->
+          <div class="shop-list-header">~~~~ Shopping List ~~~~
+            <div class="data-output-container">
+              <div class="output-list"></div>
+                <ul class="grocery-items">
+                  <li><input classs="checkbox" type="checkbox">Item 1
+                    <button class="delete-btn">Delete</button>
+                  </li>
+                  <li><input classs="checkbox" type="checkbox">Item 2
+                    <button class="delete-btn">Delete</button>
+                  </li>
+                  <li><input classs="checkbox" type="checkbox">Item 3
+                    <button class="delete-btn">Delete</button>
+                  </li>
+                  <li><input classs="checkbox" type="checkbox">Item 4
+                    <button class="delete-btn">Delete</button>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-      
   </main>
   <script>
-    const dataInputContainer = document.querySelector('data-imput-form');
-    const department = document.querySelector('dept-selector');
-    const item = document.querySelector('item-input');
-    const qty = document.querySelector('qty-input');
+    const dataInputForm = document.querySelector('data-imput-form');
+    const liDepts = document.getElementsByClassName('modal-li-item');
+    var deptInput = document.getElementById('dept-input');
+    var itemInput = document.querySelector('item-input');
+    var qtyInput = document.querySelector('qty-input');
     
     const modal = document.getElementById("modal");
     const deptHover = document.getElementById("dept-input");
     const span = document.getElementsByClassName("close")[0];
+    
 
     var itemsArray = [];
 
-    // dataInputContainer.addEventListener('submit', function(event) {
+    // dataInputForm.addEventListener('submit', function(event) {
     //   event.preventDefault();
-    //   addItem(
-    //     department.value,
-    //     item.value,
-    //     qty.value
+    //   addItems(
+    //     deptInput.value,
+    //     itemInput.value,
+    //     qtyItem.value
     //   )
     // });
-
-    // Modal methods //
+    // function  addItems() {
+    
+    
+    // };
+    // MODAL METHODS //
     deptHover.onmouseenter = function(){
       modal.style.display = "block";
     };
-    deptHover.onmouseleave = function(){  // do I want this???
+    modal.onmouseleave = function(){  // do I want this???
       modal.style.display = "none";
     }
-
     span.onclick = function(){
       modal.style.display = "none";
     }
-    window.onclick = function(event) {
-      if(event.target == modal) {
-        modal.style.display = "none";
+    // END MODAL METHODS
+    // DATA INPUT METHODS
+
     
+      
+      function getDept() {
+        for(i = 0; i < liDepts.length; i++){
+          liDepts[i].addEventListener('click', function(event){
+            deptInput.value = event.target.innerHTML;
+            console.log("dept=", deptInput.value);
+          });
+          // console.log("li department id=", liDepts[i].id);
+        }
+      };
+      getDept();
+     
+      function getItem() {
+        itemImput = itemInput.value;
+        console.log("item", item);
+
       }
-    }
+
+  
+    addItems();
+    
 
     function addItem(item) {
       if(item !=="") {

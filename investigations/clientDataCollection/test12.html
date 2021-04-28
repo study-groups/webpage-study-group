@@ -736,15 +736,15 @@ getFromLocalStorage();
 // }
 // }
 // Close modal (2 methods) //
-span.onclick = function(){
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if(event.target == modal) {
-    modal.style.display = "none";
+// span.onclick = function(){
+//   modal.style.display = "none";
+// }
+// window.onclick = function(event) {
+//   if(event.target == modal) {
+//     modal.style.display = "none";
     
-  }
-}
+//   }
+// }
 // Delete Btn //
 var delBtn = document.getElementById("delete-btn");
 
@@ -761,7 +761,6 @@ function deletePerson(id) {
   console.log(personArray);
   // update localStorage
   addToLocalStorage(personArray);
-  
 }
 
     // Function signature: defines the input and ouput of functions or methods.
@@ -777,10 +776,6 @@ function deletePerson(id) {
   
   // addToLocalStorage(personArray);
 // }
-
-
-
 </script>
-
 </body>
 </html>
