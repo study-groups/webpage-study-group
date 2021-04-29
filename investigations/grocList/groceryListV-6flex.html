@@ -55,7 +55,7 @@ body {
   padding: .1em 0 .3em 0;
   letter-spacing: 3px;
   /* border: 1px solid var(--borders); */
-  margin: 15px 45px 15px 45px;
+  margin: 20px 45px 15px 45px;
   border-radius: 5px;
   height: 20px;
   background: rgba(0, 0, 0, 0.2);
@@ -78,9 +78,14 @@ li {
 /*  DATA INPUT SECTION */
 .data-input-form {
   display: flex;
-  justify-content: space-around;
   margin: 0 10px;
   padding: .5em 1em .5em 1em;
+  justify-content: space-around;
+}
+.dept-input-grp {
+  display: flex;
+  flex-direction: column;
+  
 }
 label {
   display: block;
@@ -88,7 +93,7 @@ label {
 }
 .modal {
   display: none;
-  position: fixed;
+  position: relative;
   width: 200px;
   background: var(--modal-bg);
   border-radius: 5px;
@@ -114,7 +119,7 @@ span {
   overflow: hidden;
 }
 .modal-li-item:hover {
-  font-size: 102%;
+  font-size: 1.3em;
 }
 .modal-li-item:active {
   color: var(--dept-li-active);
@@ -130,8 +135,6 @@ input {
   display: flex;
   flex-direction: column;
 }
-
-
 
 .data-output-container {
   display: flex;
@@ -208,14 +211,14 @@ button {
           <!-- DATA INPUT -->
           <div>
             <div class="data-input-header">~~ Enter Items ~~</div>
-              <form class="data-input-form">
+              <form class="data-input-form" id="data-input-form">
                 <div class="dept-input-grp">
                   <label for="dept-input" id="dept-input-label">Department:</label>
                   <input 
                     id="dept-input"
                     class="department"
                     placeholder="Select department"
-                    type="text">
+                    type="dept-input">
                     <div id="modal" class="modal">
                       <!-- Modal Content -->
                       <div class="modal-content">
@@ -237,14 +240,15 @@ button {
                           <li class="modal-li-item" id="other">Other</li>
                         </ul>
                       </div>
-                    </div>
+                    </div>  <!-- END OF MODAL -->
+                </div>  
                 <div class="item-input-grp">
                   <label for="item-input" id="item-input-label">Item:</label>
                   <input 
                     id="item-input"
                     class="item-input"
                     placeholder="Enter item..."
-                    type="text">
+                    type="item-input">
                 </div>
                 <div class="qty-input-grp">
                   <label for="qty-input" id="qty-input-label">Qty:</label>
@@ -252,16 +256,16 @@ button {
                     id="qty-input"
                     class="qty-input"
                     placeholder="Qty..."
-                    type="number">
+                    type="qty-input">
                 </div>
               </form>
             </div>
-              <!-- BUTTONS -->
+            <!-- BUTTONS -->
           <div>
             <div class="btn-header">~~~ Controls ~~~</div>
               <div class="button-container">
                 <div class="btn-grp-1">
-                  <button class="add-btn btn" type="submit">ADD</button>
+                  <button class="add-btn btn" type="submit" form="data-input-form">ADD</button>
                   <button class="reset-btn btn" type="reset">RESET</button>
                   <button class="print-btn btn" type="submit">EDIT ITEM</button>
                 </div>
@@ -297,7 +301,7 @@ button {
       </div>
   </main>
   <script>
-    const dataInputForm = document.querySelector('data-imput-form');
+    const dataInputForm = document.querySelector('.data-input-form');
     const liDepts = document.getElementsByClassName('modal-li-item');
     var deptInput = document.getElementById('dept-input');
     var itemInput = document.querySelector('item-input');
@@ -310,26 +314,48 @@ button {
 
     var itemsArray = [];
 
-    // dataInputForm.addEventListener('submit', function(event) {
-    //   event.preventDefault();
-    //   addItems(
-    //     deptInput.value,
-    //     itemInput.value,
-    //     qtyItem.value
-    //   )
-    // });
-    // function  addItems() {
+    function getDept() {
+      for(i = 0; i < liDepts.length; i++){
+        liDepts[i].addEventListener('click', function(event){
+          deptInput.value = event.target.innerHTML;
+          console.log("dept=", deptInput.value);
+        });
+        // console.log("li department id=", liDepts[i].id);
+      }
+    };
+    getDept();
+
+    dataInputForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      addItem(
+        deptInput.value,
+        itemInput.value,
+        qtyItem.value
+      )
+    });
     
-    
-    // };
+    function addItem(item) {
+      if(item !== ''){
+        var item = {
+          id: Date.now(),
+          dept: deptInput.value,
+          item: itemInput.value,
+          qty: qtyInput.value
+        }
+      }
+    itemsArray.push(item);
+    };
+
+
+
     // MODAL METHODS //
     deptHover.onmouseenter = function(){
       modal.style.display = "block";
     };
-    modal.onmouseleave = function(){  // do I want this???
+    span.onclick = function(){
       modal.style.display = "none";
     }
-    span.onclick = function(){
+    window.onclick = function(){
       modal.style.display = "none";
     }
     // END MODAL METHODS
@@ -337,60 +363,48 @@ button {
 
     
       
-      function getDept() {
-        for(i = 0; i < liDepts.length; i++){
-          liDepts[i].addEventListener('click', function(event){
-            deptInput.value = event.target.innerHTML;
-            console.log("dept=", deptInput.value);
-          });
-          // console.log("li department id=", liDepts[i].id);
-        }
-      };
-      getDept();
      
-      function getItem() {
-        itemImput = itemInput.value;
-        console.log("item", item);
+ 
+     
 
-      }
 
   
-    addItems();
+
     
 
-    function addItem(item) {
-      if(item !=="") {
-        var item = {
-          department: department.value,
-          item: item.value,
-          qty: qty.value
-        }
-      itemsArray.push(item);
-      addToLocalStorage(itemsArray);
+    // function addItem(item) {
+    //   if(item !=="") {
+    //     var item = {
+    //       department: department.value,
+    //       item: item.value,
+    //       qty: qty.value
+    //     }
+    //   itemsArray.push(item);
+    //   addToLocalStorage(itemsArray);
 
-      console.log("item", itemsArray);
-      }
-    }
-    // function renderItemsList(itemsArray) {
-
+    //   console.log("item", itemsArray);
+    //   }
     // }
-    function addToLocalStorage(itemsArray) {
-      localStorage.setItem('itemsArray',
-      JSON.stringify(itemsArray));
+    // // function renderItemsList(itemsArray) {
 
-      renderItemsList(itemsArray);
-    }
-    function getFromLocalStorage(){
-      var items = localStorage.getItem('itemsArray');
+    // // }
+    // function addToLocalStorage(itemsArray) {
+    //   localStorage.setItem('itemsArray',
+    //   JSON.stringify(itemsArray));
 
-      if(items) {
-        itemsArray = JSON.parse("itemsArray");
-        console.log("itemsArray", itemsArray);
+    //   renderItemsList(itemsArray);
+    // }
+    // function getFromLocalStorage(){
+    //   var items = localStorage.getItem('itemsArray');
 
-        renderItemsList(itemsArray);
-      }
-    }
-    getFromLocalStorage();
+    //   if(items) {
+    //     itemsArray = JSON.parse("itemsArray");
+    //     console.log("itemsArray", itemsArray);
+
+    //     renderItemsList(itemsArray);
+    //   }
+    // }
+    // getFromLocalStorage();
 
   </script>
 </body>
