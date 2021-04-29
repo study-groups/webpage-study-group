@@ -304,8 +304,8 @@ button {
     const dataInputForm = document.querySelector('.data-input-form');
     const liDepts = document.getElementsByClassName('modal-li-item');
     var deptInput = document.getElementById('dept-input');
-    var itemInput = document.querySelector('item-input');
-    var qtyInput = document.querySelector('qty-input');
+    var itemInput = document.getElementById('item-input');
+    var qtyInput = document.getElementById('qty-input');
     
     const modal = document.getElementById("modal");
     const deptHover = document.getElementById("dept-input");
@@ -330,7 +330,7 @@ button {
       addItem(
         deptInput.value,
         itemInput.value,
-        qtyItem.value
+        qtyInput.value
       )
     });
     
@@ -343,7 +343,13 @@ button {
           qty: qtyInput.value
         }
       }
-    itemsArray.push(item);
+    itemsArray.push(item);  
+  // next step: add to localStorage
+
+      deptInput.value = "";
+      itemInput.value = "";
+      qtyInput.value = "";
+
     };
 
 
