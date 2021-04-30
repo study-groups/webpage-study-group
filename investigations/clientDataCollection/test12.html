@@ -537,19 +537,9 @@
     </div>
     <div class="list-header">-- List Data --</div>
     <div class="output-container">
-      <!-- The Modal -->
-      <div id="delete-modal" class="delete-modal">
-        <!-- Modal Content -->
-        <div class="modal-content">
-          <span id="close" class="close">&times;</span>
-          <p>Press button to permanently delete selected card. </p>
-          <button id="delete-card-btn">DELETE CARD</button>
-          
-        </div>
-      </div>
       <div id="people-list-group"class="people-list-group">
         <ol id="people-list" class="people-list">
-            <!-- <li>'s' from javascript -->
+          <!-- <li>'s' from javascript -->
         </ol>
       </div>
     </div>
@@ -645,6 +635,7 @@ function addName(person) {
     lNameInput.value = ""; 
     streetAddress1.value = "";
     streetAddress2.value = "";
+
     cityInput.value = "";
     stateInput.value = "";
     zipCodeInput.value = "";
@@ -711,7 +702,6 @@ function renderList(personArray) {
   };
 function addToLocalStorage(personArray) { // add to localStorage
   localStorage.setItem('personArray', JSON.stringify(personArray));
-  
   renderList(personArray);
 }
 function getFromLocalStorage(){      // retrieve from localStorage
@@ -721,38 +711,10 @@ function getFromLocalStorage(){      // retrieve from localStorage
   if(listNames) { 
     personArray = JSON.parse(listNames);
     console.log("list name", listNames);
-  
     renderList(personArray);
   }
 }
 getFromLocalStorage();
-
-// MODAL CODE //
-
-// Open Modal //
-// for(i = 0; i < card.length; i++) {
-//   card[i].onclick = function(){
-    
-// }
-// }
-// Close modal (2 methods) //
-// span.onclick = function(){
-//   modal.style.display = "none";
-// }
-// window.onclick = function(event) {
-//   if(event.target == modal) {
-//     modal.style.display = "none";
-    
-//   }
-// }
-// Delete Btn //
-var delBtn = document.getElementById("delete-btn");
-
-delBtn.addEventListener("click", function(event) {
-  if(event.target.classList.contains('delete-btn')) {
-    deletePerson(event.target.parentElement.getAttribute('data-key'))
-  }
-});
 
 function deletePerson(id) {
   personArray = personArray.filter(function(person) {
@@ -763,19 +725,16 @@ function deletePerson(id) {
   addToLocalStorage(personArray);
 }
 
-    // Function signature: defines the input and ouput of functions or methods.
-      // input = id, which is a string or a number depending on JSON status.
+getFromLocalStorage();
 
-    // this did not work, nor did using console.log by itself
-      // for(i = 0; i < personArray.length; i++){
-      //   console.log("new personArray", personArray[i]);
-      // }
+peopleList.addEventListener("click", function(event) {
+  if(event.target.classList.contains('delete-btn')) {
+    deletePerson(event.target.parentElement.getAttribute('data-key'))
+  }
+});
 
-    // should return an new array less one person whose id matches the clicked card.
-  // });
-  
-  // addToLocalStorage(personArray);
-// }
 </script>
+  <!-- Function signature: defines the input and ouput of functions or methods.
+  input = id, which is a string or a number depending on JSON status. -->
 </body>
 </html>
