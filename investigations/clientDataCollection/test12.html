@@ -684,13 +684,13 @@ function renderList(personArray) {
         Object.assign(li.style, styles);
         
         //  Delete Button
-        var button = document.createElement("button");
-        li.append(button);
-        button.innerHTML = "Delete Card";
-        button.setAttribute("class", "delete-btn");
-        button.setAttribute("id", "delete-btn")
+        var delBtn = document.createElement("button");
+        li.append(delBtn);
+        delBtn.innerHTML = "Delete Card";
+        delBtn.setAttribute("class", "delete-btn");
+        delBtn.setAttribute("id", "delete-btn")
 
-        const btnStyles = {
+        const delBtnStyles = {
           display: "flex",
           minWidth: "50px",
           minHeight: "25px",
@@ -698,8 +698,22 @@ function renderList(personArray) {
           padding: "5px",
           borderRadius: "5px"
         }
+        var editBtn = document.createElement("button");
+        li.append(editBtn);
+        editBtn.innerHTML = "Eidt Card";
+        editBtn.setAttribute("class", "delete-btn");
+        editBtn.setAttribute("id", "delete-btn")
 
-        Object.assign(button.style, btnStyles);
+        const editBtnStyles = {
+          display: "flex",
+          minWidth: "50px",
+          minHeight: "25px",
+          margin: "10px 0 10px 0",
+          padding: "5px",
+          borderRadius: "5px"
+        }
+        Object.assign(delBtn.style, delBtnStyles);
+        Object.assign(editBtn.style, editBtnStyles)
     })
   };
 function addToLocalStorage(personArray) { // add to localStorage
@@ -735,6 +749,22 @@ peopleList.addEventListener("click", function(event) {
   }
 });
 
+function editPerson(id) {
+  personArray = personArray.filter(function(person) {
+    return person.id;
+  });
+  console.log(person.id);
+  // update localStorage
+  // addToLocalStorage(personArray);
+}
+
+// getFromLocalStorage();
+
+// peopleList.addEventListener("click", function(event) {
+//   if(event.target.classList.contains('delete-btn')) {
+//     deletePerson(event.target.parentElement.getAttribute('data-key'))
+//   }
+// });
 </script>
   <!-- Function signature: defines the input and ouput of functions or methods.
   input = id, which is a string or a number depending on JSON status. -->
