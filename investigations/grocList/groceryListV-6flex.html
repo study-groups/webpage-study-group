@@ -5,36 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
   <title>Grocery List 6-flex</title>
 </head>
 <style>
 :root {
   --text: #140d94;
   --department-container: var(--text);
-
   --text-alt: #fff;
   --borders: var(--text);
   --modal-bg: var(--text);
-  --buttons: rgb(86, 140, 216);
+  --buttons: #4c31d0;
   --input-box: #999898; 
   --bg-color-primary: #6DF176;
   --dept-li-active: var(--bg-color-primary);
+  --output-list-bg: var(--text-alt);
+  --output-text: var(--buttons);
 }
 body {
-  background-image: url(assets/carts-bg3.svg);
+  background-image: url(assets/carts-bg4.svg);
   /* background-repeat: repeat; */
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   position: relative;
 }  
 .main-header {
-  font-size: 3em;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 6em;
   height: 1em;
-  padding: 1em;
   text-align: center;
   flex-grow: 1;
   color: var(--text-alt);
-  margin: 0 auto;
+  letter-spacing: .1em;
 }
 .main-container {
   max-width: 750px;
@@ -46,20 +50,10 @@ body {
   border: 3px solid #000;
   border-radius: 10px;
 }
-.tomato-l, .tomato-r {
-  position: absolute;
-}
-.tomato-l {
-  margin-left: -48px; 
-}
-.tomato-r {
-  margin: 0 20px;
-}
 /* DEPARTMENTS SECTION */
 .dept-header, .data-input-header, 
 .btn-header, .shop-list-header {
   color: var(--text-alt);
-  font-size: 90%;
   text-align: center;
   padding: .1em 0 .3em 0;
   letter-spacing: 3px;
@@ -144,19 +138,6 @@ input {
   padding: 5px;
   margin: .3em 0 0 0;
 }
-/* DATA OUTPUT */
-.grocery-items {
-  display: flex;
-  flex-direction: column;
-}
-
-.data-output-container {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  padding: .5em;
-  border-radius: 0 0 10px 10px;
-}
 .button-container {
   display: flex;
   flex-direction: row;
@@ -178,164 +159,91 @@ input {
 button {
   margin: .5em 0 .5em 0;
 }
+
+/* DATA OUTPUT */
+.output-list {
+  display: flex;
+  color: var(--output-text);
+}
+.output-headers {
+  display: flex;
+  
+  padding: 10px;
+}
+#output-dept-header {
+  margin-left: 25px;
+}
+#output-item-header {
+  margin-left: 150px;
+}
+#output-qty-header {
+  margin-left: 50px;
+}
+ol {
+  list-style: inside;
+}
+.grocery-items {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.data-output-container {
+  background: #fff;
+  width: 96.5%;
+  margin: 15px 0 0 0;
+  border-radius: 10px 10px;
+}
+
+.list-item-format {
+  color: var(--output-text);
+  font-size: .8em; 
+}
+
 @media only screen and (max-width: 812px) {
+  .main-container {
+    padding-top: 15px;
+  }
   .main-header {
     font-size: 1.5em;
     margin: 1em 1em;
   }
   .department-container {
     display: inline-flex;
-    font-size: .8em;
   }
-  .data-imput-form {
-    flex-direction: row;
+  li {
+    font-size: .5em;
+  }
+  .dept-header, .data-input-header, 
+  .btn-header, .shop-list-header {
+    width: 90%;
+    margin: 0 auto;
+    letter-spacing: 2px;
+    
+  }
+
+
+  .data-input-form {
+    flex-direction: column;
+    margin: 0;
+
+  }
+  input {
+    font-size: .7em;
+  }
+  label {
+    margin: 0 1em 0 .5em;
+    font-size: .8em;
   }
 }
 </style>
 <body>
   <main>
-    <h1 class="main-header">GROCERY LIST</h1>
+    <h1 class="main-header">GROCERY</h1>
       <div class="main-container">
         <!-- DEPARTMENT LIST -->
         <div>
           <div class="dept-header">
-            <div class="dept-header-grp">
-              <svg class="tomato-l" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_d)">
-                <path d="M19.6416 24.2711C19.6416 24.2711 18.2412 24.636 17.82 24.6639C17.3987 24.6918 16.8165 24.722 16.2448 24.5531C15.8692 24.8141 14.9054 25.0064 14.9054 25.0064L13.2552 25.1474L15.0366 25.373L15.3764 25.8128L16.1505 25.2819L16.6626 25.847L17.216 25.1454L18.0216 25.4136L18.2815 24.8722L19.6416 24.2711Z" fill="#105E34" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M12.9988 2.5373L14.287 5.73186L14.7164 6.79669C14.7164 6.79669 13.6851 7.16406 13.2557 6.09922C12.8264 5.03439 10.507 2.20727 10.507 2.20727C10.507 2.20727 12.5695 1.47254 12.9988 2.5373Z" fill="#105E34" stroke="#09351D" stroke-width="0.1"/>
-                <path d="M16.4244 24.7163L16.424 24.7151L16.4323 24.7151C22.8518 24.7573 27.5024 19.2753 26.9509 13.8424C26.6751 11.1259 25.092 8.53774 22.8307 7.06839C20.5706 5.59975 17.6326 5.24843 14.6428 7.00546L14.6327 7.01139L14.6216 7.00736C11.3322 5.81345 8.51792 6.68065 6.59406 8.5245C4.66925 10.3693 3.63541 13.1922 3.91118 15.9087C4.18695 18.6252 5.76515 21.3325 8.05036 23.1079C10.3351 24.883 13.3248 25.7254 16.4244 24.7163Z" fill="url(#paint0_radial)" stroke="black" stroke-width="0.05"/>
-                <path d="M14.7721 11.3905C16.7123 7.85229 13.4438 5.04301 13.4438 5.04301C13.4438 5.04301 12.4311 7.51981 12.3169 10.2011C12.2026 12.8824 12.8319 14.9287 12.8319 14.9287L14.7721 11.3905Z" fill="url(#paint1_linear)"/>
-                <path d="M14.7721 11.3905C16.7123 7.85229 13.4438 5.04301 13.4438 5.04301C13.4438 5.04301 12.4311 7.51981 12.3169 10.2011C12.2026 12.8824 12.8319 14.9287 12.8319 14.9287L14.7721 11.3905Z" fill="url(#paint2_linear)"/>
-                <path d="M14.7721 11.3905C16.7123 7.85229 13.4438 5.04301 13.4438 5.04301C13.4438 5.04301 12.4311 7.51981 12.3169 10.2011C12.2026 12.8824 12.8319 14.9287 12.8319 14.9287L14.7721 11.3905Z" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M10.3341 7.47482C9.52071 8.16481 7.59548 11.8588 7.59548 11.8588C7.59548 11.8588 12.5488 8.88821 13.0428 6.24299C12.1543 6.2159 11.1475 6.78483 10.3341 7.47482Z" fill="url(#paint3_linear)"/>
-                <path d="M10.3341 7.47482C9.52071 8.16481 7.59548 11.8588 7.59548 11.8588C7.59548 11.8588 12.5488 8.88821 13.0428 6.24299C12.1543 6.2159 11.1475 6.78483 10.3341 7.47482Z" fill="url(#paint4_linear)"/>
-                <path d="M10.3341 7.47482C9.52071 8.16481 7.59548 11.8588 7.59548 11.8588C7.59548 11.8588 12.5488 8.88821 13.0428 6.24299C12.1543 6.2159 11.1475 6.78483 10.3341 7.47482Z" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M21.137 8.44346C20.5629 6.73892 13.5394 5.5125 13.5394 5.5125C13.5394 5.5125 17.4627 11.1686 21.9301 10.1539C21.5873 9.11215 21.5873 9.11215 21.137 8.44346Z" fill="url(#paint5_linear)"/>
-                <path d="M21.137 8.44346C20.5629 6.73892 13.5394 5.5125 13.5394 5.5125C13.5394 5.5125 17.4627 11.1686 21.9301 10.1539C21.5873 9.11215 21.5873 9.11215 21.137 8.44346Z" fill="url(#paint6_linear)"/>
-                <path d="M21.137 8.44346C20.5629 6.73892 13.5394 5.5125 13.5394 5.5125C13.5394 5.5125 17.4627 11.1686 21.9301 10.1539C21.5873 9.11215 21.5873 9.11215 21.137 8.44346Z" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M11.9042 6.43913C13.5757 6.59761 13.5919 7.27125 14.1428 7.28429C14.7537 7.29875 16.0044 6.1976 16.5116 6.15426C15.7001 5.36548 14.136 5.46831 14.136 5.46831C14.136 5.46831 12.6051 5.37296 11.9042 6.43913Z" fill="#105E34"/>
-                <path d="M11.9042 6.43913C13.5757 6.59761 13.5919 7.27125 14.1428 7.28429C14.7537 7.29875 16.0044 6.1976 16.5116 6.15426C15.7001 5.36548 14.136 5.46831 14.136 5.46831C14.136 5.46831 12.6051 5.37296 11.9042 6.43913Z" fill="#105E34"/>
-                <path d="M11.9042 6.43913C13.5757 6.59761 13.5919 7.27125 14.1428 7.28429C14.7537 7.29875 16.0044 6.1976 16.5116 6.15426C15.7001 5.36548 14.136 5.46831 14.136 5.46831C14.136 5.46831 12.6051 5.37296 11.9042 6.43913Z" stroke="#09351D" stroke-width="0.05"/>
-                <path d="M18.7817 12.542C19.1381 12.7716 19.3043 12.9225 19.5145 13.2486L20.2496 12.6739C20.2496 12.6739 20.0741 11.9851 19.4663 11.9343L18.7817 12.542Z" fill="url(#paint7_radial)"/>
-                </g>
-                <defs>
-                <filter id="filter0_d" x="0" y="0" width="31" height="31" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                <feOffset dy="2"/>
-                <feGaussianBlur stdDeviation="1.5"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.383333 0 0 0 0 0.368958 0 0 0 0 0.368958 0 0 0 0.42 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                </filter>
-                <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.431 14.8755) rotate(84.2035) scale(9.91523 11.5903)">
-                <stop stop-color="#FA8553"/>
-                <stop offset="1" stop-color="#B02727"/>
-                </radialGradient>
-                <linearGradient id="paint1_linear" x1="10.6824" y1="8.22322" x2="17.0499" y2="9.41463" gradientUnits="userSpaceOnUse">
-                <stop offset="0.138235" stop-color="#105D34"/>
-                <stop offset="0.503786" stop-color="#578547"/>
-                <stop offset="0.908294" stop-color="#105E34"/>
-                </linearGradient>
-                <linearGradient id="paint2_linear" x1="14.011" y1="7.43589" x2="12.8175" y2="9.2868" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#105D34"/>
-                <stop offset="1" stop-color="#105D34" stop-opacity="0"/>
-                </linearGradient>
-                <linearGradient id="paint3_linear" x1="9.49311" y1="13.3945" x2="5.28194" y2="7.58961" gradientUnits="userSpaceOnUse">
-                <stop offset="0.138235" stop-color="#105D34"/>
-                <stop offset="0.503786" stop-color="#578547"/>
-                <stop offset="0.908294" stop-color="#105E34"/>
-                </linearGradient>
-                <linearGradient id="paint4_linear" x1="10.8439" y1="9.83716" x2="7.75529" y2="9.71647" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#105D34"/>
-                <stop offset="1" stop-color="#105D34" stop-opacity="0"/>
-                </linearGradient>
-                <linearGradient id="paint5_linear" x1="11.4711" y1="6.99855" x2="16.0123" y2="1.12415" gradientUnits="userSpaceOnUse">
-                <stop offset="0.138235" stop-color="#105D34"/>
-                <stop offset="0.503786" stop-color="#578547"/>
-                <stop offset="0.908294" stop-color="#105E34"/>
-                </linearGradient>
-                <linearGradient id="paint6_linear" x1="16.8973" y1="6.66303" x2="17.1633" y2="7.66584" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#105D34"/>
-                <stop offset="1" stop-color="#105D34" stop-opacity="0"/>
-                </linearGradient>
-                <radialGradient id="paint7_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(19.5688 12.556) rotate(-164.921) scale(1.80501 1.7498)">
-                <stop stop-color="white"/>
-                <stop offset="1" stop-color="white" stop-opacity="0"/>
-                </radialGradient>
-                </defs>
-                </svg>
-              DEPARTMENTS
-              <svg class="tomato-r" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g filter="url(#filter0_d)">
-                <path d="M11.3584 24.2711C11.3584 24.2711 12.7588 24.636 13.18 24.6639C13.6013 24.6918 14.1835 24.722 14.7552 24.5531C15.1308 24.8141 16.0946 25.0064 16.0946 25.0064L17.7448 25.1474L15.9634 25.373L15.6236 25.8128L14.8495 25.2819L14.3374 25.847L13.784 25.1454L12.9784 25.4136L12.7185 24.8722L11.3584 24.2711Z" fill="#105E34" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M18.0012 2.5373L16.713 5.73186L16.2836 6.79669C16.2836 6.79669 17.3149 7.16406 17.7443 6.09922C18.1736 5.03439 20.493 2.20727 20.493 2.20727C20.493 2.20727 18.4305 1.47254 18.0012 2.5373Z" fill="#105E34" stroke="#09351D" stroke-width="0.1"/>
-                <path d="M14.5756 24.7163L14.576 24.7151L14.5677 24.7151C8.1482 24.7573 3.49758 19.2753 4.0491 13.8424C4.32487 11.1259 5.90801 8.53774 8.16926 7.06839C10.4294 5.59975 13.3674 5.24843 16.3572 7.00546L16.3673 7.01139L16.3784 7.00736C19.6678 5.81345 22.4821 6.68065 24.4059 8.5245C26.3308 10.3693 27.3646 13.1922 27.0888 15.9087C26.813 18.6252 25.2349 21.3325 22.9496 23.1079C20.6649 24.883 17.6752 25.7254 14.5756 24.7163Z" fill="url(#paint0_radial)" stroke="black" stroke-width="0.05"/>
-                <path d="M16.2279 11.3905C14.2877 7.85229 17.5562 5.04301 17.5562 5.04301C17.5562 5.04301 18.5689 7.51981 18.6831 10.2011C18.7974 12.8824 18.1681 14.9287 18.1681 14.9287L16.2279 11.3905Z" fill="url(#paint1_linear)"/>
-                <path d="M16.2279 11.3905C14.2877 7.85229 17.5562 5.04301 17.5562 5.04301C17.5562 5.04301 18.5689 7.51981 18.6831 10.2011C18.7974 12.8824 18.1681 14.9287 18.1681 14.9287L16.2279 11.3905Z" fill="url(#paint2_linear)"/>
-                <path d="M16.2279 11.3905C14.2877 7.85229 17.5562 5.04301 17.5562 5.04301C17.5562 5.04301 18.5689 7.51981 18.6831 10.2011C18.7974 12.8824 18.1681 14.9287 18.1681 14.9287L16.2279 11.3905Z" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M20.6659 7.47482C21.4793 8.16481 23.4045 11.8588 23.4045 11.8588C23.4045 11.8588 18.4512 8.88821 17.9572 6.24299C18.8457 6.2159 19.8525 6.78483 20.6659 7.47482Z" fill="url(#paint3_linear)"/>
-                <path d="M20.6659 7.47482C21.4793 8.16481 23.4045 11.8588 23.4045 11.8588C23.4045 11.8588 18.4512 8.88821 17.9572 6.24299C18.8457 6.2159 19.8525 6.78483 20.6659 7.47482Z" fill="url(#paint4_linear)"/>
-                <path d="M20.6659 7.47482C21.4793 8.16481 23.4045 11.8588 23.4045 11.8588C23.4045 11.8588 18.4512 8.88821 17.9572 6.24299C18.8457 6.2159 19.8525 6.78483 20.6659 7.47482Z" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M9.86305 8.44346C10.4371 6.73892 17.4606 5.5125 17.4606 5.5125C17.4606 5.5125 13.5373 11.1686 9.06986 10.1539C9.41265 9.11215 9.41265 9.11215 9.86305 8.44346Z" fill="url(#paint5_linear)"/>
-                <path d="M9.86305 8.44346C10.4371 6.73892 17.4606 5.5125 17.4606 5.5125C17.4606 5.5125 13.5373 11.1686 9.06986 10.1539C9.41265 9.11215 9.41265 9.11215 9.86305 8.44346Z" fill="url(#paint6_linear)"/>
-                <path d="M9.86305 8.44346C10.4371 6.73892 17.4606 5.5125 17.4606 5.5125C17.4606 5.5125 13.5373 11.1686 9.06986 10.1539C9.41265 9.11215 9.41265 9.11215 9.86305 8.44346Z" stroke="#09351D" stroke-width="0.03"/>
-                <path d="M19.0958 6.43913C17.4243 6.59761 17.4081 7.27125 16.8572 7.28429C16.2463 7.29875 14.9956 6.1976 14.4884 6.15426C15.2999 5.36548 16.864 5.46831 16.864 5.46831C16.864 5.46831 18.3949 5.37296 19.0958 6.43913Z" fill="#105E34"/>
-                <path d="M19.0958 6.43913C17.4243 6.59761 17.4081 7.27125 16.8572 7.28429C16.2463 7.29875 14.9956 6.1976 14.4884 6.15426C15.2999 5.36548 16.864 5.46831 16.864 5.46831C16.864 5.46831 18.3949 5.37296 19.0958 6.43913Z" fill="#105E34"/>
-                <path d="M19.0958 6.43913C17.4243 6.59761 17.4081 7.27125 16.8572 7.28429C16.2463 7.29875 14.9956 6.1976 14.4884 6.15426C15.2999 5.36548 16.864 5.46831 16.864 5.46831C16.864 5.46831 18.3949 5.37296 19.0958 6.43913Z" stroke="#09351D" stroke-width="0.05"/>
-                <path d="M12.2183 12.542C11.8619 12.7716 11.6957 12.9225 11.4855 13.2486L10.7504 12.6739C10.7504 12.6739 10.9259 11.9851 11.5337 11.9343L12.2183 12.542Z" fill="url(#paint7_radial)"/>
-                </g>
-                <defs>
-                <filter id="filter0_d" x="0" y="0" width="31" height="31" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                <feOffset dy="2"/>
-                <feGaussianBlur stdDeviation="1.5"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0.383333 0 0 0 0 0.368958 0 0 0 0 0.368958 0 0 0 0.42 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                </filter>
-                <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(15.569 14.8755) rotate(95.7965) scale(9.91523 11.5903)">
-                <stop stop-color="#FA8553"/>
-                <stop offset="1" stop-color="#B02727"/>
-                </radialGradient>
-                <linearGradient id="paint1_linear" x1="20.3176" y1="8.22322" x2="13.9501" y2="9.41463" gradientUnits="userSpaceOnUse">
-                <stop offset="0.138235" stop-color="#105D34"/>
-                <stop offset="0.503786" stop-color="#578547"/>
-                <stop offset="0.908294" stop-color="#105E34"/>
-                </linearGradient>
-                <linearGradient id="paint2_linear" x1="16.989" y1="7.43589" x2="18.1825" y2="9.2868" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#105D34"/>
-                <stop offset="1" stop-color="#105D34" stop-opacity="0"/>
-                </linearGradient>
-                <linearGradient id="paint3_linear" x1="21.5069" y1="13.3945" x2="25.7181" y2="7.58961" gradientUnits="userSpaceOnUse">
-                <stop offset="0.138235" stop-color="#105D34"/>
-                <stop offset="0.503786" stop-color="#578547"/>
-                <stop offset="0.908294" stop-color="#105E34"/>
-                </linearGradient>
-                <linearGradient id="paint4_linear" x1="20.1561" y1="9.83716" x2="23.2447" y2="9.71647" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#105D34"/>
-                <stop offset="1" stop-color="#105D34" stop-opacity="0"/>
-                </linearGradient>
-                <linearGradient id="paint5_linear" x1="19.5289" y1="6.99855" x2="14.9877" y2="1.12415" gradientUnits="userSpaceOnUse">
-                <stop offset="0.138235" stop-color="#105D34"/>
-                <stop offset="0.503786" stop-color="#578547"/>
-                <stop offset="0.908294" stop-color="#105E34"/>
-                </linearGradient>
-                <linearGradient id="paint6_linear" x1="14.1027" y1="6.66303" x2="13.8367" y2="7.66584" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#105D34"/>
-                <stop offset="1" stop-color="#105D34" stop-opacity="0"/>
-                </linearGradient>
-                <radialGradient id="paint7_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.4312 12.556) rotate(-15.0791) scale(1.80501 1.7498)">
-                <stop stop-color="white"/>
-                <stop offset="1" stop-color="white" stop-opacity="0"/>
-                </radialGradient>
-                </defs>
-                </svg>
-                
-                
-          </div>
+            <div class="dept-header-grp">~ Departments ~</div>
           </div>
             <div class="department-container">
               <ul class="dept-grp">
@@ -362,7 +270,9 @@ button {
           </div>
           <!-- DATA INPUT -->
           <div>
-            <div class="data-input-header">~~ Enter Items ~~</div>
+            <div>
+              <div class="data-input-header">~ Enter Items ~</div>
+            </div>
               <form class="data-input-form" id="data-input-form">
                 <div class="dept-input-grp">
                   <label for="dept-input" id="dept-input-label">Department:</label>
@@ -414,7 +324,7 @@ button {
             </div>
             <!-- BUTTONS -->
           <div>
-            <div class="btn-header">~~~ Controls ~~~</div>
+            <div class="btn-header">~ Controls ~</div>
               <div class="button-container">
                 <div class="btn-grp-1">
                   <button class="add-btn btn" type="submit" form="data-input-form">ADD</button>
@@ -422,30 +332,22 @@ button {
                   <button class="print-btn btn" type="submit">EDIT ITEM</button>
                 </div>
                 <div class="btn-grp-2">
-                  <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
                   <button class="delete-all-btn btn" type="submit">DELETE LIST</button><!-- AKA: clear localStorage  -->
-                  <button class="search btn" type="submit">PRINT</button>
+                  <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
                 </div>
               </div>
           </div>
           <!-- DATA OUTPUT -->
-          <div class="shop-list-header">~~~~ Shopping List ~~~~
+          <div class="shop-list-header">~ Shopping List ~
             <div class="data-output-container">
-              <div class="output-list"></div>
-                <ul class="grocery-items">
-                  <li><input classs="checkbox" type="checkbox">Item 1
-                    <button class="delete-btn">Delete</button>
-                  </li>
-                  <li><input classs="checkbox" type="checkbox">Item 2
-                    <button class="delete-btn">Delete</button>
-                  </li>
-                  <li><input classs="checkbox" type="checkbox">Item 3
-                    <button class="delete-btn">Delete</button>
-                  </li>
-                  <li><input classs="checkbox" type="checkbox">Item 4
-                    <button class="delete-btn">Delete</button>
-                  </li>
-                </ul>
+              <div class="output-list">
+                <div class="output-headers" id="output-dept-header">Department</div>
+                <div class="output-headers" id="output-item-header">Item</div>
+                <div class="output-headers" id="output-qty-header">Qty</div>
+              </div>
+                <ol class="grocery-items">
+              
+                </ol>
               </div>
             </div>
           </div>
@@ -458,14 +360,26 @@ button {
     var deptInput = document.getElementById('dept-input');
     var itemInput = document.getElementById('item-input');
     var qtyInput = document.getElementById('qty-input');
-    
     const modal = document.getElementById("modal");
     const deptHover = document.getElementById("dept-input");
     const span = document.getElementsByClassName("close")[0];
-    
+    var addBtn = document.querySelector(".add-btn");
+    const itemItemsList = document.querySelector('.grocery-items');
 
-    var itemsArray = [];
+    var items = [];
 
+    // MODAL METHODS
+    deptHover.onmouseenter = function(){
+      modal.style.display = "block";
+    };
+    span.onclick = function(){
+      modal.style.display = "none";
+    }
+    window.onclick = function(){
+      modal.style.display = "none";
+    }
+
+    // DATA INPUT METHODS
     function getDept() {
       for(i = 0; i < liDepts.length; i++){
         liDepts[i].addEventListener('click', function(event){
@@ -477,7 +391,7 @@ button {
     };
     getDept();
 
-    dataInputForm.addEventListener('submit', function(event) {
+    addBtn.addEventListener('click', function(event) {
       event.preventDefault();
       addItem(
         deptInput.value,
@@ -495,75 +409,62 @@ button {
           qty: qtyInput.value
         }
       }
-    itemsArray.push(item);  
-  // next step: add to localStorage
-
+      items.push(item);  
+      addToLocalStorage(items);
+        
       deptInput.value = "";
       itemInput.value = "";
       qtyInput.value = "";
-
     };
+    // RENDER METHODS
+    function renderItems(items) {
+      itemItemsList.innerHTML = "";
 
+      items.forEach(function(item) {
+        const li = document.createElement('li');
 
+        li.setAttribute("class", "item list-item-format");
+        li.setAttribute('data-key', item.id);
+//   delete code goes here
 
-    // MODAL METHODS //
-    deptHover.onmouseenter = function(){
-      modal.style.display = "block";
-    };
-    span.onclick = function(){
-      modal.style.display = "none";
+        li.innerHTML = 
+        `<input type="checkbox" class="checkbox">
+        ${item.dept}` + " " +
+        `${item.item}` + " " + 
+        `${item.qty}` +
+        `<button class="delete-btn">Delete</button>` +
+        `<br>`;
+
+        itemItemsList.append(li);
+      });
     }
-    window.onclick = function(){
-      modal.style.display = "none";
+
+    function addToLocalStorage(items) {
+      localStorage.setItem('items', JSON.stringify(items));
+
+      renderItems(items);
     }
-    // END MODAL METHODS
-    // DATA INPUT METHODS
 
+    function getFromLocalStorage(){
+      var reference = localStorage.getItem('items');
+
+      if(reference) {
+        items = JSON.parse(reference);
+        console.log("items", items);
+
+        renderItems(items);
+      }
+    }
+    //  Toggle function for items completed goes here
+
+    // Delete function goes here
+    function addToLocalStorage(items) {
+      localStorage.setItem('items', JSON.stringify(items));
+      renderItems(items);
+    }
+   
+    getFromLocalStorage();
     
-      
-     
- 
-     
-
-
-  
-
-    
-
-    // function addItem(item) {
-    //   if(item !=="") {
-    //     var item = {
-    //       department: department.value,
-    //       item: item.value,
-    //       qty: qty.value
-    //     }
-    //   itemsArray.push(item);
-    //   addToLocalStorage(itemsArray);
-
-    //   console.log("item", itemsArray);
-    //   }
-    // }
-    // // function renderItemsList(itemsArray) {
-
-    // // }
-    // function addToLocalStorage(itemsArray) {
-    //   localStorage.setItem('itemsArray',
-    //   JSON.stringify(itemsArray));
-
-    //   renderItemsList(itemsArray);
-    // }
-    // function getFromLocalStorage(){
-    //   var items = localStorage.getItem('itemsArray');
-
-    //   if(items) {
-    //     itemsArray = JSON.parse("itemsArray");
-    //     console.log("itemsArray", itemsArray);
-
-    //     renderItemsList(itemsArray);
-    //   }
-    // }
-    // getFromLocalStorage();
-
   </script>
 </body>
 </html>
