@@ -17,12 +17,12 @@
   --text-alt: #fff;
   --borders: var(--text);
   --modal-bg: var(--text);
-  --buttons: #4c31d0;
+  --buttons: var(--text);
   --input-box: #999898; 
   --bg-color-primary: #6DF176;
   --dept-li-active: var(--bg-color-primary);
   --output-list-bg: var(--text-alt);
-  --output-text: var(--buttons);
+  --output-text: var(--text);
 }
 body {
   background-image: url(assets/carts-bg4.svg);
@@ -422,18 +422,37 @@ ol {
 
       items.forEach(function(item) {
         const li = document.createElement('li');
+          li.setAttribute("class", "item list-item-format");
+          li.setAttribute('data-key', item.id);
+          li.innerHTML = `<input type = "checkbox" class="checkbox">`
+          
+        const div = document.createElement('div');
+          div.setAttribute("class", "item list-item-format item-dept");
+          div.setAttribute("id", "item-dept");
+          div.innerHTML = `${item.dept}`;
+          li.appendChild(div);
 
-        li.setAttribute("class", "item list-item-format");
-        li.setAttribute('data-key', item.id);
+          const div = document.createElement('div');
+          div.setAttribute("class", "item list-item-format item-item");
+          div.setAttribute("id", "item-item");
+          div.innerHTML = `${item.item}`;
+          li.appendChild(divItemItem);
+
+        //   const div = document.createElement('div');
+        //   div.setAttribute("class", "item list-item-format item-qty");
+        //   div.setAttribute("id", "item-qty");
+        //   div.innerHTML = `${item.qty}`;
+        //   li.append(div);
+
 //   delete code goes here
 
-        li.innerHTML = 
-        `<input type="checkbox" class="checkbox">
-        ${item.dept}` + " " +
-        `${item.item}` + " " + 
-        `${item.qty}` +
-        `<button class="delete-btn">Delete</button>` +
-        `<br>`;
+        // li.innerHTML = 
+        // `<input type="checkbox" class="checkbox">
+        // ${item.dept}` + " " +
+        // `${item.item}` + " " + 
+        // `${item.qty}` +
+        // `<button class="delete-btn">Delete</button>` +
+        // `<br>`;
 
         itemItemsList.append(li);
       });
