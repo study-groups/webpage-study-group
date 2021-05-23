@@ -7,39 +7,41 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <title>Test 13</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
+
+<!-- TODOs -->
+<!-- On-click, more page focus to data-entry form when edit button is clicked -->
 <script src="input-mask.js"></script>
 <!-- https://www.cssscript.com/lightweight-pure-javascript-input-mask/ -->
 <style>
   /*  Wine theme */
   body {
     /* main body colors */
-    --background-body: #691699;
-    --background-form: #bfbfbf;
-    --form-text: #000;
+    --background-body: #1d1c37;
+    --background-form: #7f818a;
+    --form-text: #fff;
 
     /* input form colors */
     --background-form-inputs: #fff;
     --form-input-text: #767676;
 
     /* button colors */
-    --background-buttons: #961699;
+    --background-buttons: #425aa0;
     --button-text: #fff;
     --button-border: #000;
     --button-hover: #161A98;
     --button-active: #070a6e;
 
     /* output colors */
-    --background-output: #070a6e;
-    --background-output-cards: #070a6e; /* alt= #070a6e */
+    --background-output: #425aa0;
+    --background-output-cards: #2e3f72; /* alt= #070a6e */
     --output-card-text: #fff;
+    --output-card-text-alt: #000;
     --deleteBtn: var(--background-output);
     --transition-delay: 1s;
-    /* Modal colors */
-    --modal-background: var(--form-input-text);
 
-
-    transition: var(--transition-delay);
   }
   /* Study-groups theme */
   body.sg {
@@ -64,12 +66,6 @@
     --background-output-cards: #004346;
     --output-card-text: #fff;
 
-     /* Modal colors */
-     --modal-background: var(--background-form);
-  }
-  .delete-btn {
-    background: var(--deleteBtn);
-    color: white;
   }
   @media screen and (max-width: 2200px) {
     body {
@@ -94,6 +90,7 @@
       border: 1px solid var(--background-output);
     }
     .main-header {
+      font-family: 'Archivo Black', sans-serif;
       grid-area: 1 / 1 / 2 / 2;
       text-align: center;
       font-size: 1.4em;
@@ -182,7 +179,7 @@
       display: none;
     }
     li {
-      background: var(--background-buttons);
+      background: var(--background-form);
     }
     /* BUTTONS */
     .btn {
@@ -195,7 +192,7 @@
       background: var(--button-active);
       border: var(--button-border);
     }
-    #add-btn, #reset-btn, #print-btn {
+    #add-btn, #reset-btn, #update-btn {
       margin: 1em .1em 1em 0;
       width: 130px;
       height: 40px;
@@ -210,7 +207,7 @@
     #reset-btn {
       border-radius: 0px;
     }
-    #print-btn {
+    #update-btn {
       border-radius: 0 8px 8px 0;
     }
     .button-container {
@@ -225,7 +222,6 @@
       font-size: 1.2em;
       vertical-align: middle;
       margin-left: 20px;
-      width: 100px;
     }
     .output-container {
       display: flex;
@@ -261,25 +257,27 @@
     label {
       width: 110px;
     }
-    .del-btn {
+    .cardBtnContainer {
       display: flex;
-      min-width: 50px;
+      margin: 14px;
+     
+    }
+    .del-btn, .edit-btn {
+      display: block;
+      width: 115px;
       min-height: 25px;
-      margin: 10px 0 10px 0;
+      background: var(--background-buttons);
+      border: 1px solid var(--button-border);
       padding: 5px;
-      border-radius: 5px;
-      background: var(--background-output);
       color: var(--button-text);
     }
-    .edit-btn {
-      display: flex;
-      min-width: 50px;
-      min-height: 25px;
+    .del-btn {
       margin: 10px 0 10px 0;
-      padding: 5px;
-      border-radius: 5px;
-      background: var(--background-output);
-      color: var(--button-text);
+      border-radius: 8px 0 0 8px;
+    }
+    .edit-btn {
+      margin: 10px 0 10px 4px;
+      border-radius:  0 8px 8px 0 ;
     }
   }
   @media screen and (max-width: 812px) {
@@ -357,7 +355,7 @@
       margin: 1.7em;
       border: none;
     }
-    #add-btn, #reset-btn, #print-btn {
+    #add-btn, #reset-btn, #update-btn {
       font-size: .8em;
       margin: 0 auto;
       width: 275px;
@@ -369,7 +367,7 @@
     #reset-btn {
       grid-area: 7 / 1 / 8 / 2;
     }
-    #print-btn {
+    #update-btn {
       border-radius: 0 0 5px 5px;
     }
     .list-header {
@@ -393,7 +391,7 @@
 <body class="">
   <div class="main-container"> 
     <div class="form-container">
-      <form class="name-entry-form grid-container">
+      <form class="person-entry-form grid-container">
         <div class="main-header" 
           id="main-header">Client Data Form
         </div>
@@ -407,7 +405,9 @@
             id="fName-input"
             class="fName-input"
             placeholder="Enter First Name"
-            type="fName-input">
+            type="text"
+            value="">
+            
         </div>
         <div class="lName-input-group">
           <label for="lName-input">Last Name:</label>
@@ -485,16 +485,16 @@
         <div class="url-input-group">
           <label for="url">URL:</label>
             <input
-              id="url"
+              id="url-input"
               class="url-input"
               placeholder="url"
               type="url">
         </div>
         <!-- BUTTONS -->
         <div class="button-container">
-          <button id="add-btn" class="btn"  type="submit">Add</button>
+          <button id="add-btn" class="btn add-btn"  type="submit">Add</button>
           <input id="reset-btn" class="btn" type="reset">
-          <button id="print-btn" class="btn" type="submit">Print</button>
+          <button id="update-btn" class="btn update-btn" type="submit">Update</button>
         </div>
         <!-- <button class="btn" id="delete-btn"  type="submit">Delete</button> -->
       </form>  
@@ -524,8 +524,10 @@ document.querySelector('.theme-toggle-button').addEventListener('click', () => {
 });
 
 // FORM CODE //
-const nameEntryForm = document.querySelector('.name-entry-form');
+const personEntryForm = document.querySelector('.person-entry-form');
+const addBtn = document.querySelector('.add-btn');
 const resetBtn = document.querySelector('.reset-btn');
+const updateBtn = document.querySelector('.update-btn');
 const fNameInput = document.querySelector('.fName-input');
 const lNameInput = document.querySelector(".lName-input");
 const streetAddress1 = document.querySelector(".street-address1-input");
@@ -539,12 +541,6 @@ const peopleList = document.querySelector(".people-list");
 const phoneInput = document.querySelector(".phone-input");
 const urlInput = document.querySelector(".url-input");
 
-// Modal variables //
-var modal = document.getElementById("delete-modal");
-var card = document.getElementsByClassName("card");
-var span = document.getElementById("close");
-
-
 // Input Mask Code //
 new InputMask().Initialize(document.querySelectorAll(".phone-input"),{
   mask: InputMaskDefaultMask.Phone
@@ -556,10 +552,11 @@ InputMask();
 
 // FORM INPUT //
 let personArray = [];
+let personArrayEdit = [];
 
-nameEntryForm.addEventListener('submit', function(event) {
+addBtn.addEventListener('click', function(event) {
   event.preventDefault();
-  addName(
+  addPerson(
     fNameInput.value,
     lNameInput.value,
     streetAddress1.value,
@@ -572,7 +569,7 @@ nameEntryForm.addEventListener('submit', function(event) {
     urlInput.value,
     dobInput.value);
 });
-function addName(person) {
+function addPerson(person) {
   if(person !== ""){
     var person = {
       id: Date.now(),
@@ -588,126 +585,163 @@ function addName(person) {
       urlInput: urlInput.value,
       dobInput: dobInput.value
     }
-    personArray.push(person);
-    addToLocalStorage(personArray); // trigger add function below
+   } 
+      personArray.push(person);
+      addToLocalStorage(personArray); // trigger add function below
 
-    console.log("person array", personArray);
-    // clear input values
-    fNameInput.value = "";
-    lNameInput.value = ""; 
-    streetAddress1.value = "";
-    streetAddress2.value = "";
-
-    cityInput.value = "";
-    stateInput.value = "";
-    zipCodeInput.value = "";
-    emailInput.value = "";
-    phoneInput.value = "";
-    urlInput.value = "";
-    dobInput.value = "";
+      console.log("PersonArray - Add Person:", personArray);
+      // clear input values
+      document.getElementById("reset-btn").click();
   }
-}
-function renderList(personArray) {
-  peopleList.innerHTML = ''; // ensures ol has no contents
-  
-  personArray.forEach(function(person) {
-    
-      var li = document.createElement("li");
 
-      li.innerHTML = 
-        `${person.name}` + " " +
-        `${person.name2}` + `<br>` +
-        `${person.streetAddress1}` + ", " +
-        `${person.streetAddress2}` + `<br>` +
-        `${person.cityInput}` + ", " +
-        `${person.stateInput}` + " " + " " +
-        `${person.zipCodeInput}` + `<br>` + `<br>` +  "E: " +
-        `${person.emailInput}` + "" + `<br>` + "P: " +
-        `${person.phoneInput}` + "" + `<br>` + "URL: "  +
-        `${person.urlInput}` + "" + `<br>` + "DOB: " +
-        `${person.dobInput}`;
-      
-        peopleList.append(li); // peopleList = <ol>
-        li.setAttribute('class', "person card-format card");
-        li.setAttribute('data-key', person.id);
-              
-        const styles = {
-          minWidth: "285px",
-          maxWidth: "300px",
-          height: "auto",
-          color: "#fff",
-          fontSize: ".8em",
-          padding: "10px 0 10px 15px",
-          borderRadius: "5px",
-          margin: "15px 15px 15px 15px"
-        }
-        Object.assign(li.style, styles);
+// RENDER FUNCTIONS
+
+  function renderList(personArray) {
+    peopleList.innerHTML = ''; // ensures ol has no contents
+
+    personArray.forEach(function(person) {
+
+        var li = document.createElement("li");
+
+        li.innerHTML = 
+          `${person.name}` + " " +
+          `${person.name2}` + `<br>` +
+          `${person.streetAddress1}` + ", " +
+          `${person.streetAddress2}` + `<br>` +
+          `${person.cityInput}` + ", " +
+          `${person.stateInput}` + " " + " " +
+          `${person.zipCodeInput}` + `<br>` + `<br>` +  "E: " +
+          `${person.emailInput}` + "" + `<br>` + "P: " +
+          `${person.phoneInput}` + "" + `<br>` + "URL: "  +
+          `${person.urlInput}` + "" + `<br>` + "DOB: " +
+          `${person.dobInput}`;
+
+          peopleList.append(li); // peopleList = <ol>
+          li.setAttribute('class', "person card-format card");
+          li.setAttribute('data-key', person.id);
+
+          const styles = {
+            minWidth: "285px",
+            maxWidth: "300px",
+            height: "auto",
+            color: "#fff",
+            fontSize: ".8em",
+            padding: "10px 0 10px 15px",
+            borderRadius: "5px",
+            margin: "15px 15px 15px 15px"
+          }
+          Object.assign(li.style, styles);
+
+          //  Delete Button
+          var cardBtnContainer = document.createElement("div");
+          var delBtn = document.createElement("button");
+          var editBtn = document.createElement("button");
+          cardBtnContainer.setAttribute("class", "cardBtnContainer");
+
+          li.append(cardBtnContainer);
+
+          cardBtnContainer.append(delBtn);
+          cardBtnContainer.append(editBtn);
+
+          delBtn.innerHTML = "Delete Card";
+          delBtn.setAttribute("class", "del-btn btn");
+          delBtn.setAttribute("id", "del-btn");
+
+          editBtn.innerHTML = "Edit Data";
+          editBtn.setAttribute("class", "edit-btn btn");
+          editBtn.setAttribute("id", "edit-btn")
         
-        //  Delete Button
-        var delBtn = document.createElement("button");
-        li.append(delBtn);
-        delBtn.innerHTML = "Delete Card";
-        delBtn.setAttribute("class", "del-btn");
-        delBtn.setAttribute("id", "del-btn");
-
-        var editBtn = document.createElement("button");
-        li.append(editBtn);
-        editBtn.innerHTML = "Edit Card";
-        editBtn.setAttribute("class", "edit-btn");
-        editBtn.setAttribute("id", "edit-btn")
     })
   };
-function addToLocalStorage(personArray) { // add to localStorage
-  localStorage.setItem('personArray', JSON.stringify(personArray));
-  renderList(personArray);
-}
-function getFromLocalStorage(){      // retrieve from localStorage
-  
-  var listNames = localStorage.getItem('personArray');
-  
-  if(listNames) { 
-    personArray = JSON.parse(listNames);
-    console.log("list name", listNames);
+// ADD TO LOCAL STORAGE
+
+  function addToLocalStorage(personArray) { // add to localStorage
+    localStorage.setItem('personArray', JSON.stringify(personArray));
     renderList(personArray);
   }
-}
-getFromLocalStorage();
+  function getFromLocalStorage(){      // retrieve from localStorage
 
-function deletePerson(id) {
-  personArray = personArray.filter(function(person) {
-    return person.id != id;
-  });
-  console.log(personArray);
-  // update localStorage
-  addToLocalStorage(personArray);
-}
+    var listNames = localStorage.getItem('personArray');
 
-getFromLocalStorage();
-
-peopleList.addEventListener("click", function(event) {
-  if(event.target.classList.contains('del-btn')) {
-    deletePerson(event.target.parentElement.getAttribute('data-key'))
+    if(listNames) { 
+      personArray = JSON.parse(listNames);
+      // console.log("list name", listNames);
+      renderList(personArray);
+    }
   }
-});
 
-function editPerson(id) {
-  personArray = personArray.filter(function(person) {
-    return person.id;
+  getFromLocalStorage();
+
+  console.log("Initial Array:", personArray);
+
+// DELETE FUNCTION CODE
+  peopleList.addEventListener("click", function(event) {
+    if(event.target.classList.contains('del-btn')) {
+      deletePerson(event.target.parentNode.parentNode.getAttribute('data-key'));
+    }
   });
-  console.log(person.id);
-  // update localStorage
-  // addToLocalStorage(personArray);
-}
+  function deletePerson(id) {
+    personArray = personArray.filter(function(person) {
+      return person.id != id;
+    });
 
-// getFromLocalStorage();
+    // update localStorage
+    addToLocalStorage(personArray);
+    console.log("Deleted person", personArray);
+  }
+  
+  getFromLocalStorage();
 
-// peopleList.addEventListener("click", function(event) {
-//   if(event.target.classList.contains('delete-btn')) {
-//     deletePerson(event.target.parentElement.getAttribute('data-key'))
-//   }
-// });
+
+// EDIT FUNCTION CODE
+  peopleList.addEventListener("click", function(event) {
+    if(event.target.classList.contains('edit-btn')) {
+      editPerson(event.target.parentNode.parentNode.getAttribute('data-key'));
+      
+      // window.scrollTo({top: 0, behavior: "smooth"});
+    }
+  });
+  
+  function editPerson(id) {
+    personArrayEdit = personArray.filter(function(person) {
+      return person.id == id; //  creates a new array whose data can be edited and added back 
+      
+    });
+
+    console.log("Person array edit", personArrayEdit);
+    
+ 
+
+    
+    console.log("TEST", personArray);
+  
+    // return values to input form
+
+    document.getElementById('fName-input').value = personArrayEdit[0].name;
+    document.getElementById('lName-input').value = personArrayEdit[0].name2;
+    document.getElementById('street-address1-input').value = personArrayEdit[0].streetAddress1;
+    document.getElementById('street-address2-input').value = personArrayEdit[0].streetAddress2;
+    document.getElementById('city-input').value = personArrayEdit[0].cityInput;
+    document.getElementById('state-input').value = personArrayEdit[0].stateInput;
+    document.getElementById('zip-code-input').value = personArrayEdit[0].zipCodeInput;
+    document.getElementById('dob-input').value = personArrayEdit[0].zipCodeInput;
+    document.getElementById('phone-input').value = personArrayEdit[0].phoneInput;
+    document.getElementById('email-input').value = personArrayEdit[0].emailInput;
+    document.getElementById('url-input').value = personArrayEdit[0].urlInput;
+    
+  
+  updateBtn.addEventListener("click", function() {
+    var newArray = personArray.map(obj => personArrayEdit.find(o.id === obj.id) || obj);
+    console.log("new personArray", newArray);
+     
+    
+  })
+  };
+  
+
 </script>
   <!-- Function signature: defines the input and ouput of functions or methods.
   input = id, which is a string or a number depending on JSON status. -->
 </body>
 </html>
+
