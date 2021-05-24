@@ -460,9 +460,7 @@ ol {
         const li = document.createElement('li');
           li.setAttribute("class", "item list-item-format");
           li.setAttribute('data-key', item.id);
-          
-
-          
+                    
         var div = document.createElement('div');
           div.setAttribute("class", "item list-item-format item-dept");
           div.setAttribute("id", "item-dept");
@@ -489,26 +487,12 @@ ol {
           deleteBtn.innerHTML = "Delete";
           li.appendChild(deleteBtn);
 
-          
- 
-
-//   delete code goes here
-
-        // li.innerHTML = 
-        // `<input type="checkbox" class="checkbox">
-        // ${item.dept}` + " " +
-        // `${item.item}` + " " + 
-        // `${item.qty}` +
-        // `<button class="delete-btn">Delete</button>` +
-        // `<br>`;
-
         itemItemsList.append(li);
       });
     }
 
     function addToLocalStorage(items) {
       localStorage.setItem('items', JSON.stringify(items));
-
       renderItems(items);
     }
 
@@ -518,20 +502,24 @@ ol {
       if(reference) {
         items = JSON.parse(reference);
         console.log("items", items);
-
         renderItems(items);
       }
     }
-    //  Toggle function for items completed goes here
-
-    // Delete function goes here
-    function addToLocalStorage(items) {
-      localStorage.setItem('items', JSON.stringify(items));
-      renderItems(items);
-    }
-   
+    function deleteItem(id) {
+      items = items.filter(function(item) {
+        return item.id != id;
+      });
+      console.log(items);
+      addToLocalStorage(items);
+    }  
     getFromLocalStorage();
     
+    itemItemsList.addEventListener('click', function(event) {
+      if(event.target.classList.contains('delete-btn')) {
+        deleteItem(event.target.parentElement.getAttribute('data-key'));
+      }
+    });
+
   </script>
 </body>
 </html>
