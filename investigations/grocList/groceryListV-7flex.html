@@ -34,13 +34,15 @@ body {
   position: relative;
 }  
 .main-header {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 6em;
-  height: 1em;
+  margin: 0 auto;
   text-align: center;
-  flex-grow: 1;
-  color: var(--text-alt);
-  letter-spacing: .1em;
+  background: #3a32e3;
+  max-width: 750px;
+  margin-top: 40px;
+  margin-bottom: 40px;;
+  border-radius: 10px 10px 0 0;
+
+  
 }
 .main-container {
   max-width: 750px;
@@ -149,6 +151,7 @@ input {
   justify-content: center;
 }
 .btn {
+  
   margin: 5px;
   padding: 5px;
   min-width: 200px;
@@ -157,6 +160,7 @@ input {
   font-weight: bold;
   font-size: .8em;
   background-color: var(--buttons);
+  
 }
 .btn:hover {
   background: var(--buttons-hover);
@@ -220,10 +224,7 @@ ol {
 #item-qty {
   min-width: 160px ;
 }
-/* .img {
-  content: url(../grocList/assets/TrashCan.png);
-  width: 90%;
-} */
+
 .delete-btn {
   margin-bottom: 10px;
   background: var(--text);
@@ -274,7 +275,7 @@ ol {
 </style>
 <body>
   <main>
-    <h1 class="main-header">GROCERY</h1>
+    <div class="main-header"><img class="main-header" src="/investigations/grocList/assets/GrocHeaderFlat.png"></div>
       <div class="main-container">
         <!-- DEPARTMENT LIST -->
         <div>
@@ -401,6 +402,7 @@ ol {
     const span = document.getElementsByClassName("close")[0];
     var addBtn = document.querySelector(".add-btn");
     var deleteAllBtn = document.querySelector(".delete-all-btn");
+    var sortBtn = document.querySelector(".sort-btn");
     const itemItemsList = document.querySelector('.grocery-items');
 
     var items = [];
@@ -521,14 +523,32 @@ ol {
       }
     });
 
-    // deleteAllBtn.addEventListener('click', function(event) {
-    //   if(event.target.classList.contains('delete-all-btn')) {
-    //     localStorage.clear();
-    //   }
-    // });
+    deleteAllBtn.addEventListener('click', function(event) {
+      if(event.target.classList.contains('delete-all-btn')) {
+        localStorage.clear();
+      }
+    });
+    getFromLocalStorage();
 
+    function compare(a, b) {
+      if(a.dept < b.dept) {
+        return -1;
+      } 
+      if(a.dept > b.dept) {
+        return 1;
+      }
+      return 0;
+    }
 
-
+    sortBtn.addEventListener('click', function(event) {
+      if(event.target.classList.contains('sort-btn')) {
+        compare(items);
+      }
+    });
+    
+    items.sort(compare);
+    console.log("items-sort", items);
+    renderItems(items);
   </script>
 </body>
 </html>
