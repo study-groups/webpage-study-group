@@ -400,6 +400,7 @@ ol {
     const deptHover = document.getElementById("dept-input");
     const span = document.getElementsByClassName("close")[0];
     var addBtn = document.querySelector(".add-btn");
+    var deleteAllBtn = document.querySelector(".delete-all-btn");
     const itemItemsList = document.querySelector('.grocery-items');
 
     var items = [];
@@ -519,6 +520,14 @@ ol {
         deleteItem(event.target.parentElement.getAttribute('data-key'));
       }
     });
+
+    // deleteAllBtn.addEventListener('click', function(event) {
+    //   if(event.target.classList.contains('delete-all-btn')) {
+    //     localStorage.clear();
+    //   }
+    // });
+
+
 
   </script>
 </body>
