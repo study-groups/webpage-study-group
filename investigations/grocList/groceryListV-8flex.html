@@ -13,11 +13,10 @@
 </head>
 <style>
   :root {
-    --text: #3a32e3;
+    --text: #1004af;
     --department-container: var(--text);
     --text-alt: #fff;
     --borders: var(--text);
-    --modal-bg: var(--text);
     --buttons: var(--text);
     --buttons-hover: #248bc6;
     --input-box: #828282;
@@ -27,10 +26,12 @@
     --output-text: var(--text);
     --delete-btn-hover: #e82829;
     --black: #000;
+    --label: #1004af;
+    --sub-headers: #1004af;
+    --dark-blue: #1004af;
   }
   body {
     background-image: url(assets/carts-bg4.svg);
-    /* background-repeat: repeat; */
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     position: relative;
@@ -44,7 +45,7 @@
   .main-header {
     margin: 0 auto;
     text-align: center;
-    background: var(--text);
+    background: #3225e3;
     max-width: 750px;
     margin-top: 30px;
     padding-bottom: 10px;
@@ -54,38 +55,32 @@
   .main-container {
     max-width: 750px;
     margin: 0 auto;
-    margin-bottom: 5em;
     background: var(--bg-color-primary);
     font-size: 1.2em;
-    min-height: 900px;
     border-radius: 0 0 10px 10px;
-
   }
   /* DEPARTMENTS SECTION */
-  .dept-header,
-  .data-input-header,
-  .btn-header,
+  .data-input-header {
+    background: #1004af;
+  }
   .shop-list-header {
+    background-color: #5f0395;
+  }
+  .data-input-header, .shop-list-header {
     text-align: center;
     padding: .3em 0 .3em 0;
     letter-spacing: 1px;
     height: 24px;
-    background: #f24288;
-    border-top: 3px solid black;
-
+    border-top: 2px solid var(--text-alt);
+    border-bottom: 2px solid var(--text-alt);
+    font-weight: bold;
+    color: var(--text-alt);
+    font-size: 1.2em;
   }
   .dept-header {
     margin: 20px 45px 15px 45px;
   }
-  .data-input-header,
-  .btn-header,
-  .shop-list-header {
-    font-weight: bold;
 
-  }
-  .shop-list-header {
-    margin-bottom: 100px;
-  }
   .department-container {
     display: flex;
     justify-content: space-evenly;
@@ -98,8 +93,9 @@
   }
   li {
     /* margin: 5px; */
-    font-size: .7em;
+    font-size: 1em;
     line-height: 130%;
+    width: 90%;
   }
 
   /*  DATA INPUT SECTION */
@@ -132,7 +128,7 @@
   label {
     margin-top: 15px;
     display: block;
-    color: var(--text);
+    color: var(--label);
     max-width: 282px;
   }
   .flex-container {
@@ -165,7 +161,7 @@
     color: var(--text-alt);
     font-weight: bold;
     font-size: .8em;
-    background-color: var(--text);
+    background-color: var(--dark-blue);
 
   }
   .btn:hover {
@@ -175,25 +171,33 @@
     margin: .5em 0 .5em 0;
   }
   /* DATA OUTPUT */
-  .output-list {
-    display: flex;
-    background: var(--text);
-    border-radius: 10px 10px 0 0;
+  /* .shop-list-container {
+
+
+  } */
+  .data-output-headers {
+     display: flex;
+     background: #8626be;
+     font-size: 1.2em;
   }
   .output-headers {
-    display: flex;
     color: var(--text-alt);
+    
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    
+    
   }
   #output-dept-header {
-    margin: 0 100px 0 25px;
+    margin: 0 0 0 100px;
     font-weight: bold;
   }
   #output-item-header {
-    margin: 0 20px 0 0;
+    margin: 0 20px 0 30px;
   }
   #output-qty-header {
-    margin-left: 100px;
+    margin: 0 0 0 60px;
   }
   ol {
     list-style: inside;
@@ -203,42 +207,57 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin: 10px 0 0 20px;
+    margin: 20px 0 0 20px;
     padding: 0;
-
   }
-  .data-output-container {
-    background: #fff;
-    margin: 30px 20px 0 20px;
-    ;
-    border-radius: 10px 10px;
+  .grocery-items {
+    list-style-type: none;
+    counter-reset: css-counter 0;
   }
-
+  .grocery-items li {
+    counter-increment: css-counter 1;
+  }
+  .grocery-items li:before {
+    content: counter(css-counter);
+    margin: 0 0 0 60px;
+  }
   .list-item-format {
     display: flex;
-    color: var(--output-text);
-    font-size: 1em;
+    color: var(--text);
+
+  }
+  .list-item-format:last-child {
+    margin-bottom: 40px;
   }
   /* #item-dept, #item-item, #item-qty {
   margin-top: 5px;
 } */
   #item-dept {
-    width: 220px;
+    width: 170px;
     margin: 0 0 0 20px;
 
   }
   #item-item {
-    width: 200px;
+    width: 150px;
   }
   #item-qty {
-    min-width: 100px;
+    min-width: 80px;
   }
   .delete-btn {
-    margin-bottom: 10px;
     background: var(--text);
     color: var(--text-alt);
     border-radius: 5px;
-    width: 75px;
+    width: 65px;
+    margin: 0 0 0 10px;
+    height: 25px;
+  }
+  .edit-btn {
+    background: var(--text);
+    color: var(--text-alt);
+    border-radius: 5px;
+    width: 65px;
+    margin: 0 0 0 10px;
+    height: 25px;
   }
   .delete-btn:hover {
     background: var(--delete-btn-hover);
@@ -246,7 +265,6 @@
   @media only screen and (max-width: 812px) {
     .main-container {
       font-size: 1em;
-
     }
     .main-header {
       margin: 40px 0 0 0;
@@ -256,49 +274,52 @@
       width: 90%;
       margin: 15px 0 0 0;
     }
-    .dept-header,
-    .data-input-header,
-    .btn-header,
-    .shop-list-header {
-      height: 20px;
-  }
     select, .item-input, .qty-input {
-     font-size: .7em;
+     font-size: 1em;
      border-top: 1px solid var(--black);
-  }
-  select {
-    height: 28px;
-  }
+    }
+    select {
+      height: 31px;
+    }
     .flex-container {
       flex-direction: column;
+      height: 415px;
+    }
+    .data-input-header, .shop-list-header {
+      font-size: 1.2em;
     }
     .data-input-form {
       margin: auto;
     }
     label {
-      font-size: .8em;
+      font-size: 1em;
       margin-top: 5px;
     }
     .button-container {
-      margin: ;
+      margin: 20px 20px 20px 20px;
       flex-direction: row;
     }
     .btn {
-      width: 100px;
+      width: 130px;
       min-width: auto;
-
+      font-size: .9em;
     }
-    .list-item-format {
+    .shop-list-header {
       flex-direction: column;
+    }
+    .data-output-container {
+      margin: 20px;
     }
     #output-dept-header, #output-item-header, #output-qty-header {
       margin: 0;
+      font-size: .8em;
     }
-    .output-list {
-      flex-direction: column;
+    .list-item-format {
+      font-size: .8em;
+      margin: 0 0 10px 0;
     }
-    .sort-btn, .delete-all-btn {
-      font-size: .7em;
+    #item-dept {
+      margin: 0 50px 0 0;
     }
   }
 
@@ -382,25 +403,25 @@
           <div class="button-container">
             <button class="add-btn btn" type="submit" form="data-input-form">ADD</button>
             <button class="reset-btn btn" type="reset" form="data-input-form">RESET</button>
-            <button class="print-btn btn" type="submit">EDIT ITEM</button>
             <button class="delete-all-btn btn" type="submit">DELETE LIST</button>
             <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
           </div>
         </div>
 
         <!-- DATA OUTPUT -->
-        <div class="shop-list-header">SHOPPING LIST
-          <div class="data-output-container">
-            <div class="output-list">
-              <div class="output-headers" id="output-dept-header">Department</div>
-              <div class="output-headers" id="output-item-header">Item</div>
-              <div class="output-headers" id="output-qty-header">Qty</div>
-            </div>
-            <ul class="grocery-items">
-              <li class="item">Test</li>
-            </ul>
+        <div class="shop-list-container" id="shop-list-container">
+          <div class="shop-list-header">SHOPPING LIST</div>
+            <div class="data-output-container">
+              <div class="data-output-headers">
+                <div class="output-headers" id="output-dept-header">Department</div>
+                <div class="output-headers" id="output-item-header">Item</div>
+                <div class="output-headers" id="output-qty-header">Qty</div>
+              </div>
+              <ul class="grocery-items" id="ordered-list">
+                <!-- grocery-items -->
+              </ul>
           </div>
-        </div>
+        </div>  
       </div>
     </div>
   </main>
@@ -417,6 +438,7 @@
     var deleteAllBtn = document.querySelector(".delete-all-btn");
     var sortBtn = document.querySelector(".sort-btn");
     const itemItemsList = document.querySelector('.grocery-items');
+    var shopListContainer = document.getElementById('shop-lit-container');
 
     var items = [];
 
@@ -473,33 +495,43 @@
         li.setAttribute("class", "item list-item-format");
         li.setAttribute('data-key', item.id);
 
-        var div = document.createElement('div');
-        div.setAttribute("class", "item list-item-format item-dept");
-        div.setAttribute("id", "item-dept");
-        li.setAttribute('id', "item-dept");
-        div.innerHTML = `${item.dept}`;
-        li.appendChild(div);
+          var div = document.createElement('div');
+          div.setAttribute("class", "item list-item-format item-dept");
+          div.setAttribute("id", "item-dept");
+          li.setAttribute('id', "item-dept");
+          div.innerHTML = `${item.dept}`;
+          li.appendChild(div);
 
-        var div = document.createElement('div');
-        div.setAttribute("class", "item list-item-format item-item");
-        div.setAttribute("id", "item-item");
-        li.setAttribute('id', "item-item");
-        div.innerHTML = `${item.item}`;
-        li.appendChild(div);
+          var div = document.createElement('div');
+          div.setAttribute("class", "item list-item-format item-item");
+          div.setAttribute("id", "item-item");
+          li.setAttribute('id', "item-item");
+          div.innerHTML = `${item.item}`;
+          li.appendChild(div);
 
-        var div = document.createElement('div');
-        div.setAttribute("class", "item list-item-format item-qty");
-        div.setAttribute("id", "item-qty");
-        li.setAttribute('id', "item-qty");
-        div.innerHTML = `${item.qty}`;
-        li.appendChild(div);
+          var div = document.createElement('div');
+          div.setAttribute("class", "item list-item-format item-qty");
+          div.setAttribute("id", "item-qty");
+          li.setAttribute('id', "item-qty");
+          div.innerHTML = `${item.qty}`;
+          li.appendChild(div);
 
-        var deleteBtn = document.createElement('button');
-        deleteBtn.setAttribute("class", "delete-btn");
-        deleteBtn.innerHTML = "Delete";
-        li.appendChild(deleteBtn);
+          var deleteBtn = document.createElement('button');
+          deleteBtn.setAttribute("class", "delete-btn");
+          deleteBtn.innerHTML = "Delete";
+          li.appendChild(deleteBtn);
 
-        itemItemsList.append(li);
+          var editBtn = document.createElement('button');
+          editBtn.setAttribute("class", "edit-btn");
+          editBtn.innerHTML = "Edit";
+          li.appendChild(editBtn);
+
+          itemItemsList.append(li);
+    
+        var dataOutputContainer = document.getElementById('shop-list-container');
+        dataOutputContainer.setAttribute("style", "display: flex");
+        dataOutputContainer.setAttribute("style", "flex-direction: column");
+        dataOutputContainer.append(itemItemsList);
       });
     }
 
@@ -556,7 +588,6 @@
         compare(items);
       }
     });
-
 
     items.sort(compare);
     console.log("items-sort", items);
