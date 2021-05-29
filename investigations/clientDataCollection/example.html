@@ -204,9 +204,7 @@ function renderTodos(todos) {
     // finally add the <li> to the <ul>
     todoItemsList.append(li);
   });
-
 }
-
 // function to add todos to local storage
 function addToLocalStorage(todos) {
   // conver the array to string then store it.
@@ -226,16 +224,16 @@ function getFromLocalStorage() {
   }
 }
 // toggle the value to completed and not completed
-function toggle(id) {
-  todos.forEach(function(item) {
-    // use == not ===, because here types are different. One is number and other is string
-    if (item.id == id) {
-      // toggle the value
-      item.completed = !item.completed;
-    }
-  });
-  addToLocalStorage(todos);
-}
+// function toggle(id) {
+//   todos.forEach(function(item) {
+//     // use == not ===, because here types are different. One is number and other is string
+//     if (item.id == id) {
+//       // toggle the value
+//       item.completed = !item.completed;
+//     }
+//   });
+//   addToLocalStorage(todos);
+// }
 // deletes a todo from todos array, then updates localstorage and renders updated list to screen
 function deleteTodo(id) {
   // filters out the <li> with the id and updates the todos array
