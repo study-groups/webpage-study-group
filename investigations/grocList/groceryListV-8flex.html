@@ -216,6 +216,7 @@
   }
   .grocery-items li {
     counter-increment: css-counter 1;
+    
   }
   .grocery-items li:before {
     content: counter(css-counter);
@@ -229,6 +230,7 @@
   }
   .list-item-format:last-child {
     margin-bottom: 40px;
+    
   }
   /* #item-dept, #item-item, #item-qty {
   margin-top: 5px;
@@ -272,7 +274,7 @@
       border-radius: 30px 30px 0 0;
     }
     .main-header-img {
-      width: 90%;
+
       margin: 15px 0 0 0;
     }
     select, .item-input, .qty-input {
@@ -304,68 +306,65 @@
       width: 130px;
       min-width: auto;
       font-size: .9em;
+      height: 45px;
     }
     .shop-list-header {
       flex-direction: column;
     }
-    .data-output-container {
-      margin: 20px;
+    .data-output-headers {
+      width: 100px;
+    }
+    .data-output-headers{
+      flex-direction: column;
+      max-width: 75px;
+      display: none;
     }
     #output-dept-header, #output-item-header, #output-qty-header {
       margin: 0;
-      font-size: .8em;
+      
+    }
+    #output-dept-header {
+      margin: 0 25px 0 0;
     }
     .list-item-format {
-      font-size: .8em;
+      flex-direction: column;
       margin: 0 0 10px 0;
+      width: 150px;
     }
     #item-dept {
-      margin: 0 50px 0 0;
+      width: 120px;
+      margin: 0 0 0 0;
+    }
+    #item-item {
+      width: 120px;
+      margin: 0 0 0 0;
+    }
+    .grocery-items {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 5px 0 5px 50px;
+    }
+    .grocery-items li:before {
+      margin: 0 5px 0 0;
+    }
+    .delete-btn {
+      margin-left: 0;
+    }
+    .edit-btn {
+      margin-left: 70px;
+      margin: -25px 0 0 70px;
     }
   }
-
-  
 </style>
-
 <body>
   <main>
     <div class="main-header">
       <img class="main-header-img" src="/investigations/grocList/assets/groceryHeader.png">
     </div>
     <div class="main-container">
-      <!-- DEPARTMENT LIST -->
-      <!-- <div>
-          <div class="dept-header">
-            <div class="dept-header-grp">~ Departments ~</div>
-          </div>
-            <div class="department-container">
-              <ul class="dept-grp">
-                <li>Produce</li>
-                <li>Meat/Seafood</li>
-                <li>Frozen Foods</li>
-              </ul>
-              <ul class="dept-grp">
-                <li>Dairy</li>
-                <li>Paper Goods</li>
-                <li>Health & Beauty</li>
-              </ul>
-              <ul class="dept-grp">  
-                <li>Int'l Foods</li>
-                <li>Deli</li>
-                <li>Bakery</li>
-              </ul>
-              <ul class="dept-grp">
-                <li>Dry Goods/</li>
-                <li>Canned Items</li>
-                <li>Cleaning</li>
-              </ul>
-            </div>
-          </div> -->
-      <!-- DATA INPUT -->
+ <!-- DATA INPUT -->
       <div>
-        <div>
-          <div class="data-input-header">ENTER ITEMS</div>
-        </div>
+        <!-- <div class="data-input-header">ENTER ITEMS</div> -->
         <div class="flex-container">
           <!-- DATA INPUT -->
           <form class="data-input-form" id="data-input-form">
@@ -583,8 +582,10 @@
         return 1;
       }
       return 0;
-    }
 
+      
+    }
+    
     sortBtn.addEventListener('click', function (event) {
       if (event.target.classList.contains('sort-btn')) {
         compare(items);
@@ -594,6 +595,7 @@
     items.sort(compare);
     console.log("items-sort", items);
     renderItems(items);
+
   </script>
 </body>
 
