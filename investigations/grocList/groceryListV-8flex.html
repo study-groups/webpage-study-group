@@ -18,17 +18,19 @@
     --text-alt: #fff;
     --borders: var(--text);
     --buttons: var(--text);
-    --buttons-hover: #248bc6;
+    --buttons-hover: #B70158;
     --input-box: #828282;
     --bg-color-primary: #aac9ff;
     --dept-li-active: var(--bg-color-primary);
     --output-list-bg: var(--text-alt);
     --output-text: var(--text);
-    --delete-btn-hover: #e82829;
+    --delete-btn-hover: #d8a407;
+    --edit-btn-hover: #23d807;
     --black: #000;
     --label: #1004af;
     --sub-headers: #1004af;
     --dark-blue: #1004af;
+    
   }
   body {
     background-image: url(assets/carts-bg4.svg);
@@ -64,7 +66,7 @@
     background: #1004af;
   }
   .shop-list-header {
-    background-color: #5f0395;
+    background-color: var(--dark-blue);
   }
   .data-input-header, .shop-list-header {
     text-align: center;
@@ -72,10 +74,11 @@
     letter-spacing: 1px;
     height: 24px;
     border-top: 2px solid var(--text-alt);
-    border-bottom: 2px solid var(--text-alt);
     font-weight: bold;
     color: var(--text-alt);
     font-size: 1.2em;
+    border-left: 1px solid var(--dark-blue);
+    border-right: 1px solid var(--dark-blue);
   }
   .dept-header {
     margin: 20px 45px 15px 45px;
@@ -94,7 +97,7 @@
   li {
     /* margin: 5px; */
     font-size: 1em;
-    line-height: 130%;
+    line-height: 160%;
     width: 90%;
   }
 
@@ -177,24 +180,27 @@
   } */
   .data-output-headers {
      display: flex;
-     background: #8626be;
-     font-size: 1.2em;
+     background: var(--buttons-hover);
+     font-size: 1.1em;
+     height: 34px;
+     border-left: 1px solid var(--buttons-hover);
+    border-right: 1px solid var(--buttons-hover);
   }
   .output-headers {
     color: var(--text-alt);
-    
-    padding: 10px;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     
     
   }
   #output-dept-header {
-    margin: 0 0 0 100px;
+    margin: 0 0 0 50px;
+    width: 200px;
     font-weight: bold;
   }
   #output-item-header {
-    margin: 0 20px 0 30px;
+    width: 85px;
   }
   #output-qty-header {
     margin: 0 0 0 60px;
@@ -219,14 +225,12 @@
     
   }
   .grocery-items li:before {
-    content: counter(css-counter);
-    margin: 0 0 0 60px;
+    content: counter(css-counter) ".";
+    margin: 0 0 0 35px;
   }
   .list-item-format {
     display: flex;
     color: var(--text);
-    margin: 0 0 5px 0;
-
   }
   .list-item-format:last-child {
     margin-bottom: 40px;
@@ -236,22 +240,23 @@
   margin-top: 5px;
 } */
   #item-dept {
-    width: 170px;
-    margin: 0 0 0 20px;
+    width: 200px;
+    margin: 0 0 0 15px;
 
   }
   #item-item {
-    width: 150px;
+    width: 175px;
+    margin: 0 0 0 10px;
   }
   #item-qty {
-    min-width: 80px;
+    min-width: 130px;
   }
   .delete-btn {
     background: var(--text);
     color: var(--text-alt);
     border-radius: 5px;
     width: 65px;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 5px;
     height: 25px;
   }
   .edit-btn {
@@ -262,8 +267,13 @@
     margin: 0 0 0 10px;
     height: 25px;
   }
+  .edit-btn:hover {
+    background-color: var(--edit-btn-hover);
+    color: var(--black);
+  }
   .delete-btn:hover {
     background: var(--delete-btn-hover);
+    color: var(--black);
   }
   @media only screen and (max-width: 812px) {
     .main-container {
@@ -283,6 +293,22 @@
     }
     select {
       height: 31px;
+    }
+    #dept-input {
+      appearance: none;
+    }
+    /* Code from the codepen reference at the bottom included
+    this code, nested in the #dept-input reference above:
+      &:invalid {
+        color: gray
+      } 
+    the & is a LESS-ism (pre-processor) but is not recognized in standard CSS where LESS is not being used. Is is similar to clearfix but I could not determine how to write the code. It is working without this code.
+    */
+    [disabled] {
+      color: var(--input-box);
+    }
+    option {
+      color: var(--input-box);
     }
     .flex-container {
       flex-direction: column;
@@ -326,6 +352,9 @@
     #output-dept-header {
       margin: 0 25px 0 0;
     }
+    li {
+      line-height: 130%
+    }
     .list-item-format {
       flex-direction: column;
       margin: 0 0 10px 0;
@@ -364,7 +393,7 @@
     <div class="main-container">
  <!-- DATA INPUT -->
       <div>
-        <!-- <div class="data-input-header">ENTER ITEMS</div> -->
+        <div class="data-input-header">ENTER ITEMS</div>
         <div class="flex-container">
           <!-- DATA INPUT -->
           <form class="data-input-form" id="data-input-form">
@@ -375,8 +404,8 @@
                 Select a department using the dropdown box:
               </label>
               <!-- Dropdown Content -->
-              <select id="dept-input" onchange="getDept()">
-                <option>Select Department</option>
+              <select id="dept-input" onchange="getDept()" required>
+                <option disabled selected value="">Select Department</option>
                 <option>Produce</option>
                 <option>Meat/Seafood</option>
                 <option>Frozen-foods</option>
@@ -392,20 +421,47 @@
                 <option>Other</option>
               </select>
             </div>
-            <label for="item-input" id="item-input-label">Enter An Item:</label>
-            <input id="item-input" class="item-input" placeholder="Enter item..." type="item-input">
+            <label 
+              for="item-input" 
+              id="item-input-label">Enter An Item:
+            </label>
+            <input 
+              id="item-input" 
+              class="item-input" 
+              placeholder="Enter item..." 
+              type="item-input">
                       
-            <label for="qty-input" id="qty-input-label">Add Quantity:</label>
-            <input id="qty-input" class="qty-input" placeholder="Qty..." type="qty-input">
-            
+            <label 
+              for="qty-input" 
+              id="qty-input-label">Add Quantity:
+            </label>
+            <input 
+              id="qty-input" 
+              class="qty-input"
+              placeholder="Qty..." 
+              type="qty-input">
           </form>
           <!-- BUTTONS -->
           <div class="button-container">
-            <button class="add-btn btn" type="submit" form="data-input-form">ADD</button>
-            <button class="reset-btn btn" type="reset" form="data-input-form">RESET</button>
-
-            <button class="delete-all-btn btn" type="submit">DELETE LIST</button>
-            <button class="sort-btn btn" type="submit">SORT LIST/DEPT</button>
+            <button 
+              class="add-btn btn" 
+              id="add-btn"
+              type="submit" 
+              form="data-input-form">ADD
+            </button>
+            <button 
+              class="reset-btn btn" 
+              type="reset" 
+              form="data-input-form">RESET
+            </button>
+            <button 
+              class="delete-all-btn btn" 
+              type="submit">DELETE LIST
+            </button>
+            <button 
+              class="sort-btn btn" 
+              type="submit">SORT LIST/DEPT
+            </button>
           </div>
         </div>
 
@@ -466,6 +522,9 @@
         itemInput.value,
         qtyInput.value
       )
+      document.getElementById('add-btn').onclick = function() {
+        document.getElementById('dept-input').focus();
+      } 
     });
 
     function addItem(item) {
@@ -569,7 +628,9 @@
 
     deleteAllBtn.addEventListener('click', function (event) {
       if (event.target.classList.contains('delete-all-btn')) {
-        localStorage.clear();
+        items = [];
+        addToLocalStorage(items);
+        // renderItems(items);
       }
     });
     getFromLocalStorage();
@@ -582,13 +643,10 @@
         return 1;
       }
       return 0;
-
-      
     }
-    
     sortBtn.addEventListener('click', function (event) {
       if (event.target.classList.contains('sort-btn')) {
-        compare(items);
+       compare(items);
       }
     });
 
@@ -598,5 +656,9 @@
 
   </script>
 </body>
+<!-- Select html tags to not support placeholder attribute. 
+     This work-around creates a fake placeholder:
+     https://codepen.io/maoberlehner/pen/WOWrqO
+-->
 
 </html>
