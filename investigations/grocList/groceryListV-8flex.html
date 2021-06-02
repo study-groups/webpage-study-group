@@ -55,6 +55,8 @@
 
   }
   .main-container {
+    position: relative;
+    z-index: -5;
     max-width: 750px;
     margin: 0 auto;
     background: var(--bg-color-primary);
@@ -107,7 +109,7 @@
     padding: .5em 1em .5em 1.5em;
     justify-content: space-around;
     flex-direction: column;
-    margin: 0px 0 20px 80px;
+    margin: 0px 0 20px 60px;
   }
   .dept-input-grp {
     display: flex;
@@ -150,22 +152,23 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin: 60px 0 0 50px;
+    background: rgb(0, 15, 255, .35);
+    margin: 28px 0 0 20px;
     padding: .5em 1em .5em 1em;
     justify-content: center;
-    border: 1px solid white;
-    height: 65%;
+    border: 1px solid var(--text-alt);
+    height: 75%;
   }
   .btn {
     margin: 5px;
-    padding: 5px;
+    padding: 12px;
     min-width: 150px;
-    border-radius: 5px;
+    border-radius: 6px;
     color: var(--text-alt);
     font-weight: bold;
     font-size: .8em;
     background-color: var(--dark-blue);
-
+    border: .5px solid var(--text-alt);
   }
   .btn:hover {
     background: var(--buttons-hover);
@@ -173,17 +176,31 @@
   button {
     margin: .5em 0 .5em 0;
   }
+  .montage {
+  position: absolute;
+  z-index: -7;
+  max-width: 35%;
+  height: auto;
+  padding: 80px 0 0 488px;
+
+  
+  }
   /* DATA OUTPUT */
   /* .shop-list-container {
-
+    position: relative;
+    z-index: -5;
 
   } */
+  /* .data-output-container {
+    position: relative;
+    z-index: -6;
+  } */
   .data-output-headers {
-     display: flex;
-     background: var(--buttons-hover);
-     font-size: 1.1em;
-     height: 34px;
-     border-left: 1px solid var(--buttons-hover);
+    display: flex;
+    background: var(--buttons-hover);
+    font-size: 1.1em;
+    height: 34px;
+    border-left: 1px solid var(--buttons-hover);
     border-right: 1px solid var(--buttons-hover);
   }
   .output-headers {
@@ -463,6 +480,7 @@
               type="submit">SORT LIST/DEPT
             </button>
           </div>
+          <img class="montage" src="/investigations/grocList/assets/Montage.png">
         </div>
 
         <!-- DATA OUTPUT -->
