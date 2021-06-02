@@ -9,12 +9,10 @@
   <title>Test 13</title>
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <script src="input-mask.js"></script>
+
 </head>
 
-<!-- TODOs -->
-<!-- On-click, more page focus to data-entry form when edit button is clicked -->
-<script src="input-mask.js"></script>
-<!-- https://www.cssscript.com/lightweight-pure-javascript-input-mask/ -->
 <style>
   /*  Wine theme */
   body {
@@ -42,7 +40,9 @@
     --deleteBtn: var(--background-output);
     --transition-delay: 1s;
 
+    transition: var(--transition-delay);
   }
+  
   /* Study-groups theme */
   body.sg {
     /* main body colors */
@@ -65,7 +65,6 @@
     --background-output: #004346;
     --background-output-cards: #004346;
     --output-card-text: #fff;
-
   }
   @media screen and (max-width: 2200px) {
     body {
@@ -184,7 +183,7 @@
     /* BUTTONS */
     .btn {
       background: var(--background-buttons);
-          }
+    }
     .btn:hover {
       background: var(--button-hover);
     }
@@ -260,7 +259,6 @@
     .cardBtnContainer {
       display: flex;
       margin: 14px;
-     
     }
     .del-btn, .edit-btn {
       display: block;
@@ -306,8 +304,11 @@
       margin: .6em 0 0 0;
       font-size: .6em;
     }
-    .fName-input-group, .street-address1-input-group, 
-    .city-input-group, .dob-input-group, .email-input-group {
+    .fName-input-group,
+    .street-address1-input-group, 
+    .city-input-group,
+    .dob-input-group,
+    .email-input-group {
       padding-left: 0px;
     }
     label {
@@ -388,6 +389,7 @@
     }
   }
 </style>
+
 <body class="">
   <div class="main-container"> 
     <div class="form-container">
@@ -396,7 +398,7 @@
           id="main-header">Client Data Form
         </div>
         <div class="theme-change-container">
-          <button class="theme-toggle-button">Change Theme</button>
+          <button class="theme-toggle-button" id="theme-toggle-button">Change Theme</button>
         </div>
         <div class="gap-div"></div>
         <div class="fName-input-group">
@@ -407,7 +409,6 @@
             placeholder="Enter First Name"
             type="text"
             value="">
-            
         </div>
         <div class="lName-input-group">
           <label for="lName-input">Last Name:</label>
@@ -508,20 +509,22 @@
       </div>
     </div>
   </div>
-
-<!-- <h3 class="todo-list">ToDo List</h3>
-<ol class="todos">
-  <li>add print functionality and operationalize print button</li>
-  <li>add clear locatStorage button</li>
-  <li>correct border radius on reset button (currently invoking web-kit)</li>
-</ol> -->
-
 <script>
 
 // THEME CODE //
-document.querySelector('.theme-toggle-button').addEventListener('click', () => {
+document.getElementById('theme-toggle-button').addEventListener('click', () => {
   document.body.classList.toggle("sg");
 });
+//check for Navigation Timing API support
+// if (window.performance) {
+//   console.info("window.performance works fine on this browser");
+// }
+// console.info(performance.navigation.type);
+// if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+//   console.info( "This page is reloaded" );
+// } else {
+//   console.info( "This page is not reloaded");
+// }
 
 // FORM CODE //
 const personEntryForm = document.querySelector('.person-entry-form');
@@ -551,8 +554,9 @@ new InputMask().Initialize(document.querySelectorAll(".dob-input"),{
 InputMask();
 
 // FORM INPUT //
+
 let personArray = [];
-let personArrayEdit = [];
+// let personArrayEdit = [];
 
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
@@ -600,7 +604,6 @@ function addPerson(person) {
     peopleList.innerHTML = ''; // ensures ol has no contents
 
     personArray.forEach(function(person) {
-
         var li = document.createElement("li");
 
         li.innerHTML = 
@@ -635,21 +638,21 @@ function addPerson(person) {
           //  Delete Button
           var cardBtnContainer = document.createElement("div");
           var delBtn = document.createElement("button");
-          var editBtn = document.createElement("button");
+          // var editBtn = document.createElement("button");
           cardBtnContainer.setAttribute("class", "cardBtnContainer");
 
           li.append(cardBtnContainer);
 
           cardBtnContainer.append(delBtn);
-          cardBtnContainer.append(editBtn);
+          // cardBtnContainer.append(editBtn);
 
           delBtn.innerHTML = "Delete Card";
           delBtn.setAttribute("class", "del-btn btn");
           delBtn.setAttribute("id", "del-btn");
 
-          editBtn.innerHTML = "Edit Data";
-          editBtn.setAttribute("class", "edit-btn btn");
-          editBtn.setAttribute("id", "edit-btn")
+          // editBtn.innerHTML = "Edit Data";
+          // editBtn.setAttribute("class", "edit-btn btn");
+          // editBtn.setAttribute("id", "edit-btn")
         
     })
   };
@@ -689,56 +692,44 @@ function addPerson(person) {
     addToLocalStorage(personArray);
     console.log("Deleted person", personArray);
   }
-  
   getFromLocalStorage();
 
+// EDIT FUNCTION CODE //
+  // peopleList.addEventListener("click", function(event) {
+  //   if(event.target.classList.contains('edit-btn')) {
+  //     editPerson(event.target.parentNode.parentNode.getAttribute('data-key'));
 
-// EDIT FUNCTION CODE
-  peopleList.addEventListener("click", function(event) {
-    if(event.target.classList.contains('edit-btn')) {
-      editPerson(event.target.parentNode.parentNode.getAttribute('data-key'));
+  //   }
+  // });
+  // function editPerson(id) {
+  //   personArrayEdit = personArray.filter(function(person) {
+  //     return person.id == id; //  creates a new array whose data can be edited and added back ???
       
-      // window.scrollTo({top: 0, behavior: "smooth"});
-    }
-  });
+  //   });
+  //   console.log("Person array edit", personArrayEdit);
+        
+  //   console.log("TEST", personArray);
   
-  function editPerson(id) {
-    personArrayEdit = personArray.filter(function(person) {
-      return person.id == id; //  creates a new array whose data can be edited and added back 
-      
-    });
+    // return values to input form //
 
-    console.log("Person array edit", personArrayEdit);
-    
- 
-
-    
-    console.log("TEST", personArray);
-  
-    // return values to input form
-
-    document.getElementById('fName-input').value = personArrayEdit[0].name;
-    document.getElementById('lName-input').value = personArrayEdit[0].name2;
-    document.getElementById('street-address1-input').value = personArrayEdit[0].streetAddress1;
-    document.getElementById('street-address2-input').value = personArrayEdit[0].streetAddress2;
-    document.getElementById('city-input').value = personArrayEdit[0].cityInput;
-    document.getElementById('state-input').value = personArrayEdit[0].stateInput;
-    document.getElementById('zip-code-input').value = personArrayEdit[0].zipCodeInput;
-    document.getElementById('dob-input').value = personArrayEdit[0].zipCodeInput;
-    document.getElementById('phone-input').value = personArrayEdit[0].phoneInput;
-    document.getElementById('email-input').value = personArrayEdit[0].emailInput;
-    document.getElementById('url-input').value = personArrayEdit[0].urlInput;
-    
-  
-  updateBtn.addEventListener("click", function() {
-    var newArray = personArray.map(obj => personArrayEdit.find(o.id === obj.id) || obj);
-    console.log("new personArray", newArray);
+    // document.getElementById('fName-input').value = personArrayEdit[0].name;
+    // document.getElementById('lName-input').value = personArrayEdit[0].name2;
+    // document.getElementById('street-address1-input').value = personArrayEdit[0].streetAddress1;
+    // document.getElementById('street-address2-input').value = personArrayEdit[0].streetAddress2;
+    // document.getElementById('city-input').value = personArrayEdit[0].cityInput;
+    // document.getElementById('state-input').value = personArrayEdit[0].stateInput;
+    // document.getElementById('zip-code-input').value = personArrayEdit[0].zipCodeInput;
+    // document.getElementById('dob-input').value = personArrayEdit[0].zipCodeInput;
+    // document.getElementById('phone-input').value = personArrayEdit[0].phoneInput;
+    // document.getElementById('email-input').value = personArrayEdit[0].emailInput;
+    // document.getElementById('url-input').value = personArrayEdit[0].urlInput;
      
-    
-  })
-  };
-  
-
+  // updateBtn.addEventListener("click", function() {
+  //   var newArray = personArray.map(obj => personArrayEdit.find(o.id === obj.id) || obj);
+  //   console.log("new personArray", newArray);
+       
+  // })
+  // };
 </script>
   <!-- Function signature: defines the input and ouput of functions or methods.
   input = id, which is a string or a number depending on JSON status. -->

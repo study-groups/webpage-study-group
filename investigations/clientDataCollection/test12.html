@@ -9,7 +9,7 @@
   <title>Test 12</title>
 </head>
 <script src="input-mask.js"></script>
-<!-- https://www.cssscript.com/lightweight-pure-javascript-input-mask/ -->
+
 <style>
   /*  Wine theme */
   body {
@@ -436,7 +436,7 @@
           id="main-header">Client Data Form
         </div>
         <div class="theme-change-container">
-          <button class="theme-toggle-button">Change Theme</button>
+          <button class="theme-toggle-button" id="theme-toggle-button">Change Theme</button>
         </div>
         <div class="gap-div"></div>
         <div class="fName-input-group">
@@ -559,7 +559,7 @@
 
 <script>
 // THEME CODE //
-document.querySelector('.theme-toggle-button').addEventListener('click', () => {
+document.getElementById('theme-toggle-button').addEventListener('click', () => {
   document.body.classList.toggle("sg");
 });
 
