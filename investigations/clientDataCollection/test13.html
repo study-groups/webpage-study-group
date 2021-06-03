@@ -16,29 +16,34 @@
 <style>
   /*  Wine theme */
   body {
-    /* main body colors */
+    /* main colors */
     --background-body: #1d1c37;
     --background-form: #7f818a;
-    --form-text: #fff;
+    --white: #fff;
+    --yellow-orange: #fae508;
+    --main-header: var(--yellow-orange);
+    --form-text: var(--white);
+    --black: #000;
 
     /* input form colors */
-    --background-form-inputs: #fff;
+    --background-form-inputs: var(--white);
     --form-input-text: #767676;
 
     /* button colors */
     --background-buttons: #425aa0;
-    --button-text: #fff;
-    --button-border: #000;
+    --button-text: var(--white);
+    --button-border: var(--black);
     --button-hover: #161A98;
     --button-active: #070a6e;
 
     /* output colors */
     --background-output: #425aa0;
     --background-output-cards: #2e3f72; /* alt= #070a6e */
-    --output-card-text: #fff;
-    --output-card-text-alt: #000;
+    --output-card-text: var(--white);
+    --output-card-text-alt: var(--black);
     --deleteBtn: var(--background-output);
     --transition-delay: 1s;
+
 
     transition: var(--transition-delay);
   }
@@ -49,16 +54,17 @@
     --background-body: #172a3a;
     --background-form: #487082;
     --form-text: #fff;
-
+    --main-header: var(--yellow-orange);
+    --dark-orange: #a62704;
     /* input form colors */
     --background-form-inputs: #fff;
     --form-input-text: #767676;
 
     /* button colors */
-    --background-buttons: #a62704;
+    --background-buttons: var(--dark-orange);
     --button-text: #fff;
     --button-border: #000;
-    --button-hover: #508991;
+    --button-hover: #65aab3;
     --button-active: #7e1d02;
 
     /* output colors */
@@ -95,7 +101,7 @@
       font-size: 1.4em;
       font-weight: 600;
       padding: 1em;
-      color: var(--form-text);
+      color: var(--yellow-orange);
     }
     .theme-change-container {
       grid-area: 1 / 2 / 2 / 3;
@@ -117,9 +123,11 @@
     }
     .theme-toggle-button:hover {
       background-color: var(--button-hover);
+      
     }
     .theme-toggle-button:active {
       background-color: var(--button-active);
+      color: var(--black);
     }
     input {
       margin: .4em .5em .2em 1em;
@@ -513,6 +521,7 @@
 
 // THEME CODE //
 document.getElementById('theme-toggle-button').addEventListener('click', () => {
+  event.preventDefault();
   document.body.classList.toggle("sg");
 });
 //check for Navigation Timing API support
