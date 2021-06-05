@@ -162,7 +162,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background: rgb(0, 15, 255, .35);
+    background: rgb(0, 15, 255, .15);
     margin: 28px 0 0 20px;
     padding: .5em 1em .5em 1em;
     justify-content: center;
@@ -264,7 +264,7 @@
     color: var(--text);
   }
   .list-item-format:last-child {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     
   }
   /* #item-dept, #item-item, #item-qty {
@@ -305,6 +305,11 @@
   .delete-btn:hover {
     background: var(--delete-btn-hover);
     color: var(--black);
+  }
+  .footer {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
   }
   @media only screen and (max-width: 812px) {
     .main-container {
@@ -414,6 +419,7 @@
       margin-left: 70px;
       margin: -25px 0 0 70px;
     }
+
   }
 </style>
 <body>
@@ -512,7 +518,11 @@
           </div>
         </div>  
       </div>
+      <footer class="footer">Copyright: 2021 StackStudios.com V: 1.0
+
+      </footer>
     </div>
+   
   </main>
   <script>
     const dataInputForm = document.querySelector('.data-input-form');
