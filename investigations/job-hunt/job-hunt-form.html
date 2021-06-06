@@ -67,6 +67,7 @@
     .form-container {
       display: flex;
       justify-content: center;
+     
     }
     /* FORM BOX/CONTAINER */
     .grid-container {
@@ -76,6 +77,8 @@
       margin: .2em 0 0 0;
       border: 1px solid var(--background-output);
       width: 800px;
+      margin: 0 0 3px 0;
+      
     }
     .main-header {
       font-family: 'Archivo Black', sans-serif;
@@ -111,8 +114,7 @@
     .posting-date-group,
     .source-input-group,
     .company-name-input-group,
-    .company-location-input-group
-      {
+    .company-location-input-group {
       padding-left: 0;
       margin-top: 1em;
     }
@@ -122,6 +124,11 @@
     .position-input-group {
       grid-area: 4 / 1 / 5 / 3;
     }
+    .posting-input {
+      width: 400px;
+      height: 68px;
+      padding: 0.4em 0.4em 0.4em 0;
+    }  
     .aging-input-group {
       grid-area: 5 / 1 / 6 / 3;
     }
@@ -140,23 +147,6 @@
     .company-location-input-group {
       grid-area: 10 / 1 / 11 / 3;
     }
-    /* .yes-no-container {
-      display: grid;
-      grid-area: 11 / 1 / 12 / 3;
-      display: flex;
-    }
-    #yes-label, #no-label {
-      width: 40px;
-      height: 20px;
-    }
-    .yes, .no {
-      width: 20px;
-      height: 20px;
-    }
-    .resume-sent-date {
-      display: grid;  
-      grid-area: 12 / 1 / 13 / 3;
-    } */
     .button-container {
       grid-area: 13 / 1 / 14 / 3;
       margin: 0 auto;
@@ -172,10 +162,28 @@
       cursor: pointer;
       border: 1px solid var(--button-border);
     }
-
     .resume-form-container {
       background-color: var(--grey);
     }
+    .resume-section-title {
+      font-size: 1.5em;
+      margin: 0 auto;
+      padding: 5px;
+      color: var(--white);
+    }
+    .resume-sent-title {
+      color: var(--white);
+      padding: 10px;
+    }
+    .textarea {
+      display: block;
+      width: 80%;
+      overflow: hidden;
+      resize: both;
+      min-height: 40px;
+      line-height: 20px;
+      margin: 0 auto;
+    }     
     li {
       background: var(--background-form);
     }
@@ -210,20 +218,20 @@
     .resume-form-container {
       display: grid;
       grid-template-columns: 2fr;
-      border-radius: 10px 10px 10px 10px;
+      border-radius: 0 0 10px 10px;
       background: var(--background-form);
-      margin: .2em 0 0 0;
+      margin: 0 auto;
       border: 1px solid var(--background-output);
       width: 800px;
     }
-    .container-2 {
+    /* .container-2 {
       display: grid;
       grid-template-columns: 2fr;
       background: var(--background-form);
       margin: .2em 0 0 0;
       border: 1px solid var(--background-output);
       width: 800px;
-    }
+    } */
     .output-container {
       display: flex;
       margin: 1em 3em 1em 3em;
@@ -326,7 +334,8 @@
             id="aging-input"
             class="aging-input"
             placeholder="Time since posting date"
-            type="text">
+            type="text"
+            tabIndex=3>
         </div>
         <div class="source-input-group">
           <label for="source-input">Source</label>
@@ -359,29 +368,35 @@
           <input id="reset-btn" class="btn" type="reset">
           <button id="update-btn" class="btn update-btn" type="submit">Update</button>
         </div>
-  
       </form>  
     </div>
     <!-- Separate form section for resume send info -->
     <div class="container-2">
     <form class="resume-form-container">
-      <div class="yes-no-container">
-        <label for="yes" id="yes-label">Yes
-          <input id="yes" class="yes" type="radio" value="yes">
-        </label>
-        <label for="no" id="no-label">No
-          <input id="no" class="no" type="radio" value="no">
-        </label>
-      </div>
-      <div class="resume-sent-date">
-        <label for="resume-input">Resume Sent(Enter date)
+      <span class="resume-section-title">Response</span>
+            
+        <div class="resume-sent-title">Resume sent:
+          <label for="yes" id="yes-label">Yes
+            <input id="yes" class="yes" type="radio" value="yes"/>
+          </label>
+
+          <label for="no" id="no-label">No
+            <input id="no" class="no" type="radio" value="no" checked/>
+          </label>
+        </div>
+        <div class="resume-sent-date">
+          <label for="resume-input">Send Date:
           <input 
             id="resume-input"
             class="resume-input"
             placeholder="xx/xx/xxxx"
             type="resume-input">
           </label>
-      </div>
+        </div>
+        
+        <p id="notes">NOTES:
+          <textarea class="textarea"></textarea>
+        </p>
     </form>
   </div>
 
@@ -391,7 +406,6 @@
         <ol id="job-list" class="job-list">
           <li></li>
         </ol>
-        <button class="btn" id="delete-btn"  type="submit">Delete</button>
       </div>
     </div>
   </div>
@@ -403,7 +417,7 @@ const addBtn = document.querySelector('.add-btn');
 const resetBtn = document.querySelector('.reset-btn');
 const updateBtn = document.querySelector('.update-btn');
 const postingInput = document.querySelector('.posting-input');
-const postitionInput = document.querySelector(".position-input");
+const positionInput = document.querySelector(".position-input");
 const requirementInput = document.querySelector(".requirement-input");
 const postingDateInput = document.querySelector(".posting-date-input");
 const agingInput = document.querySelector(".aging-input")
@@ -418,12 +432,10 @@ new InputMask().Initialize(document.querySelectorAll(".posting-date-input"), {
   mask: InputMaskDefaultMask.Date,
   placeholder: "Date: 01/01/2021"
 });
-
 new InputMask().Initialize(document.querySelectorAll(".resume-input"), {
   mask: InputMaskDefaultMask.Date,
   placeholder: "Date: 01/01/2021"
 });
-
 InputMask();
 
 // FORM INPUT //
@@ -435,29 +447,28 @@ addBtn.addEventListener('click', function(event) {
   event.preventDefault();
   addJob(
     postingInput.value,
-    postitionInput.value,
+    positionInput.value,
     requirementInput.value,
     postingDateInput.value,
     agingInput.value,
     sourceInput.value,
     companyNameInput.value,
-    companyLocationInput.value,
-    // resumeInput.value,
-    );
+    companyLocationInput.value);
+
 });
 function addJob(job) {
   if(job !== ""){
     var job = {
       id: Date.now(),
       posting: postingInput.value,
-      position: postitionInput.value,
+      position: positionInput.value,
       requirements: requirementInput.value,
       postingDate: postingDateInput.value,
       aging: agingInput.value,
       source: sourceInput.value,
       companyName: companyNameInput.value,
-      companyLocation: companyLocationInput.value,
-      resume: resumeInput.value
+      companyLocation: companyLocationInput.value
+
     }
    } 
       jobArray.push(job);
@@ -478,36 +489,30 @@ function addJob(job) {
         var li = document.createElement("li");
 
         li.innerHTML = 
-
           `Posting:` + `<br>` +
-          `${job.posting}` + `<br>` + 
+          `${job.posting}` + `<br>` + `<br>` +
           `Position:` + `<br>` +
-          `${job.position}` + `<br>` + 
+          `${job.position}` + `<br>` + `<br>` +
           `Req's:` + `<br>` +
-          `${job.requirements}` + `<br>` + 
+          `${job.requirements}` + `<br>` + `<br>` +
           `Posting Date:` + " " + `${job.postingDate}` + `<br>` + `<br>` +
           `Aging:` + " " + `${job.aging}` + `<br>` + `<br>` +
           `Source:` + " " + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + " " + `${job.companyName}` + `<br>` + `<br>` +
-          `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>` +  "E: " +
-          `Resume Sent:` + `<br>` + `<br>` +
-          `Date Sent:` + " " + `${job.resume}`;
-
+          `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>`;
 
           jobList.append(li); // jobList = <ol>
           li.setAttribute('class', "job card-format card");
           li.setAttribute('data-key', job.id);
 
           const styles = {
-            minWidth: "285px",
-            maxWidth: "800px",
+            width: "800px",
             height: "auto",
             color: "var(--white)",
             fontSize: ".8em",
             padding: "30px",
             borderRadius: "5px",
             margin: "30px 0 30px 0"
-            
           }
           Object.assign(li.style, styles);
 
@@ -525,8 +530,6 @@ function addJob(job) {
           delBtn.innerHTML = "Delete Card";
           delBtn.setAttribute("class", "del-btn btn");
           delBtn.setAttribute("id", "del-btn");
-
-        
     })
   };
 // ADD TO LOCAL STORAGE
@@ -567,42 +570,7 @@ function addJob(job) {
   }
   getFromLocalStorage();
 
-// EDIT FUNCTION CODE //
-  // jobList.addEventListener("click", function(event) {
-  //   if(event.target.classList.contains('edit-btn')) {
-  //     editPerson(event.target.parentNode.parentNode.getAttribute('data-key'));
 
-  //   }
-  // });
-  // function editPerson(id) {
-  //   jobArrayEdit = jobArray.filter(function(job) {
-  //     return job.id == id; //  creates a new array whose data can be edited and added back ???
-      
-  //   });
-  //   console.log("Person array edit", jobArrayEdit);
-        
-  //   console.log("TEST", jobArray);
-  
-    // return values to input form //
-
-    // document.getElementById('posting-input').value = jobArrayEdit[0].name;
-    // document.getElementById('position-input').value = jobArrayEdit[0].name2;
-    // document.getElementById('requirement-input').value = jobArrayEdit[0].requirementInput;
-    // document.getElementById('posting-date-input').value = jobArrayEdit[0].postingDateInput;
-    // document.getElementById('source-input').value = jobArrayEdit[0].sourceInput;
-    // document.getElementById('company-name-input').value = jobArrayEdit[0].companyNameInput;
-    // document.getElementById('company-location-input').value = jobArrayEdit[0].companyLocationInput;
-    // document.getElementById('resume-input').value = jobArrayEdit[0].companyLocationInput;
-    // document.getElementById('phone-input').value = jobArrayEdit[0].phoneInput;
-    // document.getElementById('email-input').value = jobArrayEdit[0].resumeInput;
-    // document.getElementById('url-input').value = jobArrayEdit[0].urlInput;
-     
-  // updateBtn.addEventListener("click", function() {
-  //   var newArray = jobArray.map(obj => jobArrayEdit.find(o.id === obj.id) || obj);
-  //   console.log("new jobArray", newArray);
-       
-  // })
-  // };
 </script>
   <!-- Function signature: defines the input and ouput of functions or methods.
   input = id, which is a string or a number depending on JSON status. -->
