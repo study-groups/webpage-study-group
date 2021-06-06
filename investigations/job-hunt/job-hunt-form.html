@@ -173,7 +173,28 @@
     }
     .resume-sent-title {
       color: var(--white);
-      padding: 10px;
+      padding: 20px;
+      margin-left: 20px;
+      font-size: 1.2em;
+    }
+    input[type="radio"] {
+      margin-left: 40px;
+    }
+    .clearBoth {
+      display: block;
+      clear: both;
+    }
+    #yes-label, #no-label {
+      height: 50px;
+      font-size: 1em;
+    }
+    #yes, #no {
+      width: 20px;
+    }
+    #resume-date-input {
+      padding: 20px;
+      margin: 20px 0 0 -20px;
+      font-size: 1em;
     }
     .textarea {
       display: block;
@@ -335,7 +356,7 @@
             class="aging-input"
             placeholder="Time since posting date"
             type="text"
-            tabIndex=3>
+            >
         </div>
         <div class="source-input-group">
           <label for="source-input">Source</label>
@@ -372,32 +393,49 @@
     </div>
     <!-- Separate form section for resume send info -->
     <div class="container-2">
-    <form class="resume-form-container">
+    <div class="resume-form-container">
       <span class="resume-section-title">Response</span>
             
-        <div class="resume-sent-title">Resume sent:
+        <form class="resume-sent-title">Resume sent:
+          <div class="clearBoth"></div>
           <label for="yes" id="yes-label">Yes
-            <input id="yes" class="yes" type="radio" value="yes"/>
+            <input 
+              id="yes" 
+              class="yes" 
+              type="radio" 
+              value="yes"
+              name="yes-no"/>
           </label>
-
           <label for="no" id="no-label">No
-            <input id="no" class="no" type="radio" value="no" checked/>
+            <input 
+              id="no" 
+              class="no" 
+              type="radio" 
+              value="no"
+              name="yes-no"/>
           </label>
-        </div>
-        <div class="resume-sent-date">
-          <label for="resume-input">Send Date:
-          <input 
-            id="resume-input"
-            class="resume-input"
-            placeholder="xx/xx/xxxx"
-            type="resume-input">
-          </label>
+          <div class="clearBoth"></div>
+          <div class="resume-sent-date">
+            <label for="resume-date-input" id="resume-date-input">Send Date:
+            <input 
+              id="resume-input"
+              class="resume-input"
+              placeholder="xx/xx/xxxx"
+              type="resume-input">
+            </label>
+          </div>
+          
+          <p id="notes">NOTES:
+            <textarea class="textarea"></textarea>
+          </p>
+
+
+
+
+          </form>
         </div>
         
-        <p id="notes">NOTES:
-          <textarea class="textarea"></textarea>
-        </p>
-    </form>
+      </div>
   </div>
 
     <div class="list-header">-- Jobs Data --</div>
@@ -424,8 +462,11 @@ const agingInput = document.querySelector(".aging-input")
 const sourceInput = document.querySelector(".source-input");
 const companyNameInput = document.querySelector('.company-name-input');
 const companyLocationInput = document.querySelector(".company-location-input");
+const yesInput = document.getElementById('yes');
+const noInput = document.getElementById('no');
 const resumeInput = document.querySelector(".resume-input");
 const jobList = document.querySelector(".job-list");
+const noteInput = document.getElementById('notes');
 
 // Input Mask Code //
 new InputMask().Initialize(document.querySelectorAll(".posting-date-input"), {
@@ -453,7 +494,10 @@ addBtn.addEventListener('click', function(event) {
     agingInput.value,
     sourceInput.value,
     companyNameInput.value,
-    companyLocationInput.value);
+    companyLocationInput.value,
+    yesInput.value,
+    noInput.value,
+    resumeInput.value);
 
 });
 function addJob(job) {
@@ -467,8 +511,10 @@ function addJob(job) {
       aging: agingInput.value,
       source: sourceInput.value,
       companyName: companyNameInput.value,
-      companyLocation: companyLocationInput.value
-
+      companyLocation: companyLocationInput.value,
+      resumeSendYes: yesInput.value,
+      resumeSendNo: noInput.value,
+      resumeSendDate: resumeInput.value
     }
    } 
       jobArray.push(job);
@@ -499,7 +545,10 @@ function addJob(job) {
           `Aging:` + " " + `${job.aging}` + `<br>` + `<br>` +
           `Source:` + " " + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + " " + `${job.companyName}` + `<br>` + `<br>` +
-          `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>`;
+          `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>` +
+          `Resume Sent:` + " " + `${job.yesInput}` + `${job.noInput}` + `<br>` + `<br>` +
+          `Notes:` + " " + `${job.notesInput}`
+          ;
 
           jobList.append(li); // jobList = <ol>
           li.setAttribute('class', "job card-format card");
