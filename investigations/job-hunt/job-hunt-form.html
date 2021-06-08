@@ -166,12 +166,14 @@
       background-color: var(--grey);
     }
     .resume-section-title {
+      grid-area: 1 / 2 / 2 / 3;
       font-size: 1.5em;
       margin: 0 auto;
       padding: 5px;
       color: var(--white);
     }
     .resume-sent-title {
+      grid-area: 2 / 1 / 3 / 2;
       color: var(--white);
       padding: 20px;
       margin-left: 20px;
@@ -393,9 +395,7 @@
     </div>
     <!-- Separate form section for resume send info -->
     <div class="container-2">
-    <div class="resume-form-container">
       <span class="resume-section-title">Response</span>
-            
         <form class="resume-sent-title">Resume sent:
           <div class="clearBoth"></div>
           <label for="yes" id="yes-label">Yes
@@ -414,6 +414,7 @@
               value="no"
               name="yes-no"/>
           </label>
+          <div id="radioSelection"></div>
           <div class="clearBoth"></div>
           <div class="resume-sent-date">
             <label for="resume-date-input" id="resume-date-input">Send Date:
@@ -429,11 +430,8 @@
             <textarea class="textarea"></textarea>
           </p>
 
-
-
-
           </form>
-        </div>
+        
         
       </div>
   </div>
@@ -462,11 +460,11 @@ const agingInput = document.querySelector(".aging-input")
 const sourceInput = document.querySelector(".source-input");
 const companyNameInput = document.querySelector('.company-name-input');
 const companyLocationInput = document.querySelector(".company-location-input");
-const yesInput = document.getElementById('yes');
-const noInput = document.getElementById('no');
+// const radioChoice = document.getElementsByName(".yes-no");
 const resumeInput = document.querySelector(".resume-input");
+const notesInput = document.getElementById('notes');
 const jobList = document.querySelector(".job-list");
-const noteInput = document.getElementById('notes');
+
 
 // Input Mask Code //
 new InputMask().Initialize(document.querySelectorAll(".posting-date-input"), {
@@ -484,6 +482,18 @@ InputMask();
 let jobArray = [];
 // let jobArrayEdit = [];
 
+function getRadioSelectionValue() {
+  var radioChoice = document.getElementsByName('yes-no');
+    
+  for (i = 0; i < radioChoice.length; i++) {
+      if(radioChoice[i].checked)
+      document.getElementById("radioSelection").innerHTML = radioChoice[i].value;      
+    }
+    console.log("radioChoice value", radioSelection);
+  }
+getRadioSelectionValue();
+
+
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
   addJob(
@@ -495,9 +505,9 @@ addBtn.addEventListener('click', function(event) {
     sourceInput.value,
     companyNameInput.value,
     companyLocationInput.value,
-    yesInput.value,
-    noInput.value,
-    resumeInput.value);
+    radioSelection.value,
+    resumeInput.value,
+    notesInput.value)
 
 });
 function addJob(job) {
@@ -512,9 +522,9 @@ function addJob(job) {
       source: sourceInput.value,
       companyName: companyNameInput.value,
       companyLocation: companyLocationInput.value,
-      resumeSendYes: yesInput.value,
-      resumeSendNo: noInput.value,
-      resumeSendDate: resumeInput.value
+      resumeSentYN: radioSelection.value,
+      resumeSendDate: resumeInput.value,
+      notesInput: notesInput.value
     }
    } 
       jobArray.push(job);
@@ -531,7 +541,10 @@ function addJob(job) {
   function renderList(jobArray) {
     jobList.innerHTML = ''; // ensures ol has no contents
 
+   
+
     jobArray.forEach(function(job) {
+      
         var li = document.createElement("li");
 
         li.innerHTML = 
@@ -546,7 +559,8 @@ function addJob(job) {
           `Source:` + " " + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + " " + `${job.companyName}` + `<br>` + `<br>` +
           `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>` +
-          `Resume Sent:` + " " + `${job.yesInput}` + `${job.noInput}` + `<br>` + `<br>` +
+          `Resume Sent:` + " " + `${job.radioChoice}` + `<br>` + `<br>` +
+          `Resume Send Date:` + " " + `${job.resumeInput}` + `<br>` + `<br>` +
           `Notes:` + " " + `${job.notesInput}`
           ;
 
