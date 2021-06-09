@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>Job Hunt Form V-2</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <script src="input-mask.js"></script>
+
+</head>
+
+<style>
+  /*  Theme Colors  */
+  body {
+    /* main body colors */
+    
+    --yellow-orange: #fae508;
+    --grey: #7f818a;
+    --white: #fff;
+    --black: #000;
+    --medium-blue: #425aa0;
+    --btn-blue-hover: #161a98;
+    --btn-blue-active: #070a6e;
+    --dark-blue: #1d1c37;
+
+    --background-body: var(--dark-blue);
+    --background-form: var(--grey);
+    --form-input-text: var(--grey);
+    --form-text: var(--white);
+    --background-form-inputs: var(--white);
+    --button-text: var(--white);
+    --output-card-text: var(--white);
+    --button-border: var(--black);
+    --output-card-text-alt: var(--black);
+    --background-output: var(--medium-blue);
+
+    /* output colors */
+    
+    --background-output-cards: #2e3f72; /* alt= #070a6e */
+    --deleteBtn: var(--background-output);
+    --transition-delay: 1s;
+
+    transition: var(--transition-delay);
+  }
+  
+  @media screen and (max-width: 2200px) {
+    body {
+      background: var(--background-body);
+      font-family: 'Roboto', sans-serif;
+      position: relative;
+    }
+    .main-header {
+      display: grid;
+      grid-area: 1 / 1 / 3 / 2;
+    }
+    .main-container {
+      margin: 0 auto;
+      padding-top: 1em;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* FORM BOX/CONTAINER */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 2fr;
+      background: var(--background-form);
+      border: 1px solid var(--background-output);
+      width: 800px;
+      margin: 0 0 3px 0;
+      
+    }
+    .main-header {
+      font-family: 'Archivo Black', sans-serif;
+      grid-area: 1 / 1 / 2 / 2;
+      text-align: center;
+      font-size: 1.4em;
+      font-weight: 600;
+      padding: 1em;
+      color: var(--form-text);
+    }
+    input {
+      margin: .4em .5em .2em 0;
+      height: 30px;
+      width: 215px;
+      font-size: 1em;
+      padding: 0 0 0 5px;
+      border-radius: 5px;
+    }
+    /* INPUT GROUPS */
+    .gap-div {
+      grid-area: 2 / 1 / 3 / 3;
+      border: 2px solid var(--background-body);
+      background: var(--background-body);
+    }
+    .posting-group,
+    .position-input-group,
+    .requirement-input-group,
+    .posting-date-group,
+    .aging-input-group,
+    .source-input-group,
+    .company-name-input-group,
+    .company-location-input-group {
+      padding-left: 0;
+      margin-top: 1em;
+    }
+    .posting-group {
+      grid-area: 3 / 1 / 4 / 3;
+    }
+    .posting-input {
+      width: 400px;
+      height: 68px;
+      padding: 0.4em 0.4em 0.4em 0;
+    } 
+    .posting-date-group {
+      grid-area: 4 / 1 / 5 / 3;
+    }
+    .position-input-group {
+      grid-area: 5 / 1 / 6 / 3;
+    }
+    .aging-input-group {
+      grid-area: 6 / 1 / 7 / 3;
+    }
+    .requirement-input-group {
+      grid-area: 7 / 1 / 8 / 3;
+    }
+    .source-input-group {
+      grid-area: 8 / 1 / 9 / 3;
+    }
+    .company-name-input-group {
+      grid-area: 9 / 1 / 10 / 3;
+    }
+    .company-location-input-group {
+      grid-area: 10 / 1 / 11 / 3;
+      margin-bottom: 2em;
+    }
+   /* CONTAINER-2 SECTION */
+    
+    .container-2 {
+      background: var(--background-form);
+      margin: 0 auto;
+      border: 1px solid var(--background-output);
+      width: 800px;
+    }
+    .resume-section-title {
+      font-size: 1.5em;
+      color: var(--white);
+      text-align: center;
+      padding: 10px;
+    }
+    .resume-fup-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: auto;
+      font-size: 1em;
+      margin: 0 auto;
+      padding: 5px;
+      color: var(--white);
+    }
+    .resume-sent-title,
+    .resume-sent-date-title,
+    #notes {
+      padding: 20px;
+      margin-left: 95px;
+      font-size: 1.2em;
+    }
+    .resume-sent-title {
+      grid-area: 1 / 1 / 2 / 2;
+      color: var(--white);
+    }  
+    /* RADIO BUTTONS */
+    .radio-btn-container-1 {
+      display: grid;
+      grid-area: 1 / 2 / 2 / 3;
+    }
+    .radio-btn-container-1 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    #yes-label {
+      width: 40px;
+      margin: 5px;
+    }
+    #no-label {
+      width: 35px;
+      margin: 5px;
+    }
+    .yes {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+
+      border: 3px solid var(--white);
+      transition: 0.2s all linear;
+      margin-right: 5px;
+
+      position: relative;
+    }
+    .no { 
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+
+      border: 3px solid var(--white);
+      transition: 0.2s all linear;
+      margin-right: 5px;
+
+      position: relative;
+      /* top: 4px; */
+    } 
+    
+    input:checked {
+      border: 9px solid var(--medium-blue);
+    }
+    .resume-sent-date-title {
+      display: grid;
+      grid-area: 4 / 1 / 5 / 2;
+    }
+    #resume-date-input-label {
+      display: grid;
+      grid-area: 4 / 1 / 5 / 2;
+    }
+    #resume-input {
+      display: grid;
+      grid-area: 4 / 2 / 5 / 3;
+    }
+    #notes {
+      display: grid;
+      grid-area: 5 / 1 / 6 / 2;
+    }
+    .textarea {
+      display: grid;
+      grid-area: 5 / 2 / 6 / 4;
+      width: 85%;
+      overflow: hidden;
+      resize: both;
+      min-height: 40px;
+      line-height: 20px;
+      border-radius: 5px;
+    }     
+    li {    /* output background color */
+      background: var(--background-form);
+    }
+    label {
+      display: inline-block;
+      color: var(--form-text);
+      font-size: 1.2em;
+      vertical-align: middle;
+      margin-left: 120px;
+      width: 150px;
+    }
+    /* BUTTONS */
+    .button-container {
+      grid-area: 6 / 1 / 7 / 4;
+      margin: 0 auto;
+      border-top: 1px solid var(--btn-blue-hover);
+      margin-top: 40px;
+    }
+    #add-btn, #reset-btn, #update-btn {
+      margin: 1em .1em 1em 0;
+      width: 130px;
+      height: 40px;
+      font-size: 1em;
+      color: #fff;
+      cursor: pointer;
+      background: var(--medium-blue);
+      border: 1px solid var(--button-border);
+    }
+    .btn {
+      background: (var(--medium-blue));
+    }
+    .btn:hover {
+      background: var(--btn-blue-hover);
+    }
+    .btn:active {
+      background: var(--btn-blue-active);
+      border: var(--button-border);
+    }
+    #add-btn {
+      border-radius: 8px 0 0 5px;
+    }
+    #reset-btn {
+      border-radius: 0px;
+    }
+    #update-btn {
+      border-radius: 0 8px 8px 0;
+    }
+    /* OUTPUT CONTAINER */
+
+    .output-container {
+      display: flex;
+      margin: 1em 3em 1em 3em;
+      background: var(--background-output-cards);
+      border-radius: 10px;
+      font-size: 1.5em;
+      color: var(--button-text);
+      justify-content: center;
+      border: 1px solid var(--background-form);
+    }
+    .list-header {
+      text-align: center;
+      font-size: 1.3em;
+      color: var(--button-text);
+      margin: 1em;
+    }
+    .job-list-group {
+      text-align: center;
+      color: #fff;
+      line-height: 105%;
+    }
+    .job-list {
+      font-size: .9em;
+      text-align: left;
+    }
+    .card-format {
+      border: 1px solid var(--background-form);
+    }
+    .cardBtnContainer {
+      display: flex;
+      margin: 14px;
+    }
+    .del-btn, .edit-btn {
+      display: block;
+      width: 115px;
+      min-height: 25px;
+      background: var(var(--medium-blue));
+      border: 1px solid var(--button-border);
+      padding: 5px;
+      color: var(--button-text);
+    }
+    .del-btn {
+      margin: 10px 0 10px 0;
+      border-radius: 8px 0 0 8px;
+    }
+    .edit-btn {
+      margin: 10px 0 10px 4px;
+      border-radius:  0 8px 8px 0 ;
+    }
+  }
+</style>
+
+<body class="">
+  <div class="main-container"> 
+    <div class="form-container">
+      <form class="job-entry-form grid-container">
+        <div class="main-header" 
+          id="main-header">Job Hunt Form
+        </div>
+        <div class="gap-div"></div>
+        <div class="posting-group">
+          <label for="posting-input">Posting:</label>
+          <input
+            id="posting-input"
+            class="posting-input"
+            name="url"
+            pattern="https://.*"
+            placeholder="https://example.com"
+            type="url"
+            value=""
+            max-length="500px">
+        </div>
+        <div class="posting-date-group">
+          <label for="posting-date-label">Posting Date:</label>
+          <input
+            id="posting-date-input"
+            class="posting-date-input"
+            placeholder="xx/xx/xxxx"
+            type="posting-date-input">
+        </div>
+        <div class="position-input-group">
+          <label for="position-input-label">Position:</label>
+          <input 
+            id="position-input"
+            class="position-input"
+            placeholder="Enter Position"
+            type="position-input">
+        </div>
+        <div class="aging-input-group">
+          <label for="aging-input-label">Aging:</label>
+          <input 
+            id="aging-input"
+            class="aging-input"
+            placeholder="Time since posting date"
+            type="text">
+        </div>
+        <div class="requirement-input-group">
+          <label for="requirement-input-label">Requirements:</label>
+          <input 
+            id="requirement-input"
+            class="requirement-input"
+            placeholder="Job Requirements"
+            type="requirement-input">
+        </div>
+        <div class="source-input-group">
+          <label for="source-input-label">Source:</label>
+          <input 
+            id="source-input"
+            class="source-input"
+            placeholder= "Enter Source"
+            type="source-input">
+        </div>
+        <div class="company-name-input-group">
+          <label for="company-name-input-label">Company Name:</label>
+          <input
+            id="company-name-input"
+            class="company-name-input"
+            placeholder="Enter Company Name"
+            type="company-name-input">
+        </div>
+        <div class="company-location-input-group">
+          <label for="company-location-input-label">Company Location:</label>
+          <input
+            id="company-location-input"
+            class="company-location-input"
+            type="text"
+            placeholder="Location"
+            max-length="20">
+        </div>
+      </form>  
+    </div>
+    <!-- RESUME F/U SECTION -->
+    <div class="container-2">
+      <div class="resume-section-title">Response</div>
+        <div class="resume-fup-section">
+          <div class="resume-sent-title">Resume sent:</div>
+            <form class="radio-btn-container-1">
+              <label for="yes" id="yes-label">Yes</label>
+                <input 
+                  id="yes" 
+                  class="yes" 
+                  type="radio" 
+                  value="yes"
+                  name="yes-no"/>
+              <label for="no" id="no-label">No</label>
+                <input 
+                  id="no" 
+                  class="no" 
+                  type="radio" 
+                  value="no"
+                  name="yes-no"
+                  checked/>
+            </form>
+
+            <div class="resume-sent-date-title">Send Date:</div>
+              <label for="resume-date-input-label" id="resume-date-input"></label>
+              <input 
+                id="resume-input"
+                class="resume-input"
+                placeholder="xx/xx/xxxx"
+                type="resume-input">
+            
+            <div id="notes">Notes:</div>
+              <textarea class="textarea"></textarea>
+            </form>
+
+            <!-- BUTTONS -->
+            <div class="button-container">
+              <button id="add-btn" class="btn add-btn"   type="submit">Add</button>
+              <input id="reset-btn" class="btn" type="reset">
+              <button id="update-btn" class="btn update-btn" type="submit">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- OUTPUT SECTION -->
+    <div class="list-header">-- Jobs Data --</div>
+    <div class="output-container">
+      <div id="job-list-group"class="job-list-group">
+        <ol id="job-list" class="job-list">
+          <li></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+<script>
+
+// FORM CODE //
+const jobEntryForm = document.querySelector('.job-entry-form');
+const addBtn = document.querySelector('.add-btn');
+const resetBtn = document.querySelector('.reset-btn');
+const updateBtn = document.querySelector('.update-btn');
+const postingInput = document.querySelector('.posting-input');
+const positionInput = document.querySelector(".position-input");
+const requirementInput = document.querySelector(".requirement-input");
+const postingDateInput = document.querySelector(".posting-date-input");
+const agingInput = document.querySelector(".aging-input")
+const sourceInput = document.querySelector(".source-input");
+const companyNameInput = document.querySelector('.company-name-input');
+const companyLocationInput = document.querySelector(".company-location-input");
+// const radioChoice = document.getElementsByName(".yes-no");
+const resumeInput = document.querySelector(".resume-input");
+const notesInput = document.getElementById('notes');
+const jobList = document.querySelector(".job-list");
+
+
+// Input Mask Code //
+new InputMask().Initialize(document.querySelectorAll(".posting-date-input"), {
+  mask: InputMaskDefaultMask.Date,
+  placeholder: "Date: 01/01/2021"
+});
+new InputMask().Initialize(document.querySelectorAll(".resume-input"), {
+  mask: InputMaskDefaultMask.Date,
+  placeholder: "Date: 01/01/2021"
+});
+InputMask();
+
+// FORM INPUT //
+
+let jobArray = [];
+var radioChoice = "";
+
+addBtn.addEventListener('click', function(event) {
+  event.preventDefault();
+
+    //  GET RADIO BTN VALUE 
+    var yesOrNo = document.getElementsByName('yes-no');
+    function getRadioSelectionValue() {
+      for (i = 0; i < yesOrNo.length; i++) {
+        if(yesOrNo[i].checked) {
+          radioChoice = yesOrNo[i].checked;
+        }
+      }
+      console.log("radioChoice value", radioChoice);
+    }
+    getRadioSelectionValue();
+
+  addJob(
+    postingInput.value,
+    postingDateInput.value,
+    positionInput.value,
+    agingInput.value,
+    requirementInput.value,
+    sourceInput.value,
+    companyNameInput.value,
+    companyLocationInput.value,
+    radioChoice.value,
+    resumeInput.value,
+    notesInput.value);
+
+  });
+function addJob(job) {
+  if(job !== ""){
+    var job = {
+      id: Date.now(),
+      posting: postingInput.value,
+      postingDate: postingDateInput.value,
+      position: positionInput.value,
+      aging: agingInput.value,
+      requirements: requirementInput.value,
+      source: sourceInput.value,
+      companyName: companyNameInput.value,
+      companyLocation: companyLocationInput.value,
+      resumeSentYN: radioChoice.value,
+      resumeSendDate: resumeInput.value,
+      notesInput: notesInput.value
+    }
+   } 
+      jobArray.push(job);
+      addToLocalStorage(jobArray); // trigger add function below
+
+      console.log("JobArray - Add job:", jobArray);
+      // clear input values
+      document.getElementById("reset-btn").click();
+      
+  }
+
+// RENDER FUNCTIONS
+
+  function renderList(jobArray) {
+    jobList.innerHTML = ''; // ensures ol has no contents
+
+    jobArray.forEach(function(job) {
+      
+        var li = document.createElement("li");
+
+        li.innerHTML = 
+          `Posting:` + `<br>` +
+          `${job.posting}` + `<br>` + `<br>` +
+          `Posting Date:` + " " + `${job.postingDate}` + `<br>` + `<br>` +
+          `Position:` + `<br>` +
+          `${job.position}` + `<br>` + `<br>` +
+          `Aging:` + " " + `${job.aging}` + `<br>` + `<br>` +
+          `Req's:` + `<br>` +
+          `${job.requirements}` + `<br>` + `<br>` +
+          `Source:` + " " + `${job.source}` + `<br>` + `<br>` +
+          `Company Name:` + " " + `${job.companyName}` + `<br>` + `<br>` +
+          `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>` +
+          `Resume Sent:` + " " + `${job.radioChoice}` + `<br>` + `<br>` +
+          `Resume Send Date:` + " " + `${job.resumeInput}` + `<br>` + `<br>` +
+          `Notes:` + " " + `${job.notesInput}`
+          ;
+
+          jobList.append(li); // jobList = <ol>
+          li.setAttribute('class', "job card-format card");
+          li.setAttribute('data-key', job.id);
+
+          const styles = {
+            width: "800px",
+            height: "auto",
+            color: "var(--white)",
+            fontSize: ".8em",
+            padding: "30px",
+            borderRadius: "5px",
+            margin: "30px 0 30px 0"
+          }
+          Object.assign(li.style, styles);
+
+          //  Delete Button
+          var cardBtnContainer = document.createElement("div");
+          var delBtn = document.createElement("button");
+          // var editBtn = document.createElement("button");
+          cardBtnContainer.setAttribute("class", "cardBtnContainer");
+
+          li.append(cardBtnContainer);
+
+          cardBtnContainer.append(delBtn);
+          // cardBtnContainer.append(editBtn);
+
+          delBtn.innerHTML = "Delete Card";
+          delBtn.setAttribute("class", "del-btn btn");
+          delBtn.setAttribute("id", "del-btn");
+    })
+  };
+
+// ADD TO LOCAL STORAGE
+
+  function addToLocalStorage(jobArray) { // add to localStorage
+    localStorage.setItem('jobArray', JSON.stringify(jobArray));
+    renderList(jobArray);
+  }
+  function getFromLocalStorage(){      // retrieve from localStorage
+
+    var listJobs = localStorage.getItem('jobArray');
+
+    if(listJobs) { 
+      jobArray = JSON.parse(listJobs);
+      // console.log("list name", listJobs);
+      renderList(jobArray);
+    }
+  }
+
+  getFromLocalStorage();
+
+  console.log("Initial Array:", jobArray);
+
+// DELETE FUNCTION CODE
+  jobList.addEventListener("click", function(event) {
+    if(event.target.classList.contains('del-btn')) {
+      deleteJob(event.target.parentNode.parentNode.getAttribute('data-key'));
+    }
+  });
+  function deleteJob(id) {
+    jobArray = jobArray.filter(function(job) {
+      return job.id != id;
+    });
+
+    // update localStorage
+    addToLocalStorage(jobArray);
+    console.log("Deleted job", jobArray);
+  }
+  getFromLocalStorage();
+
+
+</script>
+  <!-- Function signature: defines the input and ouput of functions or methods.
+  input = id, which is a string or a number depending on JSON status. -->
+
+  <!-- Radio buttons for functionalily of yes/no above problematic in terms of styling. Expereinces many problems. Determined that radio button styling is browser dependent and requires addition CSS code to gain control over this element.  
+  
+  Found a very helpful post which aligned the radio buttons as intended, but also made them responsive to other operating systems (source of default styling). The source was: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
+  -->
+</body>
+</html>
+
