@@ -12,67 +12,91 @@
   <script src="input-mask.js"></script>
 
 </head>
-
 <style>
-  /*  Wine theme */
+  /*  Primary theme */
   body {
-    /* main colors */
-    --background-body: #1d1c37;
-    --background-form: #7f818a;
+    /* COLOR VARIABLES */
+    --black: #000;
     --white: #fff;
+    --medium-grey: #7f818a;
+    --dark-blue: #1d1c37;
     --yellow-orange: #fae508;
+    --med-light-blue: #425aa0;
+    --med-blue: #161A98;
+    --med-blue-alt: #1e357d;
+    --med-dark-blue: #070a6e;
+   
+    /* ELEMENT COLORS */
+    /* Input Form */
+    --background-body: var(--dark-blue);
     --main-header: var(--yellow-orange);
     --form-text: var(--white);
-    --black: #000;
-
-    /* input form colors */
+    --form-input-text: var(--medium-grey);
+    --background-form: var(--medium-grey);
     --background-form-inputs: var(--white);
-    --form-input-text: #767676;
-
-    /* button colors */
-    --background-buttons: #425aa0;
+  
+    /* Button colors */
     --button-text: var(--white);
     --button-border: var(--black);
-    --button-hover: #161A98;
-    --button-active: #070a6e;
+    --background-buttons: var(--med-light-blue);
+    --button-hover: var(--med-blue);
+    --button-active: var(--med-dark-blue);
 
-    /* output colors */
-    --background-output: #425aa0;
-    --background-output-cards: #2e3f72; /* alt= #070a6e */
+    /* Output colors */
     --output-card-text: var(--white);
     --output-card-text-alt: var(--black);
-    --deleteBtn: var(--background-output);
+    --background-output: var(--med-light-blue);
+    --background-output-cards: var(--med-blue-alt); /* alt= #070a6e */
+    --deleteBtn: var(--med-light-blue);
     --transition-delay: 1s;
-
 
     transition: var(--transition-delay);
   }
   
   /* Study-groups theme */
   body.sg {
-    /* main body colors */
-    --background-body: #172a3a;
-    --background-form: #487082;
-    --form-text: #fff;
+    /*COLOR VARIABLES */
+    --white: #fff;
+    --black: #000;
+    --medium-grey: #7f818a;
+    --medium-green: #004346;
+    --dark-blue: #172a3a;
+    --light-blue: #487082;
+    --yellow-orange: #fae508;
+    --med-orange: #a62704;
+    --dark-orange: #7e1d02;
+
+    /* ELEMENT COLORS */
+    /* Input Form */
+    --background-body: var(--dark-blue);
     --main-header: var(--yellow-orange);
-    --dark-orange: #a62704;
-    /* input form colors */
-    --background-form-inputs: #fff;
-    --form-input-text: #767676;
+    --form-text: var(--white);
+    --form-input-text: var(--medium-grey);
+    --background-form: var(--medium-grey);
+    --background-form-inputs: var(--white);
 
-    /* button colors */
+   /* Buttons */
+    --button-text: var(--white);
+    --button-border: var(--black);
     --background-buttons: var(--dark-orange);
-    --button-text: #fff;
-    --button-border: #000;
-    --button-hover: #65aab3;
-    --button-active: #7e1d02;
+    --button-hover: var(--light-blue);
+    --button-active: var(--dark-orange);
 
-    /* output colors */
-    --background-output: #004346;
-    --background-output-cards: #004346;
-    --output-card-text: #fff;
+    /* Output colors */
+    --output-card-text: var(--white);
+    --background-output: var(--medium-green);
+    --background-output-cards: var(--medium-green);
+   
+
+    
+
+
+    
+    
+
+
+
   }
-  @media screen and (max-width: 2200px) {
     body {
       background: var(--background-body);
       font-family: 'Roboto', sans-serif;
@@ -92,7 +116,7 @@
       border-radius: 10px 10px 10px 10px;
       background: var(--background-form);
       margin: .2em 0 0 0;
-      border: 1px solid var(--background-output);
+      border: 1px solid var(--white);
     }
     .main-header {
       font-family: 'Archivo Black', sans-serif;
@@ -231,8 +255,9 @@
       margin-left: 20px;
     }
     .output-container {
+      width: auto;
       display: flex;
-      margin: 1em 6em 1em 6em;
+      margin: 1em 3em 1em 3em;
       background: var(--background-output-cards);
       border-radius: 10px;
       font-size: 1.5em;
@@ -247,8 +272,6 @@
       margin: 1em;
     }
     .people-list-group {
-      text-align: center;
-      color: #fff;
       line-height: 105%;
     }
     .people-list {
@@ -259,7 +282,7 @@
       text-align: left;
     }
     .card-format {
-      border: 1px solid var(--background-form);
+      border: 1px solid var(--medium-grey);
     }
     label {
       width: 110px;
@@ -285,8 +308,7 @@
       margin: 10px 0 10px 4px;
       border-radius:  0 8px 8px 0 ;
     }
-  }
-  @media screen and (max-width: 812px) {
+  @media screen and (max-width: 600px) {
     body {
       margin: .1em;
       font-size: 1.5em;
@@ -301,10 +323,11 @@
     }
     .main-header {
       font-size: .8em;
+      height: 50px;
     }
     .theme-toggle-button {
       font-size: .6em;
-      width: 80px;
+      width: 100px;
       height: auto;
       padding: 3px;
     }
@@ -366,7 +389,7 @@
     }
     #add-btn, #reset-btn, #update-btn {
       font-size: .8em;
-      margin: 0 auto;
+      margin: 2px auto;
       width: 275px;
     }
     #add-btn {
@@ -383,6 +406,7 @@
       font-size: .8em;
     }
     .output-container {
+      width: fit-content;
       display: block;
       margin: .3em .15em 2em .15em;
       padding: .2em 0 .2em 0;
@@ -502,7 +526,7 @@
         <!-- BUTTONS -->
         <div class="button-container">
           <button id="add-btn" class="btn add-btn"  type="submit">Add</button>
-          <input id="reset-btn" class="btn" type="reset">
+          <input id="reset-btn" class="btn reset-btn" type="reset">
           <button id="update-btn" class="btn update-btn" type="submit">Update</button>
         </div>
         <!-- <button class="btn" id="delete-btn"  type="submit">Delete</button> -->
@@ -629,7 +653,8 @@ function addPerson(person) {
             fontSize: ".8em",
             padding: "10px 0 10px 15px",
             borderRadius: "5px",
-            margin: "15px 15px 15px 15px"
+            margin: "15px 15px 15px 15px",
+            border: "1px solid #fff"
           }
           Object.assign(li.style, styles);
 
