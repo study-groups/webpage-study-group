@@ -357,7 +357,7 @@
 <body class="">
   <div class="main-container"> 
     <div class="form-container">
-      <form class="job-entry-form grid-container">
+      <form class="job-entry-form grid-container" name="jobEntryForm">
         <div class="main-header" 
           id="main-header">Job Hunt Form
         </div>
@@ -370,7 +370,7 @@
             name="url"
             pattern="https://.*"
             placeholder="https://example.com"
-            type="url"
+            type="text"
             value=""
             max-length="500px">
         </div>
@@ -438,7 +438,7 @@
       <div class="resume-section-title">Response</div>
         <div class="resume-fup-section">
           <div class="resume-sent-title">Resume sent:</div>
-            <form class="radio-btn-container-1">
+            <form class="radio-btn-container-1" name="radioBtnForm">
               <label for="yes" id="yes-label">Yes</label>
                 <input 
                   id="yes" 
@@ -523,22 +523,26 @@ InputMask();
 // FORM INPUT //
 
 let jobArray = [];
-var radioChoice = "";
 
+var radioChoice = "";
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
-
+  
     //  GET RADIO BTN VALUE 
-    var yesOrNo = document.getElementsByName('yes-no');
-    function getRadioSelectionValue() {
-      for (i = 0; i < yesOrNo.length; i++) {
-        if(yesOrNo[i].checked) {
-          radioChoice = yesOrNo[i].checked;
-        }
-      }
-      console.log("radioChoice value", radioChoice);
-    }
-    getRadioSelectionValue();
+    // var yesOrNo = document.getElementsByName('yes-no');
+    // function getRadioSelectionValue() {
+    //   for (i = 0; i < yesOrNo.length; i++) {
+    //     if(yesOrNo[i].checked==true) {
+    //       radioChoice = yesOrNo[i];
+    //     } else {
+    //       if(yesOrNo[i].checked == false) {
+    //         radioChoice = yesOrNo[i];
+    //       }
+    //     }
+    //   }
+    //   // console.log("radioChoice value", radioChoice);
+    // }
+    // getRadioSelectionValue();
 
   addJob(
     postingInput.value,
@@ -548,10 +552,10 @@ addBtn.addEventListener('click', function(event) {
     requirementInput.value,
     sourceInput.value,
     companyNameInput.value,
-    companyLocationInput.value,
-    radioChoice.value,
-    resumeInput.value,
-    notesInput.value);
+    companyLocationInput.value)
+    // radioChoice.value,
+    // resumeInput.value,
+    // notesInput.value);
 
   });
 function addJob(job) {
@@ -565,10 +569,10 @@ function addJob(job) {
       requirements: requirementInput.value,
       source: sourceInput.value,
       companyName: companyNameInput.value,
-      companyLocation: companyLocationInput.value,
-      resumeSentYN: radioChoice.value,
-      resumeSendDate: resumeInput.value,
-      notesInput: notesInput.value
+      companyLocation: companyLocationInput.value
+      // resumeSentYN: radioChoice.value,
+      // resumeSendDate: resumeInput.value,
+      // notesInput: notesInput.value
     }
    } 
       jobArray.push(job);
@@ -576,12 +580,11 @@ function addJob(job) {
 
       console.log("JobArray - Add job:", jobArray);
       // clear input values
-      document.getElementById("reset-btn").click();
-      
+      document.getElementsByName("jobEntryForm")[0].reset();
+      document.getElementsByName("radioBtnForm")[0].reset();
   }
 
 // RENDER FUNCTIONS
-
   function renderList(jobArray) {
     jobList.innerHTML = ''; // ensures ol has no contents
 
@@ -601,10 +604,10 @@ function addJob(job) {
           `Source:` + " " + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + " " + `${job.companyName}` + `<br>` + `<br>` +
           `Location:` + " " + `${job.companyLocation}` + `<br>` + `<br>` +
-          `Resume Sent:` + " " + `${job.radioChoice}` + `<br>` + `<br>` +
-          `Resume Send Date:` + " " + `${job.resumeInput}` + `<br>` + `<br>` +
-          `Notes:` + " " + `${job.notesInput}`
-          ;
+          // `Resume Sent:` + " " + `${job.radioChoice}` + `<br>` + `<br>` +
+          // `Resume Send Date:` + " " + `${job.resumeInput}` + `<br>` + `<br>` +
+          // `Notes:` + " " + `${job.notesInput}`
+          
 
           jobList.append(li); // jobList = <ol>
           li.setAttribute('class', "job card-format card");
