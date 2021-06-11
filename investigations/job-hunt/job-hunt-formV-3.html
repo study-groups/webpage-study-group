@@ -159,7 +159,7 @@
       grid-area: 11 / 2 / 12 / 4;
       display: flex;
       flex-direction: row;
-      margin-left: -40px;
+      margin-left: -20px;
       margin-top: 1em;
     }
     /* RADIO BUTTONS */
@@ -221,7 +221,7 @@
       display: grid;
       grid-area: 13 / 2 / 14 / 3;
       margin-top: 1em;
-      margin-left: -40px;
+      margin-left: -20px;
     }
     #notes {
       display: grid;
@@ -241,7 +241,7 @@
       line-height: 20px;
       border-radius: 5px;
       margin-top: 1em;
-      margin-left: -40px;
+      margin-left: -20px;
     }     
     li {    /* output background color */
       background: var(--background-form);
@@ -550,8 +550,8 @@ let jobArray = [];
         
         }
         alert(choice);
+        // this works correctly
       }
-      console.log("choice value", choice);
     
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
@@ -567,7 +567,7 @@ addBtn.addEventListener('click', function(event) {
     sourceInput.value,
     companyNameInput.value,
     companyLocationInput.value,
-    radioChoice.value,
+    choice.value,
     resumeInput.value,
     notesInput.value)
 
