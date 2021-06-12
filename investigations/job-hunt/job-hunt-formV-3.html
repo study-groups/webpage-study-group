@@ -251,11 +251,9 @@
       line-height: 20px;
       border-radius: 5px;
       margin-top: 1em;
-      /* margin-left: -115px; */
+      font-size: 1.4em;
+      color: var(--grey);
     }     
-    li {    /* output background color */
-      /* background: var(--background-form); */
-    }
     label {
       display: inline-block;
       color: var(--form-text);
@@ -363,7 +361,7 @@
 <body class="">
   <div class="main-container"> 
     <div class="form-container">
-      <form class="job-entry-form grid-container"
+      <form id="job-entry-form" class="job-entry-form grid-container"
             name="jobEntryForm">
         <div class="main-header" 
           id="main-header">Job Hunt Form
@@ -448,14 +446,14 @@
                 class="yes" 
                 type="radio" 
                 value="yes"
-                name="yes-no"/>
+                name="yesOrno"/>
             <label for="no" id="no-label">No</label>
               <input 
                 id="no" 
                 class="no" 
                 type="radio" 
                 value="no"
-                name="yes-no"
+                name="yesOrno"
                 checked/>
         </div>
         <div class="send-date">Send Date:</div>
@@ -537,23 +535,14 @@ InputMask();
 let jobArray = [];
 
  //  GET RADIO BTN VALUE 
-
+// var value;
 
 function getRadioValue() {
-
-  var radioChoice = document.getElementsByName('yes-no');
-  // this identifies both yes & no inputs, they have the same name
-    for (i = 0; i < radioChoice.length; i++) {
-      if(radioChoice[i].checked)
-      // this loops through the two possible radioChoice choices, yes or no, and selects the one that is checked and passes it to the variable "choice" below
-      var radioChoice = radioChoice[i].value;
-      // choice is an empty div on line 448 of html code
-       
-    }
-    // alert(radioChoice);
-
+  var radioValue = document.jobEntryForm.yesOrno.value;
+  value = radioValue.toUpperCase();
+    console.log(value);
 }
-    
+
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
   
@@ -568,6 +557,7 @@ addBtn.addEventListener('click', function(event) {
     sourceInput.value,
     companyNameInput.value,
     companyLocationInput.value,
+    value,
     sendDateInput.value,
     textAreaInput.value)
 
@@ -585,6 +575,7 @@ function addJob(job) {
       source: sourceInput.value,
       companyName: companyNameInput.value,
       companyLocation: companyLocationInput.value,
+      yesNoInput: value,
       sendDate: sendDateInput.value,
       textAreaInput: textAreaInput.value
     }
@@ -617,7 +608,7 @@ function addJob(job) {
           `Source:` + `<br>` + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + `<br>` + `${job.companyName}` + `<br>` + `<br>` +
           `Location:` + `<br>` + `${job.companyLocation}` + `<br>` + `<br>` +
-          // `Resume Sent:` + " " + `${job.choice}` + `<br>` + `<br>` +
+          `Resume Sent:` + `<br>` + `${value}` + `<br>` + `<br>` +
           `Resume Send Date:` + `<br>` + `${job.sendDate}` + `<br>` + `<br>` +
           `Notes:` + `<br>` + `${job.textAreaInput}`
           
