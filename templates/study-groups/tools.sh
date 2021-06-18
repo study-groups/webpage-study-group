@@ -2,7 +2,8 @@ REPO=$(realpath "/home/$USER/src/webpage-study-group")
 TEMPLATE=$(realpath $REPO/templates/study-groups)
 BUILD=$(realpath $REPO/builds/study-groups)
 export VER=001pre6
-
+#export VER=001react02
+#export JSLIB="$(cat ./react.min.js)"
 tools-build(){
   
   rsync $TEMPLATE/styleguide.html $BUILD/$VER/
