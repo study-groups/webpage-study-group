@@ -1,0 +1,52 @@
+<html>
+<head>
+<style>
+:root {
+  --fg-neutral: #888;
+  --bg-neutral: #aaa;
+  --fg-sat: #0C0;
+  --bg-sat: #f0f;
+  --fg-desat: #5c5;
+  --bg-desat: #959;
+} 
+
+body{
+  margin:0;
+  padding:0;
+  background: var(--bg-neutral);
+  display:flex;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size:24pt;
+}
+nav{
+    flex-shrink: 0;
+    background:#111;
+    color:#999;
+}
+footer{
+    flex-shrink: 0;
+    color:(var: fg-desat);
+    background:(var: bg-desat);
+    height:3rem;
+}
+article{
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 667px) {
+  footer{
+    height:3rem;
+    background:blue;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav>nav</nav>
+<article>article</article>
+<footer>footer</footer>
+</body>
+</html>

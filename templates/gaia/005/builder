@@ -1,0 +1,11 @@
+#!/bin/bash
+export VER=005pre3
+#export CSS="$(cat ./css/style.css))"
+export CSS="$(cat ./css/{mobile,desktop}.css))"
+build-page(){
+  (cat header.html
+  cat nav.html
+  cat content.html 
+  cat footer.html) | envsubst > "$VER.html"
+}
+build-page

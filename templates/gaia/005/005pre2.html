@@ -1,26 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaia Webpage</title>
+<head>
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  -nav-bar: #a45b27;
+  --bk-primary: #1e1e1e;
+  --h1-color: #fbd651;
+  --h2-color: #fce694;
+  --body-text: #c7dfc5;
+  --body-text-alt: #9DDCA0;
+  --body-text-alt-compliment: #9CB8DB;
+  --divider-line: #fce694;
+  --nav-bar-bg: #1e1e1e;
+  --email-link: #F98A62;
+  --video-links: #F98A62;
+  --prompt-color: #E1F9DF;
+}
+
+body {
+  font-size: 20pt;
+  letter-spacing: 1px;
+  background: var(--bk-primary);
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+}
+
+.fa-angle-double-left {
+  color: var(--video-links);
+  font-size: 1.8rem;
+  float: left;
+  padding: 2px;
+  margin: 0rem 0 0 10%;
+}
+
+.fa-angle-double-left:hover, 
+.fa-angle-double-right:hover  {
+  color: #d32f2f;
+  border: 3px solid #d32f2f;
+} 
+
+.fa-angle-double-right {
+  color: var(--video-links);
+  font-size: 1.8em;
+  float: right;
+  margin-right: 10%;
+}
+
+.navbar {
+  top: 0;
+  position: fixed;
+  left: 0;
+  background: #111;
+  background: red;
+  height: 10rem;
+  width: 100%;
+  margin: auto !important;
+}
+
+.navbar ul {
+  overflow: hidden;
+}
+
+#indicator {
+  margin: 2em 0 0 0;
+}
+
+li {
+  transition: all .15s;
+}
+
+.scrollspy-indicator-container {
+  margin: 0 auto;
+  right: 50%;
+  margin-right: -102px;
+  position: absolute;
+  padding: 2px;
+}
+
+.scrollspy-indicator-container
+li.spy-active {
+  color: var(--video-links);
+  border: 3px solid var(--video-links);
+  border-radius: -10px;
+  padding: .3em 1em .3em 1em;
+  display: inline-block;
+}
+
+.scrollspy-indicator-container
+li.spy-clickable {
+  cursor:pointer;
+}
+
+.scrollspy-indicator-container
+li.spy-clickable:hover {
+  color:#ef5350;
+}
+
+li {
+  display: none;
+  text-align: center;
+  text-decoration: none;
+}
+
+.main-header {
+  /* margin-top: 100px; */
+  color: var(--email-link);
+  font-size: 2.5rem;
+  margin: 1em 10% 0 10%;
+}
+
+.arrowNavigation {
+  margin:  -1em 0 0 0;
+}
+
+#first-chapter {
+  margin: 3em 0 0 0;
+}
+
+h2, h3 {
+  margin: 0 10% .8em 10%;
+  color: var(--h2-color)
+}
+
+.prompt-section {
+  margin: 0 10% 0 2%;
+}
+.prompt-title {
+  margin: 0 10% 0 10%;
+  color: var(--h2-color);
+}
+.prompt-body {
+  margin: 0 10% 15px 11.5%;
+  color: var(--h2-color);
+}
+
+p {
+  color: var(--body-text); 
+  margin-left: 10%;
+  margin-right: 10%;
+  line-height: 170%;
+}
+
+a {
+  color: var(--video-links);
+  margin-bottom: 1em;
+}
+
+.author {
+  margin: 1.5rem 10% 1em 10%;
+  color: var(--h1-color);
+}
+
+.zen-circle {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+.version {
+  color: var(--body-text-alt);
+  font-size: smaller;
+  text-align: center;
+  margin: 10rem 0rem 3rem 0rem;
+}
+@media screen and (min-width: 667px) {
+
+body {
+  font-size: 8pt;
+}
+
+}
+
+footer {
+  font-family:monospace;
+  background:#bbb;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  text-align:center;
+  height: 2.5rem;           /* Footer height */
+  flex-shrink:0;
+} )
+</style>
 <body>
-<div id="cover"></div>
 <script src="ScrollSpy.js"></script>
 <div class="content">
 <nav id='navbar' class="navbar">
-<span class="fas fa-angle-double-left" id="previous"></span>
-<div id="indicator">
-<ul class="scrollspy-indicator-container">
-<li class="spy-clickable">CHAPTER ~ 1</li>
-<li class="spy-clickable">CHAPTER ~ 2</li>
-<li class="spy-clickable">CHAPTER ~ 3</li>
-<li class="spy-clickable">CHAPTER ~ 4</li>
-<li class="spy-clickable">CHAPTER ~ 5</li>
-<li class="spy-clickable">CHAPTER ~ 6</li>
-<li class="spy-clickable">CHAPTER ~ 7</li>
-<li class="spy-clickable">CHAPTER ~ 8</li>
-<li class="spy-clickable">CHAPTER ~ 9</li>
-<li class="spy-clickable">CHAPTER ~ 10</li>
-<li class="spy-clickable">CHAPTER ~ 11</li>
-<li class="spy-clickable">The Author</li>                       
-</ul> 
-</div>  
-<span class="fas fa-angle-double-right" id="nextArrow" onclick="nextChapter()"></span>
+  <span class="fas fa-angle-double-left" id="previous"> < </span>
+  <div id="indicator">
+    <ul class="scrollspy-indicator-container">
+      <li class="spy-clickable">CHAPTER ~ 1</li>
+      <li class="spy-clickable">CHAPTER ~ 2</li>
+      <li class="spy-clickable">CHAPTER ~ 3</li>
+      <li class="spy-clickable">CHAPTER ~ 4</li>
+      <li class="spy-clickable">CHAPTER ~ 5</li>
+      <li class="spy-clickable">CHAPTER ~ 6</li>
+      <li class="spy-clickable">CHAPTER ~ 7</li>
+      <li class="spy-clickable">CHAPTER ~ 8</li>
+      <li class="spy-clickable">CHAPTER ~ 9</li>
+      <li class="spy-clickable">CHAPTER ~ 10</li>
+      <li class="spy-clickable">CHAPTER ~ 11</li>
+      <li class="spy-clickable">The Author</li>                       
+    </ul> 
+  </div>  
+  <span class="fas fa-angle-double-right" 
+         id="nextArrow" onclick="nextChapter()">> </span>
 </nav>
       
 <!-- SECTIONS/CHAPTERS -->
@@ -716,7 +914,9 @@ There is a strange and wild beauty in a system which is unintentional self-regul
       <p id='c11-par17'>You will find your own way of knowing Gaia.</p>
   </section>
 
-      <!-- <img class="zen-circle" src="./assets/zen-circle-mod.png"  alt="zen-circle"> -->
+      <img class="zen-circle" 
+             src="./assets/zen-circle-mod.png"
+             alt="zen-circle">
 
   
   <section
@@ -735,8 +935,9 @@ There is a strange and wild beauty in a system which is unintentional self-regul
         
         
   </section>
-  <footer>
 
+  <footer>
+Footer
   </footer>
       
   <script>
@@ -855,3 +1056,7 @@ There is a strange and wild beauty in a system which is unintentional self-regul
       // console.log("scrollStartLoc", scrollStartLoc);
       -->
 </body>
+<footer>
+005pre2
+</footer>
+</html>
