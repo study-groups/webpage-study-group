@@ -1,0 +1,83 @@
+ <script>
+  
+  window.onload = function(){
+    document.getElementById('cover').style.display = "none";
+  }
+  // Scrollspy  //
+    var spy = new ScrollSpy({
+       contexts_class: 'scrollspy'
+    });
+
+    var indicator = document.getElementById('indicator');
+
+    spy.Indicator({
+      element: indicator,
+      clickable: true
+    });
+    // End of scrollspy js
+
+    // var spyClickableArray = document.getElementsByClassName('spy-clickable');
+    //   console.log(spyClickableArray); //returns HTML collection
+    //   for(let i = 0; i < spyClickableArray.length; i++) {
+    //     console.log("spyClickableArray", spyClickableArray[i]); //returns array
+        
+    // }    
+    // Forward and Back arrows
+    
+
+    //forward 'button'
+    var nextArrow = document.getElementById('nextArrow');
+    var aTags = document.getElementsByClassName('chapters');
+      
+    
+    nextArrow.addEventListener('click', nextChapter)
+
+    chapters = document.getElementsByClassName("chapter");
+      
+      console.log(chapters);
+
+    function nextChapter(ev){
+      event.preventDefault();
+    }
+        // for (i = 0; i < chapters.length; i++)
+       
+
+        // if(currentChapter.id = "1") {
+        //   currentChapter.scrollIntoView(true);
+        //   console.log(currentChapter);
+        // } else if (currentChapter.id = "2"){
+        //   currentChapter.scrollIntoView(true);
+        //   console.log(currentChapter);
+        // } else if (currentChapter){
+        //   currentChapter = document.getElementById("4")
+        //   currentChapter.scrollIntoView(true);
+        //   console.log(currentChapter);
+        // } else (currentChapter = document.getElementById("5"))
+        //   currentChapter.scrollIntoView(true);
+        //   console.log(currentChapter);
+        // }
+         
+      
+        // console.log("Event Type", ev.type, "Event Target", ev.target, "Event: Current Target", ev.currentTarget);
+
+
+    ////////// 
+    
+    // document.getElementById('back').addEventListener("click", function(e) {  //back 'button'
+    //   e.preventDefault()
+    //   console.log("hello");
+    // });
+
+   
+    // INVESTION RE: ELEMENT POSITIONING FOR SCROLLSPY //
+
+    // var navbar = document.getElementById("navbar");
+    // var navBarHeight = navbar.getBoundingClientRect(navbar);
+    // console.log("navbar height", navBarHeight);
+    // var firstChap = document.getElementById("first-chapter");
+    // var firstChapTop = firstChap.getBoundingClientRect().top;
+    // console.log("Top of first chapter bouding box",firstChapTop)
+    // var firstChap2 = document.getElementById("firstchapter");
+    // var firstChapTop2 //=firstChap.getBoundingClientRect(firstChap);
+    // console.log("scroll position of first chapter boundind box", firstChap2.scrollLeft, firstChap2.scrollTop);
+      </script>    
