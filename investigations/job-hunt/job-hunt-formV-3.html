@@ -439,23 +439,25 @@
         <div id="seperation-bar"></div>
         <!-- RESUME F/U SECTION -->
         <div class="resume-sent">Resume Sent:</div>
-          <div class="yes-no-group">
+          <div id="yes-no-group" class="yes-no-group">
           <label for="yes" id="yes-label">Yes</label>
               <input 
                 id="yes" 
                 class="yes" 
                 type="radio" 
                 value="yes"
-                name="yesOrno"/>
+                name="yesOrNo"
+                />
             <label for="no" id="no-label">No</label>
               <input 
                 id="no" 
                 class="no" 
                 type="radio" 
                 value="no"
-                name="yesOrno"
+                name="yesOrNo"
                 checked/>
         </div>
+        <!-- <div id="radio-btn-choice"></div> -->
         <div class="send-date">Send Date:</div>
           <label for="send-date-input" id="send-date-input"></label>
           <input 
@@ -513,7 +515,6 @@ const agingInput = document.querySelector(".aging-input")
 const sourceInput = document.querySelector(".source-input");
 const companyNameInput = document.querySelector('.company-name-input');
 const companyLocationInput = document.querySelector(".company-location-input");
-// const radioChoice = document.getElementsByName(".yes-no");
 const sendDateInput = document.querySelector('.send-date-input');
 const textAreaInput = document.getElementById('text-area-input');
 const jobList = document.querySelector(".job-list");
@@ -535,17 +536,20 @@ InputMask();
 let jobArray = [];
 
  //  GET RADIO BTN VALUE 
-// var value;
-
-function getRadioValue() {
-  var radioValue = document.jobEntryForm.yesOrno.value;
-  value = radioValue.toUpperCase();
-    console.log(value);
-}
 
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
-  
+
+  function getRadioValue(){
+  radio = document.getElementsByName('yesOrNo').forEach(radio => {
+    if(radio.checked) {
+      let radioBtnInput = radio.value;
+      window.radioBtnInput2 = radioBtnInput;
+      console.log("radio value", radioBtnInput2)
+      return radioBtnInput2;
+      }
+    });
+  }
   getRadioValue();
 
   addJob(
@@ -557,15 +561,14 @@ addBtn.addEventListener('click', function(event) {
     sourceInput.value,
     companyNameInput.value,
     companyLocationInput.value,
-    value,
+    radioBtnInput2,
     sendDateInput.value,
     textAreaInput.value)
-
   });
-function addJob(job) {
 
+function addJob(job) {
   if(job !== ""){
-    var job = {
+      var job = {
       id: Date.now(),
       posting: postingInput.value,
       postingDate: postingDateInput.value,
@@ -575,7 +578,7 @@ function addJob(job) {
       source: sourceInput.value,
       companyName: companyNameInput.value,
       companyLocation: companyLocationInput.value,
-      yesNoInput: value,
+      radioBtnValue: radioBtnInput2,
       sendDate: sendDateInput.value,
       textAreaInput: textAreaInput.value
     }
@@ -595,7 +598,6 @@ function addJob(job) {
     jobArray.forEach(function(job) {
       
         var li = document.createElement("li");
-
         li.innerHTML = 
           `Posting:` + `<br>` +
           `${job.posting}` + `<br>` + `<br>` +
@@ -608,7 +610,7 @@ function addJob(job) {
           `Source:` + `<br>` + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + `<br>` + `${job.companyName}` + `<br>` + `<br>` +
           `Location:` + `<br>` + `${job.companyLocation}` + `<br>` + `<br>` +
-          `Resume Sent:` + `<br>` + `${value}` + `<br>` + `<br>` +
+          `Resume Sent:` + `<br>` + `${radioBtnInput2}` + `<br>` + `<br>` +
           `Resume Send Date:` + `<br>` + `${job.sendDate}` + `<br>` + `<br>` +
           `Notes:` + `<br>` + `${job.textAreaInput}`
           
@@ -646,8 +648,6 @@ function addJob(job) {
           editBtn.innerHTML = "Edit Card";
           editBtn.setAttribute("class", "edit-btn btn");
           editBtn.setAttribute("id", "edit-btn");
-
-          
     })
   };
 
@@ -678,6 +678,8 @@ function addJob(job) {
       deleteJob(event.target.parentNode.parentNode.getAttribute('data-key'));
     }
   });
+  getFromLocalStorage();
+
   function deleteJob(id) {
     jobArray = jobArray.filter(function(job) {
       return job.id != id;
