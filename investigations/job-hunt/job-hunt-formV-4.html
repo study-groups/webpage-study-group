@@ -6,11 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title>Job Hunt Form V-3</title>
+  <title>Job Hunt Form V-4</title>
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <script src="input-mask.js"></script>
-
 </head>
 
 <style>
@@ -384,6 +383,7 @@
           <input
             id="posting-date-input"
             class="posting-date-input"
+            name="posting-date-input"
             placeholder="xx/xx/xxxx"
             type="posting-date-input">
         </div>
@@ -392,6 +392,7 @@
           <input 
             id="position-input"
             class="position-input"
+            name="position-input"
             placeholder="Enter Position"
             type="position-input">
         </div>
@@ -400,6 +401,7 @@
           <input 
             id="aging-input"
             class="aging-input"
+            name="aging-input"
             placeholder="Time since posting date"
             type="text">
         </div>
@@ -408,6 +410,7 @@
           <input 
             id="requirement-input"
             class="requirement-input"
+            name="requirement-input"
             placeholder="Job Requirements"
             type="requirement-input">
         </div>
@@ -416,6 +419,7 @@
           <input 
             id="source-input"
             class="source-input"
+            name="source-input"
             placeholder= "Enter Source"
             type="source-input">
         </div>
@@ -424,6 +428,7 @@
           <input
             id="company-name-input"
             class="company-name-input"
+            name="company-name-input"
             placeholder="Enter Company Name"
             type="company-name-input">
         </div>
@@ -432,6 +437,7 @@
           <input
             id="company-location-input"
             class="company-location-input"
+            name="company-location-input"
             type="text"
             placeholder="Location"
             max-length="20">
@@ -463,6 +469,7 @@
           <input 
             id="send-date-input"
             class="send-date-input"
+            name="send-date-input"
             placeholder="xx/xx/xxxx"
             type="send-date-input"/>
           <div id="notes">Notes:</div>
@@ -515,6 +522,7 @@ const agingInput = document.querySelector(".aging-input")
 const sourceInput = document.querySelector(".source-input");
 const companyNameInput = document.querySelector('.company-name-input');
 const companyLocationInput = document.querySelector(".company-location-input");
+const radioValueInput = document.getElementsByName('yesOrNo');
 const sendDateInput = document.querySelector('.send-date-input');
 const textAreaInput = document.getElementById('text-area-input');
 const jobList = document.querySelector(".job-list");
@@ -540,18 +548,6 @@ let jobArray = [];
 addBtn.addEventListener('click', function(event) {
   event.preventDefault();
 
-  function getRadioValue(){
-  radio = document.getElementsByName('yesOrNo').forEach(radio => {
-    if(radio.checked) {
-      let radioBtnInput = radio.value;
-      window.radioBtnInput2 = radioBtnInput;
-      console.log("radio value", radioBtnInput2)
-      return radioBtnInput2;
-      }
-    });
-  }
-  getRadioValue();
-
   addJob(
     postingInput.value,
     postingDateInput.value,
@@ -561,12 +557,39 @@ addBtn.addEventListener('click', function(event) {
     sourceInput.value,
     companyNameInput.value,
     companyLocationInput.value,
-    radioBtnInput2,
+    radioSelected.value,
     sendDateInput.value,
     textAreaInput.value)
   });
 
-function addJob(job) {
+  let radioBtnInput2;
+
+  function addJob(job) {
+
+  // function getRadioValue(){
+  // radio = document.getElementsByName('yesOrNo').forEach(radio => {
+  //   if(radio.checked) {
+  //     let radioBtnInput = radio.value;
+  //     window.radioBtnInput2 = radioBtnInput;
+  //     console.log("radio value", radioBtnInput2)
+  //     return radioBtnInput2;
+  //     }
+  //   });
+  // }
+
+    function getRadioValue(){
+      radioValueInput.forEach(radioValueInput => {
+        if(radioValueInput.checked) {
+          radioSelected = radioValueInput;
+
+          return radioSelected; // How do I get this variable into global scope
+                                // so I can use it below?
+        }
+      })
+    }
+
+  getRadioValue();
+
   if(job !== ""){
       var job = {
       id: Date.now(),
@@ -578,7 +601,7 @@ function addJob(job) {
       source: sourceInput.value,
       companyName: companyNameInput.value,
       companyLocation: companyLocationInput.value,
-      radioBtnValue: radioBtnInput2,
+      radioBtnValue: radioSelected.value,
       sendDate: sendDateInput.value,
       textAreaInput: textAreaInput.value
     }
@@ -610,7 +633,7 @@ function addJob(job) {
           `Source:` + `<br>` + `${job.source}` + `<br>` + `<br>` +
           `Company Name:` + `<br>` + `${job.companyName}` + `<br>` + `<br>` +
           `Location:` + `<br>` + `${job.companyLocation}` + `<br>` + `<br>` +
-          `Resume Sent:` + `<br>` + `${radioBtnInput2}` + `<br>` + `<br>` +
+          // `Resume Sent:` + `<br>` + `${radioBtnInput2}` + `<br>` + `<br>` +
           `Resume Send Date:` + `<br>` + `${job.sendDate}` + `<br>` + `<br>` +
           `Notes:` + `<br>` + `${job.textAreaInput}`
           
