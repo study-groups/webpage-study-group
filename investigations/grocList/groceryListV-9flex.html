@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="investigations/grocList/bubblestyle.css"> -->
 
   <title>Grocery List 9-flex</title>
 </head>
@@ -21,6 +22,7 @@
     --buttons-hover: #B70158;
     --input-box: #828282;
     --bg-color-primary: #aac9ff;
+    --bg-color-output-items: #d3e3ff;
     --dept-li-active: var(--bg-color-primary);
     --output-list-bg: var(--text-alt);
     --output-text: var(--text);
@@ -30,17 +32,15 @@
     --label: #1004af;
     --sub-headers: #1004af;
     --dark-blue: #1004af;
-    
   }
   body {
     background-image: url(assets/carts-bg4.png);
-    font-size: 16px;
+    font-size: 1em;
     font-family: 'Roboto', sans-serif;
     position: relative;
   }
   .main {
     position: relative;
-
   }
   .main-header-img {
     margin: 0 auto;
@@ -51,12 +51,11 @@
   .main-header {
     margin: 0 auto;
     text-align: center;
-    background: #3225e3;
+    background: linear-gradient(var(--department-container), var(--bg-color-primary));
     max-width: 750px;
     margin-top: 30px;
     padding-bottom: 10px;
     border-radius: 25px 25px 0 0;
-
   }
   .main-container {
     position: relative;
@@ -65,7 +64,6 @@
     background: var(--bg-color-primary);
     font-size: 1.2em;
     border-radius: 0 0 10px 10px;
-    position: relative;
   }
   /* DEPARTMENTS SECTION */
   .data-input-header {
@@ -89,7 +87,6 @@
   .dept-header {
     margin: 20px 45px 15px 45px;
   }
-
   .department-container {
     display: flex;
     justify-content: space-evenly;
@@ -101,10 +98,7 @@
     padding: .5em;
   }
   li {
-    /* margin: 5px; */
-    font-size: 1em;
     line-height: 160%;
-    width: 90%;
     border-bottom: 1px solid #b7015821;
     padding: 5px 0 0 0;
   }
@@ -130,13 +124,12 @@
     border-radius: 5px;
     padding: 5px;
     margin: .3em 0 0 0;
-    color: var(--input-box);
   }
   select,
   .item-input,
   .qty-input {
     color: var(--input-box);
-    border: 2px solid var(--black);
+    border: 2px solid var(--dark-blue);
   }
   label {
     margin-top: 15px;
@@ -169,10 +162,11 @@
     margin: 28px 0 0 20px;
     padding: .5em 1em .5em 1em;
     justify-content: center;
-    border: 1px solid var(--text-alt);
+    border: 1px solid #ffffffbd;
     height: 75%;
     position: relative;
     z-index: 5;
+    border-radius: 5px;
   }
   .btn {
     margin: 5px;
@@ -199,17 +193,29 @@
   height: auto;
   right: 0;
   bottom: 0;
+  max-width: 100%;
+  height: auto;
+  }
+  .shop-list-container {
+    display: relative;
+    z-index: 2;
+  }
+  .montage-left {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
   }
   /* DATA OUTPUT */
-  /* .shop-list-container {
+  .shop-list-container {
     position: relative;
-    z-index: -5;
-
+    z-index: 5;
+    margin-bottom: 150px;
   }
   .data-output-container {
     position: relative;
     z-index: -6;
-  } */
+  }
   .data-output-headers {
     display: flex;
     background: var(--buttons-hover);
@@ -223,12 +229,10 @@
     padding: 4px;
     display: flex;
     flex-direction: column;
-    
-    
   }
   #output-dept-header {
-    margin: 0 0 0 50px;
-    width: 189px;
+    margin: 0 0 0 56px;
+    width: 165px;
     font-weight: bold;
   }
   #output-item-header {
@@ -239,14 +243,17 @@
   }
   ol {
     list-style: inside;
-
   }
   .grocery-items {
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin: 20px 0 0 50px;
+    margin: 20px 20px 0 20px;
     padding: 0;
+    z-index: 2;
+    background-color: rgb(0, 15, 255, .11);
+    border-radius: 5px;
+    border: 1px solid #ffffffbd;
   }
   .grocery-items {
     list-style-type: none;
@@ -254,30 +261,24 @@
   }
   .grocery-items li {
     counter-increment: css-counter 1;
-    
   }
   .grocery-items li:before {
+    margin: 0 0 0 10px;
     content: counter(css-counter) ".";
-
   }
   .list-item-format {
     display: flex;
     color: var(--text);
   }
   .list-item-format:last-child {
-    /* margin-bottom: 80px; */
-    
+    margin-bottom: 50px;
   }
-  /* #item-dept, #item-item, #item-qty {
-  margin-top: 5px;
-} */
   .mobileLabels {
     display: none;
   }
   #item-dept {
     width: 160px;
     margin: 0 0 0 15px;
-
   }
   #item-item {
     width: 175px;
@@ -285,12 +286,12 @@
   }
   #item-qty {
     margin: 0 0 0 0;
-    min-width: 108px;
+    min-width: 120px;
   }
   .btnContainer {
-      margin: 0 0 0 0;
-      float: right;
-    }
+    margin: 0 0 0 45px;
+    float: right;
+  }
   .delete-btn {
     background: var(--text);
     color: var(--text-alt);
@@ -316,10 +317,13 @@
     color: var(--black);
   }
   .footer {
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    margin-left: 270px;
     padding: 20px;
     text-align: center;
-    font-size: .6em;
+    font-size: .8em;
     color: var(--buttons-hover);
   }
   @media only screen and (max-width: 812px) {
@@ -330,7 +334,6 @@
       border-radius: 30px 30px 0 0;
     }
     .main-header-img {
-
       margin: 15px 0 0 0;
     }
     select, .item-input, .qty-input {
@@ -360,9 +363,6 @@
       flex-direction: column;
       height: 395px;
     }
-    .data-input-header, .shop-list-header {
-      font-size: 1.2em;
-    }
     .data-input-form {
       margin: 20px auto;
     }
@@ -389,67 +389,99 @@
     .shop-list-header {
       flex-direction: column;
     }
-    .data-output-headers {
-      width: 100px;
-    }
-    .data-output-headers{
-      flex-direction: column;
-      max-width: 75px;
-      display: none;
-    }
-    #output-dept-header, #output-item-header, #output-qty-header {
-      margin: 0;
-      
-    }
     #output-dept-header {
-      margin: 0 25px 0 0;
+      max-width: 164px;
+      margin: 2px 25px 0 35px;;
     }
-    .mobileLabels {
-      display: inline;
-      color: var(--buttons-hover);
-      font-weight: bold;
-      margin: 0 0 0 5px;
-      
-    }
-    li {
-      /* line-height: 150% */
+    #output-item-header {
+      margin: 2px;
+      width: 90px;
     }
     .list-item-format {
-      /* flex-direction: column;
-      margin: auto;
-      width: 170px;
-      background-color: #bed5ff;
-      border-right: 1px solid  */
+      display: flex;
+      border-radius: 8px;
     }
-
-
     #item-dept, #item-item, #item-qty {
-      /* display: inline-block;
-      font-size: .95em;
+      display: inline-block;
+      font-size: 1.1em;
       width: 0px;
-      margin: 0 0 0 10px; */
+    }
+    #item-dept {
+      width: 160px;
+      margin: 0 0 0 0;
+    }
+    #item-item {
+      width: 160px;
+      margin: 0 0 0 40px;
+    }
+    #item-qty {
+      width: 60px;
+      margin: 0 0 0 5px;
     }
     .grocery-items {
-      /* flex-direction: row;
-      flex-wrap: wrap;
-      border-right: 1px solid black;
-      margin: 0; */
+      margin: 10px 10px 10px 10px;
+      border-radius: 5px 5px;
+      background-color: rgb(0, 15, 255, .11);
     }
     .grocery-items li:before {
-      /* margin: 5px 5px 0 5px; */
+      margin: 0 5px 0 10px;
     }
-
+    .btnContainer {
+      display: flex;
+      justify-content: center;
+      align-content: space-around;
+      align-items: baseline;
+    }
     .delete-btn {
-      /* display: flex;
-      margin: 15px 0 0 12px;
-      width: 55px; */
+      margin: 0;
+      display: block;
     }
     .edit-btn {
-      /* margin-left: 70px;
-      margin: -25px 0 10px 80px;
-      width: 55px; */
+      margin: 2px 10px 6px 8px;
+      display: block;
     }
-
+    @media only screen and (max-width: 610px) {
+      .list-item-format {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .grocery-items li:before {
+        margin-right: 10px;
+      }
+      .grocery-items {
+        font-size: 1em;
+      }
+      #output-item-header {
+        margin: 2px;
+        width: 62px;
+      }
+      #item-qty-header {
+        margin: 0 0 0 0;
+      }
+      #item-dept, #item-item, #item-qty {
+        font-size: 1em;
+      }
+      #item-dept {
+        margin: 0 32px 0 0;
+      }
+      #item-item {
+        margin: 0 0 0 0;
+        width: 135px;
+      }
+      #item-qty {
+        margin: 0 0 0 0;
+      }
+      .btn-container {
+        width: 0;
+        margin: 0;
+      }
+      .delete-btn {
+        display: none;
+      }
+      .edit-btn {
+        display: none;
+      }
+    }
   }
 </style>
 <body>
@@ -474,7 +506,7 @@
               <select id="dept-input" onchange="getDept()" required>
                 <option disabled selected value="">Select Department</option>
                 <option>Produce</option>
-                <option>Meat/Seafood</option>
+                <option>Meat & Seafood</option>
                 <option>Frozen-foods</option>
                 <option>Dairy</option>
                 <option>Paper Goods</option>
@@ -530,7 +562,7 @@
               type="submit">SORT LIST/DEPT
             </button>
           </div>
-          <img class="montage" src="/investigations/grocList/assets/montage-small.png">
+          <img class="montage" src="/investigations/grocList/assets/montage.png">
           </div>
         </div>
 
@@ -547,18 +579,22 @@
                 <!-- grocery-items -->
               </ul>
           </div>
-        </div>  
+        </div>   
         <footer class="footer">Copyright: 2021 StackStudios.com V: 1.0
-
         </footer>
+        <img class="montage-left" src="assets/Left montage.png">
       </div>
       
     </div>
-   
+   <div id="background-wrap">
+     <div class="bubble-01"></div>
+   </div>
   </main>
   <script>
+
+
     const dataInputForm = document.querySelector('.data-input-form');
-    const liDepts = document.getElementsByClassName('modal-li-item');
+    const liDepts = document.getElementsByClassName('option-list-item');
     var deptInput = document.getElementById('dept-input');
     var itemInput = document.getElementById('item-input');
     var qtyInput = document.getElementById('qty-input');
@@ -571,7 +607,7 @@
     const itemItemsList = document.querySelector('.grocery-items');
     var shopListContainer = document.getElementById('shop-list-container');
 
-    var items = [];
+    var itemsArray = [];
 
     // DATA INPUT METHODS
     function getDept() {
@@ -610,8 +646,8 @@
           qty: qtyInput.value
         }
       }
-      items.push(item);
-      addToLocalStorage(items);
+      itemsArray.push(item);
+      addToLocalStorage(itemsArray);
 
       deptInput.value = "";
       itemInput.value = "";
@@ -619,61 +655,56 @@
 
     };
 
-
     // RENDER METHODS
-    function renderItems(items) {
+    function renderItems(itemsArray) {
       itemItemsList.innerHTML = "";
 
- 
-
-      items.forEach(function (item) {
+      itemsArray.forEach(function (item) {
         const li = document.createElement('li');
 
         li.setAttribute("class", "item list-item-format");
         li.setAttribute('data-key', item.id);
         
-
-
-
         // Mobile view dept label
         var deptLabel = document.createElement('span');
         deptLabel.innerHTML = "Dept:"
         deptLabel.setAttribute("class", "mobileLabels");
-        li.append(deptLabel);
+        // li.append(deptLabel);
 
         // Mobile view dept input
         var inputDept = document.createElement('span');
         inputDept.setAttribute("class", "item list-item-format item-dept");
         inputDept.setAttribute("id", "item-dept");
         inputDept.innerHTML = `${item.dept}`
-        li.appendChild(inputDept);
+        li.append(deptLabel, inputDept);
 
         // Mobile view item label
-        var itemLabel = document.createElement('div');
+        var itemLabel = document.createElement('span');
         itemLabel.innerHTML = "Item:";
         itemLabel.setAttribute("class", "mobileLabels");
-        li.appendChild(itemLabel);
+        itemLabel.setAttribute("id", "itemLabel");
+        li.append(itemLabel);
 
         // Mobile view item input
-        var div = document.createElement('div');
-        div.setAttribute("class", "item list-item-format item-item");
-        div.setAttribute("id", "item-item");
-        div.innerHTML = `${item.item}`
-        li.appendChild(div);
+        var inputItem = document.createElement('span');
+        inputItem.setAttribute("class", "item list-item-format item-item");
+        inputItem.setAttribute("id", "item-item");
+        inputItem.innerHTML = `${item.item}`
+        li.append(inputItem);
 
 
         // Mobile view qty label
-        var qtyLabel = document.createElement('div');
+        var qtyLabel = document.createElement("span");
         qtyLabel.innerHTML = "Qty:"
         qtyLabel.setAttribute("class", "mobileLabels");
-        li.appendChild(qtyLabel);
+        li.append(qtyLabel);
         
         // Mobile view qty input
-        var div = document.createElement('div');
-        div.setAttribute("class", "item list-item-format item-qty");
-        div.setAttribute("id", "item-qty");
-        div.innerHTML = `${item.qty}`
-        li.appendChild(div);
+        var inputQty = document.createElement('span');
+        inputQty.setAttribute("class", "item list-item-format item-qty");
+        inputQty.setAttribute("id", "item-qty");
+        inputQty.innerHTML = `${item.qty}`
+        li.appendChild(inputQty);
 
           var deleteBtn = document.createElement('button');
           deleteBtn.setAttribute("class", "delete-btn");
@@ -697,70 +728,79 @@
       });
     }
 
-    function addToLocalStorage(items) {
-      localStorage.setItem('items', JSON.stringify(items));
-      renderItems(items);
+    function addToLocalStorage(itemsArray) {
+      localStorage.setItem('itemsArray', JSON.stringify(itemsArray));
+      renderItems(itemsArray);
     }
 
     function getFromLocalStorage() {
-      var reference = localStorage.getItem('items');
+      var reference = localStorage.getItem('itemsArray');
 
       if (reference) {
-        items = JSON.parse(reference);
-        console.log("items", items);
-        renderItems(items);
+        itemsArray = JSON.parse(reference);
+        console.log("itemsArray", itemsArray);
+        renderItems(itemsArray);
       }
     }
-
     function deleteItem(id) {
-      items = items.filter(function (item) {
-        return item.id != id;
+      itemsArray = itemsArray.filter(function (itemsArray) {
+        return itemsArray.id != id;
       });
-      console.log(items);
-      addToLocalStorage(items);
+      console.log(itemsArray);
+      addToLocalStorage(itemsArray);
     }
     getFromLocalStorage();
 
     itemItemsList.addEventListener('click', function (event) {
       if (event.target.classList.contains('delete-btn')) {
-        deleteItem(event.target.parentElement.getAttribute('data-key'));
+        deleteItem(event.target.parentElement.parentElement.getAttribute('data-key'));
       }
     });
     getFromLocalStorage();
 
     deleteAllBtn.addEventListener('click', function (event) {
       if (event.target.classList.contains('delete-all-btn')) {
-        items = [];
-        addToLocalStorage(items);
-        // renderItems(items);
+        itemsArray = [];
+        addToLocalStorage(itemsArray);
+        // renderItems(itemsArray);
       }
     });
     getFromLocalStorage();
 
-    function compare(a, b) {
-      if (a.dept < b.dept) {
-        return -1;
-      }
-      if (a.dept > b.dept) {
-        return 1;
-      }
-      return 0;
-    }
+    function sortLocalStorage(){
+      
+      if(itemsArray.length > 0){
+        var sortedItemsArray = new Array();
+
+        itemsArray.sort(function(a, b){
+          if (a.dept < b.dept) {
+          return -1;
+          }
+          if (a.dept > b.dept) {
+          return 1;
+          }
+          return 0;
+        });
+        
+        var sortedItemsArray = itemsArray;
+        renderItems(sortedItemsArray);
+        // console.log("sorted array", sortedItemsArray);
+      };  
+    }  
+
     sortBtn.addEventListener('click', function (event) {
       if (event.target.classList.contains('sort-btn')) {
-       compare(items);
+       sortLocalStorage(itemsArray);
       }
     });
-
-    items.sort(compare);
-    console.log("items-sort", items);
-    renderItems(items);
-
+  
   </script>
 </body>
-<!-- Select html tags to not support placeholder attribute. 
+
+/* Select html tags to not support placeholder attribute. 
      This work-around creates a fake placeholder:
-     https://codepen.io/maoberlehner/pen/WOWrqO
--->
-<!-- Reference for array sorting using both compare() and sort() functions:  https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/ -->
+     https://codepen.io/maoberlehner/pen/WOWrqO */
+
+/* Reference for array sorting using both compare() and sort() functions:  https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/ */
+
 </html>
