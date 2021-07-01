@@ -44,8 +44,17 @@
     position: relative;
   }
   .main-header-img {
-
     width: 90%;
+    display: inline-block;
+    z-index: 1;
+    margin: 20px 0 92px 0;
+  }
+  .main-header-img2 {
+    width: 68%;
+    display: inline-block;
+    margin: -112px 73px 170px 0;
+    position: relative;
+    
   }
   .main-header {
     margin: 0 auto;
@@ -55,6 +64,8 @@
     margin-top: 30px;
     padding-bottom: 10px;
     border-radius: 30px 30px 0 0;
+    position: relative;
+    z-index: 0;
   }
   .main-container {
     position: relative;
@@ -67,6 +78,7 @@
   /* DEPARTMENTS SECTION */
   .data-input-header {
     background: #1004af;
+    margin: -205px 0 0 0;
   }
   .shop-list-header {
     background-color: var(--dark-blue);
@@ -110,7 +122,7 @@
     flex-direction: column;
     margin: 0px 0 20px 60px;
     position: relative;
-    z-index: 3;
+    z-index: 0;
   }
   .dept-input-grp {
     display: flex;
@@ -130,6 +142,9 @@
     color: var(--input-box);
     border: 2px solid var(--dark-blue);
   }
+  .item-input-group {
+    margin: .3em 0 0 0;
+  }
   label {
     margin-top: 15px;
     display: block;
@@ -140,7 +155,7 @@
     display: flex;
     height: 315px;
     position: relative;
-    z-index: 2;
+    z-index: 0;
   }
   input {
     width: 268px;
@@ -166,7 +181,7 @@
     height: 75%;
     width: 20%;
     position: relative;
-    z-index: 5;
+    z-index: 0;
     border-radius: 5px;
   }
   .btn {
@@ -180,7 +195,7 @@
     background-color: var(--dark-blue);
     border: .5px solid var(--text-alt);
     position: relative;
-    z-index: 5;
+    z-index: 0;
   }
   .btn:hover {
     background: var(--buttons-hover);
@@ -190,7 +205,7 @@
   }
   .montage {
   position: absolute;
-  z-index: 1;
+  z-index: -1;
   height: auto;
   right: 0;
   bottom: 0;
@@ -199,23 +214,23 @@
   }
   .shop-list-container {
     display: relative;
-    z-index: 2;
+    z-index: 0;
   }
   .montage-left {
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     left: 0;
     bottom: 0;
   }
   /* DATA OUTPUT */
   .shop-list-container {
     position: relative;
-    z-index: 5;
+    z-index: 2;
     margin-bottom: 150px;
   }
   .data-output-container {
     position: relative;
-    z-index: -6;
+    z-index: 0;
   }
   #data-output-headers {
     display: flex;
@@ -253,7 +268,7 @@
     text-align: left;
     margin: 20px 20px 0 20px;
     padding: 0;
-    z-index: 2;
+    z-index: 0;
     background-color: rgb(0, 15, 255, .11);
     border-radius: 5px;
     border: 1px solid #ffffffbd;
@@ -330,12 +345,12 @@
     padding: 20px 40px 20px 20px;
     font-size: .8em;
     color: var(--text-alt);
-    z-index: 2;
+    z-index: 0;
     border-radius: 0 0 30px 30px;
   }
   #copyright {
     display: inline-flex;
-    z-index: 6;
+    z-index: 0;
     font-size: .8em;
   }
   @media only screen and (max-width: 768px) {
@@ -343,7 +358,9 @@
       font-size: 1em;
     }
     .main-header-img {
-      margin: 15px 0 0 0;
+      display: static;
+      z-index: 0;
+
     }
     select, .item-input, .qty-input {
      font-size: 1em;
@@ -486,7 +503,9 @@
 <body>
   <main>
     <div class="main-header">
-      <img class="main-header-img" src="assets/groceryHeader2.png">
+      <img class="main-header-img" src="assets/TopOfCartHeader.png"/>
+      <img class="main-header-img2"
+      src="assets/BtmOfCartHeader.png"/>
     </div>
     <div class="main-container">
       <!-- DATA INPUT -->
@@ -503,7 +522,7 @@
               </label>
               <!-- Dropdown Content -->
               <select id="dept-input" onchange="getDept()" required>
-                <option disabled selected value="">Select Department</option>
+                <option disabled selected value="" id="dept-input-label">Select Department</option>
                 <option>Produce</option>
                 <option>Meat & Seafood</option>
                 <option>Frozen-foods</option>
@@ -579,7 +598,7 @@
             
               </div>
               <ul class="grocery-items" id="ordered-list">
-                 grocery-items
+                 
               </ul>
           </div>
         </div>   
@@ -741,19 +760,17 @@
     function getFromLocalStorage() {
       var reference = localStorage.getItem('itemsArray');
 
-      if (reference) {
+      if(reference) {
         itemsArray = JSON.parse(reference);
-        console.log("itemsArray", itemsArray);
         renderItems(itemsArray);
       }
-    }
+    };
     function deleteItem(id) {
       itemsArray = itemsArray.filter(function(itemsArray) {
         return itemsArray.id != id;
       });
-      console.log(itemsArray);
       addToLocalStorage(itemsArray);
-    }
+    };
     getFromLocalStorage();
 
     itemItemsList.addEventListener('click', function (event) {
@@ -773,16 +790,61 @@
     getFromLocalStorage();
 
     // Repopulate form data from itemsArray object
+    
 
-    function editItem(id){
-      
+
+    function editItem(id){     // id = datakey
+
         for(i=0; i < itemsArray.length; i++) {
-          console.log(itemsArray.id == id);
+          if(itemsArray[i].id == id){ 
+            console.log(itemsArray[i]);   
+     
+            var tempDept = itemsArray[i].dept;
+            var tempItem = itemsArray[i].item;
+            var tempQty = itemsArray[i].qty;
 
-          itemsArray2 =  new Array;
+            return [
+              tempDept,
+              tempItem,
+              tempQty
+            ];
+          }
         }
-             
       };
+      deptInput = tempDept[0];
+
+
+      let tempObject = editItem(id);
+      let tempDept = tempObject.tempDept,
+          tempItem = tempObject.tempItem,
+          tempQty = tempObject.tempQty;
+
+      
+      // var key = Object.keys(itemsArray)[i];
+            // console.log(key);
+            // return key;
+            // document.getElementById('item-input') = itemsArray[i].item.value;
+
+  
+            // deptInput.value = itemsArray[i].dept;
+            // itemInput.value = itemsArray[i].item;
+            // qtyInput.value = itemsArray[i].qty;
+
+          // console.log(itemsArray[i]);
+            // JSON.stringify(tempItem);
+          // }
+
+          // return tempItem;
+
+          // JSON.parse(tempItem);
+
+          // console.log("test", tempItem);
+          // return itemsArray.id = id; 
+          
+          // itemsArrayTemp = itemsArray;
+     
+      // }
+      // };
   
 
     itemItemsList.addEventListener('click', function(event) {
@@ -790,7 +852,13 @@
         editItem(event.target.parentElement.parentElement.getAttribute("data-key"));
       }
     });
-    // funtion updateItem(){
+    // function updateItem(){
+    //   document.getElementById('data-input-form').addEventListener("click", function(event){
+    //     event.preventDefault();
+
+    //   });
+
+
 
     // updateBtn.addEventListener('click', function(event) {
     //   if(event.target.classList.contains('update-btn')) {
