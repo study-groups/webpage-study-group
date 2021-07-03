@@ -45,7 +45,7 @@
   }
   .main-header-img {
     display: inline-block;
-    margin: 35px 0 35px 0;
+    margin: 35px 0 5px 0;
     width: 90%;
     height: auto;
   }
@@ -55,22 +55,94 @@
     margin: -75px 42px -15px 0;
     position: relative;
     opacity: 40%;
-    
   }
   .main-header {
     margin: 0 auto;
     text-align: center;
     background: linear-gradient(var(--department-container), var(--bg-color-primary));
     max-width: 750px;
-    margin-top: 30px;
-    padding-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 0px;
     border-radius: 30px 30px 0 0;
     position: relative;
     z-index: 0;
   }
-  .bigCart {
-    display: none;
+  .xsmallCart-animation {
+    position: relative;
+    margin: 0 0 0 0;
+    opacity: 0;
+    animation-name: moveXSmCart;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
   }
+  @keyframes moveXSmCart {
+    0% {
+      left: 85%;
+      top: 0px;
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      left: 0%;
+      top: 0px;
+      opacity: 0;
+    };
+  }
+  .smallCart-animation {
+    position: relative;
+    margin: 0 0 0px -50px;
+    opacity: 1;
+    animation-name: moveSmallCart;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes moveSmallCart {
+    0% {
+      left: 0%;
+      top: 0px;
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      left: 90%;
+      top: 0px;
+      opacity: 0;
+    };
+  }
+  .bigCart-animation {
+    position: relative;
+    margin: 0 0 0 0;
+    opacity: 0;
+    animation-name: moveBigCart;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes moveBigCart {
+    0% {
+      left: 5%;
+      top: 0px;
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      left: 85%;
+      top: 0px;
+      opacity: 0;
+    };
+  }
+  
   .main-container {
     max-width: 750px;
     margin: 0 auto;
@@ -80,9 +152,6 @@
   }
   /* DEPARTMENTS SECTION */
 
-  .shop-list-header {
-    background-color: var(--dark-blue);
-  }
   .data-input-header, .shop-list-header {
     text-align: center;
     padding: .3em 0 .3em 0;
@@ -97,9 +166,12 @@
   }
   .data-input-header {
     background: #1004af;
-    margin: -30px 0 0 0; 
+    margin: -10px 0 0 0; 
     position: relative;
     z-index: 1;
+  }
+  .shop-list-header {
+    background-color: var(--dark-blue);
   }
   .dept-header {
     margin: 20px 45px 15px 45px;
@@ -537,15 +609,16 @@
     <div class="main-header">
       <img class="main-header-img" src="assets/ShopHeader.png"/>
     </div>
-    <div class="bigCart">
-      <img src="assets/BiggerCart.png"/>
-    </div>
     <div class="main-container">
+      <div>
+        <img class="xsmallCart-animation" src="assets/XSmCart.png"/>
+        <img class="smallCart-animation" src="assets/SmallCart.png"/>
+        <img class="bigCart-animation" src="assets/BiggerCart.png"/>
+      </div>
       
       <!-- DATA INPUT -->
       <div>
         <div class="data-input-header">ENTER ITEMS</div>
-        <!-- <div class="data-input-header">ENTER ITEMS</div> -->
         <div class="flex-container">
           <!-- DATA INPUT -->
           <form class="data-input-form" id="data-input-form">
@@ -673,9 +746,6 @@
     var itemsArray = [];
 
     // DATA INPUT METHODS
-    function getDept() {
-      document.getElementById("selectedDept").value = deptInput.options[deptInput.selectedIndex].text;
-    }
 
     function getDept() {
       for (i = 0; i < liDepts.length; i++) {
@@ -829,54 +899,49 @@
 
     // Repopulate form data from itemsArray object
     
-    function editItem(id){     // id = datakey
+    function editItem(id){     // id = datakey; repopulate form inputs
       for(i=0; i < itemsArray.length; i++) {
         if(itemsArray[i].id == id){ 
           console.log(itemsArray[i]);   
+
+          deptInput.value = itemsArray[i].dept;
+          itemInput.value = itemsArray[i].item;
+          qtyInput.value = itemsArray[i].qty;
      
-          var tempObject = itemsArray[i];
-          console.log("tempObject", tempObject);
-          return tempObject;
-        }
-      }
-    };
-   
-      // var key = Object.keys(itemsArray)[i];
-            // console.log(key);
-            // return key;
-            // document.getElementById('item-input') = itemsArray[i].item.value;
-
-  
-            // deptInput.value = itemsArray[i].dept;
-            // itemInput.value = itemsArray[i].item;
-            // qtyInput.value = itemsArray[i].qty;
-
-          // console.log(itemsArray[i]);
-            // JSON.stringify(tempItem);
-          // }
-
-          // return tempItem;
-
-          // JSON.parse(tempItem);
-
-          // console.log("test", tempItem);
-          // return itemsArray.id = id; 
+          var item = itemsArray[i];
+          console.log("item", item.dept, item.item, item.qty);
+          return item;
           
-          // itemsArrayTemp = itemsArray;
-     
-      // }
-      // };
-  
+        }
+      } 
+    };
+    getFromLocalStorage();
+
     itemItemsList.addEventListener('click', function(event) {
       if(event.target.classList.contains('edit-btn')) {
         editItem(event.target.parentElement.parentElement.getAttribute("data-key"));
       }
     });
-    // function updateItem(){
-    //   document.getElementById('data-input-form').addEventListener("click", function(event){
-    //     event.preventDefault();
 
-    //   });
+    updateBtn.addEventListener('click', updateItem);
+      
+    function updateItem(item){
+      if(item !== ""){
+        var item = {
+          id: Date.now(),
+          dept: deptInput.value,
+          item: itemInput.value,
+          qty: qtyInput.value
+        } 
+      }
+      itemsArray.push(item);
+      addToLocalStorage(itemsArray);
+
+      deptInput.value = "";
+      itemInput.value = "";
+      qtyInput.value = "";
+    }
+ 
 
 
 
