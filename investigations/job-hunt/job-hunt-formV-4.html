@@ -153,6 +153,7 @@
      grid-area: 12 / 1 /13 / 4;
     }
     .resume-sent {
+      display: none;
       grid-area: 12 / 1 /13 / 2;
       margin-right: 60px;
       font-size: 1.2em;
@@ -161,7 +162,7 @@
       text-align: right;
     }
     .yes-no-group {
-      display: grid;
+      display: none;
       grid-area: 12 / 2 / 13 / 4;
       display: flex;
       flex-direction: row;
@@ -169,7 +170,11 @@
       margin-top: 1em;
     }
     /* RADIO BUTTONS */
+    #yes-label, #no-label,.yes, .no {
+      display: none;
+    }
     #yes-label {
+      
       width: 40px;
       margin: 5px;
     }
@@ -463,8 +468,8 @@
                 name="yesOrNo"
                 checked/>
         </div>
-        <!-- <div id="radio-btn-choice"></div> -->
-        <div class="send-date">Send Date:</div>
+        <div id="radio-btn-choice"></div>
+        <div class="send-date">Resume Send Date:</div>
           <label for="send-date-input" id="send-date-input"></label>
           <input 
             id="send-date-input"
