@@ -48,9 +48,7 @@
     --background-output: var(--med-light-blue);
     --background-output-cards: var(--med-blue-alt); /* alt= #070a6e */
     --deleteBtn: var(--med-light-blue);
-    --transition-delay: 1s;
 
-    transition: var(--transition-delay);
   }
   
   /* Study-groups theme */
@@ -87,15 +85,6 @@
     --background-output: var(--medium-green);
     --background-output-cards: var(--medium-green);
    
-
-    
-
-
-    
-    
-
-
-
   }
     body {
       background: var(--background-body);
@@ -706,7 +695,11 @@ function addPerson(person) {
     }
   });
   function deletePerson(id) {
-    personArray = personArray.filter(function(person) {
+    
+    if(id = null){
+      return person.id != "";
+    } else {
+      personArray = personArray.filter(function(person) {
       return person.id != id;
     });
 
@@ -714,6 +707,7 @@ function addPerson(person) {
     addToLocalStorage(personArray);
     console.log("Deleted person", personArray);
   }
+}
   getFromLocalStorage();
 
 // EDIT FUNCTION CODE //
