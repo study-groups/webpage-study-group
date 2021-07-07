@@ -970,16 +970,11 @@
       }
     };
     function deleteItem(id) {
-      if(id = null){
-        return person.id != "";
-      } else {
-      
-      itemsArray = itemsArray.filter(function(itemsArray) {
+      itemsArray = itemsArray.filter(function(itemsArray)  {
         return itemsArray.id != id;
       });
       addToLocalStorage(itemsArray);
-    }
-  };
+    };
     getFromLocalStorage();
 
     itemItemsList.addEventListener('click', function (event) {
@@ -1009,9 +1004,9 @@
           itemInput.value = itemsArray[i].item;
           qtyInput.value = itemsArray[i].qty;
      
-          var item = itemsArray[i];
-          console.log("item", item.dept, item.item, item.qty);
-          return item;
+          var editedItem = itemsArray[i];
+          console.log("editedItem", editedItem.dept, editedItem.item, editedItem.qty);
+          return editedItem;
           
         }
       } 
@@ -1026,16 +1021,16 @@
 
     updateBtn.addEventListener('click', updateItem);
       
-    function updateItem(item){
-      if(item !== ""){
-        var item = {
+    function updateItem(editedItem){
+      if(editedItem !== ""){
+        var editedItem = {
           id: Date.now(),
           dept: deptInput.value,
           item: itemInput.value,
           qty: qtyInput.value
         } 
       }
-      itemsArray.push(item);
+      itemsArray.push(editedItem);
       addToLocalStorage(itemsArray);
 
       deptInput.value = "";
