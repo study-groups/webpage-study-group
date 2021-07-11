@@ -1,23 +1,55 @@
-<script src="ScrollSpy.js"></script>
-<div class="content">
-<nav id="navbar"  class="w-100 fixed top-0 bg-dark-gray">
-  <span class="fas fa-angle-double-left" id="previous"> </span>
-  <div id="indicator">
-    <ul class="scrollspy-indicator-container">
-      <li class="spy-clickable">CHAPTER ~ 1</li>
-      <li class="spy-clickable">CHAPTER ~ 2</li>
-      <li class="spy-clickable">CHAPTER ~ 3</li>
-      <li class="spy-clickable">CHAPTER ~ 4</li>
-      <li class="spy-clickable">CHAPTER ~ 5</li>
-      <li class="spy-clickable">CHAPTER ~ 6</li>
-      <li class="spy-clickable">CHAPTER ~ 7</li>
-      <li class="spy-clickable">CHAPTER ~ 8</li>
-      <li class="spy-clickable">CHAPTER ~ 9</li>
-      <li class="spy-clickable">CHAPTER ~ 10</li>
-      <li class="spy-clickable">CHAPTER ~ 11</li>
-      <li class="spy-clickable">The Author</li>                       
-    </ul> 
-  </div>  
-  <span class="fas fa-angle-double-right" 
-         id="nextArrow" onclick="nextChapter()"> </span>
-</nav>
+<nav class="z-1 w-100 fw6 f2 fixed top-0 
+               blue-7 bg-blue-4 flex justify-between">
+        
+        <i class=" grow fa fa-angle-double-left fw6 tl pl2 w2"></i>
+        <div id="indicator" class="f3 pt0 blue-7" >G A I A </div>
+        <i class="grow fa fa-angle-double-right fw6 tr w2  pr2"></i>
+</nav>  
+
+
+<!--
+Good example with React and Tachyons
+https://codesandbox.io/s/scrollspy-s3dlr?file=/src/navbar.js
+-->
+<script>
+
+const isInView = element => {
+  const rect = element.getBoundingClientRect()
+  return rect.top >= 0 && rect.bottom <= window.innerHeight
+}
+
+chapterIds=["1","2","3","4"];
+chaptersInView=[];
+
+// In-view function
+const spy = (items) => {
+    const newItems = items.map(id => {
+      const element = document.getElementById(id)
+
+      if (element) {
+        return {
+          inView: isInView(element),
+          element,
+          chapter: id
+        }
+      } else {
+        return {chatper: id }
+      }
+    })
+    return newItems;
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    setInterval(heartbeat,200);
+});
+
+const heartbeat = () => { 
+    let chaptersView = spy(chapterIds);
+    let chapInView=chaptersView.find( ( {inView} ) => inView===true);
+    
+    document.getElementById("indicator").innerHTML=`${chapInView?.chapter}`;
+}
+
+</script>
+
+

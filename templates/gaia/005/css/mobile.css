@@ -18,7 +18,6 @@ html {
 }
 
 body {
-  font-size: 20pt;
   letter-spacing: 1px;
   background: var(--bk-primary);
   font-family: 'Libre Baskerville', serif;
@@ -32,7 +31,6 @@ body {
 .fa-angle-double-left,
 .fa-angle-double-right {
   color: var(--video-links);
-  font-size: 3em;
   float: left;
   padding: 2px;
   margin: 0rem 0 0 10%;
