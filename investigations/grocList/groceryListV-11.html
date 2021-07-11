@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" type="text/css" href="investigations/grocList/bubblestyle.css"> -->
 
-  <title>Grocery List 10-flex</title>
+  <title>Grocery List 11-flex</title>
 </head>
 <style>
   :root {
@@ -723,7 +723,7 @@
                 Select a department...
               </label>
               <!-- Dropdown Content -->
-              <select id="dept-input" onchange="getDept()" required>
+              <select id="dept-input" onchange="getDept()" required="required">
                 <option disabled selected value="">Select Department</option>
                 <option>Produce</option>
                 <option>Meat & Seafood</option>
@@ -748,8 +748,10 @@
               <input 
                 id="item-input" 
                 class="item-input" 
+                required="required"
                 placeholder="Item..." 
-                type="item-input"/>
+                type="item-input"
+                />
             </div>  
             <div class="qty-input-grp">
               <label 
@@ -760,7 +762,8 @@
                 id="qty-input" 
                 class="qty-input"
                 placeholder="Qty..." 
-                type="qty-input"/>
+                type="qty-input"
+                required = "required"/>
             </div>
           </form>
           <!-- BUTTONS -->
@@ -970,11 +973,12 @@
       }
     };
     function deleteItem(id) {
-      itemsArray = itemsArray.filter(function(itemsArray)  {
-        return itemsArray.id != id;
-      });
-      addToLocalStorage(itemsArray);
-    };
+      if(itemsArray.id != ""){
+        itemsArray = itemsArray.filter(function(itemsArray){
+          return itemsArray.id != id;
+        });
+      } addToLocalStorage(itemsArray);
+    }
     getFromLocalStorage();
 
     itemItemsList.addEventListener('click', function (event) {
@@ -998,15 +1002,17 @@
     function editItem(id){     // id = datakey; repopulate form inputs
       for(i=0; i < itemsArray.length; i++) {
         if(itemsArray[i].id == id){ 
-          console.log(itemsArray[i]);   
+
+          localStorage.getItem(itemsArray[i]);
+
+          let existing = itemsArray[i];
 
           deptInput.value = itemsArray[i].dept;
-          itemInput.value = itemsArray[i].item;
+          itemInput.value = itemsArray[i].item; 
           qtyInput.value = itemsArray[i].qty;
      
-          var editedItem = itemsArray[i];
-          console.log("editedItem", editedItem.dept, editedItem.item, editedItem.qty);
-          return editedItem;
+          console.log("existing", existing);
+          return existing;
           
         }
       } 
@@ -1021,18 +1027,18 @@
 
     updateBtn.addEventListener('click', updateItem);
       
-    function updateItem(editedItem){
-      if(editedItem !== ""){
-        var editedItem = {
-          id: Date.now(),
+    function updateItem(existing){
+      if(existing !== ""){
+        var existing = {
           dept: deptInput.value,
           item: itemInput.value,
           qty: qtyInput.value
         } 
       }
-      itemsArray.push(editedItem);
-      addToLocalStorage(itemsArray);
-
+      itemsArray.push(existing);
+      localStorage.setItem(itemsArray);
+      // localStorage.setItem("existing", JSON.stringify(existing));
+    
       deptInput.value = "";
       itemInput.value = "";
       qtyInput.value = "";
