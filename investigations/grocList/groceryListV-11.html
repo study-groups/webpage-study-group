@@ -303,7 +303,7 @@
     border: 2px solid var(--black);
   }
   .btnContainerAll {
-    margin-left: 5px;
+    /* margin-left: 5px; */
   }
   .button-container {
     display: flex;
@@ -338,7 +338,7 @@
     background: var(--buttons-hover);
   }
   button {
-    margin: .5em 0 .5em 0;
+
   }
   .montage {
     position: absolute;
@@ -385,11 +385,11 @@
   }
   #dept-header {
     margin: 0 0 0 65px;
-    width: 110px;
+    width: 80px;
   }
   #item-header {
     margin: 0 0 0 50px;
-    width: 110px;
+    width: 50px;
   }
   #qty-header {
     margin: 0 0 0 48px;
@@ -417,7 +417,7 @@
     counter-increment: css-counter 1;
   }
   .grocery-items li:before {
-    margin: 4px 0 0 10px;
+    margin: 8px 0 0 10px;
     content: counter(css-counter) ".";
   }
   .list-item-format {
@@ -426,6 +426,7 @@
     justify-content: flex-start;
     color: var(--royal-blue);
     height: auto;
+    padding: 5px;
   }
   .list-item-format:last-child {
     margin-bottom: 50px;
@@ -442,21 +443,18 @@
     margin: 4px 0 0 10px;
   }
   #item-qty {
-    margin: 4px 0 0 10px;
+    margin: 5px 0 0 10px;
     min-width: 120px;
   }
-  /* .btnContainer {
-    margin: 0 0 0 45px;
-    float: right;
-  } */
+  .btnContainer {
+    /* margin: 0 0 0 0; */
+  }
   .delete-btn {
     background: var(--royal-blue);
     color: var(--white);
     border-color: var(--white);
     border-radius: 5px;
-    width: 65px;
-    margin: 2px 0 6px 10px;
-    height: 25px;
+    width: 53px;
     border-style: solid;
     border-width: 1px;
   }
@@ -465,9 +463,9 @@
     color: var(--white);
     border-color: var(--white);
     border-radius: 5px;
-    width: 65px;
-    margin: 2px 0 6px 10px;
-    height: 25px;
+    width: 53px;
+    /* margin: 2px 0 4px 10px; */
+    /* height: 25px; */
     border-style: solid;
     border-width: 1px;
   }
@@ -603,13 +601,13 @@
     }
     #dept-header, #qty-header,
     #item-header {
-      font-size: 1.1em;
+      /* font-size: 1.1em; */
     }
     #dept-header {
-     margin: 0 0 0 38px;
+     margin: 0 0 0 22px;
     }
     #item-header {
-      margin: 0 0 0 17%;
+      margin: 0 0 0 0;
     }
     #qty-header {
       margin: 0 0 0 0;
@@ -624,7 +622,7 @@
       font-size: 1.1em;
     }
     #item-dept {
-      width: 40%;
+      width: 30%;
       margin: 0 0 0 0;
     }
     #item-item {
@@ -642,21 +640,16 @@
       margin: 20px 10px 20px 10px;
     }
     .grocery-items li:before {
-      margin: 0 5px 0 10px;
+      margin: 6px 0 0 5px;
     }
     .btnContainer {
-      display: flex;
-      justify-content: center;
-      align-content: space-around;
-      align-items: baseline;
+
     }
     .delete-btn {
-      margin: 0;
-      display: none;
+
     }
     .edit-btn {
-      margin: 2px 10px 6px 8px;
-      display: none;
+
     }
     .adspace {
       margin: 0 20px 0 275px;
@@ -682,12 +675,13 @@
     .list-item-format {
       margin: 0 0 0 0;
       height: auto;
+      padding: 5px;
     }
     #dept-header {
-      margin: 0 0 0 40px;
+      margin: 0 0 0 25px;
     }
     #item-header {
-    margin: 0 0 0 12%;
+    margin: 0 0 0 5px;
     }
     #qty-header {
       margin: 0 0 0 11%;
@@ -889,6 +883,7 @@
 
     // RENDER METHODS
     // Output Header Labels
+
     var deptLabel = document.createElement('div');
       deptLabel.innerHTML = "Department";
       deptLabel.setAttribute("id", "dept-header");
@@ -1015,6 +1010,7 @@
           return existing;
           
         }
+
       } 
     };
     getFromLocalStorage();
