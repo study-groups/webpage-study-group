@@ -323,9 +323,16 @@
   .shop-list-container {
     margin-bottom: 150px;
   }
-  .grid-container {
+  .grid-container1 {
     display: grid;
-    grid-template-columns: 3fr 2.25fr 2.25fr 1fr 1fr;
+    grid-template-columns: 3fr 2.25fr 2fr 1.25fr 1.25fr;
+    color: var(--royal-blue);
+    position: relative;
+    z-index: 2;
+  }
+  .grid-container2 {
+    display: grid;
+    grid-template-columns: 3fr 2.25fr 2fr 1.25fr 1.25fr;
     grid-template-rows: auto;
     color: var(--royal-blue);
     counter-reset: css-counter 0;
@@ -333,10 +340,10 @@
     z-index: 2;
     border-bottom: 1px solid rgb(255 255 255 / 50%);
   }
-  .grocery-items:last-child {
-    padding: 0 0 20px 0;
+  .divId {
+    display: none;
   }
-  /* .grid-container:nth-child(1n + 3) {
+  /* .grid-container2:nth-child(1n + 3) {
     background:rgb(0, 15, 255, .15);
   } */
   #dept-header,
@@ -344,13 +351,12 @@
   #qty-header,
   #btn-header {
     background: var(--medium-red);
-    font-weight: bold;
     color: var(--white);
     padding: 7px 10px 7px 0px;
   }
   #dept-header {
     grid-area: 1 / 1 / 2 / 2;
-    padding-left: 20px;
+    padding-left: 30px;
   }
   #item-header {
     grid-area: 1 / 2 / 2 / 3;
@@ -365,6 +371,7 @@
     text-align: center;
   }
   .item {
+    grid-row-start: 2 / span 5;
     height: 25px;
     margin: 10px 0 0 10px;
   }
@@ -380,24 +387,30 @@
   .item-qty {
     font-size: .9em;
   }
+  .item-dept {
+    margin: 10px 0 0 15px;
+  }
   .item-item {
     margin: 10px 0 0 0;
+
   }
   .item-qty {
     margin: 10px 0 0 0;
   }
   .delete-btn {
+    /* display: none; */
     background: var(--royal-blue);
     color: var(--white);
     border-color: var(--white);
     border-radius: 5px;
-    margin: auto;
+    margin: auto 0;
     width: 53px;
     height: 25px;
     border-style: solid;
     border-width: 1px;
   }
   .edit-btn {
+    /* display: none; */
     background: var(--royal-blue);
     color: var(--white);
     border-color: var(--white);
@@ -529,10 +542,10 @@
     #dept-header {
       grid-area: 1 / 1 / 2 / 2;
     }
-    .grid-container {
+    /* .grid-container2 {
       grid-template-columns: none;
 
-    }
+    } */
     #dept-header,
     #item-header,
     #qty-header,
@@ -560,41 +573,51 @@
       font-size: .8em;
     }
     .adspace {
-      margin: 0 20px 0 275px;
+      margin: 0 20px 0 240px;
       
     }
   }
-    @media only screen and (max-width: 481px) {
-      .data-input-form {
-        margin: 0px 0 20px 15px;
+  @media only screen and (max-width: 481px) {
+    .data-input-form {
+      margin: 0px 0 20px 15px;
+  }
+    select {
+    height: 31px;
+    width: 240px;
+  }
+    .button-container {
+      font-size: .7em;
+      margin: 0px 15px 10px 15px;
+      height: 30%;
     }
-      select {
-      height: 31px;
-      width: 240px;
+    .btn {
+    padding: 3px;
+    width: 70px;
+    min-width: auto;
+    font-size: .9em;
+    height: 30px;
     }
-      .button-container {
-        font-size: .7em;
-        margin: 10px 10px 20px 10px;
-      }
-      .btn {
-      padding: 3px;
-      width: 70px;
-      min-width: auto;
-      font-size: .9em;
-      height: 30px;
+    .grid-container1 {
+      grid-template-columns: 1.15fr .75fr .75fr;
     }
-      .item-dept,
-      .item-item,
-      .item-qty {
-        font-size: .7em;
-      }
-      #btn-header {
-        display: none;
-      }
-      .edit-btn, .delete-btn {
-        display: none;
-      };
+    .grid-container2 {
+      grid-template-columns: 1.15fr .75fr .75fr;
     }
+    .item-dept {
+      margin: 10px 0 0 0;
+    }
+    .item-dept,
+    .item-item,
+    .item-qty {
+      font-size: .7em;
+    }
+    #btn-header {
+      display: none;
+    }
+    .edit-btn, .delete-btn {
+      display: none;
+    };
+  }
     
 </style>
 
@@ -669,11 +692,15 @@
 
       <div class="shop-list-container" id="shop-list-container">
         <div class="shop-list-header">SHOPPING LIST</div>
-
-        <div class="grid-container grocery-items">
-
-        </div>
-
+          <div class="grid-container1">
+            <div id="dept-header">Department</div>
+            <div id="item-header">Item</div>
+            <div id="qty-header">Qty</div>
+            <div id="btn-header">Edit/Delete</div>
+          </div>
+          <div class="grid-container2">
+            <!-- Grocery list items here -->
+          </div>
       </div>
       <div class="adspace">Saved space for links or advertizing, etc.</div>
       <footer class="footer">
@@ -702,8 +729,7 @@
     var deleteAllBtn = document.querySelector(".delete-all-btn");
     var sortBtn = document.querySelector(".sort-btn");
     var updateBtn = document.querySelector(".update-btn");
-    const groceryItems = document.querySelector('.grocery-items');
-    var gridContainer = document.querySelector('.grid-container');
+    var gridContainer2 = document.querySelector('.grid-container2');
 
     var itemsArray = [];
 
@@ -748,69 +774,51 @@
       qtyInput.value = "";
 
     };
-
-
     function renderItems(itemsArray) {
-      groceryItems.innerHTML = "";
+      gridContainer2.innerHTML = "";
 
-      /* headers */
-      var deptLabel = document.createElement('div');
-      deptLabel.innerHTML = "Department";
-      deptLabel.setAttribute("id", "dept-header");
-      gridContainer.append(deptLabel);
-
-      var itemLabel = document.createElement('div');
-      itemLabel.innerHTML = "Item";
-      itemLabel.setAttribute("id", "item-header");
-      gridContainer.appendChild(itemLabel);
-
-      var qtyLabel = document.createElement('div');
-      qtyLabel.innerHTML = "Qty";
-      qtyLabel.setAttribute("id", "qty-header");
-      gridContainer.appendChild(qtyLabel);
-
-      var btnLabel = document.createElement('div');
-      btnLabel.innerHTML = "Edit/Delete";
-      btnLabel.setAttribute("id", "btn-header");
-      gridContainer.appendChild(btnLabel);
-
-
+      // List display
       itemsArray.forEach(function(item) {
-
-        var divId = document.createElement('div');
-        divId.setAttribute("id", "div-Id");
-        divId.setAttribute("class", "item");
-        /* divId.setAttribute('data-key', 'id'); */
-        divId.setAttribute('style', 'display: none;');
-        gridContainer.append(divId);
-
+        
         var inputDept = document.createElement('div');
         inputDept.setAttribute("class", "item item-dept");
         inputDept.setAttribute("id", "item-dept");
         inputDept.innerHTML = `${item.dept}`;
-        gridContainer.append(inputDept);
+        // divId.append(inputDept);
+        gridContainer2.append(inputDept);
+
+        var divId = document.createElement('div');
+        divId.setAttribute('data-key', item.id);
+        divId.setAttribute('class', "divId");
+        gridContainer2.append(divId);
 
         var inputItem = document.createElement('div');
         inputItem.setAttribute("class", "item item-item");
         inputItem.setAttribute("id", "item-item");
         inputItem.innerHTML = `${item.item}`;
-        gridContainer.append(inputItem);
+        // divId.append(inputItem);
+        gridContainer2.append(inputItem);
 
         var inputQty = document.createElement('div');
         inputQty.setAttribute("class", "item item-qty");
         inputQty.setAttribute("id", "item-qty");
         inputQty.innerHTML = `${item.qty}`;
-        gridContainer.append(inputQty);
+        // divId.append(inputQty);
+        gridContainer2.append(inputQty);
 
         var editBtn = document.createElement('button');
         editBtn.setAttribute("class", "item edit-btn");
         editBtn.innerHTML = "Edit";
-        gridContainer.append(editBtn);
+        // divId.append(editBtn);
+        gridContainer2.append(editBtn);
 
         var deleteBtn = document.createElement('button');
         deleteBtn.setAttribute("class", "item delete-btn");
         deleteBtn.innerHTML = "Delete";
-        gridContainer.append(deleteBtn);
+        // divId.append(deleteBtn);
+        gridContainer2.append(deleteBtn);
+
+        
 
       });
     }
@@ -839,9 +847,9 @@
     }
     getFromLocalStorage();
 
-    groceryItems.addEventListener('click', function(event) {
+    gridContainer2.addEventListener('click', function(event) {
       if (event.target.classList.contains('delete-btn')) {
-        deleteItem(event.target.getAttribute.item(id)); 
+        deleteItem(event.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('data-key')); 
       }
     });
     /* getFromLocalStorage(); */
@@ -873,9 +881,9 @@
     };
     getFromLocalStorage();
 
-    groceryItems.addEventListener('click', function(event) {
+    gridContainer2.addEventListener('click', function(event) {
       if (event.target.classList.contains('edit-btn')) {
-        editItem(event.target.parentElement.parentElement.getAttribute("data-key"));
+        editItem(event.target.previousElementSibling.getAttribute("data-key"));
       }
     });
 
