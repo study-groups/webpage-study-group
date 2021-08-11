@@ -1,8 +1,7 @@
-#!/usr/bin/php
-<?php
-//$doc = new DOMDocument();
-$rawHtml=file_get_contents($argv[1]);
-$html=str_replace(array("“","”","‘","’"), array("\"","\"","'","'"),$rawHtml);
-$html=str_replace(array("<ol>","</ol>"), array("<ul>","</ul>"),$html);
-echo $html;
-?>
+#!/bin/bash
+cat $1 | \
+sed -e 's/‘/'\''/g'  | \
+sed -e 's/’/'\''/g'  | \
+sed -e 's/“/'\"'/g'  | \
+sed -e 's/”/'\"'/g'
+
