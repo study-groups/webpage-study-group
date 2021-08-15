@@ -31,7 +31,7 @@ It is also a command line interface for reading the book.
 To make webpage:
 1. Set version bash variable GAIA_VERSION
 2. gaia-components-to-html   # takes ./components -> ./html
-3. gaia-html-make-all > $GAIA_VERSION.html 
+3. gaia-html-make-all > \$GAIA_VERSION.html 
 
 EOF
 }

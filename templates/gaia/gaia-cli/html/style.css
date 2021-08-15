@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
 
+
+
 :root {
   --nav-bar: #a45b27;
   --bk-primary: #2a2a2a;
+  --bk-secondary: #1e1e1e;
+  --fg-primary: #fce694;
+  --fg-secondary: #fce694;
   --h1-color: #fbd651;
   --h2-color: #fce694;
   --body-text: #c7dfc5;
@@ -17,12 +22,13 @@
 body {
   background: var(--bk-primary);
   padding-top: 6em;
-  font-size: 14pt;
+  font-size: 1rem;
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: .1rem;
+  margin:0;
 }
-.navbar {
+header {
   position:fixed;
   top: 0;
   left: 0;
@@ -32,8 +38,9 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow:hidden;
 }
-.navbar ul{
+.nav ul{
   list-style-type: none;
   margin: auto;
   padding: 0;
@@ -57,14 +64,12 @@ li:hover, .nav-selected {
 }
 
 
-.main-header {
+h1 {
+  margin: .5em 10% 1em 10%;
   color: var(--h1-color);
-  margin: 1em 10% 1em 10%;
 }
 h2, h3 {
   margin: .5em 10% 1em 10%;
-}
-h2, h3 {
   color: var(--h2-color);
 }
 p {
@@ -98,11 +103,6 @@ ul {
   list-style-type: none;
   padding-left: 0;
 }
-.section-divider {
-  border-color: var(--nav-bar-bg);
-  border-top: 2px 25em;
-  margin: 3em 25% 0 20%;
-}
 .author {
   margin: 1.5em 10% 1em 10%;
   color: var(--h1-color);
@@ -112,21 +112,28 @@ ul {
   margin: auto;
   display: block;
 }
-@media screen and (max-width: 667px) {
-  body {
-    font-size: 12pt;
-}
-  .main-header {
-    margin: 0em 20px 0 20px;
-  }
-  p {
-     margin: 0 20px 0 20px;
-  }
+
+footer {                                                                        
+  display:flex;
+  flex-direction: column;   /* main axis is verticle (up and down) */           
+  justify-content: center; /* main axis: direction=column -> up/down */         
+  align-items: center; /* cross axis: left/right */ 
+  bottom:0; /*cuts off bottom border of child */                                
+  position:fixed;                                                               
+  width:100%;                                                                   
+  background:#bbb;                                                              
+  text-align:center;                                                            
+  height: 4.0rem;           /* Footer height */                                 
+  color: var(--fg-secondary);
+  background: var(--bk-secondary);
+} 
+/* @media screen and (max-width: 667px) { */
+/* small is 48em<
+   min-width:48em is "not-small" via tachyons-css naming convention.
+*/
+@media screen and (min-width:48em ) {
   h2 {
     margin: 1.4em 0 .8em 1.2em;
     font-size: 120%;
-  }
-  .section-divider {
-    border-top: 12em;
   }
 }

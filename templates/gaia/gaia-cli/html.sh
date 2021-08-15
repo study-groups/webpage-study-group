@@ -10,7 +10,6 @@ gaia-html-watch-components(){
   do gaia-html-update-style; done
 }
 
-
 gaia-html-update-style(){
   echo "Building version: $GAIA_VERSION"
   gaia-components-to-html
@@ -31,10 +30,13 @@ gaia-html-make-all(){
   gaia-html-make-body  # calls make-chapter
   gaia-html-make-footer
   gaia-html-cat-all
-}
+} 
 gaia-html-cat-all(){
   local dir=$GAIA_HTML
-  cat  "$dir/header.html" "$dir/body.html" "$dir/footer.html"
+  cat "$dir/header.html" 
+  cat "$dir/joystick.html"
+  cat "$dir/body.html"
+  cat "$dir/footer.html"
 }
 
 #  take an integer and returns the string at index 
@@ -134,7 +136,8 @@ gaia-html-make-header() {
 
 gaia-html-make-body(){
   local bodyfile="$GAIA_HTML/body.html"
-  gaia-html-make-chapter 1 > $bodyfile
+  printf "<body>\n<h1>Knowing Gaia</h1>\n" > $bodyfile
+  gaia-html-make-chapter 1 >> $bodyfile
   gaia-html-make-chapter 2 >> $bodyfile
   gaia-html-make-chapter 3 >> $bodyfile
   gaia-html-make-chapter 4 >> $bodyfile
@@ -148,10 +151,27 @@ gaia-html-make-body(){
 }
 
 gaia-html-make-footer(){
-  export local FOOTER_JS=$(cat $GAIA_COMPONENTS/*.js)
+
+  local file="$GAIA_HTML/footer.html"
+  echo "<script>"  > $file
+  cat $GAIA_COMPONENTS/*.js >> $file
+  echo "</script>" >> $file
+  echo "<footer>" >> $file
+  cat "$GAIA_HTML/nav.html" >> $file
+  cat "$GAIA_COMPONENTS/footer.env" | envsubst >> $file
+}
+
+gaia-html-make-zen-circle(){
   dataStr=$(base64 $GAIA_ASSETS/zen-circle-mod.png)
   export local imgSrcStr="data:image/png;charset=utf-8;base64,  $dataStr"
-  cat "$GAIA_COMPONENTS/footer.env" | envsubst > "$GAIA_HTML/footer.html"
+  cat <<EOF
+<img class="zen-circle"                                                         
+src="$imgSrcStr"                                                                
+alt="zen-circle">                                                               
+<br>                                                                            
+<a id="email"                                                                   
+  href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>           
+EOF
 }
 
 # Assumes title string is "C3: Third chapter title"
