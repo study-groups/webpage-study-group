@@ -6,7 +6,7 @@ PS1="gaia> "
 GAIA_HTML="$PWD/html" # set when sourced
 GAIA_COMPONENTS="$PWD/components" # set when sourced
 export GAIA_VERSION="Version not set. Edit-gaia.sh."
-GAIA_VERSION="004pre5"
+GAIA_VERSION="004pre6"
 export GAIA_ASSETS="$PWD/../assets"
 source html.sh
 source components.sh

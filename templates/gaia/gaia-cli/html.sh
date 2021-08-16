@@ -182,10 +182,24 @@ gaia-html-make-chapter-title(){
 
 # helper function to create html
 gaia-html-make-nav(){
-  echo "<nav>"
+  echo "<nav id=\"chapterNav\">"
   for c in  $(seq 1 11)
     do
-      printf "    <div>$c</div>\n"
+      printf "  <div id=\"navChap$c\">$c</div>\n"
   done
   echo "</nav>"
+  cat <<EOF
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    let nav=document.querySelector("#chapterNav");
+    for (var i=0; i< nav.children.length; i++){
+        nav.children[i].addEventListener("click",handleChapterNav);
+    }
+    function handleChapterNav(evt){
+        console.log(evt);
+    }
+});
+</script>
+EOF
 }
