@@ -185,7 +185,7 @@ gaia-html-make-nav(){
   echo "<nav id=\"chapterNav\">"
   for c in  $(seq 1 11)
     do
-      printf "  <div id=\"navChap$c\">$c</div>\n"
+      printf "  <div data-chapter=\"$c\">$c</div>\n"
   done
   echo "</nav>"
   cat <<EOF
@@ -193,11 +193,19 @@ gaia-html-make-nav(){
 window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed');
     let nav=document.querySelector("#chapterNav");
+    let header=document.querySelector("header");
     for (var i=0; i< nav.children.length; i++){
         nav.children[i].addEventListener("click",handleChapterNav);
     }
     function handleChapterNav(evt){
         console.log(evt);
+        let el=document.querySelector("#c"+evt.target.dataset.chapter);
+        var scrollOptions = {
+                left: el.offsetLeft,
+                top:el.offsetTop-header.clientHeight,
+                behavior: 'smooth'
+        }
+        window.scrollIntoView(scrollOptions);
     }
 });
 </script>
