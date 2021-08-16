@@ -396,7 +396,7 @@
   .item-qty {
     margin: 10px 0 0 0;
   }
-  .delete-btn {
+  .delete-btn, .delete-btn2 {
     /* display: none; */
     background: var(--royal-blue);
     color: var(--white);
@@ -408,7 +408,7 @@
     border-style: solid;
     border-width: 1px;
   }
-  .edit-btn {
+  .edit-btn, .edit-btn2 {
     /* display: none; */
     background: var(--royal-blue);
     color: var(--white);
@@ -420,14 +420,54 @@
     border-style: solid;
     border-width: 1px;
   }
-  .edit-btn:hover {
+  .edit-btn:hover, .edit-btn2:hover {
     background-color: var(--green);
     color: var(--black);
   }
-  .delete-btn:hover {
+  .delete-btn:hover, .delete-btn2:hover {
     background: var(--delete-btn-hover);
     color: var(--black);
   }
+      /* The Modal (background) */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  padding: 20px; /* Location of the box */
+  left: 35%;
+  top: ;
+  width: ; /* Full width */
+  height: ; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  border-radius: 10px;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--bg-color-primary);
+  margin: auto;
+  padding: 10px;
+  /* border: 1px solid #888; */
+  width: 70%;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+}
+/* The Close Button */
+.close {
+  color: var(--white);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
   .adspace {
     z-index: 2;
     color: white;
@@ -615,7 +655,17 @@
     }
     .edit-btn, .delete-btn {
       display: none;
-    };
+    }
+    .modal {
+      font-size: .5em;
+      width: 50%;
+      height: ;
+    }
+    .modal-content {
+      height: 50%;
+    }
+
+    
   }
     
 </style>
@@ -697,11 +747,21 @@
             <div id="qty-header">Qty</div>
             <div id="btn-header">Edit/Delete</div>
           </div>
+
+          <!-- <button id="modal-del-btn">Open Modal</button> -->
+          <div id="modal" class="modal">
+            <div id="modal-content" class="modal-content">
+              <button id="delete-btn2" class="delete-btn2">Delete</button>
+              <button id="edit-btn2" class="edit-btn2">Edit</button>
+              <span class="close">&times;</span>
+              <!-- add edit and delete btns to modal -->
+            </div>
+          </div>
           <div class="grid-container2">
             <!-- Grocery list items here -->
           </div>
       </div>
-      <div class="adspace">Saved space for links or advertizing, etc.</div>
+      <div class="adspace"></div>
       <footer class="footer">
         <div id="copyright">
           Copyright &copy;
@@ -710,7 +770,7 @@
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()));
             </script>
           </span>
-          StackStudios V:1.1
+          Hirschro/GrocList: V:1.2
         </div>
       </footer>
       <img class="montage-left" src="assets/Left montage.png" />
@@ -723,15 +783,15 @@
     var deptInput = document.getElementById('dept-input');
     var itemInput = document.getElementById('item-input');
     var qtyInput = document.getElementById('qty-input');
-    const deptHover = document.getElementById("dept-input");
+    // const deptHover = document.getElementById("dept-input");
     var addBtn = document.querySelector(".add-btn");
     var deleteAllBtn = document.querySelector(".delete-all-btn");
     var sortBtn = document.querySelector(".sort-btn");
     var updateBtn = document.querySelector(".update-btn");
     var gridContainer2 = document.querySelector('.grid-container2');
-
+    var deleteBtn2 = document.getElementById('delete-btn2');
+    
     var itemsArray = [];
-
 
     function getDept() {
       for (i = 0; i < liDepts.length; i++) {
@@ -817,7 +877,22 @@
         // divId.append(deleteBtn);
         gridContainer2.append(deleteBtn);
 
-        
+        var modal = document.createElement('div');
+        modal.setAttribute("class", "modal");
+        modal.setAttribute('id', 'modal');
+        gridContainer2.append(modal);
+
+        var modalContent = document.createElement('div');
+        modalContent.setAttribute('class', 'modal-content');
+        modal.append(modalContent);
+
+        var deleteBtn2 = document.createElement('button');
+        deleteBtn2.setAttribute("class", "item delete-btn2");
+        deleteBtn2.innerHTML = "Delete";
+        modalContent.append(deleteBtn2);
+
+        var span = document.createElement('span');
+        span.setAttribute('class', 'close');
 
       });
     }
@@ -861,6 +936,18 @@
     });
     getFromLocalStorage();
 
+    
+
+    gridContainer2.addEventListener('click', function(event) {
+      var viewportWidth = window.innerWidth;
+
+      if((event.target.classList.contains('item-dept')) && (viewportWidth < 481)){
+        modal.style.display = "block";
+      } else {
+        modal.style.display = "none";
+      } 
+    });
+    
     function editItem(id) {    
       for (i = 0; i < itemsArray.length; i++) {
         if (itemsArray[i].id == id) {
@@ -882,7 +969,7 @@
 
     gridContainer2.addEventListener('click', function(event) {
       if (event.target.classList.contains('edit-btn')) {
-        editItem(event.target.previousElementSibling.getAttribute("data-key"));
+        editItem(event.target.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute("data-key"));
       }
     });
 
@@ -935,6 +1022,27 @@
         sortLocalStorage(itemsArray);
       }
     });
+
+// Get the modal
+var modal = document.getElementById("modal");
+
+// Get the button that opens the modal
+var itemDept = document.getElementById("item-dept");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
   </script>
 </body>
 
