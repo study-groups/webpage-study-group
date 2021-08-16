@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
 
-
-
 :root {
   --nav-bar: #a45b27;
   --bk-primary: #2a2a2a;
@@ -14,11 +12,11 @@
   --body-text-alt: #8FF;
   --divider-line: #fce694;
   --nav-bar-bg: #1e1e1e;
-  --navbar-height: 5em;
   --email-link: #F98A62;
   --video-links: #F98A62;
   --prompt-color: #E1F9DF;
 }
+
 body {
   background: var(--bk-primary);
   padding-top: 6em;
@@ -28,41 +26,50 @@ body {
   letter-spacing: .1rem;
   margin:0;
 }
+
 header {
   position:fixed;
   top: 0;
   left: 0;
   color: var(--h1-color);
   background: #1e1e1e;
-  height: var(--navbar-height);
+  height: 5rem;
   width: 100%;
   margin: 0;
   padding: 0;
   overflow:hidden;
 }
-.nav ul{
+
+nav{
+  z-index:-1;
+  margin:0;
+  padding:0;
+  height:2rem;
+  width:80%;
+  border: 1px solid lime;
+  display:flex;
   list-style-type: none;
   margin: auto;
   padding: 0;
+  margin: 0;
   overflow: hidden;
+  flex-direction: row;   /* main axis is verticle (up and down) */
+  justify-content: space-around; /* main axis: l/r */
+  align-items: center; /* cross axis: u/d */
+
 }
 
-li {
-  float: left;
-}
-
-li {
-  display: block;
+nav div {
+  display:block;
   text-align: center;
-  padding: 16px;
   text-decoration: none;
+  border: 0px solid green;
 }
 
-li:hover, .nav-selected {
+nav div:hover, .nav-selected {
   background-color: #111111;
-  border: 2px solid  var(--h2-color);
+  outline: 2px solid  var(--h2-color);
 }
-
 
 h1 {
   margin: .5em 10% 1em 10%;
@@ -89,19 +96,18 @@ a {
   color: var(--email-link);
   position:fixed;
   font-size:.5em;
-  text-align:right;
-  width:20%;
-  top: 0;
-  right: 0;
+  text-align:center;
+  width:50%;
+  /*top: 0;
+  right: 0;*/
+  bottom: .1rem;
+  left: 25%;
+  z-index:10;
 }
 
 #email {
   color: var(--email-link);
   margin: 1.5em 10% 1em 10%;
-}
-ul {
-  list-style-type: none;
-  padding-left: 0;
 }
 .author {
   margin: 1.5em 10% 1em 10%;
@@ -127,6 +133,7 @@ footer {
   color: var(--fg-secondary);
   background: var(--bk-secondary);
 } 
+
 /* @media screen and (max-width: 667px) { */
 /* small is 48em<
    min-width:48em is "not-small" via tachyons-css naming convention.

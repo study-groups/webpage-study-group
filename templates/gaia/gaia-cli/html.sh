@@ -128,9 +128,8 @@ gaia-html-make-span(){
 
 # COMPOSE HTML
 gaia-html-make-header() {
-  export local NAV_HTML=$(cat $GAIA_HTML/nav.html)
   export local JOYSTICK_HTML=$(cat $GAIA_HTML/joystick.html)
-  export local STYLE_CSS=$(cat $GAIA_HTML/style.css)
+  export local STYLE_CSS=$(cat $GAIA_COMPONENTS/style.css)
   cat "$GAIA_COMPONENTS/header.env" | envsubst > "$GAIA_HTML/header.html"
 }
 
@@ -151,13 +150,11 @@ gaia-html-make-body(){
 }
 
 gaia-html-make-footer(){
-
+  export NAV_HTML="$(gaia-html-make-nav)";
   local file="$GAIA_HTML/footer.html"
   echo "<script>"  > $file
   cat $GAIA_COMPONENTS/*.js >> $file
   echo "</script>" >> $file
-  echo "<footer>" >> $file
-  cat "$GAIA_HTML/nav.html" >> $file
   cat "$GAIA_COMPONENTS/footer.env" | envsubst >> $file
 }
 
@@ -181,4 +178,14 @@ gaia-html-make-chapter-title(){
   local number=$(echo $title | awk -F[C:] '{print $2}')
   local text=$(echo $title | awk -F[:] '{print $2}')
   printf "<h2 id='c$number'>Ch %s. ~ %s</h2>" "$number" "$text"
+}
+
+# helper function to create html
+gaia-html-make-nav(){
+  echo "<nav>"
+  for c in  $(seq 1 11)
+    do
+      printf "    <div>$c</div>\n"
+  done
+  echo "</nav>"
 }
