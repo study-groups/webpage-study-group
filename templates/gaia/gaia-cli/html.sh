@@ -6,21 +6,8 @@
 
 #  https://unix.stackexchange.com/a/24955
 gaia-html-watch-components(){
-#  inotifywait -m ./components -e create -e moved_to |
-#    while read dir action file; do
-#        echo "The file '$file' appeared in directory '$dir' via '$action'"
-#        # do something with the file
-#    done
   while inotifywait -e close_write ./components;\
   do gaia-html-update-style; done
-
-}
-
-gaia-html-make-all-old(){
-  gaia-html-make-header
-  gaia-html-make-body-old  # calls make-chapter
-  gaia-html-make-footer
-  gaia-html-cat-all > ./index-old.html
 }
 
 gaia-html-update-style(){
@@ -43,10 +30,13 @@ gaia-html-make-all(){
   gaia-html-make-body  # calls make-chapter
   gaia-html-make-footer
   gaia-html-cat-all
-}
+} 
 gaia-html-cat-all(){
   local dir=$GAIA_HTML
-  cat  "$dir/header.html" "$dir/body.html" "$dir/footer.html"
+  cat "$dir/header.html" 
+  cat "$dir/joystick.html"
+  cat "$dir/body.html"
+  cat "$dir/footer.html"
 }
 
 #  take an integer and returns the string at index 
@@ -90,7 +80,6 @@ gaia-html-make-chapter(){
   # each line is either an 
   #  1) unstructured paragraph (after chapter heading)
   #  2) prompt section
-  #  3) Author info
  
   local paragraphIndex=0
   local promptIndex=0
@@ -139,15 +128,15 @@ gaia-html-make-span(){
 
 # COMPOSE HTML
 gaia-html-make-header() {
-  export local NAV_HTML=$(cat $GAIA_HTML/nav.html)
   export local JOYSTICK_HTML=$(cat $GAIA_HTML/joystick.html)
-  export local STYLE_CSS=$(cat $GAIA_HTML/style.css)
+  export local STYLE_CSS=$(cat $GAIA_COMPONENTS/style.css)
   cat "$GAIA_COMPONENTS/header.env" | envsubst > "$GAIA_HTML/header.html"
 }
 
 gaia-html-make-body(){
   local bodyfile="$GAIA_HTML/body.html"
-  gaia-html-make-chapter 1 > $bodyfile
+  printf "<body>\n<h1>Knowing Gaia</h1>\n" > $bodyfile
+  gaia-html-make-chapter 1 >> $bodyfile
   gaia-html-make-chapter 2 >> $bodyfile
   gaia-html-make-chapter 3 >> $bodyfile
   gaia-html-make-chapter 4 >> $bodyfile
@@ -161,10 +150,25 @@ gaia-html-make-body(){
 }
 
 gaia-html-make-footer(){
-  export local FOOTER_JS=$(cat $GAIA_COMPONENTS/*.js)
+  export NAV_HTML="$(gaia-html-make-nav)";
+  local file="$GAIA_HTML/footer.html"
+  echo "<script>"  > $file
+  cat $GAIA_COMPONENTS/*.js >> $file
+  echo "</script>" >> $file
+  cat "$GAIA_COMPONENTS/footer.env" | envsubst >> $file
+}
+
+gaia-html-make-zen-circle(){
   dataStr=$(base64 $GAIA_ASSETS/zen-circle-mod.png)
   export local imgSrcStr="data:image/png;charset=utf-8;base64,  $dataStr"
-  cat "$GAIA_COMPONENTS/footer.env" | envsubst > "$GAIA_HTML/footer.html"
+  cat <<EOF
+<img class="zen-circle"                                                         
+src="$imgSrcStr"                                                                
+alt="zen-circle">                                                               
+<br>                                                                            
+<a id="email"                                                                   
+  href="mailto:patadducci1940@gmail.com">patadducci1940@gmail.com</a>           
+EOF
 }
 
 # Assumes title string is "C3: Third chapter title"
@@ -174,4 +178,36 @@ gaia-html-make-chapter-title(){
   local number=$(echo $title | awk -F[C:] '{print $2}')
   local text=$(echo $title | awk -F[:] '{print $2}')
   printf "<h2 id='c$number'>Ch %s. ~ %s</h2>" "$number" "$text"
+}
+
+# helper function to create html
+gaia-html-make-nav(){
+  echo "<nav id=\"chapterNav\">"
+  for c in  $(seq 1 11)
+    do
+      printf "  <div data-chapter=\"$c\">$c</div>\n"
+  done
+  echo "</nav>"
+  cat <<EOF
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    let nav=document.querySelector("#chapterNav");
+    let header=document.querySelector("header");
+    for (var i=0; i< nav.children.length; i++){
+        nav.children[i].addEventListener("click",handleChapterNav);
+    }
+    function handleChapterNav(evt){
+        console.log(evt);
+        let el=document.querySelector("#c"+evt.target.dataset.chapter);
+        var scrollOptions = {
+                left: el.offsetLeft,
+                top:el.offsetTop-header.clientHeight,
+                behavior: 'smooth'
+        }
+        window.scrollIntoView(scrollOptions);
+    }
+});
+</script>
+EOF
 }
