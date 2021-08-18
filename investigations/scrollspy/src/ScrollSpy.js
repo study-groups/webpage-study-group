@@ -75,6 +75,8 @@ class ScrollSpy {
             const isInView =
                 currentPosition >= startAt && currentPosition < endAt;
             if (isInView) {
+                document.querySelector("#chapter-status").innerHTML=
+                    `start:${startAt}, end:${endAt}`;
                 return section;
             }
         }
