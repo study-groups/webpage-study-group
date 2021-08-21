@@ -8,11 +8,11 @@ GAIA_COMPONENTS="$PWD/components" # set when sourced
 export GAIA_VERSION="Version not set. Edit-gaia.sh."
 GAIA_VERSION="004pre6"
 export GAIA_ASSETS="$PWD/../assets"
+#source components/*.sh
 source html.sh
-source components.sh
-source components/*.sh
 
-cat /dev/null > build.log
+GAIA_LOG="$PWD/build.log"
+cat /dev/null >  $GAIA_LOG
 gaia-help(){
   cat <<EOF
 This is a collection of Bash functions for Extraction,

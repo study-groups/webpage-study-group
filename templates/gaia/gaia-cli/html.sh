@@ -12,20 +12,16 @@ gaia-html-watch-components(){
 
 gaia-html-update-style(){
   echo "Building version: $GAIA_VERSION"
-  gaia-components-to-html
+  gaia-html-make-components
+  gaia-html-make-head
   gaia-html-make-header
   gaia-html-make-footer
   gaia-html-cat-all > "./$GAIA_VERSION.html"
 }
 
-
-gaia-html-build(){
-  echo "Building version: $GAIA_VERSION"
-  gaia-components-to-html
-  gaia-html-make-all > "./$GAIA_VERSION.html"
-}
-
 gaia-html-make-all(){
+  gaia-html-make-components
+  gaia-html-make-head
   gaia-html-make-header
   gaia-html-make-body  # calls make-chapter
   gaia-html-make-footer
@@ -33,8 +29,9 @@ gaia-html-make-all(){
 } 
 gaia-html-cat-all(){
   local dir=$GAIA_HTML
-  cat "$dir/header.html" 
+  cat "$dir/head.html" 
   cat "$dir/joystick.html"
+  cat "$dir/header.html" 
   cat "$dir/body.html"
   cat "$dir/footer.html"
 }
@@ -111,6 +108,7 @@ gaia-html-make-chapter(){
         ((promptIndex++))
     fi 
   done
+  echo "</section>"
 }
 
 gaia-html-make-prompt(){
@@ -127,10 +125,24 @@ gaia-html-make-span(){
 }
 
 # COMPOSE HTML
-gaia-html-make-header() {
-  export local JOYSTICK_HTML=$(cat $GAIA_HTML/joystick.html)
-  export local STYLE_CSS=$(cat $GAIA_COMPONENTS/style.css)
-  cat "$GAIA_COMPONENTS/header.env" | envsubst > "$GAIA_HTML/header.html"
+# export local JOYSTICK_HTML=$(cat $GAIA_HTML/joystick.html)
+gaia-html-make-head() {
+  local file="$GAIA_HTML/head.html"
+  cat "$GAIA_COMPONENTS/head.env" | envsubst > $file 
+
+
+  echo "<style>" >> $file
+  cat $GAIA_COMPONENTS/style.css >> $file
+  echo "</style>" >> $file
+  echo "</head>" >> $file
+  echo "<script>"  >> $file
+  cat $GAIA_COMPONENTS/*.js >> $file
+  echo "</script>" >> $file
+}
+
+gaia-html-make-header(){
+  local file="$GAIA_HTML/header.html"
+  $GAIA_COMPONENTS/header.sh  > $file 
 }
 
 gaia-html-make-body(){
@@ -152,10 +164,7 @@ gaia-html-make-body(){
 gaia-html-make-footer(){
   export NAV_HTML="$(gaia-html-make-nav)";
   local file="$GAIA_HTML/footer.html"
-  echo "<script>"  > $file
-  cat $GAIA_COMPONENTS/*.js >> $file
-  echo "</script>" >> $file
-  cat "$GAIA_COMPONENTS/footer.env" | envsubst >> $file
+  cat "$GAIA_COMPONENTS/footer.env" | envsubst > $file
 }
 
 gaia-html-make-zen-circle(){
@@ -177,15 +186,29 @@ gaia-html-make-chapter-title(){
   local title="$1"
   local number=$(echo $title | awk -F[C:] '{print $2}')
   local text=$(echo $title | awk -F[:] '{print $2}')
-  printf "<h2 id='c$number'>Ch %s. ~ %s</h2>" "$number" "$text"
+  printf "\n<section id='c$number'>\n"
+  printf "<h2>Ch %s. ~ %s</h2>" "$number" "$text"
 }
 
+gaia-html-make-chapter-indicator() {
+echo "<chapter-indicator>"
+  for c in  $(seq 1 11)
+    do
+      
+        local chapterLines=$(gaia-get-chapter-lines $1)
+        readarray lineArray <<<  $chapterLines
+        local title="${lineArray[0]}"
+      printf "  <div slot='title' data-target='c$c'>$title</div>\n"
+  done
+echo "<chapter-indicator>"
+
+}
 # helper function to create html
 gaia-html-make-nav(){
   echo "<nav id=\"chapterNav\">"
   for c in  $(seq 1 11)
     do
-      printf "  <div data-chapter=\"$c\">$c</div>\n"
+      printf "  <div data-target='c$c'>$c</div>\n"
   done
   echo "</nav>"
   cat <<EOF
@@ -197,17 +220,43 @@ window.addEventListener('DOMContentLoaded', (event) => {
     for (var i=0; i< nav.children.length; i++){
         nav.children[i].addEventListener("click",handleChapterNav);
     }
+
+    //https://css-tricks.com/almanac/selectors/a/attribute/
+    navSpy = new ScrollControl();
+    chapterSpy = new ScrollControl({indicatorSelector:"chapter-indicator"});
+
+
+    window.onload = function () {
+        navSpy.onScroll();
+        chapterSpy.onScroll();
+    };
+    window.addEventListener('scroll', () => {
+        navSpy.onScroll();
+        chapterSpy.onScroll();
+    });
+
+
+
+
     function handleChapterNav(evt){
         console.log(evt);
-        let el=document.querySelector("#c"+evt.target.dataset.chapter);
+        let el=document.querySelector("#"+evt.target.dataset.target);
         var scrollOptions = {
                 left: el.offsetLeft,
                 top:el.offsetTop-header.clientHeight,
                 behavior: 'smooth'
         }
-        window.scrollIntoView(scrollOptions);
+        window.scrollTo(scrollOptions);
     }
 });
 </script>
 EOF
+}
+gaia-html-make-components(){
+   for component in $(ls -1 components/*.env)
+   do
+      local basename=$(basename $component)
+      cat $component | envsubst > "html/${basename%.*}.html"
+      echo "wrote to: html/${basename%.*}.html" >> $GAIA_LOG
+   done 
 }
