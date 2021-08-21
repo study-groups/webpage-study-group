@@ -303,6 +303,52 @@
   .btn:hover {
     background: var(--buttons-hover);
   }
+  #bubble-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .steam {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-top: -75px;
+    margin-left: 230px;
+    z-index: 0;
+    opacity: 0;
+  }
+  #steam1 {
+  -webkit-animation: steam1 4s ease-out infinite;
+  animation: steam1 4s ease-out infinite;
+  }
+  @-webkit-keyframes steam1 {
+    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    100% {transform: translateY(-200px) translateX(-20px) scale(1); opacity: 0;}
+  }
+  @keyframes steam1 {
+    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    100% {transform: translateY(-200px) translateX(-20px) scale(1); opacity: 0;}
+  }
+  #steam2 {
+    -webkit-animation: steam2 4s ease-out 0.5s infinite;
+    animation: steam2 4s ease-out 0.5s infinite;  
+  }
+  @-webkit-keyframes steam2 {
+    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    100% {transform: translateY(-200px) translateX(20px) scale(1); opacity: 0;}
+  }
+  @keyframes steam2 {
+    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    100% {transform: translateY(-200px) translateX(20px) scale(1); opacity: 0;}
+  }
+  #steam3 {
+  -webkit-animation: steam1 4s ease-out 1s infinite;
+  animation: steam1 4s ease-out 1s infinite;
+}
+
   .montage {
     position: absolute;
     right: 0;
@@ -695,7 +741,13 @@
             <button id="sort-btn" class="sort-btn btn" type="submit">SORT LIST/DEPT
             </button>
           </div>
-          <img class="montage" src="/investigations/grocList/assets/Montage323w.png">
+          <div id="bubble-container">
+            <div class="steam" id="steam1"> </div>
+            <div class="steam" id="steam2"></div>
+            <div class="steam" id="steam3"></div>
+          </div>
+          <img class="montage" src="/investigations/grocList/assets/Montage323w.png"/>
+            
         </div>
       </div>
 
@@ -974,13 +1026,13 @@
         renderItems(sortedItemsArray);
       };
     }
-
     sortBtn.addEventListener('click', function (event) {
       if (event.target.classList.contains('sort-btn')) {
         sortLocalStorage(itemsArray);
       }
     });
+    
   </script>
 </body>
-
+<!-- Bubbles: https://blog.hubspot.com/website/css-animation-examples -->
 </html>
