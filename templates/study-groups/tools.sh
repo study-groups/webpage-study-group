@@ -1,15 +1,23 @@
 REPO=$(realpath "/home/$USER/src/webpage-study-group")
 TEMPLATE=$(realpath $REPO/templates/study-groups)
 BUILD=$(realpath $REPO/builds/study-groups)
-export VER=001pre6
+export VER=002pre3
 #export VER=001react02
 #export JSLIB="$(cat ./react.min.js)"
 tools-build(){
-  
+  echo "Using version: $VER" 
+  echo "Using template: $TEMPLATE" 
+  echo "Using build dir:  $BUILD" 
+  echo "Using assets dir:  $BUILD/assets" 
   rsync $TEMPLATE/styleguide.html $BUILD/$VER/
   rsync $TEMPLATE/error.html $BUILD/$VER/
   cat   $TEMPLATE/index.html | envsubst >  $BUILD/$VER/index.html
-  ln -s $TEMPLATE/assets $BUILD/$VER/assets
+
+if [ -d "$BUILD/assets" ]; then
+    echo "$BUILD/assets exists."
+else
+  ln -s $BUILD/assets $BUILD/$VER/assets
+fi
   
   #cp -r $TEMPLATE/assets $BUILD/$VER/assets
 }
