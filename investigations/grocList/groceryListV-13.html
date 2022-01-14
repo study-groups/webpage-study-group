@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" type="text/css" href="investigations/grocList/bubblestyle.css"> -->
 
-  <title>Grocery List 12-flex</title>
+  <title>Grocery List 13-flex</title>
 </head>
 <style>
   :root {
@@ -321,23 +321,24 @@
     opacity: 0;
   }
   #steam1 {
-  -webkit-animation: steam1 4s ease-out infinite;
-  animation: steam1 4s ease-out infinite;
+
+  -webkit-animation: steam1 6s ease-out infinite;
+  animation: steam1 6s ease-out infinite;
   }
   @-webkit-keyframes steam1 {
-    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    0% {transform: translateY(0) translateX(0) scale(0.15); opacity: 0.2;}
     100% {transform: translateY(-200px) translateX(-20px) scale(1); opacity: 0;}
   }
   @keyframes steam1 {
-    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    0% {transform: translateY(0) translateX(0) scale(0.15); opacity: 0.2;}
     100% {transform: translateY(-200px) translateX(-20px) scale(1); opacity: 0;}
   }
   #steam2 {
-    -webkit-animation: steam2 4s ease-out 0.5s infinite;
-    animation: steam2 4s ease-out 0.5s infinite;  
+    -webkit-animation: steam2 7s ease-out 0.5s infinite;
+    animation: steam2 7s ease-out 0.5s infinite;  
   }
   @-webkit-keyframes steam2 {
-    0% {transform: translateY(0) translateX(0) scale(0.25); opacity: 0.2;}
+    0% {transform: translateY(0) translateX(0) scale(0.15); opacity: 0.2;}
     100% {transform: translateY(-200px) translateX(20px) scale(1); opacity: 0;}
   }
   @keyframes steam2 {
@@ -345,17 +346,17 @@
     100% {transform: translateY(-200px) translateX(20px) scale(1); opacity: 0;}
   }
   #steam3 {
-  -webkit-animation: steam1 4s ease-out 1s infinite;
-  animation: steam1 4s ease-out 1s infinite;
+  -webkit-animation: steam1 8s ease-out 1s infinite;
+  animation: steam1 8s ease-out 1s infinite;
 }
 
-  .montage {
+  .right-montage {
     position: absolute;
     right: 0;
     bottom: 0;
     margin: 0;
     width: auto;
-    height: 80%;
+    height: 75%;
     z-index: 1;
   }
   .shop-list-container {
@@ -363,7 +364,7 @@
     z-index: 0;
     margin-bottom: 50px;
   }
-  .montage-left {
+    .left-montage {
     position: absolute;
     z-index: 1;
     bottom: 0;
@@ -534,11 +535,14 @@
         opacity: 0;
       }
     }
-    .montage {
+    .right-montage {
       height: 55%;
       width: auto;
     }
-    .montage-left {
+    .steam {
+      margin-top: -25px;
+    }
+    .left-montage {
       height: 25%;
       width: auto;
     }
@@ -614,13 +618,13 @@
     #dept-header {
     grid-area: 1 / 1 / 2 / 2;
     padding-left: 20px;
-  }
-  #item-header {
-    grid-area: 1 / 2 / 2 / 3;
-  }
-  #qty-header {
-    grid-area: 1 / 3 / 2 / 4;
-  }
+    }
+    #item-header {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+    #qty-header {
+      grid-area: 1 / 3 / 2 / 4;
+    }
     #item-dept,
     #item-item,
     #item-qty,
@@ -746,7 +750,7 @@
             <div class="steam" id="steam2"></div>
             <div class="steam" id="steam3"></div>
           </div>
-          <img class="montage" src="/investigations/grocList/assets/Montage323w.png">
+          <img class="right-montage" src="assets/right-montage.png">
             
         </div>
       </div>
@@ -771,7 +775,11 @@
             Hirschro V:1.1
         </div>
       </footer>
-      <img class="montage-left" src="assets/Left montage.png" />
+
+      <!-- <div class="steam" id="steam1"> </div>
+      <div class="steam" id="steam2"></div>
+      <div class="steam" id="steam3"></div> -->
+      <img class="left-montage" src="assets/left-montage.png" />
     </div>
     </div>
   </main>
@@ -1034,5 +1042,5 @@
     
   </script>
 </body>
-<!-- Bubbles: https://blog.hubspot.com/website/css-animation-examples -->
+<!-- https://codepen.io/zanewesley/pen/NWRVJVN?editors=1100 -->
 </html>
