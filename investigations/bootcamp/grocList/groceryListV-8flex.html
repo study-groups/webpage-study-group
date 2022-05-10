@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+  <title>Grocery List 8-flex</title>
+</head>
+<style>
+  :root {
+    --text: #1004af;
+    --department-container: var(--text);
+    --text-alt: #fff;
+    --borders: var(--text);
+    --buttons: var(--text);
+    --buttons-hover: #B70158;
+    --input-box: #828282;
+    --bg-color-primary: #aac9ff;
+    --dept-li-active: var(--bg-color-primary);
+    --output-list-bg: var(--text-alt);
+    --output-text: var(--text);
+    --delete-btn-hover: #d8a407;
+    --edit-btn-hover: #23d807;
+    --black: #000;
+    --label: #1004af;
+    --sub-headers: #1004af;
+    --dark-blue: #1004af;
+    
+  }
+  body {
+    background-image: url(assets/carts-bg4.png);
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+  }
+  .main {
+    position: relative;
+
+  }
+  .main-header-img {
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 90%;
+  }
+  .main-header {
+    margin: 0 auto;
+    text-align: center;
+    background: #3225e3;
+    max-width: 750px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-radius: 25px 25px 0 0;
+
+  }
+  .main-container {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--bg-color-primary);
+    font-size: 1.2em;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+  }
+  /* DEPARTMENTS SECTION */
+  .data-input-header {
+    background: #1004af;
+  }
+  .shop-list-header {
+    background-color: var(--dark-blue);
+  }
+  .data-input-header, .shop-list-header {
+    text-align: center;
+    padding: .3em 0 .3em 0;
+    letter-spacing: 1px;
+    height: 24px;
+    border-top: 2px solid var(--text-alt);
+    font-weight: bold;
+    color: var(--text-alt);
+    font-size: 1.2em;
+    border-left: 1px solid var(--dark-blue);
+    border-right: 1px solid var(--dark-blue);
+  }
+  .dept-header {
+    margin: 20px 45px 15px 45px;
+  }
+
+  .department-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3px 10px 5px 10px;
+    color: var(--text);
+  }
+  .dept-grp {
+    margin: 0;
+    padding: .5em;
+  }
+  li {
+    /* margin: 5px; */
+    font-size: 1em;
+    line-height: 160%;
+    width: 90%;
+    border-bottom: 1px solid #b7015821;
+    padding: 5px 0 0 0;
+  }
+
+  /*  DATA INPUT SECTION */
+  .data-input-form {
+    display: flex;
+    padding: .5em 1em .5em 1.5em;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 0px 0 20px 60px;
+    position: relative;
+    z-index: 3;
+  }
+  .dept-input-grp {
+    display: flex;
+    flex-direction: column;
+  }
+  select {
+    width: 282px;
+    height: 35px;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 5px;
+    margin: .3em 0 0 0;
+    color: var(--input-box);
+  }
+  select,
+  .item-input,
+  .qty-input {
+    color: var(--input-box);
+    border: 2px solid var(--black);
+  }
+  label {
+    margin-top: 15px;
+    display: block;
+    color: var(--label);
+    max-width: 282px;
+  }
+  .flex-container {
+    display: flex;
+    height: 315px;
+    position: relative;
+    z-index: 2;
+  }
+  input {
+    width: 268px;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 5px;
+    margin: .3em 0 0 0;
+    border: 2px solid var(--black);
+  }
+  .btnContainerAll {
+    margin-left: 5px;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: rgb(0, 15, 255, .15);
+    margin: 28px 0 0 20px;
+    padding: .5em 1em .5em 1em;
+    justify-content: center;
+    border: 1px solid var(--text-alt);
+    height: 75%;
+    position: relative;
+    z-index: 5;
+  }
+  .btn {
+    margin: 5px;
+    padding: 12px;
+    min-width: 150px;
+    border-radius: 6px;
+    color: var(--text-alt);
+    font-weight: bold;
+    font-size: .8em;
+    background-color: var(--dark-blue);
+    border: .5px solid var(--text-alt);
+    position: relative;
+    z-index: 5;
+  }
+  .btn:hover {
+    background: var(--buttons-hover);
+  }
+  button {
+    margin: .5em 0 .5em 0;
+  }
+  .montage {
+  position: absolute;
+  z-index: 1;
+  height: auto;
+  right: 0;
+  bottom: 0;
+  }
+  /* DATA OUTPUT */
+  /* .shop-list-container {
+    position: relative;
+    z-index: -5;
+
+  }
+  .data-output-container {
+    position: relative;
+    z-index: -6;
+  } */
+  .data-output-headers {
+    display: flex;
+    background: var(--buttons-hover);
+    font-size: 1.1em;
+    height: 34px;
+    border-left: 1px solid var(--buttons-hover);
+    border-right: 1px solid var(--buttons-hover);
+  }
+  .output-headers {
+    color: var(--text-alt);
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+  #output-dept-header {
+    margin: 0 0 0 50px;
+    width: 189px;
+    font-weight: bold;
+  }
+  #output-item-header {
+    width: 105px;
+  }
+  #output-qty-header {
+    margin: 0 0 0 60px;
+  }
+  ol {
+    list-style: inside;
+
+  }
+  .grocery-items {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 20px 0 0 50px;
+    padding: 0;
+  }
+  .grocery-items {
+    list-style-type: none;
+    counter-reset: css-counter 0;
+  }
+  .grocery-items li {
+    counter-increment: css-counter 1;
+    
+  }
+  .grocery-items li:before {
+    content: counter(css-counter) ".";
+
+  }
+  .list-item-format {
+    display: flex;
+    color: var(--text);
+  }
+  .list-item-format:last-child {
+    /* margin-bottom: 80px; */
+    
+  }
+  /* #item-dept, #item-item, #item-qty {
+  margin-top: 5px;
+} */
+  .mobileLabels {
+    display: none;
+  }
+  #item-dept {
+    width: 160px;
+    margin: 0 0 0 15px;
+
+  }
+  #item-item {
+    width: 175px;
+    margin: 0 0 0 10px;
+  }
+  #item-qty {
+    margin: 0 0 0 0;
+    min-width: 108px;
+  }
+  .btnContainer {
+      margin: 0 0 0 0;
+      float: right;
+    }
+  .delete-btn {
+    background: var(--text);
+    color: var(--text-alt);
+    border-radius: 5px;
+    width: 65px;
+    margin: 2px 0 6px 5px;
+    height: 25px;
+  }
+  .edit-btn {
+    background: var(--text);
+    color: var(--text-alt);
+    border-radius: 5px;
+    width: 65px;
+    margin: 2px 0 6px 10px;
+    height: 25px;
+  }
+  .edit-btn:hover {
+    background-color: var(--edit-btn-hover);
+    color: var(--black);
+  }
+  .delete-btn:hover {
+    background: var(--delete-btn-hover);
+    color: var(--black);
+  }
+  .footer {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-size: .6em;
+    color: var(--buttons-hover);
+  }
+  @media only screen and (max-width: 812px) {
+    .main-container {
+      font-size: 1em;
+    }
+    .main-header {
+      margin: 40px 0 0 0;
+      border-radius: 30px 30px 0 0;
+    }
+    .main-header-img {
+
+      margin: 15px 0 0 0;
+    }
+    select, .item-input, .qty-input {
+     font-size: 1em;
+     border-top: 1px solid var(--black);
+    }
+    select {
+      height: 31px;
+    }
+    #dept-input {
+      appearance: none;
+    }
+    /* Code from the codepen reference at the bottom included
+    this code, nested in the #dept-input reference above:
+      &:invalid {
+        color: gray
+      } 
+    the & is a LESS-ism (pre-processor) but is not recognized in standard CSS where LESS is not being used. Is is similar to clearfix but I could not determine how to write the code. It is working without this code.
+    */
+    [disabled] {
+      color: var(--input-box);
+    }
+    option {
+      color: var(--input-box);
+    }
+    .flex-container {
+      flex-direction: column;
+      height: 395px;
+    }
+    .data-input-header, .shop-list-header {
+      font-size: 1.2em;
+    }
+    .data-input-form {
+      margin: 20px auto;
+    }
+    label {
+      font-size: 1em;
+      margin-top: 5px;
+    }
+    .button-container {
+      flex-direction: row;
+      height: auto;
+      margin: 0 auto;
+      max-width: 80%;
+    }
+    .btn {
+      padding: 0;
+      width: 90px;
+      min-width: auto;
+      font-size: .9em;
+      height: 45px;
+    }
+    .montage {
+      position: absolute;
+    }
+    .shop-list-header {
+      flex-direction: column;
+    }
+    .data-output-headers {
+      width: 100px;
+    }
+    .data-output-headers{
+      flex-direction: column;
+      max-width: 75px;
+      display: none;
+    }
+    #output-dept-header, #output-item-header, #output-qty-header {
+      margin: 0;
+      
+    }
+    #output-dept-header {
+      margin: 0 25px 0 0;
+    }
+    .mobileLabels {
+      display: inline;
+      color: var(--buttons-hover);
+      font-weight: bold;
+      margin: 0 0 0 5px;
+      
+    }
+    li {
+      line-height: 150%
+    }
+    .list-item-format {
+      flex-direction: column;
+      margin: auto;
+      width: 170px;
+      background-color: #bed5ff;
+      border-right: 1px solid b
+    }
+
+    .list-item-format:last-child {
+      
+    }
+    #item-dept, #item-item, #item-qty {
+      display: inline-block;
+      font-size: .95em;
+      width: 0px;
+      margin: 0 0 0 10px;
+    }
+    .grocery-items {
+      flex-direction: row;
+      flex-wrap: wrap;
+      border-right: 1px solid black;
+      margin: 0;
+    }
+    .grocery-items li:before {
+      margin: 5px 5px 0 5px;
+    }
+
+    .delete-btn {
+      display: flex;
+      margin: 15px 0 0 12px;
+      width: 55px;
+    }
+    .edit-btn {
+      margin-left: 70px;
+      margin: -25px 0 10px 80px;
+      width: 55px;
+    }
+
+  }
+</style>
+<body>
+  <main>
+    <div class="main-header">
+      <img class="main-header-img" src="/investigations/grocList/assets/groceryHeader.png">
+    </div>
+    <div class="main-container">
+      <!-- DATA INPUT -->
+      <div>
+        <div class="data-input-header">ENTER ITEMS</div>
+        <div class="flex-container">
+          <!-- DATA INPUT -->
+          <form class="data-input-form" id="data-input-form">
+            <div class="dept-input-grp">
+              <label 
+                for="dept-input" 
+                id="dept-input-label">
+                Select a department using the dropdown box:
+              </label>
+              <!-- Dropdown Content -->
+              <select id="dept-input" onchange="getDept()" required>
+                <option disabled selected value="">Select Department</option>
+                <option>Produce</option>
+                <option>Meat/Seafood</option>
+                <option>Frozen-foods</option>
+                <option>Dairy</option>
+                <option>Paper Goods</option>
+                <option>Health & Beauty</option>
+                <option>Int'l Foods</option>
+                <option>Deli</option>
+                <option>Bakery</option>
+                <option>Dry Goods</option>
+                <option>Canned Items</option>
+                <option>Cleaning</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <label 
+              for="item-input" 
+              id="item-input-label">Enter An Item:
+            </label>
+            <input 
+              id="item-input" 
+              class="item-input" 
+              placeholder="Enter item..." 
+              type="item-input">
+                      
+            <label 
+              for="qty-input" 
+              id="qty-input-label">Add Quantity:
+            </label>
+            <input 
+              id="qty-input" 
+              class="qty-input"
+              placeholder="Qty..." 
+              type="qty-input">
+          </form>
+          <!-- BUTTONS -->
+          <div class="button-container">
+            <button 
+              class="add-btn btn" 
+              id="add-btn"
+              type="submit" 
+              form="data-input-form">ADD
+            </button>
+            <button 
+              class="reset-btn btn" 
+              type="reset" 
+              form="data-input-form">RESET
+            </button>
+            <button 
+              class="delete-all-btn btn" 
+              type="submit">DELETE LIST
+            </button>
+            <button 
+              class="sort-btn btn" 
+              type="submit">SORT LIST/DEPT
+            </button>
+          </div>
+          <img class="montage" src="/investigations/grocList/assets/montage-small.png">
+          </div>
+        </div>
+
+        <!-- DATA OUTPUT -->
+        <div class="shop-list-container" id="shop-list-container">
+          <div class="shop-list-header">SHOPPING LIST</div>
+            <div class="data-output-container">
+              <div class="data-output-headers">
+                <div class="output-headers" id="output-dept-header">Department</div>
+                <div class="output-headers" id="output-item-header">Item</div>
+                <div class="output-headers" id="output-qty-header">Qty</div>
+              </div>
+              <ul class="grocery-items" id="ordered-list">
+                <!-- grocery-items -->
+              </ul>
+          </div>
+        </div>  
+        <footer class="footer">Copyright: 2021 StackStudios.com V: 1.0
+
+        </footer>
+      </div>
+      
+    </div>
+   
+  </main>
+  <script>
+    const dataInputForm = document.querySelector('.data-input-form');
+    const liDepts = document.getElementsByClassName('modal-li-item');
+    var deptInput = document.getElementById('dept-input');
+    var itemInput = document.getElementById('item-input');
+    var qtyInput = document.getElementById('qty-input');
+    const modal = document.getElementById("modal");
+    const deptHover = document.getElementById("dept-input");
+    const span = document.getElementsByClassName("close")[0];
+    var addBtn = document.querySelector(".add-btn");
+    var deleteAllBtn = document.querySelector(".delete-all-btn");
+    var sortBtn = document.querySelector(".sort-btn");
+    const itemItemsList = document.querySelector('.grocery-items');
+    var shopListContainer = document.getElementById('shop-list-container');
+
+    var items = [];
+
+    // DATA INPUT METHODS
+    function getDept() {
+      document.getElementById("selectedDept").value = deptInput.options[deptInput.selectedIndex].text;
+    }
+
+    function getDept() {
+      for (i = 0; i < liDepts.length; i++) {
+        liDepts[i].addEventListener('click', function (event) {
+          deptInput.value = event.target.innerHTML;
+          console.log("dept=", deptInput.value);
+        });
+        // console.log("li department id=", liDepts[i].id);
+      }
+    };
+    getDept();
+
+    addBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      addItem(
+        deptInput.value,
+        itemInput.value,
+        qtyInput.value
+      )
+      document.getElementById('add-btn').onclick = function() {
+        document.getElementById('dept-input').focus();
+      } 
+    });
+
+    function addItem(item) {
+      if (item !== '') {
+        var item = {
+          id: Date.now(),
+          dept: deptInput.value,
+          item: itemInput.value,
+          qty: qtyInput.value
+        }
+      }
+      items.push(item);
+      addToLocalStorage(items);
+
+      deptInput.value = "";
+      itemInput.value = "";
+      qtyInput.value = "";
+
+    };
+
+
+    // RENDER METHODS
+    function renderItems(items) {
+      itemItemsList.innerHTML = "";
+
+ 
+
+      items.forEach(function (item) {
+        const li = document.createElement('li');
+
+        li.setAttribute("class", "item list-item-format");
+        li.setAttribute('data-key', item.id);
+        
+
+
+
+        // Mobile view dept label
+        var deptLabel = document.createElement('span');
+        deptLabel.innerHTML = "Dept:"
+        deptLabel.setAttribute("class", "mobileLabels");
+        li.append(deptLabel);
+
+        // Mobile view dept input
+        var inputDept = document.createElement('span');
+        inputDept.setAttribute("class", "item list-item-format item-dept");
+        inputDept.setAttribute("id", "item-dept");
+        inputDept.innerHTML = `${item.dept}`
+        li.appendChild(inputDept);
+
+        // Mobile view item label
+        var itemLabel = document.createElement('div');
+        itemLabel.innerHTML = "Item:";
+        itemLabel.setAttribute("class", "mobileLabels");
+        li.appendChild(itemLabel);
+
+        // Mobile view item input
+        var div = document.createElement('div');
+        div.setAttribute("class", "item list-item-format item-item");
+        div.setAttribute("id", "item-item");
+        div.innerHTML = `${item.item}`
+        li.appendChild(div);
+
+
+        // Mobile view qty label
+        var qtyLabel = document.createElement('div');
+        qtyLabel.innerHTML = "Qty:"
+        qtyLabel.setAttribute("class", "mobileLabels");
+        li.appendChild(qtyLabel);
+        
+        // Mobile view qty input
+        var div = document.createElement('div');
+        div.setAttribute("class", "item list-item-format item-qty");
+        div.setAttribute("id", "item-qty");
+        div.innerHTML = `${item.qty}`
+        li.appendChild(div);
+
+          var deleteBtn = document.createElement('button');
+          deleteBtn.setAttribute("class", "delete-btn");
+          deleteBtn.innerHTML = "Delete";
+
+          var editBtn = document.createElement('button');
+          editBtn.setAttribute("class", "edit-btn");
+          editBtn.innerHTML = "Edit";
+          
+          var btnContainer = document.createElement('div');
+          btnContainer.setAttribute("class", "btnContainer");
+          btnContainer.append(deleteBtn, editBtn);
+          li.appendChild(btnContainer);
+
+          itemItemsList.append(li);
+    
+        var dataOutputContainer = document.getElementById('shop-list-container');
+        dataOutputContainer.setAttribute("style", "display: flex");
+        dataOutputContainer.setAttribute("style", "flex-direction: column");
+        dataOutputContainer.append(itemItemsList);
+      });
+    }
+
+    function addToLocalStorage(items) {
+      localStorage.setItem('items', JSON.stringify(items));
+      renderItems(items);
+    }
+
+    function getFromLocalStorage() {
+      var reference = localStorage.getItem('items');
+
+      if (reference) {
+        items = JSON.parse(reference);
+        console.log("items", items);
+        renderItems(items);
+      }
+    }
+
+    function deleteItem(id) {
+      items = items.filter(function (item) {
+        return item.id != id;
+      });
+      console.log(items);
+      addToLocalStorage(items);
+    }
+    getFromLocalStorage();
+
+    itemItemsList.addEventListener('click', function (event) {
+      if (event.target.classList.contains('delete-btn')) {
+        deleteItem(event.target.parentElement.getAttribute('data-key'));
+      }
+    });
+    getFromLocalStorage();
+
+    deleteAllBtn.addEventListener('click', function (event) {
+      if (event.target.classList.contains('delete-all-btn')) {
+        items = [];
+        addToLocalStorage(items);
+        // renderItems(items);
+      }
+    });
+    getFromLocalStorage();
+
+    function compare(a, b) {
+      if (a.dept < b.dept) {
+        return -1;
+      }
+      if (a.dept > b.dept) {
+        return 1;
+      }
+      return 0;
+    }
+    sortBtn.addEventListener('click', function (event) {
+      if (event.target.classList.contains('sort-btn')) {
+       compare(items);
+      }
+    });
+
+    items.sort(compare);
+    console.log("items-sort", items);
+    renderItems(items);
+
+  </script>
+</body>
+<!-- Select html tags to not support placeholder attribute. 
+     This work-around creates a fake placeholder:
+     https://codepen.io/maoberlehner/pen/WOWrqO
+-->
+<!-- Reference for array sorting using both compare() and sort() functions:  https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/ -->
+</html>

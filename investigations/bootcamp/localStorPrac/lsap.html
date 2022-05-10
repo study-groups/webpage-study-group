@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalStorage/Array Practice</title>
+  <style>
+  body {
+    background: #1a0b01;
+  }
+  .main-container {
+    max-width: 700px;
+  }
+  /* Input Section */
+  .item {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-container, .output-container {
+    border: 2px solid #047d7d;
+    margin: 0 0 0 50px;
+    padding-bottom: 50px;
+    color: #f7e5c5;
+  }
+  #id-input, #item-input, #qty-input {
+    font-size: 1.2em;
+    margin: 10px 0 0 25px;
+    border-radius: 5px;
+    height: 25px;
+    background: #f7eddb;
+  }
+  #input-list-form-title, #list-output-title {
+    color: #0eb8b8;
+    margin: 50px 0 10px 50px;
+    width: 300px;
+  }
+  .btn:hover {
+    background: #b02701;
+  }
+  .btn {
+    background: #ba4902;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    color: #f7e5c5;
+    margin: 50px 0 0 25px;
+  }
+  .list-output-data {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .outputBtns {
+    display: flex;
+    margin: 5px 0 20px 0;
+  }
+  .del-btn, .edit-btn {
+    display: flex;
+    background: #ba4902;
+    border: 1px solid #341401;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    color: #f7e5c5;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+  }
+  .del-btn:hover, .edit-btn:hover {
+    background: #b02701;
+  }
+  label {
+    font-size: 1.5em;
+    display: flex;
+    color: #f7e5c5;
+    margin: 25px 0 0 25px;
+  }
+  /* Output Section */
+
+  .li-item {
+    border: 1px solid #f7e5c5;
+    padding: 10px;
+    margin: 10px;
+  }
+  #id-group, #item-group, #qty-group {
+    font-size: 1.2em;
+    display: flex;
+    margin: 0 0 10px 0;
+  }
+  #id-label, #item-label, #qty-label {
+    width: 60px;
+    color: #ba4902;
+    margin: 0 0 0 15px;
+  }
+
+
+  </style>
+</head>
+
+<body>
+  <body>
+    <div class="main-container">
+    <h1 id="input-list-form-title">List Input Form</h1>
+    <div class="form-container">
+    
+    <form id="data-input-form">
+      <!-- <label for="id-input">ID Input</label>
+      <input type="date" required="required" id="id-input" /> -->
+  
+      <label for="item-input">Item Input</label>
+      <input type="text" required="required" id="item-input" />
+
+      <label for="qty-input">Qty Input</label>
+      <input type="text" required="required" id="qty-input" />
+      <div id="btn-container">
+        <button id="add-btn" class="btn" type="button">Add</button>
+        <!-- <button id="display-btn" class="btn" type="button" disabled>Display</button> -->
+        <button id="update-btn" class="btn" type="button">Update</button>
+      </div>
+
+    </form>
+  
+  </div>
+  <h1 id="list-output-title">List Output Data</h1>
+  <div class="output-container">
+    <ol class="list-output-data">
+
+        <!-- LIST DATA GOES HERE  -->
+    
+    </ol>
+  </div>
+</div>
+  <script>
+    const idInput = document.getElementById('id-input');
+    const itemInput = document.getElementById('item-input');
+    const qtyInput = document.getElementById('qty-input')
+    const addBtn = document.getElementById('add-btn');
+    const displayBtn = document.getElementById('display-btn');
+    const updateBtn = document.getElementById('update-btn');
+    var listOutputData = document.querySelector('.list-output-data');
+
+    itemsListArray = new Array();
+
+    function addItem(item){
+      if(item !== '') {
+        var item = {
+          id: Date.now(),
+          item: itemInput.value,
+          qty: qtyInput.value,
+        }
+        itemsListArray.push(item);
+        addToLocalStorage(itemsListArray);
+        
+        itemInput.value = "";
+        qtyInput.value = "";
+      }
+    }
+    addBtn.addEventListener('click', addItem);
+
+    function renderItems(itemsListArray){
+      listOutputData.innerHTML = "";
+
+      itemsListArray.forEach(function(item) {
+        const li = document.createElement('li');
+        li.setAttribute("class", "item li-item");
+        li.setAttribute('data-key', item.id);
+
+        // id label/id input pair
+        var idGroup = document.createElement('div');
+        idGroup.setAttribute('id', "id-group");
+        li.append(idGroup);
+
+        var idLabel = document.createElement('div');
+        idLabel.setAttribute('id', "id-label");
+        idLabel.innerHTML = "ID:";
+        idGroup.append(idLabel);
+
+        var inputId = document.createElement('div');
+        inputId.setAttribute('class', "item input-id");
+        inputId.setAttribute('id', "input-id");
+        inputId.innerHTML = `${item.id}`
+        idGroup.append(inputId);
+
+        // item label/item input pair
+        var itemGroup = document.createElement('div');
+        itemGroup.setAttribute('id', "item-group");
+        li.append(itemGroup);
+
+        var itemLabel = document.createElement('div');
+        itemLabel.setAttribute('id', "item-label");
+        itemLabel.innerHTML = "Item:";
+        itemGroup.append(itemLabel);
+
+        var inputItem = document.createElement('div');
+        inputItem.setAttribute('class', "item input-item");
+        inputItem.setAttribute('id', "input-item");
+        inputItem.innerHTML = `${item.item}`
+        itemGroup.append(inputItem);
+
+        // item qty/item qty pair
+        var qtyGroup = document.createElement('div');
+        qtyGroup.setAttribute('id', "qty-group");
+        li.append(qtyGroup);
+
+        var qtyLabel = document.createElement('div');
+        qtyLabel.setAttribute('id', "qty-label");
+        qtyLabel.innerHTML = "Qty:";
+        qtyGroup.append(qtyLabel);
+
+        var inputQty = document.createElement('div');
+        inputQty.setAttribute('class', "item inputQty");
+        inputQty.setAttribute('id', 'input-qty');
+        inputQty.innerHTML = `${item.qty}`;
+        qtyGroup.append(inputQty);
+
+
+        var outputBtnContainer = document.createElement('div');
+        outputBtnContainer.setAttribute("class", "outputBtns");
+        li.append(outputBtnContainer);
+
+        var delBtn = document.createElement('div');
+        delBtn.setAttribute('type', "button");
+        delBtn.setAttribute('class', "del-btn");
+        delBtn.innerHTML = "Delete";
+        outputBtnContainer.append(delBtn);
+
+        var editBtn = document.createElement('div');
+        editBtn.setAttribute('type', "button");
+        editBtn.setAttribute('class', "edit-btn");
+        editBtn.innerHTML = "Edit";
+        outputBtnContainer.append(editBtn);
+
+        listOutputData.append(li);
+      })
+    }
+
+    function addToLocalStorage(){
+      localStorage.setItem("itemsListArray", JSON.stringify(itemsListArray));
+      renderItems(itemsListArray);
+    }
+
+    function getFromLocalStorage(){
+      var reference = localStorage.getItem('itemsListArray');
+
+      if(reference) {
+        itemsListArray = JSON.parse(reference);
+        renderItems(itemsListArray);
+      }
+    }
+    getFromLocalStorage();
+
+    function deleteItem(id) {
+      itemsListArray = itemsListArray.filter(function(itemsListArray)  {
+        return itemsListArray.id != id;
+      });
+      addToLocalStorage(itemsListArray);
+    };
+    getFromLocalStorage();
+    
+    listOutputData.addEventListener('click', function (event) {
+      if (event.target.classList.contains('del-btn')) {
+        deleteItem(event.target.parentElement.parentElement.getAttribute('data-key'));
+      }
+    });
+    getFromLocalStorage();
+
+    function editItem(id){     // id = datakey; repopulate form inputs
+      for(i=0; i < itemsListArray.length; i++) {
+        if(itemsListArray[i].id == id){ 
+          console.log(itemsListArray[i]);  
+
+          // get exiting data for localStorage
+          var tempItem = localStorage.getItem(itemsListArray[i]);
+          // if not data, create an array, otherwise convert localStorage string to an array
+          // tempItem = tempItem ? JSON.parse(tempItem) : {};
+
+          id = itemsListArray[i].id;
+          itemInput.value = itemsListArray[i].item;
+          qtyInput.value = itemsListArray[i].qty;
+
+          var tempId = id;
+
+          window.tempId = tempId;
+          console.log(window.tempId);
+      } 
+    }
+  };
+    function updateItem(){
+      // delete existing array object prior to update
+      if(tempId !== "") {
+        itemsListArray = itemsListArray.filter(function(itemsListArray) {
+          return itemsListArray.id != window.tempId;
+        });
+        console.log("itemsListArray", itemsListArray);
+        console.log("tempId", window.tempId);
+
+        // create variable that has edited values using tempId (needed to overwrite object in localStorage)
+        var item = {
+          id: tempId,
+          item: itemInput.value,
+          qty: qtyInput.value
+        }
+        console.log("item", item);
+        
+        // add new object with same id back into array
+        itemsListArray.push(item);
+
+        // update localStorage (overwriting previous values for this id);
+        addToLocalStorage(itemsListArray);
+
+        itemInput.value = "";
+        qtyInput.value = "";
+               
+    };
+  }
+    updateBtn.addEventListener('click', updateItem);
+
+    listOutputData.addEventListener('click', function(event) {
+      if(event.target.classList.contains('edit-btn')) {
+        editItem(event.target.parentElement.parentElement.getAttribute("data-key"));
+      }
+    });
+    getFromLocalStorage();
+
+  </script>
+  </body>
+</body>
+</html>

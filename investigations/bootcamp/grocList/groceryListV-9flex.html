@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="investigations/grocList/bubblestyle.css"> -->
+
+  <title>Grocery List 9-flex</title>
+</head>
+<style>
+  :root {
+    --text: #1004af;
+    --department-container: var(--text);
+    --text-alt: #fff;
+    --borders: var(--text);
+    --buttons: var(--text);
+    --buttons-hover: #B70158;
+    --input-box: #828282;
+    --bg-color-primary: #aac9ff;
+    --bg-color-output-items: #d3e3ff;
+    --dept-li-active: var(--bg-color-primary);
+    --output-list-bg: var(--text-alt);
+    --output-text: var(--text);
+    --delete-btn-hover: #d8a407;
+    --edit-btn-hover: #23d807;
+    --black: #000;
+    --label: #1004af;
+    --sub-headers: #1004af;
+    --dark-blue: #1004af;
+  }
+  body {
+    background-image: url(assets/carts-bg4.png);
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin: 0 0 100px 0;
+  }
+  .main {
+    position: relative;
+  }
+  .main-header-img {
+    width: 90%;
+    display: inline-block;
+    z-index: 1;
+    margin: 20px 0 92px 0;
+  }
+  .main-header-img2 {
+    width: 68%;
+    display: inline-block;
+    margin: -112px 73px 170px 0;
+    position: relative;
+    
+  }
+  .main-header {
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(var(--department-container), var(--bg-color-primary));
+    max-width: 750px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-radius: 30px 30px 0 0;
+    position: relative;
+    z-index: 0;
+  }
+  .main-container {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+    background: var(--bg-color-primary);
+    font-size: 1.2em;
+    border-radius: 0 0 30px 30px;
+  }
+  /* DEPARTMENTS SECTION */
+  .data-input-header {
+    background: #1004af;
+    margin: -205px 0 0 0;
+  }
+  .shop-list-header {
+    background-color: var(--dark-blue);
+  }
+  .data-input-header, .shop-list-header {
+    text-align: center;
+    padding: .3em 0 .3em 0;
+    letter-spacing: 1px;
+    height: 24px;
+    border-top: 2px solid var(--text-alt);
+    font-weight: bold;
+    color: var(--text-alt);
+    font-size: 1.2em;
+    border-left: 1px solid var(--dark-blue);
+    border-right: 1px solid var(--dark-blue);
+  }
+  .dept-header {
+    margin: 20px 45px 15px 45px;
+  }
+  .department-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3px 10px 5px 10px;
+    color: var(--text);
+  }
+  .dept-grp {
+    margin: 0;
+    padding: .5em;
+  }
+  li {
+    /* line-height: 160%; */
+    border-bottom: 1px solid #b7015821;
+    padding: 5px 0 0 0;
+  }
+
+  /*  DATA INPUT SECTION */
+  .data-input-form {
+    display: flex;
+    padding: .5em 1em .5em 1.5em;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 0px 0 20px 60px;
+    position: relative;
+    z-index: 0;
+  }
+  .dept-input-grp {
+    display: flex;
+    flex-direction: column;
+  }
+  select {
+    width: 282px;
+    height: 35px;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 5px;
+    margin: .3em 0 0 0;
+  }
+  select,
+  .item-input,
+  .qty-input {
+    color: var(--input-box);
+    border: 2px solid var(--dark-blue);
+  }
+  .item-input-group {
+    margin: .3em 0 0 0;
+  }
+  label {
+    margin-top: 15px;
+    display: block;
+    color: var(--label);
+    max-width: 282px;
+  }
+  .flex-container {
+    display: flex;
+    height: 315px;
+    position: relative;
+    z-index: 0;
+  }
+  input {
+    width: 268px;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 5px;
+    margin: .3em 0 0 0;
+    border: 2px solid var(--black);
+  }
+  .btnContainerAll {
+    margin-left: 5px;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: rgb(0, 15, 255, .15);
+    margin: 28px 0 0 20px;
+    padding: .5em 1em .5em 1em;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid #ffffffbd;
+    height: 75%;
+    width: 20%;
+    position: relative;
+    z-index: 0;
+    border-radius: 5px;
+  }
+  .btn {
+    margin: 5px;
+    padding: 10px;
+    width: 120px;
+    border-radius: 6px;
+    color: var(--text-alt);
+    font-weight: bold;
+    font-size: .6em;
+    background-color: var(--dark-blue);
+    border: .5px solid var(--text-alt);
+    position: relative;
+    z-index: 0;
+  }
+  .btn:hover {
+    background: var(--buttons-hover);
+  }
+  button {
+    margin: .5em 0 .5em 0;
+  }
+  .montage {
+  position: absolute;
+  z-index: -1;
+  height: auto;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  height: auto;
+  }
+  .shop-list-container {
+    display: relative;
+    z-index: 0;
+  }
+  .montage-left {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    bottom: 0;
+  }
+  /* DATA OUTPUT */
+  .shop-list-container {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 150px;
+  }
+  .data-output-container {
+    position: relative;
+    z-index: 0;
+  }
+  #data-output-headers {
+    display: flex;
+    justify-content: flex-start;
+    background: var(--buttons-hover);
+    align-content: center;
+    align-items: center;
+    height: 36px;
+    margin: 0 0 0 0;
+  }
+  #dept-header, #item-header, #qty-header {
+    height: auto;
+    width: 100%;
+    font-weight: bold;
+    color: var(--text-alt);
+  }
+  #dept-header {
+    margin: 0 0 0 65px;
+    width: 110px;
+  }
+  #item-header {
+    margin: 0 0 0 50px;
+    width: 110px;
+  }
+  #qty-header {
+    margin: 0 0 0 48px;
+    width: 110px;
+  }
+  ol {
+    list-style: inside;
+  }
+  .grocery-items {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 20px 20px 0 20px;
+    padding: 0;
+    z-index: 0;
+    background-color: rgb(0, 15, 255, .11);
+    border-radius: 5px;
+    border: 1px solid #ffffffbd;
+  }
+  .grocery-items {
+    list-style-type: none;
+    counter-reset: css-counter 0;
+  }
+  .grocery-items li {
+    counter-increment: css-counter 1;
+  }
+  .grocery-items li:before {
+    margin: 4px 0 0 10px;
+    content: counter(css-counter) ".";
+  }
+  .list-item-format {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    color: var(--text);
+    height: auto;
+  }
+  .list-item-format:last-child {
+    margin-bottom: 50px;
+  }
+  .shopListHeaders {
+    display: none;
+  }
+  #item-dept {
+    width: 150px;
+    margin: 4px 0 0 15px;
+  }
+  #item-item {
+    width: 150px;
+    margin: 4px 0 0 10px;
+  }
+  #item-qty {
+    margin: 4px 0 0 10px;
+    min-width: 120px;
+  }
+  /* .btnContainer {
+    margin: 0 0 0 45px;
+    float: right;
+  } */
+  .delete-btn {
+    background: var(--text);
+    color: var(--text-alt);
+    border-radius: 5px;
+    width: 65px;
+    margin: 2px 0 6px 5px;
+    height: 25px;
+  }
+  .edit-btn {
+    background: var(--text);
+    color: var(--text-alt);
+    border-radius: 5px;
+    width: 65px;
+    margin: 2px 0 6px 10px;
+    height: 25px;
+  }
+  .edit-btn:hover {
+    background-color: var(--edit-btn-hover);
+    color: var(--black);
+  }
+  .delete-btn:hover {
+    background: var(--delete-btn-hover);
+    color: var(--black);
+  }
+  .footer {
+    background: linear-gradient(var(--bg-color-primary), var(--department-container));
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 90px;
+    padding: 20px 40px 20px 20px;
+    font-size: .8em;
+    color: var(--text-alt);
+    z-index: 0;
+    border-radius: 0 0 30px 30px;
+  }
+  #copyright {
+    display: inline-flex;
+    z-index: 0;
+    font-size: .8em;
+  }
+  @media only screen and (max-width: 768px) {
+    .main-container {
+      font-size: 1em;
+    }
+    .main-header-img {
+      display: static;
+      z-index: 0;
+
+    }
+    select, .item-input, .qty-input {
+     font-size: 1em;
+     border-top: 1px solid var(--black);
+    }
+    select {
+      height: 31px;
+    }
+    #dept-input {
+      appearance: none;
+    }
+    /* Code from the codepen reference at the bottom included
+    this code, nested in the #dept-input reference above:
+      &:invalid {
+        color: gray
+      } 
+    the & is a LESS-ism (pre-processor) but is not recognized in standard CSS where LESS is not being used. Is is similar to clearfix but I could not determine how to write the code. It is working without this code.
+    */
+    [disabled] {
+      color: var(--input-box);
+    }
+    option {
+      color: var(--input-box);
+    }
+    .flex-container {
+      flex-direction: column;
+      height: 395px;
+    }
+    .data-input-form {
+      margin: 20px auto;
+    }
+    label {
+      font-size: 1em;
+      margin-top: 5px;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      width: auto;
+      margin: 0 10px 50px 10px;
+      font-size: .9em;
+    }
+    .btn {
+      padding: 3px;
+      width: 90px;
+      min-width: auto;
+      font-size: .9em;
+      height: 45px;
+    }
+    .montage {
+      position: absolute;
+    }
+    .shop-list-header {
+      flex-direction: column;
+    }
+    .data-output-headers {
+      font-size: 1em;
+    }
+    #dept-header, #qty-header,
+    #item-header {
+      font-size: 1.1em;
+    }
+    #dept-header {
+     margin: 0 0 0 100px;
+    }
+    #item-header {
+      margin: 0 0 0 17%;
+    }
+    #qty-header {
+      margin: 0 0 0 11%;
+    }
+    .list-item-format {
+      display: flex;
+      border-radius: 8px;
+      margin: 0 30px 0 30px;
+      height: auto;
+    }
+    #item-dept, #item-item, #item-qty {
+      font-size: 1.1em;
+    }
+    #item-dept {
+      width: 40%;
+      margin: 0 0 0 0;
+    }
+    #item-item {
+      width: 30%;
+      margin: 0 0 0 0;
+    }
+    #item-qty {
+      width: 20%;
+      min-width: 0;
+    }
+    .grocery-items {
+      border-radius: 5px 5px;
+      background-color: rgb(0, 15, 255, .11);
+      font-size: .9em;
+      margin: 20px 50px 20px 50px;
+    }
+    .grocery-items li:before {
+      margin: 0 5px 0 10px;
+    }
+    .btnContainer {
+      display: flex;
+      justify-content: center;
+      align-content: space-around;
+      align-items: baseline;
+    }
+    .delete-btn {
+      margin: 0;
+      display: none;
+    }
+    .edit-btn {
+      margin: 2px 10px 6px 8px;
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 480px){
+    .grocery-items {
+      margin: 10px 10px 10px 10px; 
+      font-size: .9em;
+    }
+    .list-item-format {
+      margin: 0 0 0 0;
+      height: auto;
+    }
+    #dept-header {
+      margin: 0 0 0 40px;
+    }
+    #item-header {
+    margin: 0 0 0 12%;
+    }
+    #qty-header {
+      margin: 0 0 0 11%;
+    }
+  }
+
+</style>
+<body>
+  <main>
+    <div class="main-header">
+      <img class="main-header-img" src="assets/TopOfCartHeader.png"/>
+      <img class="main-header-img2"
+      src="assets/BtmOfCartHeader.png"/>
+    </div>
+    <div class="main-container">
+      <!-- DATA INPUT -->
+      <div>
+        <div class="data-input-header">ENTER ITEMS</div>
+        <div class="flex-container">
+          <!-- DATA INPUT -->
+          <form class="data-input-form" id="data-input-form">
+            <div class="dept-input-grp">
+              <label 
+                for="dept-input" 
+                id="dept-input-label">
+                Select a department using the dropdown box:
+              </label>
+              <!-- Dropdown Content -->
+              <select id="dept-input" onchange="getDept()" required>
+                <option disabled selected value="" id="dept-input-label">Select Department</option>
+                <option>Produce</option>
+                <option>Meat & Seafood</option>
+                <option>Frozen-foods</option>
+                <option>Dairy</option>
+                <option>Paper Goods</option>
+                <option>Health & Beauty</option>
+                <option>Int'l Foods</option>
+                <option>Deli</option>
+                <option>Bakery</option>
+                <option>Dry Goods</option>
+                <option>Canned Items</option>
+                <option>Cleaning</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <label 
+              for="item-input" 
+              id="item-input-label">Enter An Item:
+            </label>
+            <input 
+              id="item-input" 
+              class="item-input" 
+              placeholder="Enter item..." 
+              type="item-input">
+                      
+            <label 
+              for="qty-input" 
+              id="qty-input-label">Add Quantity:
+            </label>
+            <input 
+              id="qty-input" 
+              class="qty-input"
+              placeholder="Qty..." 
+              type="qty-input">
+          </form>
+          <!-- BUTTONS -->
+          <div class="button-container">
+            <button 
+              class="add-btn btn" 
+              id="add-btn"
+              type="submit" 
+              form="data-input-form">ADD
+            </button>
+            <button 
+              class="update-btn btn"
+              id="update-btn"
+              type="submit"
+              form="data-input-form">UPDATE
+            </button>
+            <button 
+              class="reset-btn btn" 
+              type="reset" 
+              form="data-input-form">RESET
+            </button>
+            <button 
+              class="delete-all-btn btn" 
+              type="submit">DELETE LIST
+            </button>
+            <button 
+              class="sort-btn btn" 
+              type="submit">SORT LIST/DEPT
+            </button>
+          </div>
+          <img class="montage" src="/investigations/grocList/assets/montage.png">
+          </div>
+        </div>
+
+        <!-- DATA OUTPUT -->
+        <div class="shop-list-container" id="shop-list-container">
+          <div class="shop-list-header">SHOPPING LIST</div>
+            <div id="data-output-container">
+              <div id="data-output-headers">
+            
+              </div>
+              <ul class="grocery-items" id="ordered-list">
+                 
+              </ul>
+          </div>
+        </div>   
+        <footer class="footer">
+          <div id="copyright">
+            Copyright &copy;
+            <span >
+              <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+            </span>
+          StackStudios V:1.1
+          </div>
+        </footer>
+        <img class="montage-left" src="assets/Left montage.png"/>
+      </div>
+    </div>
+  </main>
+  <script>
+
+    const dataInputForm = document.querySelector('.data-input-form');
+    const liDepts = document.getElementsByClassName('option-list-item');
+    var deptInput = document.getElementById('dept-input');
+    var itemInput = document.getElementById('item-input');
+    var qtyInput = document.getElementById('qty-input');
+    const modal = document.getElementById("modal");
+    const deptHover = document.getElementById("dept-input");
+    const span = document.getElementsByClassName("close")[0];
+    var addBtn = document.querySelector(".add-btn");
+    var deleteAllBtn = document.querySelector(".delete-all-btn");
+    var sortBtn = document.querySelector(".sort-btn");
+    var updateBtn = document.querySelector(".update-btn");
+    const itemItemsList = document.querySelector('.grocery-items');
+    var shopListContainer = document.getElementById('shop-list-container');
+
+    var itemsArray = [];
+
+    // DATA INPUT METHODS
+    function getDept() {
+      document.getElementById("selectedDept").value = deptInput.options[deptInput.selectedIndex].text;
+    }
+
+    function getDept() {
+      for (i = 0; i < liDepts.length; i++) {
+        liDepts[i].addEventListener('click', function(event) {
+          deptInput.value = event.target.innerHTML;
+          console.log("dept=", deptInput.value);
+        });
+        // console.log("li department id=", liDepts[i].id);
+      }
+    };
+    getDept();
+
+    addBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      addItem(
+        deptInput.value,
+        itemInput.value,
+        qtyInput.value
+      )
+      document.getElementById('add-btn').onclick = function() {
+        document.getElementById('dept-input').focus();
+      } 
+    });
+
+    function addItem(item) {
+      if (item !== '') {
+        var item = {
+          id: Date.now(),
+          dept: deptInput.value,
+          item: itemInput.value,
+          qty: qtyInput.value
+        }
+      }
+      itemsArray.push(item);
+      addToLocalStorage(itemsArray);
+
+      deptInput.value = "";
+      itemInput.value = "";
+      qtyInput.value = "";
+
+    };
+
+    // RENDER METHODS
+    // Output Header Labels
+    var deptLabel = document.createElement('div');
+      deptLabel.innerHTML = "Department";
+      deptLabel.setAttribute("id", "dept-header");
+    var dataOutputHeaders = document.getElementById('data-output-headers');
+      dataOutputHeaders.appendChild(deptLabel);
+
+    var itemLabel = document.createElement('div');
+      itemLabel.innerHTML = "Item";
+      itemLabel.setAttribute("id", "item-header");
+    var dataOutputHeaders = document.getElementById('data-output-headers');
+      dataOutputHeaders.appendChild(itemLabel);
+
+    var qtyLabel = document.createElement('div');
+      qtyLabel.innerHTML = "Qty";
+      qtyLabel.setAttribute("id", "qty-header");
+    var dataOutputHeaders = document.getElementById('data-output-headers');
+      dataOutputHeaders.appendChild(qtyLabel);
+    
+    // Render Function(s) - Data Output
+    
+    function renderItems(itemsArray) {
+      itemItemsList.innerHTML = "";
+
+      itemsArray.forEach(function(item) {
+        const li = document.createElement('li');
+
+        li.setAttribute("class", "item list-item-format");
+        li.setAttribute('data-key', item.id);
+        
+        var inputDept = document.createElement('div');
+        inputDept.setAttribute("class", "item list-item-format item-dept");
+        inputDept.setAttribute("id", "item-dept");
+        inputDept.innerHTML = `${item.dept}`
+        li.append(inputDept);
+
+        var inputItem = document.createElement('div');
+        inputItem.setAttribute("class", "item list-item-format item-item");
+        inputItem.setAttribute("id", "item-item");
+        inputItem.innerHTML = `${item.item}`
+        li.append(inputItem);
+
+        var inputQty = document.createElement('div');
+        inputQty.setAttribute("class", "item list-item-format item-qty");
+        inputQty.setAttribute("id", "item-qty");
+        inputQty.innerHTML = `${item.qty}`
+        li.appendChild(inputQty);
+
+        // Delete & Edit Btns
+          var deleteBtn = document.createElement('button');
+          deleteBtn.setAttribute("class", "delete-btn");
+          deleteBtn.innerHTML = "Delete";
+
+          var editBtn = document.createElement('button');
+          editBtn.setAttribute("class", "edit-btn");
+          editBtn.innerHTML = "Edit";
+          
+          var btnContainer = document.createElement('div');
+          btnContainer.setAttribute("class", "btnContainer");
+          btnContainer.append(deleteBtn, editBtn);
+          li.appendChild(btnContainer);
+
+          itemItemsList.append(li);
+    
+        var dataOutputContainer = document.getElementById('shop-list-container');
+        dataOutputContainer.setAttribute("style", "display: flex");
+        dataOutputContainer.setAttribute("style", "flex-direction: column");
+        dataOutputContainer.append(itemItemsList);
+      });
+    }
+
+    function addToLocalStorage(itemsArray) {
+      localStorage.setItem('itemsArray', JSON.stringify(itemsArray));
+      renderItems(itemsArray);
+    }
+
+    function getFromLocalStorage() {
+      var reference = localStorage.getItem('itemsArray');
+
+      if(reference) {
+        itemsArray = JSON.parse(reference);
+        renderItems(itemsArray);
+      }
+    };
+    function deleteItem(id) {
+      itemsArray = itemsArray.filter(function(itemsArray) {
+        return itemsArray.id != id;
+      });
+      addToLocalStorage(itemsArray);
+    };
+    getFromLocalStorage();
+
+    itemItemsList.addEventListener('click', function (event) {
+      if (event.target.classList.contains('delete-btn')) {
+        deleteItem(event.target.parentElement.parentElement.getAttribute('data-key'));
+      }
+    });
+    getFromLocalStorage();
+
+    deleteAllBtn.addEventListener('click', function (event) {
+      if (event.target.classList.contains('delete-all-btn')) {
+        itemsArray = [];
+        addToLocalStorage(itemsArray);
+        
+      }
+    });
+    getFromLocalStorage();
+
+    // Repopulate form data from itemsArray object
+    
+
+
+    function editItem(id){     // id = datakey
+
+        for(i=0; i < itemsArray.length; i++) {
+          if(itemsArray[i].id == id){ 
+            console.log(itemsArray[i]);   
+     
+            var tempDept = itemsArray[i].dept;
+            var tempItem = itemsArray[i].item;
+            var tempQty = itemsArray[i].qty;
+
+            return [
+              tempDept,
+              tempItem,
+              tempQty
+            ];
+          }
+        }
+      };
+      deptInput = tempDept[0];
+
+
+      let tempObject = editItem(id);
+      let tempDept = tempObject.tempDept,
+          tempItem = tempObject.tempItem,
+          tempQty = tempObject.tempQty;
+
+      
+      // var key = Object.keys(itemsArray)[i];
+            // console.log(key);
+            // return key;
+            // document.getElementById('item-input') = itemsArray[i].item.value;
+
+  
+            // deptInput.value = itemsArray[i].dept;
+            // itemInput.value = itemsArray[i].item;
+            // qtyInput.value = itemsArray[i].qty;
+
+          // console.log(itemsArray[i]);
+            // JSON.stringify(tempItem);
+          // }
+
+          // return tempItem;
+
+          // JSON.parse(tempItem);
+
+          // console.log("test", tempItem);
+          // return itemsArray.id = id; 
+          
+          // itemsArrayTemp = itemsArray;
+     
+      // }
+      // };
+  
+
+    itemItemsList.addEventListener('click', function(event) {
+      if(event.target.classList.contains('edit-btn')) {
+        editItem(event.target.parentElement.parentElement.getAttribute("data-key"));
+      }
+    });
+    // function updateItem(){
+    //   document.getElementById('data-input-form').addEventListener("click", function(event){
+    //     event.preventDefault();
+
+    //   });
+
+
+
+    // updateBtn.addEventListener('click', function(event) {
+    //   if(event.target.classList.contains('update-btn')) {
+    //     updateLocalStorage(event.target......contents of input fields);
+    //   }
+    // })tempItemsArray = itemsArray.filter(function(itemsArray){
+    //     return itemsArray.id == id;
+    
+    function sortLocalStorage(){
+      
+      if(itemsArray.length > 0){
+        var sortedItemsArray = new Array();
+
+        itemsArray.sort(function(a, b){
+          if (a.dept < b.dept) {
+          return -1;
+          }
+          if (a.dept > b.dept) {
+          return 1;
+          }
+          return 0;
+        });
+        
+        var sortedItemsArray = itemsArray;
+        renderItems(sortedItemsArray);
+        // console.log("sorted array", sortedItemsArray);
+      };  
+    }  
+
+    sortBtn.addEventListener('click', function (event) {
+      if (event.target.classList.contains('sort-btn')) {
+       sortLocalStorage(itemsArray);
+      }
+    });
+    
+  </script>
+</body>
+
+<!-- Select html tags to not support placeholder attribute. 
+     This work-around creates a fake placeholder:
+     https://codepen.io/maoberlehner/pen/WOWrqO */
+
+// Reference for array sorting using both compare() and sort() functions:  https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+
+</html>

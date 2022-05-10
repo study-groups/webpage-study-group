@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>Job Hunt Form V-4</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <script src="input-mask.js"></script>
+</head>
+
+<style>
+  /*  Theme Colors  */
+  body {
+    /* main body colors */
+    
+    --yellow-orange: #fae508;
+    --grey: #7f818a;
+    --white: #fff;
+    --black: #000;
+    --medium-blue: #425aa0;
+    --btn-blue-hover: #161a98;
+    --btn-blue-active: #070a6e;
+    --dark-blue: #1d1c37;
+
+    --background-body: var(--dark-blue);
+    --background-form: var(--grey);
+    --form-input-text: var(--grey);
+    --form-text: var(--white);
+    --background-form-inputs: var(--white);
+    --button-text: var(--white);
+    --output-card-text: var(--white);
+    --button-border: var(--black);
+    --output-card-text-alt: var(--black);
+    --background-output: var(--medium-blue);
+
+    /* output colors */
+    
+    --background-output-cards: #2e3f72; /* alt= #070a6e */
+    --deleteBtn: var(--background-output);
+    --transition-delay: 1s;
+
+    transition: var(--transition-delay);
+  }
+  
+  @media screen and (max-width: 2200px) {
+    body {
+      background: var(--background-body);
+      font-family: 'Roboto', sans-serif;
+      position: relative;
+    }
+    .main-header {
+      display: grid;
+      grid-area: 1 / 1 / 3 / 2;
+      border-bottom: 1px solid var(--btn-blue-active);
+    }
+    .main-container {
+      margin: 0 auto;
+      padding-top: 1em;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* FORM BOX/CONTAINER */
+    .grid-container {
+      display: grid;
+      background: var(--background-form);
+      border: 1px solid var(--background-output);
+      border-radius: 10px;
+      width: 800px;
+      margin: 0 0 3px 0;
+      
+    }
+    .main-header {
+      font-family: 'Archivo Black', sans-serif;
+      grid-area: 1 / 1 / 2 / 4;
+      text-align: center;
+      font-size: 1.4em;
+      font-weight: 600;
+      padding: 1em;
+      color: var(--form-text);
+      border-bottom: 3px solid var(--btn-blue-hover);
+    }
+    input {
+      margin: .4em .5em .2em 0;
+      height: 30px;
+      width: 215px;
+      font-size: 1em;
+      padding: 0 0 0 5px;
+      border-radius: 5px;
+    }
+    /* INPUT GROUPS */
+    .gap-div {
+      grid-area: 2 / 1 / 3 / 4;
+      max-width: 400px;
+      margin: auto 0;
+      border: 2px solid var(--background-body);
+      background: var(--background-body);
+    }
+    .posting-group,
+    .position-input-group,
+    .requirement-input-group,
+    .posting-date-group,
+    .aging-input-group,
+    .source-input-group,
+    .company-name-input-group,
+    .company-location-input-group {
+      padding-left: 0;
+      margin-top: 1em;
+    }
+    .posting-group {
+      grid-area: 3 / 1 / 4 / 3;
+    }
+    .posting-input {
+      width: 400px;
+      height: 68px;
+      padding: 0.4em 0.4em 0.4em 0;
+    } 
+    .posting-date-group {
+      grid-area: 4 / 1 / 5 / 3;
+    }
+    .position-input-group {
+      grid-area: 5 / 1 / 6 / 3;
+    }
+    .aging-input-group {
+      grid-area: 6 / 1 / 7 / 3;
+    }
+    .requirement-input-group {
+      grid-area: 7 / 1 / 8 / 3;
+    }
+    .source-input-group {
+      grid-area: 8 / 1 / 9 / 3;
+    }
+    .company-name-input-group {
+      grid-area: 9 / 1 / 10 / 3;
+    }
+    .company-location-input-group {
+      grid-area: 10 / 1 / 11 / 3;
+    }
+    #seperation-bar {
+      margin: auto;
+      margin-top: 30px;
+      grid-area: 11 / 1 / 12 / 3;
+      width: 400px;
+      border-top: 2px solid var(--medium-blue);
+    }
+    .response-group {
+     grid-area: 12 / 1 /13 / 4;
+    }
+    .resume-sent {
+      display: none;
+      grid-area: 12 / 1 /13 / 2;
+      margin-right: 60px;
+      font-size: 1.2em;
+      color: var(--white);
+      margin-top: 1em;
+      text-align: right;
+    }
+    .yes-no-group {
+      display: none;
+      grid-area: 12 / 2 / 13 / 4;
+      display: flex;
+      flex-direction: row;
+      /* margin-left: -115px; */
+      margin-top: 1em;
+    }
+    /* RADIO BUTTONS */
+    #yes-label, #no-label,.yes, .no {
+      display: none;
+    }
+    #yes-label {
+      
+      width: 40px;
+      margin: 5px;
+    }
+    #no-label {
+      width: 35px;
+      margin: 5px;
+    }
+    .yes {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+
+      border: 3px solid var(--white);
+      transition: 0.2s all linear;
+      margin-right: 5px;
+
+      position: relative;
+    }
+    .no { 
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+
+      border: 3px solid var(--white);
+      transition: 0.2s all linear;
+      margin-right: 5px;
+
+      position: relative;
+      /* top: 4px; */
+    } 
+    input:checked {
+      border: 9px solid var(--medium-blue);
+    }
+
+    /* #send-date-input {
+      display: grid;
+      grid-area: 13 / 1 / 14 / 2;
+    } */
+    .send-date {
+      display: grid;
+      grid-area: 13 / 1 / 14 / 2;
+      margin-right: 60px;
+      font-size: 1.2em;
+      color: var(--white);
+      margin-top: 1em;
+      text-align: right;
+    }
+    .send-date-input {
+      display: grid;
+      grid-area: 13 / 2 / 14 / 3;
+      margin-top: 1em;
+      /* margin-left: -115px; */
+    }
+    #notes {
+      display: grid;
+      grid-area: 14 / 1 / 15 / 2;
+      margin-right: 60px;
+      font-size: 1.2em;
+      color: var(--white);
+      margin-top: 1em;
+      text-align: right;
+    }
+    .textarea {
+      display: grid;
+      grid-area: 14 / 2 / 15 / 4;
+      width: 93%;
+      overflow: hidden;
+      resize: both;
+      min-height: 70px;
+      line-height: 20px;
+      border-radius: 5px;
+      margin-top: 1em;
+      font-size: 1.4em;
+      color: var(--grey);
+    }     
+    label {
+      display: inline-block;
+      color: var(--form-text);
+      font-size: 1.2em;
+      vertical-align: middle;
+      margin-right: 60px;
+      margin-left: 80px;
+      width: 170px;
+    }
+    /* BUTTONS */
+    .button-container {
+      grid-area: 15 / 1 / 16 / 4;
+      margin: 0 auto;
+      border-top: 1px solid var(--btn-blue-hover);
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+    #add-btn, #reset-btn, #update-btn {
+      margin: 1em .1em 1em 0;
+      width: 130px;
+      height: 40px;
+      font-size: 1em;
+      color: #fff;
+      cursor: pointer;
+      background: var(--medium-blue);
+      border: 1px solid var(--button-border);
+    }
+    .btn {
+      background: (var(--medium-blue));
+    }
+    .btn:hover {
+      background: var(--btn-blue-hover);
+    }
+    .btn:active {
+      background: var(--btn-blue-active);
+      border: var(--button-border);
+    }
+    #add-btn {
+      border-radius: 8px 0 0 5px;
+    }
+    #reset-btn {
+      border-radius: 0px;
+    }
+    #update-btn {
+      border-radius: 0 8px 8px 0;
+    }
+    /* OUTPUT CONTAINER */
+
+    .output-container {
+      display: flex;
+      margin: 1em 3em 1em 3em;
+      /* background: var(--background-output-cards); */
+      border-radius: 10px;
+      font-size: 1.5em;
+      color: var(--button-text);
+      justify-content: center;
+      border: 1px solid var(--background-form);
+    }
+    .list-header {
+      text-align: center;
+      font-size: 1.3em;
+      color: var(--button-text);
+      margin: 1em;
+    }
+    .job-list-group {
+      text-align: center;
+      color: #fff;
+      line-height: 105%;
+    }
+    .job-list {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      font-size: .9em;
+      text-align: left;
+      
+    }
+    .card-format {
+      border: 1px solid var(--background-form);
+    }
+    .cardBtnContainer {
+      display: flex;
+      margin: 14px;
+    }
+    .del-btn, .edit-btn {
+      display: block;
+      width: 115px;
+      min-height: 25px;
+      background: var(--medium-blue);
+      border: 1px solid var(--button-border);
+      padding: 5px;
+      color: var(--button-text);
+    }
+    .del-btn {
+      margin: 10px 0 10px 0;
+      border-radius: 8px 0 0 8px;
+    }
+    .edit-btn {
+      margin: 10px 0 10px 4px;
+      border-radius:  0 8px 8px 0 ;
+    }
+  }
+</style>
+
+<body class="">
+  <div class="main-container"> 
+    <div class="form-container">
+      <form id="job-entry-form" class="job-entry-form grid-container"
+            name="jobEntryForm">
+        <div class="main-header" 
+          id="main-header">Job Hunt Form
+        </div>
+        <!-- <div class="gap-div"></div> -->
+        <div class="posting-group">
+          <label for="posting-input">Posting:</label>
+          <input
+            id="posting-input"
+            class="posting-input"
+            name="url"
+            pattern="https://.*"
+            placeholder="https://example.com"
+            type="text"
+            value=""
+            max-length="500px">
+        </div>
+        <div class="posting-date-group">
+          <label for="posting-date-input">Posting Date:</label>
+          <input
+            id="posting-date-input"
+            class="posting-date-input"
+            name="posting-date-input"
+            placeholder="xx/xx/xxxx"
+            type="posting-date-input">
+        </div>
+        <div class="position-input-group">
+          <label for="position-input-label">Position:</label>
+          <input 
+            id="position-input"
+            class="position-input"
+            name="position-input"
+            placeholder="Enter Position"
+            type="position-input">
+        </div>
+        <div class="aging-input-group">
+          <label for="aging-input-label">Aging:</label>
+          <input 
+            id="aging-input"
+            class="aging-input"
+            name="aging-input"
+            placeholder="Time since posting date"
+            type="text">
+        </div>
+        <div class="requirement-input-group">
+          <label for="requirement-input-label">Requirements:</label>
+          <input 
+            id="requirement-input"
+            class="requirement-input"
+            name="requirement-input"
+            placeholder="Job Requirements"
+            type="requirement-input">
+        </div>
+        <div class="source-input-group">
+          <label for="source-input-label">Source:</label>
+          <input 
+            id="source-input"
+            class="source-input"
+            name="source-input"
+            placeholder= "Enter Source"
+            type="source-input">
+        </div>
+        <div class="company-name-input-group">
+          <label for="company-name-input-label">Company Name:</label>
+          <input
+            id="company-name-input"
+            class="company-name-input"
+            name="company-name-input"
+            placeholder="Enter Company Name"
+            type="company-name-input">
+        </div>
+        <div class="company-location-input-group">
+          <label for="company-location-input-label">Company Location:</label>
+          <input
+            id="company-location-input"
+            class="company-location-input"
+            name="company-location-input"
+            type="text"
+            placeholder="Location"
+            max-length="20">
+        </div>
+        <div id="seperation-bar"></div>
+        <!-- RESUME F/U SECTION -->
+        <div class="resume-sent">Resume Sent:</div>
+          <div id="yes-no-group" class="yes-no-group">
+          <label for="yes" id="yes-label">Yes</label>
+              <input 
+                id="yes" 
+                class="yes" 
+                type="radio" 
+                value="yes"
+                name="yesOrNo"
+                />
+            <label for="no" id="no-label">No</label>
+              <input 
+                id="no" 
+                class="no" 
+                type="radio" 
+                value="no"
+                name="yesOrNo"
+                checked/>
+        </div>
+        <div id="radio-btn-choice"></div>
+        <div class="send-date">Resume Send Date:</div>
+          <label for="send-date-input" id="send-date-input"></label>
+          <input 
+            id="send-date-input"
+            class="send-date-input"
+            name="send-date-input"
+            placeholder="xx/xx/xxxx"
+            type="send-date-input"/>
+          <div id="notes">Notes:</div>
+          <textarea id="text-area-input" class="textarea"></textarea>
+           
+              <!-- BUTTONS -->
+        <div class="button-container">
+          <button 
+            id="add-btn"
+            class="btn add-btn"
+            type="submit">Add
+          </button>
+          <input 
+            id="reset-btn"
+            class="btn"
+            type="reset"/>
+          <button 
+            id="update-btn"
+            class="btn update-btn"
+            type="submit">Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <!-- OUTPUT SECTION -->
+    <div class="list-header">-- Jobs Data --</div>
+      <div class="output-container">
+        <div id="job-list-group"class="job-list-group">
+          <ol id="job-list" class="job-list">
+            <li></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+<script>
+
+// FORM CODE //
+const jobEntryForm = document.querySelector('.job-entry-form');
+const addBtn = document.querySelector('.add-btn');
+const resetBtn = document.querySelector('.reset-btn');
+const updateBtn = document.querySelector('.update-btn');
+const postingInput = document.querySelector('.posting-input');
+const positionInput = document.querySelector(".position-input");
+const requirementInput = document.querySelector(".requirement-input");
+const postingDateInput = document.querySelector(".posting-date-input");
+const agingInput = document.querySelector(".aging-input")
+const sourceInput = document.querySelector(".source-input");
+const companyNameInput = document.querySelector('.company-name-input');
+const companyLocationInput = document.querySelector(".company-location-input");
+const radioValueInput = document.getElementsByName('yesOrNo');
+const sendDateInput = document.querySelector('.send-date-input');
+const textAreaInput = document.getElementById('text-area-input');
+const jobList = document.querySelector(".job-list");
+
+
+// Input Mask Code //
+new InputMask().Initialize(document.querySelectorAll(".posting-date-input"), {
+  mask: InputMaskDefaultMask.Date,
+  placeholder: "Date: 01/01/2021"
+});
+new InputMask().Initialize(document.querySelectorAll('.send-date-input'), {
+  mask: InputMaskDefaultMask.Date,
+  placeholder: "Date: 01/01/2021"
+});
+InputMask();
+
+// FORM INPUT //
+
+let jobArray = [];
+
+ //  GET RADIO BTN VALUE 
+
+addBtn.addEventListener('click', function(event) {
+  event.preventDefault();
+
+  addJob(
+    postingInput.value,
+    postingDateInput.value,
+    positionInput.value,
+    agingInput.value,
+    requirementInput.value,
+    sourceInput.value,
+    companyNameInput.value,
+    companyLocationInput.value,
+    radioSelected.value,
+    sendDateInput.value,
+    textAreaInput.value)
+  });
+
+  let radioBtnInput2;
+
+  function addJob(job) {
+
+  // function getRadioValue(){
+  // radio = document.getElementsByName('yesOrNo').forEach(radio => {
+  //   if(radio.checked) {
+  //     let radioBtnInput = radio.value;
+  //     window.radioBtnInput2 = radioBtnInput;
+  //     console.log("radio value", radioBtnInput2)
+  //     return radioBtnInput2;
+  //     }
+  //   });
+  // }
+
+    function getRadioValue(){
+      radioValueInput.forEach(radioValueInput => {
+        if(radioValueInput.checked) {
+          radioSelected = radioValueInput;
+
+          return radioSelected; // How do I get this variable into global scope
+                                // so I can use it below?
+        }
+      })
+    }
+
+  getRadioValue();
+
+  if(job !== ""){
+      var job = {
+      id: Date.now(),
+      posting: postingInput.value,
+      postingDate: postingDateInput.value,
+      position: positionInput.value,
+      aging: agingInput.value,
+      requirements: requirementInput.value,
+      source: sourceInput.value,
+      companyName: companyNameInput.value,
+      companyLocation: companyLocationInput.value,
+      radioBtnValue: radioSelected.value,
+      sendDate: sendDateInput.value,
+      textAreaInput: textAreaInput.value
+    }
+   } 
+      jobArray.push(job);
+      addToLocalStorage(jobArray); // trigger add function below
+
+      console.log("JobArray - Add job:", jobArray);
+      // clear input values
+      document.getElementsByName("jobEntryForm")[0].reset();
+  }
+
+// RENDER FUNCTIONS
+  function renderList(jobArray) {
+    jobList.innerHTML = ''; // ensures ol has no contents
+
+    jobArray.forEach(function(job) {
+      
+        var li = document.createElement("li");
+        li.innerHTML = 
+          `Posting:` + `<br>` +
+          `${job.posting}` + `<br>` + `<br>` +
+          `Posting Date:` + " " + `${job.postingDate}` + `<br>` + `<br>` +
+          `Position:` + `<br>` +
+          `${job.position}` + `<br>` + `<br>` +
+          `Aging:` + `<br>` + `${job.aging}` + `<br>` + `<br>` +
+          `Req's:` + `<br>` +
+          `${job.requirements}` + `<br>` + `<br>` +
+          `Source:` + `<br>` + `${job.source}` + `<br>` + `<br>` +
+          `Company Name:` + `<br>` + `${job.companyName}` + `<br>` + `<br>` +
+          `Location:` + `<br>` + `${job.companyLocation}` + `<br>` + `<br>` +
+          // `Resume Sent:` + `<br>` + `${radioBtnInput2}` + `<br>` + `<br>` +
+          `Resume Send Date:` + `<br>` + `${job.sendDate}` + `<br>` + `<br>` +
+          `Notes:` + `<br>` + `${job.textAreaInput}`
+          
+
+          jobList.append(li); // jobList = <ol>
+          li.setAttribute('class', "job card-format card");
+          li.setAttribute('data-key', job.id);
+
+          const styles = {
+            width: "300px",
+            height: "auto",
+            color: "var(--white)",
+            fontSize: ".7em",
+            padding: "30px",
+            borderRadius: "5px",
+            margin: "20px",
+            background: "#2e3f72"
+          }
+          Object.assign(li.style, styles);
+
+          //  Delete Button
+          var cardBtnContainer = document.createElement("div");
+          var delBtn = document.createElement("button");
+          var editBtn = document.createElement("button");
+          cardBtnContainer.setAttribute("class", "cardBtnContainer");
+
+          li.append(cardBtnContainer);
+
+          cardBtnContainer.append(delBtn);
+          delBtn.innerHTML = "Delete Card";
+          delBtn.setAttribute("class", "del-btn btn");
+          delBtn.setAttribute("id", "del-btn");
+
+          cardBtnContainer.append(editBtn);
+          editBtn.innerHTML = "Edit Card";
+          editBtn.setAttribute("class", "edit-btn btn");
+          editBtn.setAttribute("id", "edit-btn");
+    })
+  };
+
+// ADD TO LOCAL STORAGE
+
+  function addToLocalStorage(jobArray) { // add to localStorage
+    localStorage.setItem('jobArray', JSON.stringify(jobArray));
+    renderList(jobArray);
+  }
+  function getFromLocalStorage(){      // retrieve from localStorage
+
+    var listJobs = localStorage.getItem('jobArray');
+
+    if(listJobs) { 
+      jobArray = JSON.parse(listJobs);
+      // console.log("list name", listJobs);
+      renderList(jobArray);
+    }
+  }
+
+  getFromLocalStorage();
+
+  console.log("Initial Array:", jobArray);
+
+// DELETE FUNCTION CODE
+  jobList.addEventListener("click", function(event) {
+    if(event.target.classList.contains('del-btn')) {
+      deleteJob(event.target.parentNode.parentNode.getAttribute('data-key'));
+    }
+  });
+  getFromLocalStorage();
+
+  function deleteJob(id) {
+    jobArray = jobArray.filter(function(job) {
+      return job.id != id;
+    });
+
+    // update localStorage
+    addToLocalStorage(jobArray);
+    console.log("Deleted job", jobArray);
+  }
+  getFromLocalStorage();
+
+
+</script>
+  <!-- Function signature: defines the input and ouput of functions or methods.
+  input = id, which is a string or a number depending on JSON status. -->
+
+  <!-- Radio buttons for functionalily of yes/no above problematic in terms of styling. Expereinces many problems. Determined that radio button styling is browser dependent and requires addition CSS code to gain control over this element.  
+  
+  Found a very helpful post which aligned the radio buttons as intended, but also made them responsive to other operating systems (source of default styling). The source was: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
+  -->
+</body>
+</html>
+
