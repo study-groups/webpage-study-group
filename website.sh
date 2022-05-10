@@ -26,6 +26,29 @@ Enter domain name in "Delete domain security policies"
 EOF
 }
 
+website-nvm-install(){
+  cat << EOF
+1) curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+2) look in your .bashrc or .profile. The above adds:
+
+  # This loads nvm
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  # This loads nvm bash_completion
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
+
+3) If you want to keep your profile clean, you can delete the above
+   and use website-nvm-start (similar it pyenv's bin/activate)
+EOF
+
+}
+website-nvm-start(){
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
 cat << EOF
 Website Study Group Todos
 
