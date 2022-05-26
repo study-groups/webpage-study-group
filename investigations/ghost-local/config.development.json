@@ -1,0 +1,26 @@
+{
+  "url": "http://ux305-2.local:2368/",
+  "server": {
+    "port": 2368,
+    "host": "0.0.0.0"
+  },
+  "database": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "/home/mricos/src/webpage-study-group/investigations/ghost/content/data/ghost-local.db"
+    }
+  },
+  "mail": {
+    "transport": "Direct"
+  },
+  "logging": {
+    "transports": [
+      "file",
+      "stdout"
+    ]
+  },
+  "process": "local",
+  "paths": {
+    "contentPath": "/home/mricos/src/webpage-study-group/investigations/ghost/content"
+  }
+}
