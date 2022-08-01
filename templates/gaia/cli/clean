@@ -1,0 +1,17 @@
+#!/bin/bash
+# search / for different quotes and replace 
+#with straight quotes globally
+
+# few ways to compress multiple new lines into one.
+# NF stands for Number of Fields. So whenever NF is bigger than 0,
+#then awk interprets True and does default behavior {print $0}
+#!cat clean.txt | awk NF  | tail
+
+while read -r line; do
+  echo "$line" | \
+  sed 's/‘/'\''/g'  | \
+  sed 's/’/'\''/g'  | \
+  sed 's/“/'\"'/g'  | \
+  sed '/^$/d' | # eats blank lines \
+  sed 's/”/'\"'/g'
+done < <(cat ${1:--})

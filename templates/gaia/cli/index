@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+import sys
+import re
+#with open(sys.argv[1]) as fp:
+#with open(sys.stdin) as fp:
+
+def read_stdin():
+    readline = sys.stdin.readline()
+    while readline:
+        yield readline
+        readline = sys.stdin.readline()
+
+index=[]; # list of locations with keys: cnt, type and line
+cnt = 1
+chapter=0
+
+for line in read_stdin():
+    if re.search(r'C[0-9]+: ',line) is not None:
+        index.append({"cnt":cnt,
+            "type":"chapterStart","line":line})
+
+    if re.search(r'P.+: ',line) is not None:
+        index.append({"cnt":cnt,
+            "type":"promptStart","line":line})
+    cnt += 1
+
+index.append({"cnt":cnt,"type":"documentEnd","line":line})
+    
+for x in index:
+  print(f'{x["cnt"]} {x["type"]} {x["line"][:55]}');

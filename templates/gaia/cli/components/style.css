@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+<!-- reset and some defaults -->
+div { margin:0; padding:0; }
+html {height:100%;} 
+main { height:100%;  margin:0; padding:0;}
+header {height:1.5rem; min-width:100%; margin:0; padding:0;}
+nav {height:1.5rem; width:100%; margin:0; padding:0;}
+footer {height:10%; margin:0; padding:0;}
+
+:root {
+  --nav-bar: #a45b27;
+  --bk-primary: #2a2a2a;
+  --bk-secondary: #1e1e1e;
+  --fg-primary: #fce694;
+  --fg-secondary: #fce694;
+  --h1-color: #fbd651;
+  --h2-color: #fce694;
+  --body-text: #c7dfc5;
+  --body-text-alt: #8FF;
+  --divider-line: #fce694;
+  --nav-bar-bg: #1e1e1e;
+  --email-link: #F98A62;
+  --video-links: #F98A62;
+  --prompt-color: #E1F9DF;
+}
+
+body {
+  background: var(--bk-primary);
+  padding-top: 6em;
+  font-size: 1rem;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  letter-spacing: .1rem;
+  margin:0;
+}
+
+header {
+  position:fixed;
+  top: 0;
+  left: 0;
+  color: var(--h1-color);
+  background: #1e1e1e;
+  height: 5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+}
+
+nav{
+  z-index:-1;
+  margin:0;
+  padding:0;
+  height:2rem;
+  width:80%;
+  border: 1px solid lime;
+  display:flex;
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  flex-direction: row;   /* main axis is verticle (up and down) */
+  justify-content: space-around; /* main axis: l/r */
+  align-items: center; /* cross axis: u/d */
+}
+
+nav div {
+  display:block;
+  text-align: center;
+  text-decoration: none;
+  border: 0px solid green;
+}
+
+nav div:hover, .nav-selected {
+  background-color: #111111;
+  outline: 2px solid  var(--h2-color);
+}
+
+h1 {
+  margin: .5em 10% 1em 10%;
+  color: var(--h1-color);
+}
+h2, h3 {
+  margin: .5em 10% 1em 10%;
+  color: var(--h2-color);
+}
+p {
+  color: var(--body-text);
+  margin: 0 10% 1.35em 10%;
+  line-height: 170%;
+}
+a {
+  color: var(--video-links);
+}
+
+.sentence-alt{
+  color: var(--body-text-alt)
+}
+
+#joystick{
+  color: var(--email-link);
+  position:fixed;
+  font-size:.5em;
+  text-align:center;
+  width:50%;
+  /*top: 0;
+  right: 0;*/
+  bottom: .1rem;
+  left: 25%;
+  z-index:10;
+}
+
+#email {
+  color: var(--email-link);
+  margin: 1.5em 10% 1em 10%;
+}
+.author {
+  margin: 1.5em 10% 1em 10%;
+  color: var(--h1-color);
+}
+.zen-circle {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+footer {                                                                        
+  display:flex;
+  flex-direction: column;   /* main axis is verticle (up and down) */           
+  justify-content: center; /* main axis: direction=column -> up/down */         
+  align-items: center; /* cross axis: left/right */ 
+  bottom:0; /*cuts off bottom border of child */                                
+  position:fixed;                                                               
+  width:100%;                                                                   
+  background:#bbb;                                                              
+  text-align:center;                                                            
+  height: 4.0rem;           /* Footer height */                                 
+  color: var(--fg-secondary);
+  background: var(--bk-secondary);
+} 
+
+nav .active{
+  border: 2px solid lime;
+  background: 2px solid lime;
+}
+/* @media screen and (max-width: 667px) { */
+/* small is 48em<
+   min-width:48em is "not-small" via tachyons-css naming convention.
+*/
+@media screen and (min-width:48em ) {
+  h2 {
+    margin: 1.4em 0 .8em 1.2em;
+    font-size: 120%;
+  }
+}
