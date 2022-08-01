@@ -16,31 +16,39 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
-   <style>
+<style>
 :root{
  --background-color: var(--teal-500);
  --heading-color: var(--green-500);
  --list-color: var(--green-400);
 }
-  body{
+
+body{
     background:var(--blue-900);
-  }
-  h1, h2{
+}
+
+h1, h2{
     color:var(--heading-color);
     text-align:center;
     line-height:1.3;
   }
-  li {
+
+li {
     color:var(--list-color);
-  }
-  p{
+}
+
+p {
     margin-left: .5rem;
     margin-right: .5rem;
     color:var(--gray-000);
+}
 
-  }  
-    </style>
-  </head>
+nav {
+    padding-bottom:.5rem;
+}
+</style>
+
+</head>
   <body  class="lh-copy"> 
     <nav class="z-1 w-100 fw6 f2 fixed top-0 
                blue-7 bg-blue-4 flex justify-between">
@@ -121,7 +129,7 @@
     </div>
 
     <!-- A floaty box to show viewport height and width for debugging -->
-    <footer class="fixed dn bottom-1 ba b--gray ph2 ml4 w-30 bg-dark-gray white">
+    <footer class="fixed  bottom-1 ba b--gray ph2 ml4 w-30 bg-dark-gray white">
       <p>Viewport dimensions:
       <p>Height: <strong class="green" id="height"></strong> px</p>
       <p>Width: <strong class="green" id="width"></strong> px</p>

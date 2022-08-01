@@ -142,4 +142,4 @@ class ScrollSpy {
     }
 }
 
-module.exports = ScrollSpy;
+let scrollSpy= new ScrollSpy();

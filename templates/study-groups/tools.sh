@@ -1,7 +1,7 @@
 REPO=$(realpath "/home/$USER/src/webpage-study-group")
 TEMPLATE=$(realpath $REPO/templates/study-groups)
 BUILD=$(realpath $REPO/builds/study-groups)
-export VER=002pre3
+export VER=003pre2
 #export VER=001react02
 #export JSLIB="$(cat ./react.min.js)"
 tools-build(){
