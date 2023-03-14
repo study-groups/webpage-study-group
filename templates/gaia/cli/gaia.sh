@@ -1,14 +1,12 @@
 #!/bin/bash
 # shellcheck disable=SC2155
-## shellcheck disable=SC2086 
-# Dbl quote to prevent globbing and word splitting.
-PS1="gaia> "
-GAIA_HTML="$PWD/html" # set when sourced
-GAIA_COMPONENTS="$PWD/components" # set when sourced
+# shellcheck disable=SC2086
+GAIA_DIR=$PWD                          # source ./gaia.sh
+GAIA_HTML="$GAIA_DIR/html"             # set when sourced
+GAIA_COMPONENTS="$GAIA_DIR/components" # set when sourced
 export GAIA_VERSION="Version not set. Edit-gaia.sh."
-GAIA_VERSION="004pre8"
-export GAIA_ASSETS="$PWD/../assets"
-#source components/*.sh
+GAIA_VERSION="005"
+export GAIA_ASSETS="$GAIA_DIR/../assets"
 source html.sh
 
 gaia-help(){
@@ -18,7 +16,6 @@ Transformation and Loading of the Google document Knowing Gaia.
 
 https://docs.google.com/document/d/1QCWu6BMxVjcee9mf7tEMx8Z048ciYwlmx-EkoVSyzVI
 
-
 It is also a command line interface for reading the book.
 
 1. Copy and paste text into raw.txt
@@ -27,8 +24,8 @@ It is also a command line interface for reading the book.
 4. gaia-display 2 3 # display Chapter 2, Prompt 3
 
 To make webpage:
-1. Set version bash variable GAIA_VERSION
-2. gaia-components-to-html   # takes ./components -> ./html
+1. Set bash variable GAIA_VERSION
+2. gaia-html-make-components   # takes ./components -> ./html
 3. gaia-html-make-all > \$GAIA_VERSION.html 
 
 EOF
