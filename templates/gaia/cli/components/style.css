@@ -129,6 +129,7 @@ a {
 footer {                                                                        
   display:flex;
   flex-direction: column;   /* main axis is verticle (up and down) */           
+  flex-direction: row;   /* main axis is verticle (up and down) */           
   justify-content: center; /* main axis: direction=column -> up/down */         
   align-items: center; /* cross axis: left/right */ 
   bottom:0; /*cuts off bottom border of child */                                
@@ -140,6 +141,19 @@ footer {
   color: var(--fg-secondary);
   background: var(--bk-secondary);
 } 
+
+footer button {
+  width:10%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--fg-primary);
+}
+
+
 
 nav .active{
   border: 2px solid lime;
