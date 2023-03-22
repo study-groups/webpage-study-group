@@ -3,9 +3,14 @@ export SEC2_HTML=$(cat sec2.html)
 export SEC3_HTML=$(cat sec3.html)
 export REFS_HTML=$(cat refs.html)
 
-cat index.env | envsubst > index.html
-cp index.html ../../builds/iota/index-002.html
-cp styles.css ../../builds/iota/styles.css
-cp -r  assets ../../builds/iota/
-ln -s ../../builds/iota/index-002.html ../../builds/iota/index.html
+buildname="index.html"
+destname="index-002.html"
+destdir="../../builds/iota"
+linkname="../../builds/iota/index.html"
+
+cat index.env | envsubst > $buildname 
+cp $buildname $destdir/$destname
+cp -r  assets $destdir
+cp styles.css $destdir/styles.css
+ln -s $destdir/$destname $linkname
 
