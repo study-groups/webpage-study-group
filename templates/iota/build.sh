@@ -12,5 +12,7 @@ cat index.env | envsubst > $buildname
 cp $buildname $destdir/$destname
 cp -r  assets $destdir
 cp styles.css $destdir/styles.css
+
+[ -f $linkname ] && rm $linkname
 ln -s $destdir/$destname $linkname
 
