@@ -1,2 +1,4 @@
 *.html
 html/*.html
+*.log
+debug.txt

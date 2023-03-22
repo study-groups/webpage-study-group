@@ -20,13 +20,18 @@ gaia-html-update-style(){
 }
 
 gaia-html-make-all(){
+  pre=${1:-$pre}
+  echo "Building $GAIA_VERSION pre $pre"
   gaia-html-make-components
   gaia-html-make-head
   gaia-html-make-header
   gaia-html-make-body  # calls make-chapter
   gaia-html-make-footer
-  gaia-html-cat-all
-} 
+  gaia-html-cat-all > "./${GAIA_VERSION}pre$pre.html"
+  ((pre++))
+  export BUILD_STRING="./${GAIA_VERSION}pre$pre -- $(date)"
+}
+
 gaia-html-cat-all(){
   local dir=$GAIA_HTML
   cat "$dir/head.html" 
@@ -68,7 +73,13 @@ gaia-html-get-alternating-sentence-class(){
 # Each line thereafter is either a paragraph or a prompt.
 gaia-html-make-chapter(){
   local chapterLines=$(gaia-get-chapter-lines $1)
-  readarray lineArray <<<  $chapterLines
+  echo "$chapterLines" > debug.txt
+  #readarray lineArray <<<  $chapterLines
+  lineArray=()
+  while IFS=$'\n' read -r line; do
+    lineArray+=("$line")
+  done <<< "$chapterLines"
+ 
   gaia-html-make-chapter-title "${lineArray[0]}"
   unset 'lineArray[0]'  # first line was chapter heading
   local promptRegex="^P[0-9]+:"
@@ -90,7 +101,11 @@ gaia-html-make-chapter(){
       printf "\n\n<p id='c$1-par$i'>"
       ((paragraphIndex++))
       sentLines="$(gaia-str-to-sentences "$curLine")"
-      readarray sentArray <<< $sentLines
+      #readarray sentArray <<< $sentLines
+      sentArray=()
+      while IFS=$'\n' read line; do
+        sentArray+=("$line")
+      done <<< "$sentLines"
 
       for j in ${!sentArray[@]}; do
         sent=${sentArray[$j]};
@@ -118,6 +133,7 @@ gaia-html-make-sentence(){
   printf "\n<span class='$2'>\n$1\n</span>"
   #printf "\n<span class='$2'>\n$(echo $1 | fmt -65)\n</span>"
 }
+      sentArray=()
 gaia-html-make-span(){
   printf "\n<span style='color:$2'>\n$1\n</span>"
   #printf "\n<span style='color:$2'>\n$(echo $1 | fmt -65)\n</span>"
@@ -132,9 +148,11 @@ gaia-html-make-head() {
 
   echo "<style>" >> $file
   cat $GAIA_COMPONENTS/style.css >> $file
+  cat $GAIA_COMPONENTS/modal.css >> $file
   echo "</style>" >> $file
   echo "</head>" >> $file
   echo "<script>"  >> $file
+  echo "gaiaGlobals = {};" >> $file
   cat $GAIA_COMPONENTS/*.js >> $file
   echo "</script>" >> $file
 }
@@ -161,8 +179,8 @@ gaia-html-make-body(){
 }
 
 gaia-html-make-footer(){
-  export NAV_HTML="$(gaia-html-make-nav)";
   local file="$GAIA_HTML/footer.html"
+  export NAV_HTML="$(gaia-html-make-nav)";
   cat "$GAIA_COMPONENTS/footer.env" | envsubst > $file
 }
 
@@ -195,7 +213,13 @@ echo "<chapter-indicator>"
     do
       
         local chapterLines=$(gaia-get-chapter-lines $1)
-        readarray lineArray <<<  $chapterLines
+        #readarray lineArray <<<  $chapterLines
+
+        lineArray=()
+        while IFS=$'\n' read line; do
+          lineArray+=("$line")
+        done <<< "$chapterLines"
+
         local title="${lineArray[0]}"
       printf "  <div slot='title' data-target='c$c'>$title</div>\n"
   done
@@ -256,6 +280,6 @@ gaia-html-make-components(){
    do
       local basename=$(basename $component)
       cat $component | envsubst > "html/${basename%.*}.html"
-      echo "wrote to: html/${basename%.*}.html" >> $GAIA_LOG
+      echo "wrote to: html/${basename%.*}.html" >> $GAIA_DIR/gaia.log
    done 
 }
