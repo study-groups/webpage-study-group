@@ -2,6 +2,7 @@
 :root {
   --header-height: 6rem;
   --footer-height: 3rem;
+  --page-color: #eee; /* From the logo.png */
   --primary-color: #666; /* From the logo.png */
   --primary-color: #663; /* From the logo.png */
   --secondary-color: #333;
@@ -27,6 +28,7 @@ body {
   margin: 0;
   padding: 0;
   font-size:larger;
+  background-color: var(--page-color);
   font-family: var(--font-family);
   font-weight: 400; /* Default font weight */
   line-height: 1.8; /* Default line spacing */
