@@ -16,3 +16,8 @@ cp styles.css $destdir/styles.css
 [ -f $linkname ] && rm $linkname
 ln -s $destdir/$destname $linkname
 
+echo "When: $(date)"
+echo "Where: $(pwd)"
+echo "Who: $USER"
+echo "What: build.sh"
+echo "How: bash script"
